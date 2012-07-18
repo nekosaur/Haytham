@@ -540,7 +540,7 @@ namespace Haytham
                             if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 9 & btnCalibration_Polynomial.Enabled == false)
                             {
 
-
+                                METState.Current.EyeToScene_Mapping.ScenePoints.Add(new PointF(e.X, e.Y));
                                 METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
                                 METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
 
@@ -555,7 +555,7 @@ namespace Haytham
 
                                     METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
                                     METState.Current.EyeToScene_Mapping.Calibrate();
-                                    METState.Current.EyeToScene_Mapping.Calibrate2();
+                                    
 
                                     METState.Current.EyeToScene_Mapping.Calibrated = true;
                                     btnCalibration_Polynomial.Enabled = true;
@@ -566,7 +566,7 @@ namespace Haytham
                             if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 4 & btnCalibration_Homography.Enabled == false)
                             {
 
-
+                                METState.Current.EyeToScene_Mapping.ScenePoints.Add(new PointF(e.X, e.Y));
                                 METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
                                 METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
 
@@ -581,7 +581,7 @@ namespace Haytham
 
                                     METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
                                     METState.Current.EyeToScene_Mapping.Calibrate();
-                                    METState.Current.EyeToScene_Mapping.Calibrate2();
+                                    
 
                                     METState.Current.EyeToScene_Mapping.Calibrated = true;
                                     btnCalibration_Homography.Enabled = true;
@@ -1281,6 +1281,7 @@ namespace Haytham
 
         private void button1_Click_7(object sender, EventArgs e)
         {
+            METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
             METState.Current.GazeErrorX = 0;
             METState.Current.GazeErrorY = 0;
 
@@ -1296,6 +1297,7 @@ namespace Haytham
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
             METState.Current.GazeErrorX = 0;
             METState.Current.GazeErrorY = 0;
 

@@ -52,3 +52,7 @@ C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_Client_V1.0.
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\Haytham_Client.AnimatedCursor.resources
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\ResGen.read.1.tlog
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\ResGen.write.1.tlog
+C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\Interop.WMPLib.dll
+C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\Haytham_Client.csproj.ResolveComReference.cache
+C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\Haytham_Client.exe
+C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Client_V1.0.0\Haytham_Client\obj\Release\Haytham_Client.pdb
