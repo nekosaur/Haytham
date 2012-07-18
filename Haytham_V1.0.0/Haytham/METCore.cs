@@ -385,6 +385,24 @@ namespace Haytham
             if (METState.Current.ShowGaze) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, METState.Current.Gaze.X, METState.Current.Gaze.Y, Color.Red);
             #endregion Draw gaze cross on image
 
+            #region Draw Calibration points
+            if (METState.Current.EyeToScene_Mapping.CalibrationTarget!=0)
+            {
+                Graphics gr2 = Graphics.FromImage(METState.Current.SceneImageForShow.Bitmap);
+
+                // Create a new pen.
+                Pen pen = new Pen(Color.Blue);
+
+                // Set the pen's width.
+                pen.Width = 2.0F;
+                foreach (PointF p in METState.Current.EyeToScene_Mapping.ScenePoints)
+                {
+                    gr2.DrawArc(pen, p.X - 5, p.Y - 5, 10, 10, 0, 360);
+                }
+                gr2.Dispose();
+            }
+            #endregion Draw correspoinding points
+
             #region  Gaze Point Optic Flow ///didn't work. but it was a good idea keep it in your mind
 
 
