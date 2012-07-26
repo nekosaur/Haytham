@@ -92,6 +92,7 @@ namespace Haytham
 
 
             groupBox14.Size = new Size(panel6.Width, splitContainer1.Panel2.Height - panel6.Height);
+            groupBox14.AutoSize = true;
 
             METState.Current.screenMinSize = trackBarControl3.Value;
             METState.Current.syncCameras = checkEdit1.Checked;
@@ -105,6 +106,9 @@ namespace Haytham
             METState.Current.showGlint = cbShowGlint.Checked;
 
             METState.Current.sceneCameraUnDistortion = cbSceneUnDistortion.Checked;
+
+            METState.Current.eye_VFlip = cb_eye_VFlip.Checked;
+            METState.Current.scene_VFlip = cb_scene_VFlip.Checked;
 
             // Cursor.Show();
 
@@ -1862,6 +1866,18 @@ namespace Haytham
                 imSceneProcessed.Image = null;
             }
 
+
+        }
+
+        private void cb_eye_VFlip_CheckedChanged(object sender, EventArgs e)
+        {
+            METState.Current.eye_VFlip = cb_eye_VFlip.Checked;
+
+        }
+
+        private void cb_scene_VFlip_CheckedChanged(object sender, EventArgs e)
+        {
+            METState.Current.scene_VFlip = cb_scene_VFlip.Checked;
 
         }
 

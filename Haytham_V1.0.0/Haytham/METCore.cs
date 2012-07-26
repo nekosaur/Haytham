@@ -60,7 +60,13 @@ namespace Haytham
             metEventArg.AdditionalArg = "Eye";
             metEventArg.image = new Image<Bgr, byte>((Bitmap)TempImage);
 
+            if (METState.Current.eye_VFlip)
+            {
+                METState.Current.EyeImageOrginal = METState.Current.EyeImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
+                METState.Current.EyeImageForShow = METState.Current.EyeImageForShow.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
+                metEventArg.image = metEventArg.image.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
 
+            }
 
             OnTrackerEventEye(metEventArg);
 
@@ -74,7 +80,11 @@ namespace Haytham
 
             METState.Current.SceneImageForShow = new Image<Bgr, Byte>((Bitmap)TempImage);
             METState.Current.SceneImageOrginal = new Image<Bgr, Byte>((Bitmap)TempImage);
-
+            if (METState.Current.scene_VFlip)
+            {
+                METState.Current.SceneImageForShow = METState.Current.SceneImageForShow.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
+                METState.Current.SceneImageOrginal = METState.Current.SceneImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
+            }
             # region Distortion
             if (METState.Current.sceneCameraUnDistortion && METState.Current.SceneVideoFile == null)
             {

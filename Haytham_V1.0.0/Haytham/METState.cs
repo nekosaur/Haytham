@@ -76,6 +76,8 @@ namespace Haytham
         public FileVideoSource SceneVideoFile = null;
         public bool syncCameras;
         public AutoResetEvent camera1Acquired = null;
+        public bool eye_VFlip;
+        public bool scene_VFlip;
 
         //Scene Camera Calibration
         public int cameraCalibrationSamples = 10;
