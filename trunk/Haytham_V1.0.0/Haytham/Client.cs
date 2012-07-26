@@ -50,8 +50,6 @@ namespace Haytham
 	};
 
 
-        public bool iPhoneDemo = false;
-
         private Server server; // reference to server
         public int Width;
         public int Height;
@@ -71,9 +69,11 @@ namespace Haytham
 
             try
             {
-
+               
                 ClientType = reader.ReadString();
                 ClientName = reader.ReadString();
+
+                
 
                 Width = reader.ReadInt32();
                 Height = reader.ReadInt32();
