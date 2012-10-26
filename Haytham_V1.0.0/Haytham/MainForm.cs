@@ -451,8 +451,8 @@ namespace Haytham
 
                     default:
                         //IN 2TA Jabeja MItoonan beshan
-                        cmbDeviceEye.SelectedIndex = 0;
-                        cmbDeviceScene.SelectedIndex = 1;
+                        cmbDeviceEye.SelectedIndex = 1;
+                        cmbDeviceScene.SelectedIndex = 2;
                         break;
                 }
             }
@@ -1381,7 +1381,7 @@ namespace Haytham
 
                         string textdir = dir.Substring(0, extesion_index);
                         METState.Current.TextFileDataExport = new TextFile(textdir);
-                        string GazeDataLine = "Pupil Center X , Pupil Center Y , Pupil Diameter";
+                        string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter";
                         if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
 
 
