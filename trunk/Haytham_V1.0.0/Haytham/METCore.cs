@@ -310,7 +310,7 @@ namespace Haytham
                 METState.Current.EyeVideoWriter.WriteFrame<Bgr, Byte>(METState.Current.EyeImageForShow);
 
                 //text file
-                string GazeDataLine = METState.Current.eye.eyeData[0].pupilCenter.X + "," + METState.Current.eye.eyeData[0].pupilCenter.Y + "," + METState.Current.eye.eyeData[0].pupilDiameter;// +"," + METState.Current.Gaze.X + "," + METState.Current.Gaze.Y;
+                string GazeDataLine = METState.Current.eye.eyeData[0].pupilCenter.X + "," + METState.Current.eye.eyeData[0].pupilCenter.Y + "," + METState.Current.eye.eyeData[0].glintCenter.X + "," + METState.Current.eye.eyeData[0].glintCenter.Y + "," + METState.Current.eye.eyeData[0].pupilDiameter;// +"," + METState.Current.Gaze.X + "," + METState.Current.Gaze.Y;
                 if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
                 METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Stop");
 
