@@ -60,7 +60,7 @@ namespace Haytham
 
         public Calibration EyeToScene_Mapping = new Calibration();
         public Calibration SceneToMonitor_Mapping = new Calibration();
-        public Calibration SceneToLaser_Mapping = new Calibration();
+        public Calibration EyeToRemoteDisplay_Mapping = new Calibration();
 
         public ProcessTime ProcessTimeEyeBranch = new ProcessTime();
         public ProcessTime ProcessTimeSceneBranch = new ProcessTime();
@@ -68,6 +68,8 @@ namespace Haytham
         public FindCamera Devices;
         public TextFile TextFileDataExport;
 
+        //
+        public string RemoteOrHeadMount = "";
 
         //Cameras
         public VideoCaptureDevice EyeCamera;
@@ -166,6 +168,9 @@ namespace Haytham
         public Calibration_EyeFeature calibration_eyeFeature;
 
         public Point eyeFeature;
+        //remote
+        public RemoteCalibration remoteCalibration;
+        public bool controlCursor = false;
 
         //Chart
         //          Define some variables

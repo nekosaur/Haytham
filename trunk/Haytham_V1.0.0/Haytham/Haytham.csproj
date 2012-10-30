@@ -132,18 +132,30 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms">
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatedCursor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimatedCursor.designer.cs">
+      <DependentUpon>AnimatedCursor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Blob_Aforge.cs" />
     <Compile Include="Calibration.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="DetectActiveScreen.cs" />
     <Compile Include="FindCamera.cs" />
+    <Compile Include="firstForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="firstForm.Designer.cs">
+      <DependentUpon>firstForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlyphImageProcessor.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -164,6 +176,13 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Win32.cs" />
+    <EmbeddedResource Include="AnimatedCursor.resx">
+      <DependentUpon>AnimatedCursor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="firstForm.resx">
+      <DependentUpon>firstForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -178,6 +197,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RemoteCalibration.resx">
+      <DependentUpon>RemoteCalibration.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -190,6 +212,12 @@
     <Compile Include="METState.cs" />
     <Compile Include="METCore.cs" />
     <Compile Include="Eye.cs" />
+    <Compile Include="RemoteCalibration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteCalibration.Designer.cs">
+      <DependentUpon>RemoteCalibration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Server.cs" />
     <Compile Include="TextFile.cs" />
   </ItemGroup>
@@ -211,6 +239,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\HMGT.png" />
+    <EmbeddedResource Include="Resources\remote.png" />
+    <EmbeddedResource Include="Resources\Cursor_1.png" />
+    <EmbeddedResource Include="Resources\Cursor_2.png" />
     <Content Include="Untitled-1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

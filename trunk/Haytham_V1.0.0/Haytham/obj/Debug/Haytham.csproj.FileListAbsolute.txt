@@ -36,3 +36,41 @@ C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_V1.000\Hayth
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_V1.000\Haytham\obj\Debug\Haytham.pdb
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.exe
 C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.pdb
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.exe
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.pdb
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.AnimatedCursor.resources
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.firstForm.resources
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.MainForm.resources
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.Properties.Resources.resources
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\Haytham.RemoteCalibration.resources
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\ResGen.read.1.tlog
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Debug\ResGen.write.1.tlog
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\CustomControls.cs
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\GlyphImageProcessor.cs
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Haytham.exe
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Haytham.pdb
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Imaging.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Math.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Video.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Vision.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\AForge.Vision.GlyphRecognition.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.CV.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.CV.UI.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.Util.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Data.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Deployment.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Drawing.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Windows.Forms.DataVisualization.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Windows.Forms.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Xml.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Xml.Linq.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\ZedGraph.dll
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.CV.xml
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.CV.UI.xml
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\Emgu.Util.xml
+C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Debug\System.Windows.Forms.DataVisualization.xml
