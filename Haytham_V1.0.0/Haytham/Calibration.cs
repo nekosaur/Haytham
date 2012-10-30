@@ -145,8 +145,8 @@ namespace Haytham
                     A[0, 5] = Y * Y;
 
 
-                    output.X = (int)Convert.ChangeType(CvInvoke.cvDotProduct(A.Ptr, METState.Current.EyeToScene_Mapping.PolynomialCoeffs.GetCol(0).Transpose().Ptr), typeof(int));
-                    output.Y = (int)Convert.ChangeType(CvInvoke.cvDotProduct(A.Ptr, METState.Current.EyeToScene_Mapping.PolynomialCoeffs.GetCol(1).Transpose().Ptr), typeof(int));
+                    output.X = (int)Convert.ChangeType(CvInvoke.cvDotProduct(A.Ptr, PolynomialCoeffs.GetCol(0).Transpose().Ptr), typeof(int));
+                    output.Y = (int)Convert.ChangeType(CvInvoke.cvDotProduct(A.Ptr,PolynomialCoeffs.GetCol(1).Transpose().Ptr), typeof(int));
                     break;
                 case Calibration.calibration_type.calib_Homography:
 

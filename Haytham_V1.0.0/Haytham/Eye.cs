@@ -221,7 +221,9 @@ namespace Haytham
                 AForge.Imaging.Blob blobClose1 = glintBlob.SelectedBlob;
                 AForge.Imaging.Blob blobClose2 = glintBlob.SelectedBlob;
 
-                if (glintBlob.blobs_Filtered.Count > 2)
+                #region two and more than two glints found
+
+                if (glintBlob.blobs_Filtered.Count >= 2)
                 {
 
 
@@ -240,6 +242,7 @@ namespace Haytham
                         }
 
                     }
+
                     foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
                     {
                         if (blob != blobClose1)
@@ -255,31 +258,42 @@ namespace Haytham
                         }
                     }
 
-                    if (blobClose1.CenterOfGravity.X > blobClose2.CenterOfGravity.X) glintBlob.SelectedBlob = blobClose1;
-                    else glintBlob.SelectedBlob = blobClose2;
-                }
+                    ///Choose the glint in the right side
+                    //if (blobClose1.CenterOfGravity.X > blobClose2.CenterOfGravity.X) glintBlob.SelectedBlob = blobClose1;
+                    //else glintBlob.SelectedBlob = blobClose2;
 
-                else if (glintBlob.blobs_Filtered.Count == 2)//choose the right side one
-                {
-                    double ss = 0;
-                    int i = 0;
-                    foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
-                    {
-                        double s = blob.CenterOfGravity.X;
-                        if (s > ss)
-                        {
-                            glintBlob.SelectedBlob = blob;
-                            ss = s;
-                        }
-                        i++;
-                    }
+                    //choose the closest glint
+                    glintBlob.SelectedBlob = blobClose1;
                 }
+                #endregion More than two glints found
+               // #region  two glints found
+
+                //else if (glintBlob.blobs_Filtered.Count == 2)
+                //{
+
+                //    double ss = 0;
+                //    int i = 0;
+                //    foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
+                //    {
+                //        double s = blob.CenterOfGravity.X;
+                //        if (s > ss)
+                //        {
+                //            glintBlob.SelectedBlob = blob;
+                //            ss = s;
+                //        }
+                //        i++;
+                //    }
+
+                //}
+                  //  #endregion  two glints found
+                #region  one glint found
                 else if (glintBlob.blobs_Filtered.Count == 1)//choose the right side one
                 {
 
                     glintBlob.SelectedBlob = glintBlob.blobs_Filtered[0];
 
                 }
+                  #endregion  one glint found
                 #endregion filter blob
 
                 tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);

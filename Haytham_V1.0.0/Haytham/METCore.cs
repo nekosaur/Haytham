@@ -242,13 +242,13 @@ namespace Haytham
             {
 
                 METState.Current.eyeFeature = METState.Current.eye.eyeData[0].pupilCenter;
-                if (METState.Current.GazeSmoother) METState.Current.eyeFeature = METState.Current.eye.GetPupilCenterMedian(20);
+                if (METState.Current.GazeSmoother) METState.Current.eyeFeature = METState.Current.eye.GetPupilCenterMedian(12);
             }
             else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.PupilGlintVector)
             {
                 METState.Current.eyeFeature.X = METState.Current.eye.eyeData[0].glintCenter.X - METState.Current.eye.eyeData[0].pupilCenter.X;
                 METState.Current.eyeFeature.Y = METState.Current.eye.eyeData[0].glintCenter.Y - METState.Current.eye.eyeData[0].pupilCenter.Y;
-                if (METState.Current.GazeSmoother) METState.Current.eyeFeature = METState.Current.eye.GetPupilGlintVectorMedian(20);
+                if (METState.Current.GazeSmoother) METState.Current.eyeFeature = METState.Current.eye.GetPupilGlintVectorMedian(12);
 
             }
 
@@ -316,6 +316,26 @@ namespace Haytham
 
             }
             #endregion Record Eye Data
+
+            #region Remote
+
+            if (METState.Current.controlCursor)
+            {
+                if (METState.Current.eye.eyeData[0].pupilFound)
+                {
+
+                    if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
+                    {
+                        METState.Current.Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY);
+System.Windows.Forms.Cursor.Position = new Point(METState.Current.Gaze.X,METState.Current.Gaze.Y);
+                    }
+                   
+                   
+                }
+            
+            }
+
+            #endregion Remote
 
             METState.Current.ProcessTimeEyeBranch.Timer("Total", "Stop");
             SendToForm("", "textBoxTimerEye");//update the timer text box and show the ProcessTimeEyeBranch
@@ -656,7 +676,7 @@ namespace Haytham
             }
             catch (Exception er)
             {
-                System.Windows.Forms.MessageBox.Show(er.Message.ToString());
+               // System.Windows.Forms.MessageBox.Show(er.Message.ToString());
 
                 ok = false;
             }

@@ -70,12 +70,19 @@ namespace Haytham
             Icon ico = new Icon(Properties.Resources.Untitled_1, 64, 64);
             this.Icon = ico;
 
-
+            
+            ///Set the METState.Current.RemoteOrHeadMount 
+            firstForm firstform = new firstForm(); ;
+            firstform.ShowDialog();
+            //
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+          
+            //-------------------------------------------------------------
+            groupBox_imgEye.AutoSize = true;
+            groupBox_imgScene.AutoSize = true;
 
             groupBox13.Height = splitContainer1.Panel2.Height;
             splitContainer1.Panel2.AutoScroll = true;
@@ -85,14 +92,37 @@ namespace Haytham
             splitContainer1.Panel1.HorizontalScroll.Minimum = 0;
 
 
-            //..............
-            groupBox_imgEye.AutoSize = true;
-            groupBox_imgScene.AutoSize = true;
-
-
-
             groupBox14.Size = new Size(panel6.Width, splitContainer1.Panel2.Height - panel6.Height);
             groupBox14.AutoSize = true;
+
+
+            ///------------------------------------------------------------------
+            if (METState.Current.RemoteOrHeadMount == "HeadMount")
+            {
+                groupBox15.Visible = false;
+
+            }
+            else if (METState.Current.RemoteOrHeadMount == "Remote")
+            {
+                groupBox2.Visible = false;
+                groupBox3.Visible = false;
+                checkEdit1.Checked = false;
+                tabControl1.TabPages.Remove(this.tabPage_Scene );
+                tabControl1.TabPages.Remove(this.tabPage_Network);
+                groupBox9.Visible = false;
+                groupBox_imgScene.Visible = false;
+                imSceneProcessed.Visible = false;
+                lblIP.Visible = false;
+                comboBox_SceneTimer.Visible = false;
+                METState.Current.controlCursor = checkBox3.Checked;
+            }
+
+
+
+            //..............
+
+
+
 
             METState.Current.screenMinSize = trackBarControl3.Value;
             METState.Current.syncCameras = checkEdit1.Checked;
@@ -127,23 +157,16 @@ namespace Haytham
 
             METState.Current.detectPupil = cbPupilDetection.Checked;
             METState.Current.detectGlint = cbGlintDetection.Checked;
-            // cbRemoveGlint.Enabled = cbGlintDetection.Checked;
-            METState.Current.RemoveGlint = cbRemoveGlint.Checked;// &cbRemoveGlint.Enabled;
 
-
-
+            METState.Current.RemoveGlint = cbRemoveGlint.Checked;
+          
             METState.Current.ShowGaze = cbShowGaze.Checked;
             METState.Current.ControlClientMouse = checkBox4.Checked;
 
             METState.Current.SceneBThreshold = trackBarB.Value;
             METState.Current.SceneGThreshold = trackBarG.Value;
 
-
-            // METState.Current.monitor.server.ClientMoveCursor_1 = cbMoveCursor1.Checked;
-
-
-            cmbDevice_Update(true, true);
-
+ 
 
             METState.Current.enablePlot = cbPlot.Checked;
             METState.Current.IrisDiameter = trackBarControl2.Value;
@@ -151,6 +174,7 @@ namespace Haytham
             METState.Current.monitor.Real_Monitor_W = 1440;//1920;// 1280;//;//Default
             METState.Current.monitor.Real_Monitor_H = 900;//1080;//2024;//;//Default
 
+           cmbDevice_Update(true, true);
 
             //Adaptive Threshold
             //          pupil
@@ -175,6 +199,7 @@ namespace Haytham
             imScene.SizeMode = PictureBoxSizeMode.AutoSize;
             imSceneProcessed.SizeMode = PictureBoxSizeMode.AutoSize;
             imEyeTest.SizeMode = PictureBoxSizeMode.AutoSize;
+
 
 
         }
@@ -409,7 +434,7 @@ namespace Haytham
                 cmbDeviceEye.Items.Clear();
 
                 cmbDeviceCapabilityEye.Items.Clear();
-
+                cmbDeviceCapabilityEye.Text = "";
                 foreach (FindCamera.DeviceInfo DevInf in METState.Current.Devices.DeviceList)
                 {
                     cmbDeviceEye.Items.Add(DevInf);
@@ -422,7 +447,7 @@ namespace Haytham
 
                 cmbDeviceScene.Items.Clear();
                 cmbDeviceCapabilityScene.Items.Clear();
-
+                cmbDeviceCapabilityScene.Text = "";
                 foreach (FindCamera.DeviceInfo DevInf in METState.Current.Devices.DeviceList)
                 {
                     cmbDeviceScene.Items.Add(DevInf);
@@ -451,8 +476,8 @@ namespace Haytham
 
                     default:
                         //IN 2TA Jabeja MItoonan beshan
-                        cmbDeviceEye.SelectedIndex = 1;
-                        cmbDeviceScene.SelectedIndex = 2;
+                        cmbDeviceEye.SelectedIndex = 0;
+                        cmbDeviceScene.SelectedIndex = 1;
                         break;
                 }
             }
@@ -694,15 +719,7 @@ namespace Haytham
 
 
 
-        private void cmbDeviceScene_DropDown(object sender, EventArgs e)
-        {
-            cmbDevice_Update(false, true);
-        }
 
-        private void cmbDeviceEye_DropDown(object sender, EventArgs e)
-        {
-            cmbDevice_Update(true, false);
-        }
 
 
 
@@ -888,13 +905,15 @@ namespace Haytham
                                     METState.Current.extrinsic_param[i] = new ExtrinsicCameraParameters();
 
                                 CameraCalibration.CalibrateCamera(METState.Current.object_points, METState.Current.image_points, new Size(METState.Current.SceneCamera.DesiredFrameSize.Width, METState.Current.SceneCamera.DesiredFrameSize.Height), METState.Current.intrinsic_param, Emgu.CV.CvEnum.CALIB_TYPE.DEFAULT, out  METState.Current.extrinsic_param);
-                                METState.Current.sceneCameraUnDistortion = true;
-                                cbSceneUnDistortion.Checked = true;
+                               
+                                //METState.Current.sceneCameraUnDistortion = true;
+                                //cbSceneUnDistortion.Checked = true;
 
                                 METState.Current.sceneCameraCalibrating = false;
 
                             }
-
+                               
+                               
                             #endregion Find Intrinsic & Extrinsic Camera Parameters
 
                             catch (Exception er)
@@ -1285,6 +1304,8 @@ namespace Haytham
 
         private void button1_Click_7(object sender, EventArgs e)
         {
+            MessageBox.Show("Click on 9 points in the scene image while the user is looking at the corresponding points in the field of view.");
+
             METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
             METState.Current.GazeErrorX = 0;
             METState.Current.GazeErrorY = 0;
@@ -1301,6 +1322,8 @@ namespace Haytham
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
+
             METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
             METState.Current.GazeErrorX = 0;
             METState.Current.GazeErrorY = 0;
@@ -1880,6 +1903,70 @@ namespace Haytham
             METState.Current.scene_VFlip = cb_scene_VFlip.Checked;
 
         }
+
+        private void cmbDeviceEye_DropDown(object sender, EventArgs e)
+        {
+            cmbDevice_Update(true, false);
+
+        }
+
+        private void cmbDeviceScene_DropDown(object sender, EventArgs e)
+        {
+            cmbDevice_Update(false, true);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+           // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
+
+
+            METState.Current.GazeErrorX = 0;
+            METState.Current.GazeErrorY = 0;
+
+
+            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+
+            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+
+            ///Set the METState.Current.RemoteOrHeadMount 
+            METState.Current.remoteCalibration = new RemoteCalibration(2, 2); ;
+            METState.Current.remoteCalibration.ShowDialog();
+
+        
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            METState.Current.controlCursor = checkBox3.Checked;
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+
+
+            // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
+
+
+            METState.Current.GazeErrorX = 0;
+            METState.Current.GazeErrorY = 0;
+
+
+            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+
+            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+
+            ///Set the METState.Current.RemoteOrHeadMount 
+            METState.Current.remoteCalibration = new RemoteCalibration(3, 3); ;
+            METState.Current.remoteCalibration.ShowDialog();
+
+        }
+
+
 
 
 
