@@ -210,3 +210,7 @@ C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Release\Haytham
 C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Release\Haytham.AnimatedCursor.resources
 C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\obj\Release\Haytham.RemoteCalibration.resources
 C:\Users\Diako\Desktop\trunk (Remote)\Haytham_V1.0.0\Haytham\bin\Release\System.Windows.Forms.dll
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_V1.0.0\Haytham\bin\Release\System.Windows.Forms.dll
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_V1.0.0\Haytham\obj\Release\Haytham.AnimatedCursor.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_V1.0.0\Haytham\obj\Release\Haytham.firstForm.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_V1.0.0\Haytham\obj\Release\Haytham.RemoteCalibration.resources
