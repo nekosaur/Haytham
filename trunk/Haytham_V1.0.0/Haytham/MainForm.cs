@@ -146,9 +146,11 @@ namespace Haytham
             METState.Current.GazeSmoother = cbGazeSmoothing.Checked;
             METState.Current.SceneDetection = checkBox1.Checked;
 
-            if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
-            if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
+            //if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            //if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
 
+            if (cbGlintDetection.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
+            else METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
 
             METState.Current.glintThreshold = trackBarThresholdGlint.Value;
 
@@ -1085,7 +1087,9 @@ namespace Haytham
         private void checkBox2_CheckedChanged_7(object sender, EventArgs e)
         {
             METState.Current.detectGlint = cbGlintDetection.Checked;
-
+            if ( cbGlintDetection.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
+            else METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            
         }
 
         private void checkBox2_CheckedChanged_8(object sender, EventArgs e)

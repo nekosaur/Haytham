@@ -1182,7 +1182,7 @@
             this.groupBox15.Controls.Add(this.button1);
             this.groupBox15.Controls.Add(this.button2);
             this.groupBox15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox15.Location = new System.Drawing.Point(0, 263);
+            this.groupBox15.Location = new System.Drawing.Point(0, 199);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(234, 127);
             this.groupBox15.TabIndex = 3;
@@ -1229,7 +1229,7 @@
             this.groupBox9.Controls.Add(this.btnCalibration_Homography);
             this.groupBox9.Controls.Add(this.btnCalibration_Polynomial);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox9.Location = new System.Drawing.Point(0, 116);
+            this.groupBox9.Location = new System.Drawing.Point(0, 52);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
@@ -1297,44 +1297,46 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(234, 116);
+            this.panel5.Size = new System.Drawing.Size(234, 52);
             this.panel5.TabIndex = 61;
             // 
             // rbPupilGlint
             // 
             this.rbPupilGlint.AutoSize = true;
             this.rbPupilGlint.Checked = true;
-            this.rbPupilGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbPupilGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbPupilGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.rbPupilGlint.Location = new System.Drawing.Point(8, 28);
+            this.rbPupilGlint.Location = new System.Drawing.Point(93, 5);
             this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbPupilGlint.Name = "rbPupilGlint";
-            this.rbPupilGlint.Size = new System.Drawing.Size(137, 19);
+            this.rbPupilGlint.Size = new System.Drawing.Size(106, 17);
             this.rbPupilGlint.TabIndex = 59;
             this.rbPupilGlint.TabStop = true;
             this.rbPupilGlint.Text = "Pupil-Glint Vector";
             this.rbPupilGlint.UseVisualStyleBackColor = true;
+            this.rbPupilGlint.Visible = false;
             this.rbPupilGlint.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_5);
             // 
             // rdOnlyPupil
             // 
             this.rdOnlyPupil.AutoSize = true;
-            this.rdOnlyPupil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdOnlyPupil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rdOnlyPupil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rdOnlyPupil.Location = new System.Drawing.Point(7, 5);
             this.rdOnlyPupil.Margin = new System.Windows.Forms.Padding(2);
             this.rdOnlyPupil.Name = "rdOnlyPupil";
-            this.rdOnlyPupil.Size = new System.Drawing.Size(104, 19);
+            this.rdOnlyPupil.Size = new System.Drawing.Size(82, 17);
             this.rdOnlyPupil.TabIndex = 58;
             this.rdOnlyPupil.Text = "Pupil Center";
             this.rdOnlyPupil.UseVisualStyleBackColor = true;
+            this.rdOnlyPupil.Visible = false;
             this.rdOnlyPupil.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_5);
             // 
             // cbGazeSmoothing
             // 
             this.cbGazeSmoothing.Checked = true;
             this.cbGazeSmoothing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbGazeSmoothing.Location = new System.Drawing.Point(8, 78);
+            this.cbGazeSmoothing.Location = new System.Drawing.Point(8, 26);
             this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2);
             this.cbGazeSmoothing.Name = "cbGazeSmoothing";
             this.cbGazeSmoothing.Size = new System.Drawing.Size(148, 17);
