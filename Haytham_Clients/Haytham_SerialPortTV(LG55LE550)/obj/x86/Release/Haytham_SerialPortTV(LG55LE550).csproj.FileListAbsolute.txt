@@ -1,0 +1,26 @@
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Form1.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Form_TV.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Properties.Resources.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Resources\Untitled-2.ico
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Haytham_SerialPortTV(LG55LE550).exe
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Haytham_SerialPortTV(LG55LE550).pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).exe
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.helpForm.resources
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Resources\Untitled-2.ico
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Haytham_SerialPortTV(LG55LE550).exe
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\bin\Release\Haytham_SerialPortTV(LG55LE550).pdb
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Form1.resources
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Form_TV.resources
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.helpForm.resources
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_Client.Properties.Resources.resources
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).exe
+C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).exe
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SerialPortTV(LG55LE550)\obj\x86\Release\Haytham_SerialPortTV(LG55LE550).pdb
