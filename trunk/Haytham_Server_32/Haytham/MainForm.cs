@@ -649,7 +649,7 @@ namespace Haytham
         private void cmbDeviceEye_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnSettingsEye.Enabled = false;
-            if (cmbDeviceEye.SelectedItem.ToString() != "Video file")
+            if (cmbDeviceEye.SelectedItem.ToString() != "Video file" )
             {
                 //  btnSettingsEye.Enabled = true;
                 if (cmbDeviceEye.SelectedItem != null)
@@ -684,37 +684,43 @@ namespace Haytham
         }
         private void cmbDeviceScene_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnSettingsScene.Enabled = false;
-            if (cmbDeviceScene.SelectedItem.ToString() != "Video file")
-            {
-                //  btnSettingsScene.Enabled = true;
-                if (cmbDeviceScene.SelectedItem != null)
-                {
-
-                    cmbDeviceCapabilityScene.Items.Clear();
-                    //mishe pain nevesht har object
-                    foreach (FindCamera.DeviceCapabilityInfo DevCapInf in ((FindCamera.DeviceInfo)METState.Current.Devices.DeviceList[cmbDeviceScene.SelectedIndex]).DeviceCapabilityList)
-                    {
-                        cmbDeviceCapabilityScene.Items.Add(DevCapInf);
-                    }
-                    cmbDeviceCapabilityScene.SelectedIndex = 0;
-                }
-            }
-            else
+            try
             {
                 btnSettingsScene.Enabled = false;
-                cmbDeviceCapabilityScene.Items.Clear();
-                cmbDeviceCapabilityScene.Text = "";
-                METState.Current.SceneVideoFile = null;
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                // OpenFileDialog.Filter = "AVI File|*.avi|All File|*.*";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string ddd = cmbDeviceScene.SelectedItem.ToString();
+                if (cmbDeviceScene.SelectedItem.ToString() != "Video file")
                 {
-                    // create video source
-                    METState.Current.SceneVideoFile = new AForge.Video.DirectShow.FileVideoSource(openFileDialog.FileName);
+                    //  btnSettingsScene.Enabled = true;
+                    if (cmbDeviceScene.SelectedItem != null)
+                    {
+
+                        cmbDeviceCapabilityScene.Items.Clear();
+                        //mishe pain nevesht har object
+                        foreach (FindCamera.DeviceCapabilityInfo DevCapInf in ((FindCamera.DeviceInfo)METState.Current.Devices.DeviceList[cmbDeviceScene.SelectedIndex]).DeviceCapabilityList)
+                        {
+                            cmbDeviceCapabilityScene.Items.Add(DevCapInf);
+                        }
+                        cmbDeviceCapabilityScene.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    btnSettingsScene.Enabled = false;
+                    cmbDeviceCapabilityScene.Items.Clear();
+                    cmbDeviceCapabilityScene.Text = "";
+                    METState.Current.SceneVideoFile = null;
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    // OpenFileDialog.Filter = "AVI File|*.avi|All File|*.*";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // create video source
+                        METState.Current.SceneVideoFile = new AForge.Video.DirectShow.FileVideoSource(openFileDialog.FileName);
+                    }
                 }
             }
+            catch (Exception ee)
+            { }
         }
 
         private void imScene_MouseClick(object sender, MouseEventArgs e)

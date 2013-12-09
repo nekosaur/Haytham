@@ -46,3 +46,6 @@ C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_
 C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\obj\Release\Haytham.pdb
 C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\bin\Release\System.dll
 C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\bin\Release\System.Windows.Forms.DataVisualization.Design.dll
+C:\Users\dima\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\bin\Release\Haytham.exe.config
+C:\Users\dima\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\obj\Release\Haytham.exe
+C:\Users\dima\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Server_64\Haytham\obj\Release\Haytham.pdb
