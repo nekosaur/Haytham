@@ -1,0 +1,228 @@
+Build started 12/9/2013 9:56:53 PM.
+__________________________________________________
+Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.sln" (Clean;Build target(s)):
+
+Target ValidateSolutionConfiguration:
+    Building solution configuration "Release|Any CPU".
+Target Clean:
+    __________________________________________________
+    Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" (Clean target(s)):
+
+    Target CoreClean:
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.TestExtData.exe".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.TestExtData.pdb".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.ExtData.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\obj\Release\Haytham.TestExtData.exe".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\obj\Release\Haytham.TestExtData.pdb".
+    Target CleanReferencedProjects:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (Clean target(s)):
+
+        Target CoreClean:
+            Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll".
+            Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\obj\Release\Haytham.ExtData.csprojResolveAssemblyReference.cache".
+            Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\obj\Release\Haytham.ExtData.dll".
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (Clean target(s)):
+
+    __________________________________________________
+    Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" (Clean target(s)):
+
+    Target CoreClean:
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.exe.config".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.exe".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Imaging.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Math.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Video.DirectShow.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Video.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.GlyphRecognition.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.ExtData.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.csprojResolveAssemblyReference.cache".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.AnimatedCursor.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.firstForm.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.MainForm.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.Properties.Resources.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.RemoteCalibration.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.csproj.GenerateResource.Cache".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.exe".
+    Target CleanReferencedProjects:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (Clean target(s)):
+
+Target Build:
+    __________________________________________________
+    Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" (default targets):
+
+    Target ResolveProjectReferences:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (default targets):
+
+        Target GenerateTargetFrameworkMonikerAttribute:
+          Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+        Target CoreCompile:
+            C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /errorreport:prompt /warn:4 /define:TRACE /highentropyva- /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.ServiceModel.Discovery.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.ServiceModel.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\Haytham.ExtData.dll /target:library /utf8output Service\Client.cs Service\ClientDiscovery.cs Service\ExtDataService.cs Service\Host.cs Service\IExtDataService.cs Properties\AssemblyInfo.cs "C:\Users\Diako\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cs"
+        Target CopyFilesToOutputDirectory:
+            Copying file from "obj\Release\Haytham.ExtData.dll" to "bin\Release\Haytham.ExtData.dll".
+            Haytham.ExtData -> C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (default targets):
+
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (GetNativeManifest target(s)):
+
+    Target CoreResGen:
+        Processing resource file "Forms\AnimatedCursor.resx" into "obj\Release\Haytham.AnimatedCursor.resources".
+        Processing resource file "Forms\firstForm.resx" into "obj\Release\Haytham.firstForm.resources".
+        Processing resource file "Forms\MainForm.resx" into "obj\Release\Haytham.MainForm.resources".
+        Processing resource file "Properties\Resources.resx" into "obj\Release\Haytham.Properties.Resources.resources".
+        Processing resource file "Forms\RemoteCalibration.resx" into "obj\Release\Haytham.RemoteCalibration.resources".
+    Target GenerateTargetFrameworkMonikerAttribute:
+      Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+    Target CoreCompile:
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /unsafe- /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /warn:4 /define:TRACE /highentropyva- /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /debug- /filealign:512 /nowin32manifest /optimize+ /out:obj\Release\Haytham.exe /resource:obj\Release\Haytham.AnimatedCursor.resources /resource:obj\Release\Haytham.firstForm.resources /resource:obj\Release\Haytham.MainForm.resources /resource:obj\Release\Haytham.Properties.Resources.resources /resource:obj\Release\Haytham.RemoteCalibration.resources /resource:Resources\D_D.png,Haytham.Resources.D_D.png /resource:Resources\D_U.png,Haytham.Resources.D_U.png /resource:Resources\HMGT.png,Haytham.Resources.HMGT.png /resource:Resources\remote.png,Haytham.Resources.remote.png /resource:Resources\Cursor_1.png,Haytham.Resources.Cursor_1.png /resource:Resources\Cursor_2.png,Haytham.Resources.Cursor_2.png /resource:Resources\DL_DL.png,Haytham.Resources.DL_DL.png /resource:Resources\DL_UR.png,Haytham.Resources.DL_UR.png /resource:Resources\DR_DR.png,Haytham.Resources.DR_DR.png /resource:Resources\DR_UL.png,Haytham.Resources.DR_UL.png /resource:Resources\L_L.png,Haytham.Resources.L_L.png /resource:Resources\L_R.png,Haytham.Resources.L_R.png /resource:Resources\R_L.png,Haytham.Resources.R_L.png /resource:Resources\R_R.png,Haytham.Resources.R_R.png /resource:Resources\U_D.png,Haytham.Resources.U_D.png /resource:Resources\U_U.png,Haytham.Resources.U_U.png /resource:Resources\UL_DR.png,Haytham.Resources.UL_DR.png /resource:Resources\UL_UL.png,Haytham.Resources.UL_UL.png /resource:Resources\UR_DL.png,Haytham.Resources.UR_DL.png /resource:Resources\UR_UR.png,Haytham.Resources.UR_UR.png /resource:Resources\TL.png,Haytham.Resources.TL.png /resource:Resources\TR.png,Haytham.Resources.TR.png /target:winexe /utf8output /win32icon:Resources\Untitled-1.ico Forms\AnimatedCursor.cs Forms\AnimatedCursor.designer.cs Blob_Aforge.cs Calibration.cs Client.cs DetectActiveScreen.cs ExtData\DataObject.cs ExtData\ExtDataHandler.cs ExtData\ImageInfo.cs FindCamera.cs Forms\firstForm.cs Forms\firstForm.Designer.cs GlyphImageProcessor.cs HeadGesture.cs HeadGestureEventArgs.cs ImageProcessing_Emgu.cs IrisPatch.cs Forms\MainForm.cs Forms\MainForm.Designer.cs METEventArg.cs RectangleDetection.cs Win32Native\NativeWin32.cs ProcessTime.cs Forms\Program.cs Properties\AssemblyInfo.cs Forms\CustomControls.cs Win32Native\Win32.cs Properties\Resources.Designer.cs Properties\Settings.Designer.cs METState.cs METCore.cs Eye.cs Forms\RemoteCalibration.cs Forms\RemoteCalibration.Designer.cs Server.cs TextFile.cs "C:\Users\Diako\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cs"
+        Blob_Aforge.cs(164,30): warning CS0168: The variable 'error' is declared but never used
+        Calibration.cs(170,42): warning CS0168: The variable 'e' is declared but never used
+        FindCamera.cs(126,33): warning CS0168: The variable 'e' is declared but never used
+        HeadGesture.cs(1065,21): warning CS0162: Unreachable code detected
+        HeadGesture.cs(1090,21): warning CS0162: Unreachable code detected
+        HeadGesture.cs(1094,21): warning CS0162: Unreachable code detected
+        IrisPatch.cs(260,30): warning CS0168: The variable 'ee' is declared but never used
+        Forms\MainForm.cs(375,30): warning CS0168: The variable 'error' is declared but never used
+        Forms\MainForm.cs(1450,30): warning CS0168: The variable 'er' is declared but never used
+        Forms\MainForm.cs(1554,20): warning CS0219: The variable 's' is assigned but its value is never used
+        Forms\MainForm.cs(2243,38): warning CS0168: The variable 'eee' is declared but never used
+        Forms\CustomControls.cs(28,30): warning CS0168: The variable 'e' is declared but never used
+        METCore.cs(269,23): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(574,23): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(595,22): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(786,21): warning CS0168: The variable 'er' is declared but never used
+        Server.cs(81,30): warning CS0168: The variable 'e' is declared but never used
+        Server.cs(373,30): warning CS0168: The variable 'e' is declared but never used
+    Done building target "CoreCompile" in project "Haytham.csproj".
+    Target GenerateSerializationAssemblies:
+        C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\sgen.exe /assembly:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.exe" /proxytypes /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" 
+    Target _CopyFilesMarkedCopyLocal:
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" to "bin\Release\AForge.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" to "bin\Release\AForge.Imaging.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" to "bin\Release\AForge.Math.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" to "bin\Release\AForge.Video.DirectShow.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" to "bin\Release\AForge.Video.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" to "bin\Release\AForge.Vision.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" to "bin\Release\AForge.Vision.GlyphRecognition.dll".
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" to "bin\Release\Haytham.ExtData.dll".
+    Target GetCopyToOutputDirectoryItems:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (GetCopyToOutputDirectoryItems target(s)):
+
+    Target _CopyAppConfigFile:
+        Copying file from "app.config" to "bin\Release\Haytham.exe.config".
+    Target CopyFilesToOutputDirectory:
+        Copying file from "obj\Release\Haytham.exe" to "bin\Release\Haytham.exe".
+        Haytham -> C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.exe
+    Target PostBuildEvent:
+        if Release == Release RD "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\..\Haytham_Server.Bin\" /s /q
+        XCOPY /S /Y "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.exe" "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\..\Haytham_Server.Bin\"
+        XCOPY /S /Y "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\*.dll" "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\..\Haytham_Server.Bin\"
+        XCOPY /S /Y "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\*" "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\..\Haytham_Server.Bin\"
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.exe
+        1 File(s) copied
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Imaging.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Math.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Video.DirectShow.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Video.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.GlyphRecognition.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.ExtData.dll
+        8 File(s) copied
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\ZedGraph.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_calib3d242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_contrib242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_core242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_features2d242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_flann242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_gpu242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_highgui242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_imgproc242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_legacy242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_ml242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_nonfree242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_objdetect242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_photo242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\opencv_video242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x64\tbb.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_calib3d242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_contrib242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_core242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_features2d242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_ffmpeg242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_flann242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_gpu242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_imgproc242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_legacy242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_ml242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_nonfree242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_objdetect242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\opencv_photo242.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\DLLs\Emgu\x86\tbb.dll
+        33 File(s) copied
+
+    Done building project "Haytham.csproj".
+    __________________________________________________
+    Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" (default targets):
+
+    Target ResolveProjectReferences:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (default targets):
+
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (GetNativeManifest target(s)):
+
+    Target GenerateTargetFrameworkMonikerAttribute:
+      Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+    Target CoreCompile:
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /warn:4 /define:TRACE /highentropyva- /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /debug:pdbonly /filealign:512 /optimize+ /out:obj\Release\Haytham.TestExtData.exe /target:exe /utf8output Program.cs Properties\AssemblyInfo.cs "C:\Users\Diako\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cs"
+    Target _CopyFilesMarkedCopyLocal:
+        Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" to "bin\Release\Haytham.ExtData.dll".
+    Target GetCopyToOutputDirectoryItems:
+        __________________________________________________
+        Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (GetCopyToOutputDirectoryItems target(s)):
+
+    Target CopyFilesToOutputDirectory:
+        Copying file from "obj\Release\Haytham.TestExtData.exe" to "bin\Release\Haytham.TestExtData.exe".
+        Haytham.TestExtData -> C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.TestExtData.exe
+        Copying file from "obj\Release\Haytham.TestExtData.pdb" to "bin\Release\Haytham.TestExtData.pdb".
+    Target PostBuildEvent:
+        XCOPY /S /Y "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.TestExtData.exe" "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\..\Haytham_Server.Bin\"
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\HaythamServer\Haytham_Server\Haytham.TestExtData\bin\Release\Haytham.TestExtData.exe
+        1 File(s) copied
+
+Build succeeded.
+
+Blob_Aforge.cs(164,30): warning CS0168: The variable 'error' is declared but never used
+Calibration.cs(170,42): warning CS0168: The variable 'e' is declared but never used
+FindCamera.cs(126,33): warning CS0168: The variable 'e' is declared but never used
+HeadGesture.cs(1065,21): warning CS0162: Unreachable code detected
+HeadGesture.cs(1090,21): warning CS0162: Unreachable code detected
+HeadGesture.cs(1094,21): warning CS0162: Unreachable code detected
+IrisPatch.cs(260,30): warning CS0168: The variable 'ee' is declared but never used
+Forms\MainForm.cs(375,30): warning CS0168: The variable 'error' is declared but never used
+Forms\MainForm.cs(1450,30): warning CS0168: The variable 'er' is declared but never used
+Forms\MainForm.cs(1554,20): warning CS0219: The variable 's' is assigned but its value is never used
+Forms\MainForm.cs(2243,38): warning CS0168: The variable 'eee' is declared but never used
+Forms\CustomControls.cs(28,30): warning CS0168: The variable 'e' is declared but never used
+METCore.cs(269,23): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(574,23): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(595,22): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(786,21): warning CS0168: The variable 'er' is declared but never used
+Server.cs(81,30): warning CS0168: The variable 'e' is declared but never used
+Server.cs(373,30): warning CS0168: The variable 'e' is declared but never used
+    18 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.89
