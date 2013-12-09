@@ -1,0 +1,1 @@
+Run the batch file  _ compile.bat  and it automatically creates a folder called Haytham_Server.Bin including the Dlls and the binary files.
