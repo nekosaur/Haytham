@@ -34,3 +34,12 @@ C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\H
 C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SimpleClient\obj\x86\Release\GenerateResource.write.1.tlog
 C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.exe
 C:\Users\dima\Dropbox\my Software\HMET\trunk (gesture)REcovered\Haytham_Client\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.exe
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\bin\Release\Haytham_SimpleClient.exe
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\bin\Release\Haytham_SimpleClient.pdb
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\bin\Release\Haytham.ExtData.dll
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.csprojResolveAssemblyReference.cache
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.Form1.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_Client.Properties.Resources.resources
+C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\Haytham_Clients\Haytham_SimpleClient\obj\x86\Release\Haytham_SimpleClient.csproj.GenerateResource.Cache

@@ -73,6 +73,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Haytham_Monitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

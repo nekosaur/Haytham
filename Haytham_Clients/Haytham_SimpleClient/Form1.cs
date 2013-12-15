@@ -8,14 +8,14 @@
 // 1- Use the port 50000
 // 2- Define a thread for Reading/Writing to make the connection seperate from the rest of your program
 // 3- After the first connection send some information (2 strings and 2 integers) to the server as below:
-            //writer.Write("Monitor");//type
-            //writer.Write("?");//name
+//writer.Write("Monitor");//type
+//writer.Write("?");//name
 
 // 4- Then read a string which is the name of your client defined by the server that you can use it later for reconnection:
-            //clientName = reader.ReadString();//get approved name
+//clientName = reader.ReadString();//get approved name
 // 5- After that send two strings to the server as below:     
-            //writer.Write("Status_Gaze");
-            //writer.Write("True");
+//writer.Write("Status_Gaze");
+//writer.Write("True");
 // 6- Now you should be able to get the gaze data from the server continuously in three different steps, one string and two integers
 //  "cursor" 
 //  xCoordinate
@@ -37,6 +37,8 @@
 
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// @PJ: changes made bz Peter Jurnecka, ijurnecka@fit.vutbr.cz
 // ------------------------------------------------------------------------
 // </copyright>
 // <author>Diako Mardanbegi</author>
@@ -57,6 +59,7 @@ using System.Net.Sockets;
 using System.IO;
 
 using System.Threading;
+using Haytham.ExtData;	//change @PJ
 
 
 
@@ -64,24 +67,23 @@ namespace Haytham_SimpleClient
 {
     public partial class Form1 : Form
     {
-        private   Point gazePoint;
+        private Point gazePoint;
 
+        private Point ScreenTopLeft;
+        private Size Screensize;
 
-        private   Point ScreenTopLeft;
-        private   Size Screensize;
-
-        private   int ScreenWidth;
-        private   int ScreenHeight;
+        private int ScreenWidth;
+        private int ScreenHeight;
 
         private Thread inputoutputThread; // Thread for receiving data from server
-        private   IPAddress serverip;
+        private IPAddress serverip;
 
-        private   TcpClient client = new TcpClient();  // client to establish connection
-        private   BinaryWriter writer; // facilitates writing to the stream
-        private   BinaryReader reader; // facilitates reading from the strea  
-        private   NetworkStream stream; // network data stream
+        private TcpClient client = new TcpClient();  // client to establish connection
+        private BinaryWriter writer; // facilitates writing to the stream
+        private BinaryReader reader; // facilitates reading from the strea  
+        private NetworkStream stream; // network data stream
 
-        private   string clientName;
+        private string clientName;
 
 
 
@@ -94,6 +96,35 @@ namespace Haytham_SimpleClient
             Screensize.Width = Screen.FromHandle(this.Handle).Bounds.Width;
             Screensize.Height = Screen.FromHandle(this.Handle).Bounds.Height;
 
+            //@PJ
+            //start server search task using haytham extData client		
+            System.Threading.Tasks.Task.Factory.StartNew(() =>
+            {
+                //find haytham hosts on network					
+                Uri hostUri = Client.getActiveHosts().FirstOrDefault();
+                while (hostUri == null)
+                {
+                    System.Threading.Thread.Sleep(5000);	//wait 5 seconds before next try
+                    hostUri = Client.getActiveHosts().FirstOrDefault(); // it has 2seconds timeout
+                }
+
+                //show IPv4 address if exists
+                var server = Dns.GetHostAddresses(hostUri.DnsSafeHost).Where(adr => adr.AddressFamily == AddressFamily.InterNetwork).FirstOrDefault();
+                if (server != null)
+                {
+                    this.serverip = server;
+                    showIp();
+                }
+            });
+
+        }
+
+        private void showIp()
+        {
+            if (this.textBox1.InvokeRequired)
+                Invoke((Action)this.showIp);
+            else
+                this.textBox1.Text = this.serverip.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,7 +138,7 @@ namespace Haytham_SimpleClient
 
 
             // Connect to the server
-         
+
             try
             {
                 client.Connect(serverip, 50000);
@@ -119,38 +150,34 @@ namespace Haytham_SimpleClient
             }
 
 
-
-       
-                stream = client.GetStream();
-                writer = new BinaryWriter(stream);
-                reader = new BinaryReader(stream);
+            stream = client.GetStream();
+            writer = new BinaryWriter(stream);
+            reader = new BinaryReader(stream);
 
 
-                //send name and type
-                writer.Write("Monitor");//type
-                writer.Write("?");//name
+            //send name and type
+            writer.Write("Monitor");//type
+            writer.Write("?");//name
 
-                clientName = reader.ReadString();//get approved name
+            clientName = reader.ReadString();//get approved name
 
-                if (client.Connected)
-                {
+            if (client.Connected)
+            {
 
-                    writer.Write("Status_Gaze");
-                    writer.Write("True");
-                    writer.Write("Size"); writer.Write(ScreenWidth); writer.Write(ScreenHeight);
-                }
+                writer.Write("Status_Gaze");
+                writer.Write("True");
+                writer.Write("Size"); writer.Write(ScreenWidth); writer.Write(ScreenHeight);
+            }
 
-                DisplayMessage("Connection successful\r\n", textBox2);
+            DisplayMessage("Connection successful\r\n", textBox2);
 
-                DisplayMessage("Your name is " + clientName + "\r\n", textBox2);
-
-
-                // start a new thread for sending and receiving messages
-                inputoutputThread = new Thread(new ThreadStart(Run));
-                inputoutputThread.Start();
+            DisplayMessage("Your name is " + clientName + "\r\n", textBox2);
 
 
-             
+            // start a new thread for sending and receiving messages
+            inputoutputThread = new Thread(new ThreadStart(Run));
+            inputoutputThread.Start();
+
 
         }
         public void Run()
@@ -188,44 +215,48 @@ namespace Haytham_SimpleClient
             {
 
 
-                 gazePoint.X =int.Parse(msgArray[0]);
+                gazePoint.X = int.Parse(msgArray[0]);
 
 
-                        gazePoint.Y = int.Parse(msgArray[1]);
+                gazePoint.Y = int.Parse(msgArray[1]);
 
-                        gazePoint = Point.Add(gazePoint, new Size(ScreenTopLeft));
+                gazePoint = Point.Add(gazePoint, new Size(ScreenTopLeft));
 
-                        DisplayMessage("(" + gazePoint.X + "," + gazePoint.Y + ")", gXY);
+                DisplayMessage("(" + gazePoint.X + "," + gazePoint.Y + ")", gXY);
 
             }
 
-                       
+
 
         }
 
         private string[] ConvertMsgToArray(string msg)
         {
+            //string temp = "";
+            //List<string> msgArr = new List<string>();
 
-            string temp = "";
-            List<string> msgArr = new List<string>();
+            //for (int i = 0; i < msg.Length; i++)
+            //{
+            //	if (msg[i] == '|')
+            //	{
+            //		msgArr.Add(temp);
+            //		temp = "";
+            //	}
+            //	else
+            //	{
+            //		temp += msg[i];
 
-            for (int i = 0; i < msg.Length; i++)
-            {
-                if (msg[i] == '|')
-                {
-                    msgArr.Add(temp);
-                    temp = "";
-                }
-                else
-                {
-                    temp += msg[i];
+            //	}
 
-                }
+            //}
+            //msgArr.RemoveAt(0);//remove the keyword from the begining
 
-            }
-            msgArr.RemoveAt(0);//remove the keyword from the begining
 
-            return msgArr.ToArray();
+            //@PJ same functionality
+            var arr = msg.Split('|');
+            var msgArr = arr.Skip(1).ToArray();	// skip first keyword
+
+            return msgArr;
 
         }
 
@@ -251,7 +282,7 @@ namespace Haytham_SimpleClient
                     writer.Write(clientName);//name
 
                     clientName = reader.ReadString();//get approved name
-           
+
                     connected = true;
                     if (client.Connected)
                     {
@@ -280,7 +311,7 @@ namespace Haytham_SimpleClient
         {
             clientName = "PauseReconnect";
             client.Close();
-           
+
             System.Environment.Exit(System.Environment.ExitCode);
         }
 

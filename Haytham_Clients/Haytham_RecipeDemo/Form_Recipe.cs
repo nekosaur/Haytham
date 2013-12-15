@@ -278,27 +278,31 @@ namespace Haytham_Client
 
         private string[] ConvertMsgToArray(string msg)
         {
+            //string temp = "";
+            //List<string> msgArr = new List<string>();
 
-            string temp = "";
-            List<string> msgArr = new List<string>();
+            //for (int i = 0; i < msg.Length; i++)
+            //{
+            //	if (msg[i] == '|')
+            //	{
+            //		msgArr.Add(temp);
+            //		temp = "";
+            //	}
+            //	else
+            //	{
+            //		temp += msg[i];
 
-            for (int i = 0; i < msg.Length; i++)
-            {
-                if (msg[i] == '|')
-                {
-                    msgArr.Add(temp);
-                    temp = "";
-                }
-                else
-                {
-                    temp += msg[i];
+            //	}
 
-                }
+            //}
+            //msgArr.RemoveAt(0);//remove the keyword from the begining
 
-            }
-            msgArr.RemoveAt(0);//remove the keyword from the begining
 
-            return msgArr.ToArray();
+            //@PJ same functionality
+            var arr = msg.Split('|');
+            var msgArr = arr.Skip(1).ToArray();	// skip first keyword
+
+            return msgArr;
 
         }
         private void PerformCommand( string command, Point p)
