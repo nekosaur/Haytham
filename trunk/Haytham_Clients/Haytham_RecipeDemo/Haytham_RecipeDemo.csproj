@@ -37,6 +37,9 @@
     <ApplicationIcon>Resources\Untitled-2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Haytham.ExtData">
+      <HintPath>..\Haytham.ExtData.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.WMPLib">
       <HintPath>.\Interop.WMPLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
