@@ -94,10 +94,6 @@ namespace Haytham
             splitContainer1.Panel1.HorizontalScroll.Minimum = 0;
 
 
-            groupBox14.Size = new Size(panel6.Width, splitContainer1.Panel2.Height - panel6.Height);
-            groupBox14.AutoSize = true;
-
-
             ///------------------------------------------------------------------
             if (            METState.Current.remoteOrMobile ==  METState.RemoteOrMobile.MobileEyeTracking)
             {
