@@ -173,12 +173,12 @@
             this.imSceneProcessed = new System.Windows.Forms.PictureBox();
             this.groupBox_imgScene = new System.Windows.Forms.GroupBox();
             this.imScene = new System.Windows.Forms.PictureBox();
-            this.imEyeTest = new Emgu.CV.UI.ImageBox();
             this.groupBox_imgEye = new System.Windows.Forms.GroupBox();
             this.imEye = new System.Windows.Forms.PictureBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.trackBarTest = new System.Windows.Forms.TrackBar();
             this.chartTest = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.imEyeTest = new Emgu.CV.UI.ImageBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.splitter7 = new System.Windows.Forms.Splitter();
             this.lblIP = new System.Windows.Forms.TextBox();
@@ -262,12 +262,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
             this.groupBox_imgScene.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.groupBox_imgEye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).BeginInit();
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1559,6 +1559,8 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(36, 91);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
@@ -2177,17 +2179,6 @@
             this.imScene.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseClick);
             this.imScene.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseMove);
             // 
-            // imEyeTest
-            // 
-            this.imEyeTest.Dock = System.Windows.Forms.DockStyle.Left;
-            this.imEyeTest.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
-            this.imEyeTest.Location = new System.Drawing.Point(0, 24);
-            this.imEyeTest.Name = "imEyeTest";
-            this.imEyeTest.Size = new System.Drawing.Size(10, 709);
-            this.imEyeTest.TabIndex = 70;
-            this.imEyeTest.TabStop = false;
-            this.imEyeTest.Visible = false;
-            // 
             // groupBox_imgEye
             // 
             this.groupBox_imgEye.Controls.Add(this.imEye);
@@ -2286,6 +2277,17 @@
             title4.Position.Y = 3F;
             title4.Text = "test";
             this.chartTest.Titles.Add(title4);
+            // 
+            // imEyeTest
+            // 
+            this.imEyeTest.Dock = System.Windows.Forms.DockStyle.Left;
+            this.imEyeTest.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
+            this.imEyeTest.Location = new System.Drawing.Point(0, 24);
+            this.imEyeTest.Name = "imEyeTest";
+            this.imEyeTest.Size = new System.Drawing.Size(10, 709);
+            this.imEyeTest.TabIndex = 70;
+            this.imEyeTest.TabStop = false;
+            this.imEyeTest.Visible = false;
             // 
             // panel6
             // 
@@ -2514,13 +2516,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
             this.groupBox_imgScene.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.groupBox_imgEye.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).EndInit();
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
