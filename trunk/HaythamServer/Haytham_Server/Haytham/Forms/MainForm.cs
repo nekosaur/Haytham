@@ -2250,7 +2250,7 @@ namespace Haytham
 
                         string textdir = dir.Substring(0, extesion_index);
                         METState.Current.TextFileDataExport = new TextFile(textdir);
-                        string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture";
+                        string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture , GazeX , GazeY , Time";
                         if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
 
 

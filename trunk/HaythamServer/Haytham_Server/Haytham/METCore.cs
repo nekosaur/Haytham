@@ -303,37 +303,6 @@ namespace Haytham
 				METState.Current.eye.IrisOpticFlow(e.image);
 			}
 
-			#region Record Eye Data
-			if (METState.Current.EyeIsRecording == true)
-			{
-				METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Start");
-
-
-				METState.Current.EyeVideoWriterFrameNumber += 1;
-				METState.Current.EyeVideoWriter.WriteFrame<Bgr, Byte>(METState.Current.EyeImageForShow);
-
-				//text file
-				if (METState.Current.TextFileDataExport != null)
-				{
-					string GazeDataLine =
-					   METState.Current.eye.eyeData[0].pupilCenter.X
-					   + "," + METState.Current.eye.eyeData[0].pupilCenter.Y
-					   + "," + METState.Current.eye.eyeData[0].glintCenter.X
-					   + "," + METState.Current.eye.eyeData[0].glintCenter.Y
-					   + "," + METState.Current.eye.eyeData[0].pupilDiameter
-					   + "," + METState.Current.TextFileDataExport.temp1
-					   + "," + METState.Current.TextFileDataExport.temp2
-					   + "," + METState.Current.TextFileDataExport.temp3
-					   ;
-
-
-					METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
-				}
-				METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Stop");
-
-			}
-			#endregion Record Eye Data
-
 			#region Remote
 
 			if (METState.Current.eye.eyeData[0].pupilFound)
@@ -358,6 +327,40 @@ namespace Haytham
 
 			#endregion Remote
 
+
+            #region Record Eye Data
+            if (METState.Current.EyeIsRecording == true)
+            {
+                METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Start");
+
+
+                METState.Current.EyeVideoWriterFrameNumber += 1;
+                METState.Current.EyeVideoWriter.WriteFrame<Bgr, Byte>(METState.Current.EyeImageForShow);
+
+                //text file
+                if (METState.Current.TextFileDataExport != null)
+                {
+                    string GazeDataLine =
+                       METState.Current.eye.eyeData[0].pupilCenter.X
+                       + "," + METState.Current.eye.eyeData[0].pupilCenter.Y
+                       + "," + METState.Current.eye.eyeData[0].glintCenter.X
+                       + "," + METState.Current.eye.eyeData[0].glintCenter.Y
+                       + "," + METState.Current.eye.eyeData[0].pupilDiameter
+                       + "," + METState.Current.TextFileDataExport.temp1
+                       + "," + METState.Current.TextFileDataExport.temp2
+                       + "," + METState.Current.TextFileDataExport.temp3
+                       + "," + METState.Current.Gaze.X
+                       + "," + METState.Current.Gaze.Y
+                       + "," + DateTime.Now.ToString("hh.mm.ss.ffffff")
+                       ;
+
+
+                    METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
+                }
+                METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Stop");
+
+            }
+            #endregion Record Eye Data
 
 
 			METState.Current.ProcessTimeEyeBranch.Timer("Total", "Stop");
