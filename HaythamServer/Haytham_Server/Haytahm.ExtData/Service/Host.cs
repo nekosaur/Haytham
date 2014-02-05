@@ -76,7 +76,7 @@ namespace Haytham.ExtData
 
 			// ** DISCOVERY ** //
 			// add the discovery endpoint that specifies where to publish the services
-			serviceHost.AddServiceEndpoint(new UdpDiscoveryEndpoint());
+			serviceHost.AddServiceEndpoint(new UdpDiscoveryEndpoint());			
 
 			serviceHost.Faulted += serviceHost_Faulted;
 

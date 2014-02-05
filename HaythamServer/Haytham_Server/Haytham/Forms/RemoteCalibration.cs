@@ -1,7 +1,7 @@
 ﻿
 //<copyright file="RemoteCalibration.cs" company="ITU">
 //This file is part of Haytham 
-//Copyright (C) 2013 Diako Mardanbegi
+//Copyright (C) 2012 Diako Mardanbegi
 // ------------------------------------------------------------------------
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
