@@ -1,7 +1,7 @@
 ﻿
 //<copyright file="METState.cs" company="ITU">
 //This file is part of Haytham 
-//Copyright (C) 2013 Diako Mardanbegi
+//Copyright (C) 2012 Diako Mardanbegi
 // ------------------------------------------------------------------------
 //This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
@@ -67,8 +67,7 @@ namespace Haytham
 
         public ProcessTime ProcessTimeEyeBranch = new ProcessTime();
         public ProcessTime ProcessTimeSceneBranch = new ProcessTime();
-
-        public FindCamera Devices;
+        
         public TextFile TextFileDataExport;
 
         //
@@ -77,10 +76,8 @@ namespace Haytham
         public RemoteOrMobile remoteOrMobile;
 
         //Cameras
-        public VideoCaptureDevice EyeCamera;
-        public VideoCaptureDevice SceneCamera;
-        public FileVideoSource EyeVideoFile = null;
-        public FileVideoSource SceneVideoFile = null;
+        public Haytham.VideoSource.IVideoSource EyeCamera;
+		public Haytham.VideoSource.IVideoSource SceneCamera;     
         public bool syncCameras;
         public AutoResetEvent camera1Acquired = null;
         public bool eye_VFlip;

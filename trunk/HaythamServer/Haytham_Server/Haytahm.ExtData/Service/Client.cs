@@ -169,7 +169,7 @@ namespace Haytham.ExtData
 		/// <param name="id">id of variable</param>
 		/// <param name="valueString">string value</param>
 		/// <param name="imgId">optional icon id (icon must be preloaded with LoadImage function)</param>
-		public void PushData(int id, string valueString, int? imgId = null)
+		public void PushData(int id, string valueString, int? imgId)
 		{
 			if (client == null || this.infoFactory.State != CommunicationState.Opened)
 				this.Refresh();

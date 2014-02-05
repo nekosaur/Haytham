@@ -1,4 +1,0 @@
-C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Client\Client\obj\Debug\Interop.WMPLib.dll
-C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Client\Client\obj\Debug\Client.csproj.ResolveComReference.cache
-C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Client\MobiGaze_Client\obj\Debug\Interop.WMPLib.dll
-C:\Users\Diako\Documents\My Dropbox\my Software\HMET\Public\Client\MobiGaze_Client\obj\Debug\Client.csproj.ResolveComReference.cache
