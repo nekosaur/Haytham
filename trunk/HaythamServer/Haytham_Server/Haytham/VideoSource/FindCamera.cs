@@ -60,6 +60,7 @@ namespace Haytham.VideoSource
 		public void Search()
 		{			
 			//AforgeVideoSourceLite.GetDevices(ref DeviceCache);	//FIX: use this if you have problems with device .. it uses only base directshow calls. No device capabilityList
+			PSEyeSource.GetDevices(ref DeviceCache);
 			AforgeVideoSource.GetDevices(ref DeviceCache);
 			FileVideoSource.GetDevices(ref DeviceCache);			
 		}

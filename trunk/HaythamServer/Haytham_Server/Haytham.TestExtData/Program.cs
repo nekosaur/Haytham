@@ -53,7 +53,7 @@ namespace Haytham.TestExtData
 							clientData = 0;
 						
 						//push them
-						client.PushData(varId, clientData.ToString());
+						client.PushData(varId, clientData.ToString(), null);
 						System.Threading.Thread.Sleep(500);
 					}
 					//remove all my variables from haytham

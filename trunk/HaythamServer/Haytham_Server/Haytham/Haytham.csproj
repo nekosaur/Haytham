@@ -190,7 +190,10 @@
     </Compile>
     <Compile Include="METEventArg.cs" />
     <Compile Include="RectangleDetection.cs" />
+    <Compile Include="VideoSource\ImageFrame.cs" />
+    <Compile Include="VideoSource\ImageFrameReadyEventArgs.cs" />
     <Compile Include="VideoSource\IVideoSource.cs" />
+    <Compile Include="VideoSource\PSEyeSource.cs" />
     <Compile Include="Win32Native\NativeWin32.cs" />
     <Compile Include="ProcessTime.cs" />
     <Compile Include="Forms\Program.cs" />
