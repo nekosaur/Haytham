@@ -1,4 +1,25 @@
-﻿using AForge.Video.DirectShow;
+﻿//<copyright file="IVideoSource.cs" company="ITU">
+//This file is part of Haytham 
+//Copyright (C) 2014 Peter Jurnecka
+// ------------------------------------------------------------------------
+//This program is free software: you can redistribute it and/or modify
+//it under the terms of the GNU General Public License as published by
+//the Free Software Foundation, either version 3 of the License, or
+//(at your option) any later version.
+
+//This program is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//GNU General Public License for more details.
+
+//You should have received a copy of the GNU General Public License
+//along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// ------------------------------------------------------------------------
+// </copyright>
+// <author>Peter Jurnecka</author>
+// <email>ijurnecka@fit.vutbr.cz</email>
+
+using AForge.Video.DirectShow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +98,15 @@ namespace Haytham.VideoSource
 					this.videoDevice.VideoResolution = value.origCap;
 			}
 		}
+		public System.Drawing.Size VideoSize
+		{
+			get
+			{
+				if (this.selectedCap == null)
+					return System.Drawing.Size.Empty;
+				return this.selectedCap.FrameSize;
+			}
+		}
 		/// <summary>
 		/// Used on main form to show settings button
 		/// </summary>
@@ -97,6 +127,12 @@ namespace Haytham.VideoSource
 
 		public void Start()
 		{
+			//start LED if it is islim camera
+			if (this.name.StartsWith("iSlim"))
+			{
+				this.videoDevice.SetCameraProperty(CameraControlProperty.Focus, 1, CameraControlFlags.Manual);
+			}
+
 			this.videoDevice.NewFrame -= videoFile_NewFrame;
 			this.videoDevice.NewFrame += videoFile_NewFrame;
 			this.videoDevice.Start();
@@ -111,6 +147,12 @@ namespace Haytham.VideoSource
 		public void Stop()
 		{
 			this.NewFrame = null;
+
+			//stop LED if it is islim camera
+			if (this.name.StartsWith("iSlim"))
+			{
+				this.videoDevice.SetCameraProperty(CameraControlProperty.Focus, 0, CameraControlFlags.Manual);
+			}
 
 			if (this.videoDevice != null)
 				this.videoDevice.SignalToStop();

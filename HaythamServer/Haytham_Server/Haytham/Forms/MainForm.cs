@@ -593,7 +593,7 @@ namespace Haytham
 
 
 		private void cmbDevice_Update(bool eye, bool scene)
-		{			
+		{
 
 			System.Threading.Tasks.Task.Factory.StartNew(() =>
 				{
@@ -673,7 +673,7 @@ namespace Haytham
 			cmbCap.EndUpdate();
 
 			this.btnSettingsEye.Visible = dev.HasSettings;
-			
+
 		}
 		private void cmbDeviceScene_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -900,7 +900,7 @@ namespace Haytham
 				cam.SelectedCap = (VideoSource.DeviceCapabilityInfo)cmbDeviceCapabilityEye.SelectedItem;
 				METState.Current.EyeCamera = cam;
 
-				METState.Current.EyeCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.EyeFrameCaptured);				
+				METState.Current.EyeCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.EyeFrameCaptured);
 				METState.Current.METCoreObject.TrackerEventEye += new TrackerEventHandler(imEyeUpdate);
 				METState.Current.camera1Acquired = new AutoResetEvent(false);
 
@@ -915,9 +915,9 @@ namespace Haytham
 
 				var camOld = METState.Current.EyeCamera;
 				if (camOld.IsRunning)
-					camOld.Stop();				
+					camOld.Stop();
 				imEye.Size = new System.Drawing.Size(0, 0);
-				
+
 
 				startBoothVideos.Enabled = true;
 			}
@@ -938,7 +938,7 @@ namespace Haytham
 		}
 
 		private void btnSceneStart_Click(object sender, EventArgs e)
-		{		
+		{
 
 			if (btnStartScene.Text == "Start")
 			{
@@ -951,7 +951,7 @@ namespace Haytham
 				cam.SelectedCap = (VideoSource.DeviceCapabilityInfo)cmbDeviceCapabilityScene.SelectedItem;
 				METState.Current.SceneCamera = cam;
 
-				METState.Current.SceneCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.SceneFrameCaptured);				
+				METState.Current.SceneCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.SceneFrameCaptured);
 				METState.Current.METCoreObject.TrackerEventScene += new TrackerEventHandler(imSceneUpdate);
 
 				#region IDONT know
@@ -964,12 +964,12 @@ namespace Haytham
 						for (int i = 0; i < METState.Current.cameraCalibrationSamples; i++)
 							METState.Current.extrinsic_param[i] = new ExtrinsicCameraParameters();
 
-						if (cam is VideoSource.AforgeVideoSource)
+						if (cam is VideoSource.AforgeVideoSource || cam is VideoSource.FileVideoSource)
 						{
-							var cAF = cam as VideoSource.AforgeVideoSource;
+							var cAF = cam as VideoSource.IVideoSource;
 
 							CameraCalibration.CalibrateCamera(METState.Current.object_points, METState.Current.image_points,
-								new Size(cAF.SelectedCap.FrameSize.Width, cAF.SelectedCap.FrameSize.Height),
+								new Size(cAF.VideoSize.Width, cAF.VideoSize.Height),
 								METState.Current.intrinsic_param, Emgu.CV.CvEnum.CALIB_TYPE.DEFAULT, out  METState.Current.extrinsic_param);
 						}
 						//METState.Current.sceneCameraUnDistortion = true;
@@ -986,7 +986,7 @@ namespace Haytham
 						System.Windows.Forms.MessageBox.Show(er.Message.ToString());
 					}
 
-				} 
+				}
 				#endregion
 
 				cam.Start();
@@ -1000,8 +1000,8 @@ namespace Haytham
 				METState.Current.METCoreObject.TrackerEventScene -= new TrackerEventHandler(imSceneUpdate);
 				var camOld = METState.Current.SceneCamera;
 				if (camOld.IsRunning)
-					camOld.Stop();								
-				imScene.Size = new System.Drawing.Size(0, 0); 
+					camOld.Stop();
+				imScene.Size = new System.Drawing.Size(0, 0);
 
 				startBoothVideos.Enabled = true;
 			}
@@ -1880,6 +1880,7 @@ namespace Haytham
 							(MethodInvoker)delegate
 							{
 								imSceneProcessed.Width = _bitmapimSceneProcessed.Width;
+								panelImScene.Width = _bitmapimSceneProcessed.Width / 2;
 								imSceneProcessed.Height = _bitmapimSceneProcessed.Height;
 							});
 
@@ -1900,6 +1901,8 @@ namespace Haytham
 			{
 				imScene.Image = null;
 				imSceneProcessed.Image = null;
+				imSceneProcessed.Size = new Size(0, 0);
+				panelImScene.Width = 0;
 			}
 
 
@@ -2096,7 +2099,7 @@ namespace Haytham
 
 						string textdir = dir.Substring(0, extesion_index);
 						METState.Current.TextFileDataExport = new TextFile(textdir);
-						string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture , GazeX , GazeY , Time"; 
+						string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture , GazeX , GazeY , Time";
 						if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
 
 

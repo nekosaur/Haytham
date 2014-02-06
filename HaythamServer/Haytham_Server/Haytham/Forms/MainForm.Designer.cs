@@ -179,11 +179,12 @@
 			this.groupBox_imgScene = new System.Windows.Forms.GroupBox();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.imScene = new System.Windows.Forms.PictureBox();
+			this.panelImScene = new System.Windows.Forms.Panel();
+			this.imSceneProcessed = new System.Windows.Forms.PictureBox();
 			this.groupBox18 = new System.Windows.Forms.GroupBox();
 			this.trackBarTest = new System.Windows.Forms.TrackBar();
 			this.chartTest = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.imEyeTest = new Emgu.CV.UI.ImageBox();
-			this.imSceneProcessed = new System.Windows.Forms.PictureBox();
 			this.panel6 = new System.Windows.Forms.Panel();
 			this.splitter7 = new System.Windows.Forms.Splitter();
 			this.lblIP = new System.Windows.Forms.TextBox();
@@ -276,11 +277,12 @@
 			this.groupBox_imgScene.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.imScene)).BeginInit();
+			this.panelImScene.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
 			this.groupBox18.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
 			this.panel6.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -2171,19 +2173,19 @@
 			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
 			this.tableLayoutPanel1.Controls.Add(this.splitContainer2, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.panelImScene, 1, 0);
 			this.tableLayoutPanel1.Controls.Add(this.groupBox18, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.imEyeTest, 1, 0);
-			this.tableLayoutPanel1.Controls.Add(this.imSceneProcessed, 2, 0);
+			this.tableLayoutPanel1.Controls.Add(this.imEyeTest, 0, 0);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 15);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 3;
+			this.tableLayoutPanel1.RowCount = 2;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(1105, 692);
 			this.tableLayoutPanel1.TabIndex = 75;
 			// 
@@ -2192,7 +2194,7 @@
 			this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+			this.splitContainer2.Location = new System.Drawing.Point(4, 3);
 			this.splitContainer2.Name = "splitContainer2";
 			// 
 			// splitContainer2.Panel1
@@ -2202,7 +2204,7 @@
 			// splitContainer2.Panel2
 			// 
 			this.splitContainer2.Panel2.Controls.Add(this.groupBox_imgScene);
-			this.splitContainer2.Size = new System.Drawing.Size(1097, 685);
+			this.splitContainer2.Size = new System.Drawing.Size(1097, 679);
 			this.splitContainer2.SplitterDistance = 500;
 			this.splitContainer2.TabIndex = 73;
 			// 
@@ -2215,7 +2217,7 @@
 			this.groupBox_imgEye.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox_imgEye.Name = "groupBox_imgEye";
 			this.groupBox_imgEye.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox_imgEye.Size = new System.Drawing.Size(500, 685);
+			this.groupBox_imgEye.Size = new System.Drawing.Size(500, 679);
 			this.groupBox_imgEye.TabIndex = 67;
 			this.groupBox_imgEye.TabStop = false;
 			this.groupBox_imgEye.Text = "Eye";
@@ -2227,7 +2229,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(2, 15);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(496, 668);
+			this.panel1.Size = new System.Drawing.Size(496, 662);
 			this.panel1.TabIndex = 73;
 			// 
 			// imEye
@@ -2248,7 +2250,7 @@
 			this.groupBox_imgScene.Margin = new System.Windows.Forms.Padding(2);
 			this.groupBox_imgScene.Name = "groupBox_imgScene";
 			this.groupBox_imgScene.Padding = new System.Windows.Forms.Padding(2);
-			this.groupBox_imgScene.Size = new System.Drawing.Size(593, 685);
+			this.groupBox_imgScene.Size = new System.Drawing.Size(593, 679);
 			this.groupBox_imgScene.TabIndex = 68;
 			this.groupBox_imgScene.TabStop = false;
 			this.groupBox_imgScene.Text = "Scene";
@@ -2260,7 +2262,7 @@
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel2.Location = new System.Drawing.Point(2, 15);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(589, 668);
+			this.panel2.Size = new System.Drawing.Size(589, 662);
 			this.panel2.TabIndex = 74;
 			// 
 			// imScene
@@ -2274,12 +2276,34 @@
 			this.imScene.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseClick);
 			this.imScene.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseMove);
 			// 
+			// panelImScene
+			// 
+			this.panelImScene.AutoScroll = true;
+			this.panelImScene.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.panelImScene.Controls.Add(this.imSceneProcessed);
+			this.panelImScene.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelImScene.Location = new System.Drawing.Point(1107, 3);
+			this.panelImScene.Name = "panelImScene";
+			this.panelImScene.Size = new System.Drawing.Size(1, 679);
+			this.panelImScene.TabIndex = 75;
+			// 
+			// imSceneProcessed
+			// 
+			this.imSceneProcessed.Location = new System.Drawing.Point(0, 0);
+			this.imSceneProcessed.MaximumSize = new System.Drawing.Size(250, 250);
+			this.imSceneProcessed.Name = "imSceneProcessed";
+			this.imSceneProcessed.Size = new System.Drawing.Size(1, 250);
+			this.imSceneProcessed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.imSceneProcessed.TabIndex = 74;
+			this.imSceneProcessed.TabStop = false;
+			this.imSceneProcessed.Paint += new System.Windows.Forms.PaintEventHandler(this.imSceneProcessed_Paint);
+			// 
 			// groupBox18
 			// 
 			this.tableLayoutPanel1.SetColumnSpan(this.groupBox18, 3);
 			this.groupBox18.Controls.Add(this.trackBarTest);
 			this.groupBox18.Controls.Add(this.chartTest);
-			this.groupBox18.Location = new System.Drawing.Point(3, 694);
+			this.groupBox18.Location = new System.Drawing.Point(3, 688);
 			this.groupBox18.Name = "groupBox18";
 			this.groupBox18.Size = new System.Drawing.Size(564, 1);
 			this.groupBox18.TabIndex = 3;
@@ -2353,24 +2377,12 @@
 			// imEyeTest
 			// 
 			this.imEyeTest.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
-			this.imEyeTest.Location = new System.Drawing.Point(1106, 3);
+			this.imEyeTest.Location = new System.Drawing.Point(3, 3);
 			this.imEyeTest.Name = "imEyeTest";
 			this.imEyeTest.Size = new System.Drawing.Size(1, 666);
 			this.imEyeTest.TabIndex = 70;
 			this.imEyeTest.TabStop = false;
 			this.imEyeTest.Visible = false;
-			// 
-			// imSceneProcessed
-			// 
-			this.imSceneProcessed.Dock = System.Windows.Forms.DockStyle.Right;
-			this.imSceneProcessed.Location = new System.Drawing.Point(1107, 3);
-			this.imSceneProcessed.MaximumSize = new System.Drawing.Size(250, 250);
-			this.imSceneProcessed.Name = "imSceneProcessed";
-			this.imSceneProcessed.Size = new System.Drawing.Size(1, 250);
-			this.imSceneProcessed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.imSceneProcessed.TabIndex = 74;
-			this.imSceneProcessed.TabStop = false;
-			this.imSceneProcessed.Paint += new System.Windows.Forms.PaintEventHandler(this.imSceneProcessed_Paint);
 			// 
 			// panel6
 			// 
@@ -2609,12 +2621,13 @@
 			this.groupBox_imgScene.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.imScene)).EndInit();
+			this.panelImScene.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
 			this.groupBox18.ResumeLayout(false);
 			this.groupBox18.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chartTest)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
 			this.panel6.ResumeLayout(false);
 			this.panel6.PerformLayout();
 			this.ResumeLayout(false);
@@ -2789,6 +2802,7 @@
 		private System.Windows.Forms.SplitContainer splitContainer2;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Panel panelImScene;
     }
 }
 

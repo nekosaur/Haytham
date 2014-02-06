@@ -23,6 +23,7 @@ namespace Haytham.VideoSource
 			get { return Enumerable.Empty<DeviceCapabilityInfo>(); }
 		}
 		public DeviceCapabilityInfo SelectedCap { get; set; }
+		public System.Drawing.Size VideoSize { get { return System.Drawing.Size.Empty; } }
 		public bool HasSettings
 		{
 			get { return false; }
