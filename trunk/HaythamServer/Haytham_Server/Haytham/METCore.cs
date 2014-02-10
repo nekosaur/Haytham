@@ -303,6 +303,28 @@ namespace Haytham
 				METState.Current.eye.IrisOpticFlow(e.image);
 			}
 
+			#region Remote
+
+			if (METState.Current.eye.eyeData[0].pupilFound)
+			{
+
+				if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
+				{
+					METState.Current.Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY);
+
+					METState.Current.Gaze = PointF.Subtract(METState.Current.Gaze, new Size(METState.Current.remoteCalibration.ScreenTopLeft));
+
+					METState.Current.Gaze = Point.Round(METState.Current.Gaze);
+
+					METState.Current.server.Send("Gaze", new string[] { METState.Current.Gaze.X.ToString(), METState.Current.Gaze.Y.ToString() });
+
+				}
+
+
+			}
+
+			#endregion Remote
+
 			#region Record Eye Data
 			if (METState.Current.EyeIsRecording == true)
 			{
@@ -336,32 +358,6 @@ namespace Haytham
 
 			}
 			#endregion Record Eye Data
-
-			#region Remote
-
-			if (METState.Current.eye.eyeData[0].pupilFound)
-			{
-
-				if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
-				{
-					METState.Current.Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY);
-
-					METState.Current.Gaze = PointF.Subtract(METState.Current.Gaze, new Size(METState.Current.remoteCalibration.ScreenTopLeft));
-
-					METState.Current.Gaze = Point.Round(METState.Current.Gaze);
-
-					METState.Current.server.Send("Gaze", new string[] { METState.Current.Gaze.X.ToString(), METState.Current.Gaze.Y.ToString() });
-
-				}
-
-
-			}
-
-
-
-			#endregion Remote
-
-
 
 			METState.Current.ProcessTimeEyeBranch.Timer("Total", "Stop");
 			SendToForm("", "textBoxTimerEye");//update the timer text box and show the ProcessTimeEyeBranch
@@ -505,7 +501,7 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 
 				// Set the pen's width.
 				pen.Width = 2.0F;
-				foreach (PointF p in METState.Current.EyeToScene_Mapping.ScenePoints)
+				foreach (PointF p in METState.Current.EyeToScene_Mapping.ScenePoints.ToArray())
 				{
 					gr2.DrawArc(pen, p.X - 5, p.Y - 5, 10, 10, 0, 360);
 				}
