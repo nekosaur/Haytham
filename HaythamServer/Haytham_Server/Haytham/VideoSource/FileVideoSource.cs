@@ -26,17 +26,14 @@ namespace Haytham.VideoSource
 		public System.Drawing.Size VideoSize { get { return System.Drawing.Size.Empty; } }
 		public bool HasSettings
 		{
-			get { return false; }
+			get { return true; }
 		}
 		public bool IsRunning { get; set; }
 		public void ShowSettings()
 		{
-			throw new NotImplementedException();
+			this.showSettings();
 		}
-
-		public event AForge.Video.NewFrameEventHandler NewFrame;
-
-		public void Start()
+		private bool showSettings()
 		{
 			var openFileDialog = new OpenFileDialog();
 			// OpenFileDialog.Filter = "AVI File|*.avi|All Files|*.*";
@@ -46,6 +43,23 @@ namespace Haytham.VideoSource
 				// create video source
 				this.videoFile = new AForge.Video.DirectShow.FileVideoSource(openFileDialog.FileName);
 				this.videoFile.NewFrame += videoFile_NewFrame;
+				return true;
+			}
+			return false;
+		}
+
+		public event AForge.Video.NewFrameEventHandler NewFrame;
+
+		public void Start()
+		{
+			var isSet = this.videoFile != null;
+			//try to set up video file
+			if (!isSet)
+				isSet = showSettings();
+			
+			//when video file is set
+			if (isSet)
+			{
 				this.videoFile.Start();
 				this.IsRunning = true;
 			}
@@ -60,7 +74,7 @@ namespace Haytham.VideoSource
 		{
 			if (this.videoFile != null)
 				this.videoFile.SignalToStop();
-			this.videoFile = null;
+			
 			this.IsRunning = false;
 			this.NewFrame = null;
 		}

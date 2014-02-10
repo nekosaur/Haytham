@@ -783,12 +783,6 @@ namespace Haytham
 
 		}
 
-
-
-
-
-
-
 		private void cbRemoveGlint_CheckedChanged(object sender, EventArgs e)
 		{
 
@@ -796,17 +790,10 @@ namespace Haytham
 
 		}
 
-
-
-
 		private void radioButtonAutoActivation_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButtonAutoActivation.Checked) METState.Current.server.ForcedActiveScreen = "";
 		}
-
-
-
-
 
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -862,12 +849,6 @@ namespace Haytham
 		}
 
 
-
-
-
-
-
-
 		private void cbGazeSmoothing_CheckedChanged(object sender, EventArgs e)
 		{
 			METState.Current.GazeSmoother = cbGazeSmoothing.Checked;
@@ -901,6 +882,7 @@ namespace Haytham
 				METState.Current.EyeCamera = cam;
 
 				METState.Current.EyeCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.EyeFrameCaptured);
+
 				METState.Current.METCoreObject.TrackerEventEye += new TrackerEventHandler(imEyeUpdate);
 				METState.Current.camera1Acquired = new AutoResetEvent(false);
 
@@ -916,8 +898,10 @@ namespace Haytham
 				var camOld = METState.Current.EyeCamera;
 				if (camOld.IsRunning)
 					camOld.Stop();
-				imEye.Size = new System.Drawing.Size(0, 0);
 
+				imEye.Image = null;
+				imEye.Size = System.Drawing.Size.Empty;
+				bFirstFrameEye = false;
 
 				startBoothVideos.Enabled = true;
 			}
@@ -952,6 +936,7 @@ namespace Haytham
 				METState.Current.SceneCamera = cam;
 
 				METState.Current.SceneCamera.NewFrame += new AForge.Video.NewFrameEventHandler(METState.Current.METCoreObject.SceneFrameCaptured);
+
 				METState.Current.METCoreObject.TrackerEventScene += new TrackerEventHandler(imSceneUpdate);
 
 				#region IDONT know
@@ -996,13 +981,21 @@ namespace Haytham
 			{
 				//stop video
 				btnStartScene.Text = "Start";
-
 				METState.Current.METCoreObject.TrackerEventScene -= new TrackerEventHandler(imSceneUpdate);
+
 				var camOld = METState.Current.SceneCamera;
 				if (camOld.IsRunning)
 					camOld.Stop();
-				imScene.Size = new System.Drawing.Size(0, 0);
 
+				bFirstFrameScene = false;
+				bFirstFrameSceneProcessed = false;
+
+				imScene.Image = null;
+				imScene.Size = Size.Empty;
+				imSceneProcessed.Image = null;
+				imSceneProcessed.Size = Size.Empty;
+
+				panelImScene.Width = 0;
 				startBoothVideos.Enabled = true;
 			}
 
@@ -1793,18 +1786,9 @@ namespace Haytham
 					{
 						HighLight_Client((string)message);
 
-
-
-
-
-
 					}
 
-
 					break;
-
-
-
 
 			}
 
@@ -1838,11 +1822,6 @@ namespace Haytham
 				// imEyeTest.Image = METState.Current.EyeImageTest;
 
 			}
-			else
-			{
-				imEye.Image = null;
-			}
-
 
 		}
 
@@ -1860,7 +1839,7 @@ namespace Haytham
 					imScene.Invoke(
 						(MethodInvoker)delegate
 						{
-							groupBox_imgScene.Width = _bitmapimScene.Width;
+							//groupBox_imgScene.Width = _bitmapimScene.Width;
 							imScene.Width = _bitmapimScene.Width;
 							imScene.Height = _bitmapimScene.Height;
 						});
@@ -1879,8 +1858,9 @@ namespace Haytham
 						imScene.Invoke(
 							(MethodInvoker)delegate
 							{
+								panelImScene.Width = groupBox_imgScene.Width;// _bitmapimSceneProcessed.Width / 2;
 								imSceneProcessed.Width = _bitmapimSceneProcessed.Width;
-								panelImScene.Width = _bitmapimSceneProcessed.Width / 2;
+								
 								imSceneProcessed.Height = _bitmapimSceneProcessed.Height;
 							});
 
@@ -1890,21 +1870,11 @@ namespace Haytham
 					imSceneProcessed.Invalidate();
 				}
 
-
-
-
 				//imScene.Image = METState.Current.SceneImageForShow;
 				//imSceneProcessed.Image = METState.Current.SceneImageProcessed;
 
 			}
-			else
-			{
-				imScene.Image = null;
-				imSceneProcessed.Image = null;
-				imSceneProcessed.Size = new Size(0, 0);
-				panelImScene.Width = 0;
-			}
-
+			
 
 		}
 
