@@ -995,7 +995,7 @@ namespace Haytham
 				imSceneProcessed.Image = null;
 				imSceneProcessed.Size = Size.Empty;
 
-				panelImScene.Width = 0;
+				//panelImScene.Width = 0;
 				startBoothVideos.Enabled = true;
 			}
 
@@ -1205,7 +1205,7 @@ namespace Haytham
 		private void button1_Click_6(object sender, EventArgs e)
 		{
 
-
+            imSceneProcessed.SizeMode = PictureBoxSizeMode.AutoSize;
 			#region camera calibration
 			try
 			{
@@ -1858,7 +1858,7 @@ namespace Haytham
 						imScene.Invoke(
 							(MethodInvoker)delegate
 							{
-								panelImScene.Width = groupBox_imgScene.Width;// _bitmapimSceneProcessed.Width / 2;
+								//panelImScene.Width = groupBox_imgScene.Width;// _bitmapimSceneProcessed.Width / 2;
 								imSceneProcessed.Width = _bitmapimSceneProcessed.Width;
 								
 								imSceneProcessed.Height = _bitmapimSceneProcessed.Height;
