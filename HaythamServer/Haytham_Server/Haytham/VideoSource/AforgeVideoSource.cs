@@ -42,24 +42,32 @@ namespace Haytham.VideoSource
 				{
 					lock (deviceCache)
 					{
-						if (deviceCache.ContainsKey(device.Name))
-							continue;
-						//else .. all other code
+                        if (deviceCache.ContainsKey(device.Name) )
+                        {
+                           
 
-						try
-						{
-							var video = new VideoCaptureDevice(device.MonikerString);
 
-							var capList = video.VideoCapabilities.Select(cap => new DeviceCapabilityInfo(cap)).ToList();
+                            continue;
+                        } 
+                        
+                        //else .. all other code
 
-							// System.Diagnostics.Debug.WriteLine(device.MonikerString.ToString());
-							var dev = new AforgeVideoSource(device.Name, capList, video);
-							deviceCache.Add(device.Name, dev);
-						}
-						catch (Exception e)
-						{
-							System.Windows.Forms.MessageBox.Show(string.Join(Environment.NewLine, e.Message, "", e.Source, "", e.StackTrace));
-						}
+                        try
+                        {
+                            var video = new VideoCaptureDevice(device.MonikerString);
+
+                            var capList = video.VideoCapabilities.Select(cap => new DeviceCapabilityInfo(cap)).ToList();
+
+                            // System.Diagnostics.Debug.WriteLine(device.MonikerString.ToString());
+                            var dev = new AforgeVideoSource(device.Name, capList, video);
+
+                                deviceCache.Add(device.Name, dev); 
+                            
+                        }
+                        catch (Exception e)
+                        {
+                            System.Windows.Forms.MessageBox.Show(string.Join(Environment.NewLine, e.Message, "", e.Source, "", e.StackTrace));
+                        }
 					}
 				}
 			}
@@ -85,6 +93,8 @@ namespace Haytham.VideoSource
 		{
 			get { return this.capabilities; }
 		}
+
+
 		public DeviceCapabilityInfo SelectedCap
 		{
 			get
@@ -169,5 +179,6 @@ namespace Haytham.VideoSource
 		private List<DeviceCapabilityInfo> capabilities;
 		private string name;
 		DeviceCapabilityInfo selectedCap;
+ 
 	}
 }
