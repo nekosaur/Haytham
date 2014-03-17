@@ -480,6 +480,11 @@ namespace Haytham.VideoSource
 			}
 		}
 
+        private string monikorString;
+        public string MonikorString
+        {
+            get { return this.monikorString; }
+        }
 		public string Name
 		{
 			get;

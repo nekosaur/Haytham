@@ -26,6 +26,7 @@ namespace Haytham.VideoSource
 	public interface IVideoSource
 	{
 		string Name { get; }
+      
 		IEnumerable<DeviceCapabilityInfo> Capabilities { get; }
 		DeviceCapabilityInfo SelectedCap { get; set; }
 		System.Drawing.Size VideoSize { get; }

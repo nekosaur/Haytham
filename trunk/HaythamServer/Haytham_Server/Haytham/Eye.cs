@@ -164,6 +164,7 @@ namespace Haytham
             glintPyrLevel = 0;
             Image<Gray, Byte> GrayImg = new Image<Gray, byte>(inputimg.Bitmap );
 
+
             //rough determination of ROI (size of ROI may exceeds the size of the image no problem for cvSetImageROI)
             int d = (int)(METState.Current.IrisDiameter);
             if (METState.Current.detectPupil & eyeData[1].pupilFound)
@@ -178,7 +179,7 @@ namespace Haytham
             }
             else
             {
-                d = 2 * d;//a little bit larger
+                d = 1 * d;//a little bit larger
                 glintROI = new Rectangle(inputimg.Width / 2 - d / 2, inputimg.Height / 2 - d / 2, d, d);
             }
 
@@ -200,15 +201,22 @@ namespace Haytham
             for (int i = 0; i < glintPyrLevel; i++) GrayImg = GrayImg.PyrDown();
 
 
+
+
+
             if (METState.Current.GAdaptive) GrayImg = EmgImgProcssing.Filter_GlintAdaptiveThreshold(GrayImg, 255, false).Erode(1).Dilate(1);
             else GrayImg = EmgImgProcssing.Filter_Threshold(GrayImg, threshold, false);//.Erode(2).Dilate(2);//;
 
+
+           // GrayImg = GrayImg.Erode(1).Dilate(1);
+
+            GrayImg = GrayImg.Dilate(1).Erode(1);
 
 
             Point tempGlintCenter = new Point(0, 0);
 
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Start");
-            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 5, 20, 5, 20, 0.6, 8);
+            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 5, 20, 5, 20, 0.5, 10);
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Stop");
 
 
@@ -219,82 +227,36 @@ namespace Haytham
 
                 glintBlob.SelectedBlob = glintBlob.blobs_Filtered[0];
 
-                AForge.Imaging.Blob blobClose1 = glintBlob.SelectedBlob;
-                AForge.Imaging.Blob blobClose2 = glintBlob.SelectedBlob;
-
-                #region two and more than two glints found
 
                 if (glintBlob.blobs_Filtered.Count >= 2)
                 {
 
 
-                    double minDis1 = 10000;
-                    double minDis2 = 10000;
 
-
-                    foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
-                    {
-                        double dist = Math.Sqrt((Math.Pow(blob.CenterOfGravity.X - pupilBlobCenter.X, 2)) + (Math.Pow(blob.CenterOfGravity.Y - pupilBlobCenter.Y, 2)));
-
-                        if (dist < minDis1)
-                        {
-                            blobClose1 = blob;
-                            minDis1 = dist;
-                        }
-
-                    }
+                    List<double> dists=new List<double>();
 
                     foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
                     {
-                        if (blob != blobClose1)
-                        {
-                            double dist = Math.Sqrt((Math.Pow(blob.CenterOfGravity.X - pupilBlobCenter.X, 2)) + (Math.Pow(blob.CenterOfGravity.Y - pupilBlobCenter.Y, 2)));
 
-                            if (dist < minDis2)
-                            {
-                                blobClose2 = blob;
-                                minDis2 = dist;
-                            }
+                        tempGlintCenter = CorrectGlintPoint(blob.CenterOfGravity);
 
-                        }
+                        double dist = Math.Sqrt((Math.Pow(tempGlintCenter.X - eyeData[1].pupilCenter.X, 2)) + (Math.Pow(tempGlintCenter.Y - eyeData[1].pupilCenter.Y, 2)));
+                        dists.Add(dist);
+
                     }
+                   int i= dists.IndexOf(dists.Min());
+
 
                     ///Choose the glint in the right side
                     //if (blobClose1.CenterOfGravity.X > blobClose2.CenterOfGravity.X) glintBlob.SelectedBlob = blobClose1;
                     //else glintBlob.SelectedBlob = blobClose2;
 
                     //choose the closest glint
-                    glintBlob.SelectedBlob = blobClose1;
+                   glintBlob.SelectedBlob = glintBlob.blobs_Filtered[i];
                 }
-                #endregion More than two glints found
-               // #region  two glints found
+      
 
-                //else if (glintBlob.blobs_Filtered.Count == 2)
-                //{
 
-                //    double ss = 0;
-                //    int i = 0;
-                //    foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
-                //    {
-                //        double s = blob.CenterOfGravity.X;
-                //        if (s > ss)
-                //        {
-                //            glintBlob.SelectedBlob = blob;
-                //            ss = s;
-                //        }
-                //        i++;
-                //    }
-
-                //}
-                  //  #endregion  two glints found
-                #region  one glint found
-                else if (glintBlob.blobs_Filtered.Count == 1)//choose the right side one
-                {
-
-                    glintBlob.SelectedBlob = glintBlob.blobs_Filtered[0];
-
-                }
-                  #endregion  one glint found
                 #endregion filter blob
 
                 tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
@@ -378,7 +340,9 @@ namespace Haytham
                 {
                     // only when largescan=false
                     METState.Current.ProcessTimeEyeBranch.Timer("Fill Gaps", "Start");
-                    GrayImg = (LargScan == true) ? CropedInputimg.Convert<Gray, byte>() : CropedInputimg.Convert<Gray, byte>().Erode(4).Dilate(4);
+                   // GrayImg = (LargScan == true) ? CropedInputimg.Convert<Gray, byte>() : CropedInputimg.Convert<Gray, byte>().Erode(4).Dilate(4);
+                    GrayImg = CropedInputimg.Convert<Gray, byte>().Erode(4).Dilate(3);
+
                     METState.Current.ProcessTimeEyeBranch.Timer("Fill Gaps", "Stop");
                 }
                 else
@@ -388,6 +352,7 @@ namespace Haytham
                 }
                 #endregion Gray & ErodeDilate
 
+               
 
                // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Start");
                 #region Threshold
@@ -400,6 +365,13 @@ namespace Haytham
                 else GrayImg = EmgImgProcssing.Filter_Threshold(GrayImg, threshold, true);
 
                 #endregion Threshold
+
+
+
+                // GrayImg = GrayImg.Erode(3).Dilate(2);
+
+                 GrayImg = GrayImg.Dilate(2).Erode(2);
+
 
                 DetectPupilBlob(GrayImg, inputimg.Width, inputimg.Height);
                // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Stop");
