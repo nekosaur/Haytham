@@ -42,7 +42,7 @@ namespace Haytham.VideoSource
 				{
 					lock (deviceCache)
 					{
-                        if (deviceCache.ContainsKey(device.Name) )
+                        if (deviceCache.ContainsKey(device.MonikerString))
                         {
                            
 
@@ -61,7 +61,7 @@ namespace Haytham.VideoSource
                             // System.Diagnostics.Debug.WriteLine(device.MonikerString.ToString());
                             var dev = new AforgeVideoSource(device.Name, capList, video);
 
-                                deviceCache.Add(device.Name, dev); 
+                            deviceCache.Add(device.MonikerString, dev); 
                             
                         }
                         catch (Exception e)
@@ -138,7 +138,8 @@ namespace Haytham.VideoSource
 		public void Start()
 		{
 			//start LED if it is islim camera
-			if (this.name.StartsWith("iSlim"))
+            
+			if (this.name.StartsWith("iSlim") )
 			{
 				this.videoDevice.SetCameraProperty(CameraControlProperty.Focus, 1, CameraControlFlags.Manual);
 			}

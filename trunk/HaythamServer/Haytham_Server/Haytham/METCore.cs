@@ -90,6 +90,8 @@ namespace Haytham
 			{
 				METState.Current.SceneImageForShow = METState.Current.SceneImageForShow.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
 				METState.Current.SceneImageOrginal = METState.Current.SceneImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
+                METState.Current.SceneImageForShow = METState.Current.SceneImageForShow.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
+                METState.Current.SceneImageOrginal = METState.Current.SceneImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
 			}
 			# region Distortion
 			if (METState.Current.sceneCameraUnDistortion)// && METState.Current.SceneVideoFile == null)
