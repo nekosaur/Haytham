@@ -57,25 +57,32 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbGM = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.trackBarGABlockSize = new Haytham.TransparentTrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.rbGGaussian = new System.Windows.Forms.RadioButton();
             this.rbGMean = new System.Windows.Forms.RadioButton();
             this.cbGA = new System.Windows.Forms.RadioButton();
+            this.trackBarThresholdGlint = new Haytham.TransparentTrackBar();
+            this.trackBarGAConstant = new Haytham.TransparentTrackBar();
             this.cbShowGlint = new System.Windows.Forms.CheckBox();
             this.cbGlintDetection = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbPM = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.trackBarPABlockSize = new Haytham.TransparentTrackBar();
             this.label10 = new System.Windows.Forms.Label();
             this.rbPGaussian = new System.Windows.Forms.RadioButton();
             this.rbPMean = new System.Windows.Forms.RadioButton();
             this.cbPA = new System.Windows.Forms.RadioButton();
             this.cbRemoveGlint = new System.Windows.Forms.CheckBox();
             this.cbDilateErode = new System.Windows.Forms.CheckBox();
+            this.trackBarPAConstant = new Haytham.TransparentTrackBar();
+            this.trackBarThresholdEye = new Haytham.TransparentTrackBar();
             this.cbShowPupil = new System.Windows.Forms.CheckBox();
             this.cbPupilDetection = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbShowIris = new System.Windows.Forms.CheckBox();
+            this.trackBarControl2 = new Haytham.TransparentTrackBar();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage_Scene = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
@@ -86,6 +93,9 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.cbShowEdges = new System.Windows.Forms.CheckBox();
+            this.trackBarB = new Haytham.TransparentTrackBar();
+            this.trackBarG = new Haytham.TransparentTrackBar();
+            this.trackBarControl3 = new Haytham.TransparentTrackBar();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cbShowScreen = new System.Windows.Forms.CheckBox();
@@ -98,6 +108,7 @@
             this.btnCalibration_Homography = new System.Windows.Forms.Button();
             this.btnCalibration_Polynomial = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.rbGlint = new System.Windows.Forms.RadioButton();
             this.rbPupilGlint = new System.Windows.Forms.RadioButton();
             this.rdOnlyPupil = new System.Windows.Forms.RadioButton();
             this.cbGazeSmoothing = new System.Windows.Forms.CheckBox();
@@ -168,6 +179,7 @@
             this.imEye = new System.Windows.Forms.PictureBox();
             this.groupBox_imgScene = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imSceneProcessed = new System.Windows.Forms.PictureBox();
             this.imScene = new System.Windows.Forms.PictureBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.trackBarTest = new System.Windows.Forms.TrackBar();
@@ -185,17 +197,6 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.comboBox_EyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
-            this.imSceneProcessed = new System.Windows.Forms.PictureBox();
-            this.trackBarGABlockSize = new Haytham.TransparentTrackBar();
-            this.trackBarThresholdGlint = new Haytham.TransparentTrackBar();
-            this.trackBarGAConstant = new Haytham.TransparentTrackBar();
-            this.trackBarPABlockSize = new Haytham.TransparentTrackBar();
-            this.trackBarPAConstant = new Haytham.TransparentTrackBar();
-            this.trackBarThresholdEye = new Haytham.TransparentTrackBar();
-            this.trackBarControl2 = new Haytham.TransparentTrackBar();
-            this.trackBarB = new Haytham.TransparentTrackBar();
-            this.trackBarG = new Haytham.TransparentTrackBar();
-            this.trackBarControl3 = new Haytham.TransparentTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -208,13 +209,23 @@
             this.tabPage_Eye.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).BeginInit();
             this.tabPage_Scene.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).BeginInit();
             this.tabPage_Calibration.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -265,23 +276,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).BeginInit();
             this.groupBox_imgScene.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).BeginInit();
             this.groupBox18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -625,6 +626,20 @@
             this.panel4.TabIndex = 69;
             this.panel4.Visible = false;
             // 
+            // trackBarGABlockSize
+            // 
+            this.trackBarGABlockSize.AutoSize = false;
+            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGABlockSize.Maximum = 151;
+            this.trackBarGABlockSize.Minimum = 33;
+            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
+            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGABlockSize.TabIndex = 65;
+            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGABlockSize.Value = 113;
+            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -674,6 +689,34 @@
             this.cbGA.Text = "Auto";
             this.cbGA.UseVisualStyleBackColor = true;
             this.cbGA.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_2);
+            // 
+            // trackBarThresholdGlint
+            // 
+            this.trackBarThresholdGlint.AutoSize = false;
+            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
+            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdGlint.Maximum = 255;
+            this.trackBarThresholdGlint.Minimum = 120;
+            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
+            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdGlint.TabIndex = 67;
+            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdGlint.Value = 200;
+            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
+            // 
+            // trackBarGAConstant
+            // 
+            this.trackBarGAConstant.AutoSize = false;
+            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
+            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGAConstant.Maximum = 0;
+            this.trackBarGAConstant.Minimum = -100;
+            this.trackBarGAConstant.Name = "trackBarGAConstant";
+            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGAConstant.TabIndex = 68;
+            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGAConstant.Value = -100;
+            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
             // 
             // cbShowGlint
             // 
@@ -749,6 +792,20 @@
             this.panel3.TabIndex = 67;
             this.panel3.Visible = false;
             // 
+            // trackBarPABlockSize
+            // 
+            this.trackBarPABlockSize.AutoSize = false;
+            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPABlockSize.Maximum = 151;
+            this.trackBarPABlockSize.Minimum = 33;
+            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
+            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPABlockSize.TabIndex = 65;
+            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPABlockSize.Value = 113;
+            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -821,6 +878,33 @@
             this.cbDilateErode.UseVisualStyleBackColor = true;
             this.cbDilateErode.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_6);
             // 
+            // trackBarPAConstant
+            // 
+            this.trackBarPAConstant.AutoSize = false;
+            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
+            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPAConstant.Maximum = 50;
+            this.trackBarPAConstant.Minimum = 5;
+            this.trackBarPAConstant.Name = "trackBarPAConstant";
+            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPAConstant.TabIndex = 64;
+            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPAConstant.Value = 35;
+            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
+            // 
+            // trackBarThresholdEye
+            // 
+            this.trackBarThresholdEye.AutoSize = false;
+            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
+            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdEye.Maximum = 255;
+            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
+            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdEye.TabIndex = 63;
+            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdEye.Value = 70;
+            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
+            // 
             // cbShowPupil
             // 
             this.cbShowPupil.Appearance = System.Windows.Forms.Appearance.Button;
@@ -882,6 +966,20 @@
             this.cbShowIris.TabIndex = 3;
             this.cbShowIris.UseVisualStyleBackColor = false;
             this.cbShowIris.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_2);
+            // 
+            // trackBarControl2
+            // 
+            this.trackBarControl2.AutoSize = false;
+            this.trackBarControl2.Location = new System.Drawing.Point(51, 23);
+            this.trackBarControl2.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarControl2.Maximum = 500;
+            this.trackBarControl2.Minimum = 80;
+            this.trackBarControl2.Name = "trackBarControl2";
+            this.trackBarControl2.Size = new System.Drawing.Size(146, 27);
+            this.trackBarControl2.TabIndex = 2;
+            this.trackBarControl2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarControl2.Value = 200;
+            this.trackBarControl2.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
             // 
             // label9
             // 
@@ -1015,6 +1113,49 @@
             this.cbShowEdges.UseVisualStyleBackColor = false;
             this.cbShowEdges.CheckedChanged += new System.EventHandler(this.cbShowEdges_CheckedChanged);
             // 
+            // trackBarB
+            // 
+            this.trackBarB.AutoSize = false;
+            this.trackBarB.Location = new System.Drawing.Point(18, 32);
+            this.trackBarB.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarB.Maximum = 360;
+            this.trackBarB.Name = "trackBarB";
+            this.trackBarB.Size = new System.Drawing.Size(185, 24);
+            this.trackBarB.TabIndex = 65;
+            this.trackBarB.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarB.Value = 70;
+            this.trackBarB.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
+            // 
+            // trackBarG
+            // 
+            this.trackBarG.AutoSize = false;
+            this.trackBarG.Location = new System.Drawing.Point(18, 60);
+            this.trackBarG.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarG.Maximum = 360;
+            this.trackBarG.Minimum = 5;
+            this.trackBarG.Name = "trackBarG";
+            this.trackBarG.Size = new System.Drawing.Size(185, 24);
+            this.trackBarG.TabIndex = 66;
+            this.trackBarG.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarG.Value = 290;
+            this.trackBarG.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
+            // 
+            // trackBarControl3
+            // 
+            this.trackBarControl3.AutoSize = false;
+            this.trackBarControl3.Location = new System.Drawing.Point(25, 47);
+            this.trackBarControl3.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarControl3.Maximum = 100;
+            this.trackBarControl3.Minimum = 5;
+            this.trackBarControl3.Name = "trackBarControl3";
+            this.trackBarControl3.Size = new System.Drawing.Size(185, 24);
+            this.trackBarControl3.TabIndex = 67;
+            this.trackBarControl3.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarControl3.Value = 30;
+            this.trackBarControl3.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
+            this.trackBarControl3.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
+            this.trackBarControl3.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -1070,7 +1211,7 @@
             this.groupBox15.Controls.Add(this.button1);
             this.groupBox15.Controls.Add(this.button2);
             this.groupBox15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox15.Location = new System.Drawing.Point(0, 267);
+            this.groupBox15.Location = new System.Drawing.Point(0, 351);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(234, 90);
             this.groupBox15.TabIndex = 3;
@@ -1105,7 +1246,7 @@
             this.groupBox9.Controls.Add(this.btnCalibration_Homography);
             this.groupBox9.Controls.Add(this.btnCalibration_Polynomial);
             this.groupBox9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox9.Location = new System.Drawing.Point(0, 52);
+            this.groupBox9.Location = new System.Drawing.Point(0, 136);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
@@ -1148,6 +1289,7 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.rbGlint);
             this.panel5.Controls.Add(this.rbPupilGlint);
             this.panel5.Controls.Add(this.rdOnlyPupil);
             this.panel5.Controls.Add(this.cbGazeSmoothing);
@@ -1155,8 +1297,22 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(234, 52);
+            this.panel5.Size = new System.Drawing.Size(234, 136);
             this.panel5.TabIndex = 61;
+            // 
+            // rbGlint
+            // 
+            this.rbGlint.AutoSize = true;
+            this.rbGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rbGlint.Location = new System.Drawing.Point(8, 47);
+            this.rbGlint.Margin = new System.Windows.Forms.Padding(2);
+            this.rbGlint.Name = "rbGlint";
+            this.rbGlint.Size = new System.Drawing.Size(80, 17);
+            this.rbGlint.TabIndex = 67;
+            this.rbGlint.Text = "Glint Center";
+            this.rbGlint.UseVisualStyleBackColor = true;
+            this.rbGlint.CheckedChanged += new System.EventHandler(this.rbGlint_CheckedChanged);
             // 
             // rbPupilGlint
             // 
@@ -1164,7 +1320,7 @@
             this.rbPupilGlint.Checked = true;
             this.rbPupilGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbPupilGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.rbPupilGlint.Location = new System.Drawing.Point(93, 5);
+            this.rbPupilGlint.Location = new System.Drawing.Point(8, 26);
             this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbPupilGlint.Name = "rbPupilGlint";
             this.rbPupilGlint.Size = new System.Drawing.Size(106, 17);
@@ -1172,7 +1328,6 @@
             this.rbPupilGlint.TabStop = true;
             this.rbPupilGlint.Text = "Pupil-Glint Vector";
             this.rbPupilGlint.UseVisualStyleBackColor = true;
-            this.rbPupilGlint.Visible = false;
             this.rbPupilGlint.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_5);
             // 
             // rdOnlyPupil
@@ -1187,14 +1342,13 @@
             this.rdOnlyPupil.TabIndex = 58;
             this.rdOnlyPupil.Text = "Pupil Center";
             this.rdOnlyPupil.UseVisualStyleBackColor = true;
-            this.rdOnlyPupil.Visible = false;
             this.rdOnlyPupil.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_5);
             // 
             // cbGazeSmoothing
             // 
             this.cbGazeSmoothing.Checked = true;
             this.cbGazeSmoothing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbGazeSmoothing.Location = new System.Drawing.Point(8, 26);
+            this.cbGazeSmoothing.Location = new System.Drawing.Point(7, 115);
             this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2);
             this.cbGazeSmoothing.Name = "cbGazeSmoothing";
             this.cbGazeSmoothing.Size = new System.Drawing.Size(148, 17);
@@ -2123,6 +2277,16 @@
             this.panel2.Size = new System.Drawing.Size(589, 662);
             this.panel2.TabIndex = 74;
             // 
+            // imSceneProcessed
+            // 
+            this.imSceneProcessed.Dock = System.Windows.Forms.DockStyle.Left;
+            this.imSceneProcessed.Location = new System.Drawing.Point(60, 0);
+            this.imSceneProcessed.Name = "imSceneProcessed";
+            this.imSceneProcessed.Size = new System.Drawing.Size(250, 662);
+            this.imSceneProcessed.TabIndex = 75;
+            this.imSceneProcessed.TabStop = false;
+            this.imSceneProcessed.Paint += new System.Windows.Forms.PaintEventHandler(this.imSceneProcessed_Paint);
+            // 
             // imScene
             // 
             this.imScene.Dock = System.Windows.Forms.DockStyle.Left;
@@ -2242,7 +2406,7 @@
             // 
             // splitter7
             // 
-            this.splitter7.Location = new System.Drawing.Point(562, 0);
+            this.splitter7.Location = new System.Drawing.Point(506, 0);
             this.splitter7.Margin = new System.Windows.Forms.Padding(2);
             this.splitter7.Name = "splitter7";
             this.splitter7.Size = new System.Drawing.Size(2, 24);
@@ -2253,7 +2417,7 @@
             // 
             this.lblIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblIP.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblIP.Location = new System.Drawing.Point(434, 0);
+            this.lblIP.Location = new System.Drawing.Point(378, 0);
             this.lblIP.Margin = new System.Windows.Forms.Padding(2);
             this.lblIP.Multiline = true;
             this.lblIP.Name = "lblIP";
@@ -2265,7 +2429,7 @@
             // 
             // splitter6
             // 
-            this.splitter6.Location = new System.Drawing.Point(432, 0);
+            this.splitter6.Location = new System.Drawing.Point(376, 0);
             this.splitter6.Margin = new System.Windows.Forms.Padding(2);
             this.splitter6.Name = "splitter6";
             this.splitter6.Size = new System.Drawing.Size(2, 24);
@@ -2274,18 +2438,19 @@
             // 
             // lblGlintCenter
             // 
+            this.lblGlintCenter.AutoSize = true;
             this.lblGlintCenter.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblGlintCenter.Location = new System.Drawing.Point(341, 0);
+            this.lblGlintCenter.Location = new System.Drawing.Point(314, 0);
             this.lblGlintCenter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGlintCenter.Name = "lblGlintCenter";
-            this.lblGlintCenter.Size = new System.Drawing.Size(91, 24);
+            this.lblGlintCenter.Size = new System.Drawing.Size(62, 13);
             this.lblGlintCenter.TabIndex = 66;
             this.lblGlintCenter.Text = "Glint Center";
             this.lblGlintCenter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // splitter3
             // 
-            this.splitter3.Location = new System.Drawing.Point(339, 0);
+            this.splitter3.Location = new System.Drawing.Point(312, 0);
             this.splitter3.Margin = new System.Windows.Forms.Padding(2);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(2, 24);
@@ -2294,11 +2459,12 @@
             // 
             // lblPupilCenter
             // 
+            this.lblPupilCenter.AutoSize = true;
             this.lblPupilCenter.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblPupilCenter.Location = new System.Drawing.Point(248, 0);
             this.lblPupilCenter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPupilCenter.Name = "lblPupilCenter";
-            this.lblPupilCenter.Size = new System.Drawing.Size(91, 24);
+            this.lblPupilCenter.Size = new System.Drawing.Size(64, 13);
             this.lblPupilCenter.TabIndex = 64;
             this.lblPupilCenter.Text = "Pupil Center";
             this.lblPupilCenter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2349,156 +2515,6 @@
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
-            // imSceneProcessed
-            // 
-            this.imSceneProcessed.Dock = System.Windows.Forms.DockStyle.Left;
-            this.imSceneProcessed.Location = new System.Drawing.Point(60, 0);
-            this.imSceneProcessed.Name = "imSceneProcessed";
-            this.imSceneProcessed.Size = new System.Drawing.Size(250, 662);
-            this.imSceneProcessed.TabIndex = 75;
-            this.imSceneProcessed.TabStop = false;
-            this.imSceneProcessed.Paint += new System.Windows.Forms.PaintEventHandler(this.imSceneProcessed_Paint);
-            // 
-            // trackBarGABlockSize
-            // 
-            this.trackBarGABlockSize.AutoSize = false;
-            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGABlockSize.Maximum = 151;
-            this.trackBarGABlockSize.Minimum = 33;
-            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
-            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGABlockSize.TabIndex = 65;
-            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGABlockSize.Value = 113;
-            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
-            // 
-            // trackBarThresholdGlint
-            // 
-            this.trackBarThresholdGlint.AutoSize = false;
-            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
-            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdGlint.Maximum = 255;
-            this.trackBarThresholdGlint.Minimum = 120;
-            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
-            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdGlint.TabIndex = 67;
-            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdGlint.Value = 200;
-            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
-            // 
-            // trackBarGAConstant
-            // 
-            this.trackBarGAConstant.AutoSize = false;
-            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
-            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGAConstant.Maximum = 0;
-            this.trackBarGAConstant.Minimum = -100;
-            this.trackBarGAConstant.Name = "trackBarGAConstant";
-            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGAConstant.TabIndex = 68;
-            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGAConstant.Value = -100;
-            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
-            // 
-            // trackBarPABlockSize
-            // 
-            this.trackBarPABlockSize.AutoSize = false;
-            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPABlockSize.Maximum = 151;
-            this.trackBarPABlockSize.Minimum = 33;
-            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
-            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPABlockSize.TabIndex = 65;
-            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPABlockSize.Value = 113;
-            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
-            // 
-            // trackBarPAConstant
-            // 
-            this.trackBarPAConstant.AutoSize = false;
-            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
-            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPAConstant.Maximum = 50;
-            this.trackBarPAConstant.Minimum = 5;
-            this.trackBarPAConstant.Name = "trackBarPAConstant";
-            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPAConstant.TabIndex = 64;
-            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPAConstant.Value = 35;
-            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
-            // 
-            // trackBarThresholdEye
-            // 
-            this.trackBarThresholdEye.AutoSize = false;
-            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
-            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdEye.Maximum = 255;
-            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
-            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdEye.TabIndex = 63;
-            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdEye.Value = 70;
-            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
-            // 
-            // trackBarControl2
-            // 
-            this.trackBarControl2.AutoSize = false;
-            this.trackBarControl2.Location = new System.Drawing.Point(51, 23);
-            this.trackBarControl2.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarControl2.Maximum = 500;
-            this.trackBarControl2.Minimum = 80;
-            this.trackBarControl2.Name = "trackBarControl2";
-            this.trackBarControl2.Size = new System.Drawing.Size(146, 27);
-            this.trackBarControl2.TabIndex = 2;
-            this.trackBarControl2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarControl2.Value = 200;
-            this.trackBarControl2.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
-            // 
-            // trackBarB
-            // 
-            this.trackBarB.AutoSize = false;
-            this.trackBarB.Location = new System.Drawing.Point(18, 32);
-            this.trackBarB.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarB.Maximum = 360;
-            this.trackBarB.Name = "trackBarB";
-            this.trackBarB.Size = new System.Drawing.Size(185, 24);
-            this.trackBarB.TabIndex = 65;
-            this.trackBarB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarB.Value = 70;
-            this.trackBarB.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
-            // 
-            // trackBarG
-            // 
-            this.trackBarG.AutoSize = false;
-            this.trackBarG.Location = new System.Drawing.Point(18, 60);
-            this.trackBarG.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarG.Maximum = 360;
-            this.trackBarG.Minimum = 5;
-            this.trackBarG.Name = "trackBarG";
-            this.trackBarG.Size = new System.Drawing.Size(185, 24);
-            this.trackBarG.TabIndex = 66;
-            this.trackBarG.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarG.Value = 290;
-            this.trackBarG.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
-            // 
-            // trackBarControl3
-            // 
-            this.trackBarControl3.AutoSize = false;
-            this.trackBarControl3.Location = new System.Drawing.Point(25, 47);
-            this.trackBarControl3.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarControl3.Maximum = 100;
-            this.trackBarControl3.Minimum = 5;
-            this.trackBarControl3.Name = "trackBarControl3";
-            this.trackBarControl3.Size = new System.Drawing.Size(185, 24);
-            this.trackBarControl3.TabIndex = 67;
-            this.trackBarControl3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarControl3.Value = 30;
-            this.trackBarControl3.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
-            this.trackBarControl3.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
-            this.trackBarControl3.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2529,18 +2545,28 @@
             this.groupBox5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).EndInit();
             this.tabPage_Scene.ResumeLayout(false);
             this.tabPage_Scene.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox21.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).EndInit();
             this.tabPage_Calibration.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
@@ -2597,6 +2623,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).EndInit();
             this.groupBox_imgScene.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).EndInit();
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
@@ -2605,17 +2632,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2788,6 +2804,7 @@
 		private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox imSceneProcessed;
+        private System.Windows.Forms.RadioButton rbGlint;
     }
 }
 

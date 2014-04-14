@@ -158,7 +158,7 @@ namespace Haytham
 
 
 
-              //  DrawBlobImage();
+               DrawBlobImage();
                   
             }
             catch (Exception error)
@@ -172,7 +172,7 @@ namespace Haytham
 
 
 
-        private void DrawBlobImage()
+        public void DrawBlobImage()
         {
 
 
@@ -195,7 +195,7 @@ namespace Haytham
             this.image.UnlockBits(data);
         }
 
-        public PointF[] GetBlobBorder(Blob blob, Rectangle   transferROI,Size fullImageSize, out bool somePointsAreOnROIBorder)
+        public AForge.Point[] GetBlobBorder(Blob blob, Rectangle   transferROI,Size fullImageSize, out bool somePointsAreOnROIBorder)
         {
             bool temp = false;
             List<IntPoint> edgePoints = new List<IntPoint>();
@@ -213,14 +213,14 @@ namespace Haytham
 
             // Convert list of AForge.NET's IntPoint to array of .NET's Point
 
-            PointF[] border = new PointF[edgePoints.Count];
+            AForge.Point[] border = new AForge.Point[edgePoints.Count];
 
             int fromBorders=3;
 
             for (int i = 0, n = edgePoints.Count; i < n; i++)
             {
 
-                border[i] = new PointF(edgePoints[i].X+transferROI.X , edgePoints[i].Y+transferROI.Y );
+                border[i] = new AForge.Point(edgePoints[i].X+transferROI.X , edgePoints[i].Y+transferROI.Y );
 
                 if ((border[i].X < fromBorders || border[i].X > fullImageSize.Width - fromBorders) || (border[i].Y < fromBorders || border[i].Y > fullImageSize.Height - fromBorders)) temp = true;
 

@@ -36,7 +36,7 @@ namespace Haytham
         public struct RectangleGazeData
         {
             public string tag { get; set; }
-            public Point rectangleGaze { get; set; }
+            public AForge.Point rectangleGaze { get; set; }
             // 
         }
         public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
@@ -184,7 +184,7 @@ namespace Haytham
                 //show min size rect
                 if (METState.Current.showScreenSize)
                 {
-                    PointF RECTcenter = new PointF(METState.Current.SceneImageForShow.Width / 2, METState.Current.SceneImageForShow.Height / 2);
+                    AForge.Point RECTcenter = new AForge.Point(METState.Current.SceneImageForShow.Width / 2, METState.Current.SceneImageForShow.Height / 2);
                     SizeF RECTsize = new SizeF(((float)(rectangleMinSize) / 100.0f) * METState.Current.SceneImageForShow.Width, ((float)(rectangleMinSize) / 100.0f) * METState.Current.SceneImageForShow.Height);
                     EmgImgProcssing.DrawRectangle(METState.Current.SceneImageForShow, RECTcenter, RECTsize);
                 }
@@ -208,11 +208,11 @@ namespace Haytham
 
         }
 
-        public Point CalculateRectangleGazeMedian(int frames, int startFrom)
+        public AForge.Point CalculateRectangleGazeMedian(int frames, int startFrom)
         {
-            Point M = new Point();
-            int[] Cx = new int[frames];
-            int[] Cy = new int[frames];
+            AForge.Point M = new AForge.Point();
+            float[] Cx = new float[frames];
+            float[] Cy = new float[frames];
 
 
             for (int i = 0; i < frames; i++)
@@ -222,12 +222,12 @@ namespace Haytham
 
             }
 
-            M.X = (int)FindMedian(Cx);
-            M.Y = (int)FindMedian(Cy);
+            M.X = (float)FindMedian(Cx);
+            M.Y = (float)FindMedian(Cy);
             return M;
         }
 
-        public static double FindMedian(int[] numbers)
+        public static float FindMedian(float[] numbers)
         {
 
             //middle value has the middle value incase of an even number of elemenets,
@@ -236,7 +236,7 @@ namespace Haytham
 
             //or Floor value incase of an odd array.
 
-            double median = 0;
+            float median = 0;
 
             int middleValue = 0;
 
@@ -258,7 +258,7 @@ namespace Haytham
             {
                 middleValue = Convert.ToInt32(Math.Floor(half));
 
-                median = (double)(numbers[middleValue] + numbers[middleValue + 1]) / 2;
+                median = (float)(numbers[middleValue] + numbers[middleValue + 1]) / 2;
             }
 
             return median;
@@ -300,7 +300,7 @@ namespace Haytham
 
         }
 
-        public Point CalculateRectangleGazePoint(PointF gaze, Calibration calibration)
+        public AForge.Point CalculateRectangleGazePoint(AForge.Point gaze, Calibration calibration)
         {
 
             // METState.Current.ProcessTimeSceneBranch.Timer("CalculateMonitorGazePoint", "Start");
@@ -353,8 +353,8 @@ namespace Haytham
             //     ProjectedScreenCorners[i].Y = (int)Convert.ChangeType(dst2[1, 0] / dst2[2, 0], typeof(int));
             //}
             #endregion
-            Point MonitorGaze;
-            MonitorGaze =Point.Round( calibration.Map(gaze.X, gaze.Y, 0, 0));
+            AForge.Point MonitorGaze;
+            MonitorGaze = (calibration.Map(gaze.X, gaze.Y, 0, 0));//AForge.Point
 
             rectangleGazeData_Shift();
 
@@ -366,10 +366,10 @@ namespace Haytham
             return MonitorGaze;
         }
 
-        public Point GetGazeBeforeGesture(out int index, out bool found)
+        public AForge.Point GetGazeBeforeGesture(out int index, out bool found)
         {
             bool firstStop = true;
-            Point g = new Point(0, 0);
+            AForge.Point g = new AForge.Point(0, 0);
             index = 0;
             found = false;
             for (int i = 0; i < rectangleGazeData.Count(); i++)

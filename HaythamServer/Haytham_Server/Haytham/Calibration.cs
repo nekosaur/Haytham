@@ -14,7 +14,7 @@ namespace Haytham
         public calibration_type CalibrationType;
         public int CalibrationTarget = 0;
 
-        public List<PointF> ScenePoints = new List<PointF>();//Just used for drawing the points during calibration
+        public List<AForge.Point> ScenePoints = new List<AForge.Point>();//Just used for drawing the points during calibration
 
         public Matrix<double> Destination = new Matrix<double>(2, 9);
         public Matrix<double> Source = new Matrix<double>(2, 9);
@@ -125,9 +125,9 @@ namespace Haytham
 
         }
 
-        public PointF Map(float inputX, float inputY, float errorX, float errorY)
+        public AForge.Point Map(float inputX, float inputY, float errorX, float errorY)
         {
-            PointF output = new PointF();
+            AForge.Point output = new AForge.Point();
             switch (CalibrationType)
             {
                 case Calibration.calibration_type.calib_Polynomial:

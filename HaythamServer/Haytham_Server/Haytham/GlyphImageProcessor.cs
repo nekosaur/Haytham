@@ -28,7 +28,7 @@ namespace Haytham
         {
 
             public string tag { get; set; }
-            public PointF gaze { get; set; }
+            public AForge.Point gaze { get; set; }
             public Point markerCenter { get; set; }
             public string name { get; set; }
 
@@ -1180,7 +1180,7 @@ namespace Haytham
         /// </summary>
         /// <param name="gaze"></param>
         /// <returns></returns>
-        public string GetDetectedGlyphsDistanceAngleString(PointF gaze)
+        public string GetDetectedGlyphsDistanceAngleString(AForge.Point gaze)
         {
             string st = "";
             if (foundGlyphs.Count == 0) st = "Nothing";
@@ -1204,7 +1204,7 @@ namespace Haytham
         /// <param name="gaze"></param>
         /// <param name="diameter"></param>in percent (e.g. 150% of marker size)
         /// <returns></returns>
-        public string GetGazedGlyph( PointF gaze, double diameter)
+        public string GetGazedGlyph( AForge.Point gaze, double diameter)
         {
 
             ExtractedGlyphData myGlyph = null; //foundGlyphs[0];
@@ -1219,7 +1219,7 @@ namespace Haytham
 
                 PointsCloud.GetBoundingRectangle(glyphData.Quadrilateral, out minXY, out maxXY);
                 center = (minXY + maxXY) / 2;
-                double dis = GetDistance(new Point(center.X, center.Y), Point.Round( gaze));
+                double dis = GetDistance(new Point(center.X, center.Y), new Point((int)gaze.X, (int)gaze.Y));
                 if (dis < min)
                 {
                     myGlyph = glyphData;
@@ -1254,13 +1254,13 @@ namespace Haytham
         /// <param name="glyph"></param>
         /// <param name="gaze"></param>
         /// <returns></returns>
-        public double  getGazeDistance(ExtractedGlyphData glyph, PointF gaze)
+        public double  getGazeDistance(ExtractedGlyphData glyph, AForge.Point gaze)
         {
             double  dis = 0;
             AForge.IntPoint minXY, maxXY;
             PointsCloud.GetBoundingRectangle(glyph.Quadrilateral, out minXY, out maxXY);
             AForge.IntPoint center = (minXY + maxXY) / 2;
-             dis = GetDistance(new Point(center.X, center.Y),Point.Round( gaze));
+             dis = GetDistance(new Point(center.X, center.Y),new Point((int)gaze.X,(int)gaze.Y));
 
 
              PointsCloud.GetBoundingRectangle(glyph.Quadrilateral, out minXY, out maxXY);
@@ -1278,7 +1278,7 @@ namespace Haytham
         /// <param name="glyph"></param>
         /// <param name="gaze"></param>
         /// <returns></returns>
-        public int getGazeAngle(ExtractedGlyphData glyph, PointF gaze)
+        public int getGazeAngle(ExtractedGlyphData glyph, AForge.Point gaze)
         {
             int angle = 0;
             //gaze
@@ -1311,7 +1311,7 @@ namespace Haytham
             return angle;
 
         }
-        public void gazedMarkerHistory_Update(ExtractedGlyphData glyph, PointF  gaze)
+        public void gazedMarkerHistory_Update(ExtractedGlyphData glyph, AForge.Point  gaze)
         {
             gazedMarkerHistory_Shift();
 
