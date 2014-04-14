@@ -50,13 +50,13 @@ namespace Haytham
 
             //PUPIL
             public bool pupilFound { get; set; }
-            public Point pupilCenter { get; set; }
+            public AForge.Point pupilCenter { get; set; }
             public Ellipse pupilEllipse { get; set; }
 
             public int pupilDiameter { get; set; }
 
             //GLINT
-            public Point glintCenter { get; set; }
+            public AForge.Point glintCenter { get; set; }
 
         }
 
@@ -65,7 +65,7 @@ namespace Haytham
 
         //Pupil
 
-        private Point pupilBlobCenter;
+        private AForge.Point pupilBlobCenter;
         public Blob_Aforge PupilBlob = null;
         public Rectangle pupilROI;
 
@@ -101,12 +101,29 @@ namespace Haytham
 
         //....................................................................................................
 
-
-        public Point GetPupilCenterMedian(int frames)
+        public AForge.Point GetGlintCenterMedian(int frames)
         {
-            Point M = new Point();
-            int[] Cx = new int[frames];
-            int[] Cy = new int[frames];
+            AForge.Point M = new AForge.Point();
+            float[] Cx = new float[frames];
+            float[] Cy = new float[frames];
+
+
+            for (int i = 0; i < frames; i++)
+            {
+                Cx[i] = eyeData[i].glintCenter.X;
+                Cy[i] = eyeData[i].glintCenter.Y;
+
+            }
+
+            M.X = (float)EmgImgProcssing.FindMedian(Cx);
+            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
+            return M;
+        }
+        public AForge.Point GetPupilCenterMedian(int frames)
+        {
+            AForge.Point M = new AForge.Point();
+            float[] Cx = new float[frames];
+            float[] Cy = new float[frames];
 
 
             for (int i = 0; i < frames; i++)
@@ -116,15 +133,15 @@ namespace Haytham
 
             }
 
-            M.X = (int)EmgImgProcssing.FindMedian(Cx);
-            M.Y = (int)EmgImgProcssing.FindMedian(Cy);
+            M.X = (float)EmgImgProcssing.FindMedian(Cx);
+            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
             return M;
         }
-        public Point GetPupilGlintVectorMedian(int frames)
+        public AForge.Point GetPupilGlintVectorMedian(int frames)
         {
-            Point M = new Point();
-            int[] Cx = new int[frames];
-            int[] Cy = new int[frames];
+            AForge.Point M = new AForge.Point();
+            float[] Cx = new float[frames];
+            float[] Cy = new float[frames];
 
 
             for (int i = 0; i < frames; i++)
@@ -134,21 +151,21 @@ namespace Haytham
 
             }
 
-            M.X = (int)EmgImgProcssing.FindMedian(Cx);
-            M.Y = (int)EmgImgProcssing.FindMedian(Cy);
+            M.X = (float)EmgImgProcssing.FindMedian(Cx);
+            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
             return M;
         }
         public SizeF GetPupilEllipseSizeMedian(int frames)
         {
             SizeF M = new SizeF();
-            int[] Cx = new int[frames];
-            int[] Cy = new int[frames];
+            float[] Cx = new float[frames];
+            float[] Cy = new float[frames];
 
 
             for (int i = 0; i < frames; i++)
             {
-                Cx[i] = (int)eyeData[i].pupilEllipse.MCvBox2D.size.Width;
-                Cy[i] = (int)eyeData[i].pupilEllipse.MCvBox2D.size.Height;
+                Cx[i] = (float)eyeData[i].pupilEllipse.MCvBox2D.size.Width;
+                Cy[i] = (float)eyeData[i].pupilEllipse.MCvBox2D.size.Height;
 
             }
 
@@ -170,8 +187,8 @@ namespace Haytham
             if (METState.Current.detectPupil & eyeData[1].pupilFound)
             {
                 glintROI = new Rectangle(
-                    Math.Max( eyeData[1].pupilCenter.X - d / 2,0),
-                      Math.Max(eyeData[1].pupilCenter.Y - d / 2, 0),
+                    Math.Max( Convert.ToInt32 (eyeData[1].pupilCenter.X) - d / 2,0),
+                      Math.Max(Convert.ToInt32(eyeData[1].pupilCenter.Y) - d / 2, 0),
                       Math.Min(d, GrayImg.Width ),
                       Math.Min(d, GrayImg.Height)
 
@@ -210,13 +227,13 @@ namespace Haytham
 
            // GrayImg = GrayImg.Erode(1).Dilate(1);
 
-            GrayImg = GrayImg.Dilate(1).Erode(1);
+           // GrayImg = GrayImg.Dilate(1).Erode(1);
 
 
-            Point tempGlintCenter = new Point(0, 0);
+            AForge.Point tempGlintCenter = new AForge.Point(0, 0);
 
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Start");
-            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 5, 20, 5, 20, 0.5, 10);
+            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 4, 20, 4, 20, 0.4, 10);
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Stop");
 
 
@@ -273,12 +290,12 @@ namespace Haytham
 
 
         }
-        public Point CorrectGlintPoint(AForge.Point inp)
+        public AForge.Point CorrectGlintPoint(AForge.Point inp)
         {
-            Point oup = new Point();
+            AForge.Point oup = new AForge.Point();
 
-            oup.X = (int)inp.X * glintPyrLevel + glintROI.X;
-            oup.Y = (int)inp.Y * glintPyrLevel + glintROI.Y;
+            oup.X = (float)inp.X * glintPyrLevel + glintROI.X;
+            oup.Y = (float)inp.Y * glintPyrLevel + glintROI.Y;
 
 
             return oup;
@@ -428,7 +445,7 @@ namespace Haytham
         }
         public void DetectPupilBlob(Image<Gray, Byte> inputimg, int fullSizeImageW, int fullSizeImageH)
         {
-            pupilBlobCenter = new Point(0, 0);
+            pupilBlobCenter = new AForge.Point(0, 0);
 
             //Blob_Aforge PupilBlob;
             //PupilBlob = new Blob_Aforge(inputimg.Bitmap,
@@ -496,15 +513,15 @@ namespace Haytham
 
 
                 //get SelectedBlob   
-                pupilBlobCenter.X = (int)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.X;
-                pupilBlobCenter.Y = (int)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.Y;
+                pupilBlobCenter.X = (float)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.X;
+                pupilBlobCenter.Y = (float)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.Y;
 
                 //  pupildata[0].pupilFound = true;//.............2
 
 
                 bool blobOnROIBorder;
 
-                PointF[] border = PupilBlob.GetBlobBorder(PupilBlob.SelectedBlob, pupilROI, new Size(fullSizeImageW, fullSizeImageH), out blobOnROIBorder);
+                AForge.Point[] border = PupilBlob.GetBlobBorder(PupilBlob.SelectedBlob, pupilROI, new Size(fullSizeImageW, fullSizeImageH), out blobOnROIBorder);
 
 
                 // pupildata[0].pupilEllipse = EmgImgProcssing.EllipseLeastSquareFitting(border);//.................2
@@ -615,9 +632,9 @@ namespace Haytham
             return d;
         }
 
-        public Point MeasureCenter()
+        public AForge.Point MeasureCenter()
         {
-            Point c = new Point(0, 0);
+            AForge.Point c = new AForge.Point(0, 0);
 
             if (eyeData[0].pupilFound)
             {
@@ -641,7 +658,7 @@ namespace Haytham
 
         }
 
-        public void pupildata_Update(Point pupilCenter, int pupilDiameter)
+        public void pupildata_Update(AForge.Point pupilCenter, int pupilDiameter)
         {
 
 
@@ -801,7 +818,7 @@ namespace Haytham
                     H = W;
 
                 }
-                pupilROI = new Rectangle(eyeData[1].pupilCenter.X - (W / 2), eyeData[1].pupilCenter.Y - (H / 2), W, H);
+                pupilROI = new Rectangle((int)eyeData[1].pupilCenter.X - (W / 2), (int)eyeData[1].pupilCenter.Y - (H / 2), W, H);
                 LargScan = false;
 
             }
@@ -911,9 +928,8 @@ namespace Haytham
 
 
 
-            Point c;
+            Point c = new Point((int)eyeData[0].pupilCenter.X, (int)eyeData[0].pupilCenter.Y);
 
-            c = eyeData[0].pupilCenter;
             switch (index)
             {
                 case 1:
@@ -970,9 +986,9 @@ namespace Haytham
 
             return OK;
         }
-        public Point GetEyeFeature(EyeData eyedata)
+        public AForge.Point GetEyeFeature(EyeData eyedata)
         {
-            Point pnt = new Point(0,0);
+            AForge.Point pnt = new AForge.Point(0, 0);
 
             if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Pupil)
             {
@@ -985,6 +1001,12 @@ namespace Haytham
                 pnt.X = eyedata.glintCenter.X - eyedata.pupilCenter.X;
                 pnt.Y = eyedata.glintCenter.Y - eyedata.pupilCenter.Y;
                 if (METState.Current.GazeSmoother) pnt = GetPupilGlintVectorMedian(METState.Current.gazeMedian);
+            }
+            else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Glint)
+            {
+                pnt.X = eyedata.glintCenter.X ;
+                pnt.Y = eyedata.glintCenter.Y ;
+                if (METState.Current.GazeSmoother) pnt = GetGlintCenterMedian(METState.Current.gazeMedian);
 
             }
             return pnt;

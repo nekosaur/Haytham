@@ -174,15 +174,15 @@ namespace Haytham
         //Gaze
         public Boolean ShowGaze;
         public Boolean GazeSmoother = false;
-        public PointF Gaze;
+        public AForge.Point Gaze;
         public float GazeErrorX = 0;
         public float GazeErrorY = 0;
-        public int gazeMedian = 5;
+        public int gazeMedian = 10;
         //calibration
-        public enum Calibration_EyeFeature { Pupil, PupilGlintVector };
+        public enum Calibration_EyeFeature { Pupil, PupilGlintVector,Glint };
         public Calibration_EyeFeature calibration_eyeFeature;
 
-        public PointF eyeFeature;
+        public AForge.Point eyeFeature;
         //remote
         public RemoteCalibration remoteCalibration;
 

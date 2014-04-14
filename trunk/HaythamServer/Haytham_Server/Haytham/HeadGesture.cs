@@ -213,8 +213,10 @@ namespace Haytham
         /// <remarks>
         ///  unknown characters will be filtered out.
         /// </remarks>
-        public void AddSegment(Point PCenter1, Point PCenter0)
+        public void AddSegment(AForge.Point PCenter1F, AForge.Point PCenter0F)
         {
+            Point PCenter0=new Point((int)PCenter0F.X,(int)PCenter0F.Y);
+            Point PCenter1 = new Point((int)PCenter1F.X, (int)PCenter1F.Y);
 
             double segmentVelocity = GetDistance(PCenter1, PCenter0);
 
@@ -999,8 +1001,8 @@ namespace Haytham
         /// <returns>Distance between two points</returns>
         private static double GetDistance(Point p1, Point p2)
         {
-            int dx = p1.X - p2.X;
-            int dy = p1.Y - p2.Y;
+            float dx = p1.X - p2.X;
+            float dy = p1.Y - p2.Y;
 
             return Math.Sqrt(dx * dx + dy * dy);
         }

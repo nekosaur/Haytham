@@ -217,8 +217,9 @@ namespace Haytham
 			//if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
 			//if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
 
-			if (cbGlintDetection.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
-			else METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
+            else if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            else if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
 
 			METState.Current.glintThreshold = trackBarThresholdGlint.Value;
 
@@ -323,12 +324,12 @@ namespace Haytham
 
 
 
-			Point gaze = e.HasBegining ? METState.Current.METCoreObject.GetClientGazeBeforeGesture() : new Point(0, 0);
+			AForge.Point gaze = e.HasBegining ? METState.Current.METCoreObject.GetClientGazeBeforeGesture() : new AForge.Point(0, 0);
 
 			int index = 0;
 			bool found = false;
 			string gazedMarker = METState.Current.visualMarker.GetGazedMarkerBeforeGesture(out index, out found);
-			METState.Current.server.Send("Commands", new string[] { gaze.X.ToString(), gaze.Y.ToString(), gazedMarker, e.Gesture });
+			METState.Current.server.Send("Commands", new string[] {((int) gaze.X).ToString(), ((int)gaze.Y).ToString(), gazedMarker, e.Gesture });
 
 
 			UpdateControl("", "timerReset");
@@ -707,7 +708,7 @@ namespace Haytham
 							if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 9 & btnCalibration_Polynomial.Enabled == false)
 							{
 
-								METState.Current.EyeToScene_Mapping.ScenePoints.Add(new PointF(e.X, e.Y));
+								METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
 								METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
 								METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
 
@@ -735,7 +736,7 @@ namespace Haytham
 							if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 4 & btnCalibration_Homography.Enabled == false)
 							{
 
-								METState.Current.EyeToScene_Mapping.ScenePoints.Add(new PointF(e.X, e.Y));
+								METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
 								METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
 								METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
 
@@ -762,7 +763,7 @@ namespace Haytham
 				}
 				else
 				{
-					PointF Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
+					AForge.Point Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
 
 					METState.Current.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
 					METState.Current.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
@@ -1091,8 +1092,9 @@ namespace Haytham
 		private void checkBox2_CheckedChanged_7(object sender, EventArgs e)
 		{
 			METState.Current.detectGlint = cbGlintDetection.Checked;
-			if (cbGlintDetection.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
-			else METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
+            else if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
+            else if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
 
 		}
 
@@ -1311,7 +1313,7 @@ namespace Haytham
 			lbl_calibration.Text = "Click on 9 points in the scene image while the user is looking at the corresponding points in the field of view";
 			lbl_calibration.Visible = true;
 
-			METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
+			METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
 			METState.Current.GazeErrorX = 0;
 			METState.Current.GazeErrorY = 0;
 
@@ -1330,7 +1332,7 @@ namespace Haytham
 			lbl_calibration.Text = "Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view";
 			lbl_calibration.Visible = true;
 
-			METState.Current.EyeToScene_Mapping.ScenePoints = new List<PointF>();
+			METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
 			METState.Current.GazeErrorX = 0;
 			METState.Current.GazeErrorY = 0;
 
@@ -1552,7 +1554,12 @@ namespace Haytham
 					}
 					else
 					{
-						lblPupilCenter.Text = message.ToString();
+                        if (message != "NoPupil")
+                        {
+                            AForge.Point p = (AForge.Point)message;
+                            lblPupilCenter.Text = "pupil: (" + ((int)p.X).ToString() + "," + ((int)p.Y).ToString() + ")";
+                        }
+                        else lblPupilCenter.Text = message.ToString();
 					}
 					break;
 				case "lblGC"://test
@@ -1562,7 +1569,13 @@ namespace Haytham
 					}
 					else
 					{
-						lblGlintCenter.Text = message.ToString();
+                        if (message != "NoGlint")
+                        {
+                            AForge.Point p = (AForge.Point)message;
+                            lblGlintCenter.Text = "glint: (" + ((int)p.X).ToString() + "," + ((int)p.Y).ToString() + ")";
+                        }
+                        else lblGlintCenter.Text = message.ToString();
+
 					}
 					break;
 
@@ -2238,6 +2251,12 @@ namespace Haytham
 		{
 			METState.Current.DataHandler.Clear();
 		}
+
+        private void rbGlint_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
+
+        }
 
 
 

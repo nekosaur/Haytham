@@ -48,7 +48,7 @@ namespace Haytham
 		public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
 
 		//for debug
-		Point pgaze = new Point(0, 0);
+        System.Drawing.Point pgaze = new System.Drawing.Point(0, 0);
 
 
 		public void EyeFrameCaptured(object sender, NewFrameEventArgs eventArgs)
@@ -161,7 +161,7 @@ namespace Haytham
 					METState.Current.eye.FindGlint(e.image, METState.Current.glintThreshold);// Glintcenter=(0,0) if there is no glint
 					// if (!METState.Current.detectPupil) EmgImgProcssing.DrawCircle(METState.Current.EyeImageForShow, METState.Current.EyeImageForShow.Width / 2, METState.Current.EyeImageForShow.Height / 2, (int)(METState.Current.IrisDiameter));
 				}
-				if (METState.Current.eye.eyeData[0].glintCenter != new Point(0, 0)) SendToForm(METState.Current.eye.eyeData[0].glintCenter, "lblGC");
+				if (METState.Current.eye.eyeData[0].glintCenter != new AForge. Point(0, 0)) SendToForm(METState.Current.eye.eyeData[0].glintCenter, "lblGC");
 				else SendToForm("NoGlint", "lblGC");
 
 				METState.Current.ProcessTimeEyeBranch.Timer("Find Glint", "Stop");
@@ -257,7 +257,7 @@ namespace Haytham
 
 			#region glint Drawing (injast chon mikham rooye drawing pupil biofte)
 
-			if (METState.Current.detectGlint && METState.Current.eye.eyeData[0].glintCenter != new Point(0, 0))
+            if (METState.Current.detectGlint && METState.Current.eye.eyeData[0].glintCenter != new AForge.Point(0, 0))
 			{
 				if (METState.Current.showGlint)
 				{
@@ -291,9 +291,9 @@ namespace Haytham
 					{
 
 						if (METState.Current.detectPupil & METState.Current.eye.eyeData[1].pupilFound)
-							EmgImgProcssing.DrawLine(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].glintCenter, METState.Current.eye.eyeData[0].pupilCenter, Color.Black);
+                            EmgImgProcssing.DrawLine(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].glintCenter, METState.Current.eye.eyeData[0].pupilCenter, System.Drawing.Color.Black);
 						else if (!METState.Current.detectPupil)
-							EmgImgProcssing.DrawCross(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].glintCenter.X, METState.Current.eye.eyeData[0].glintCenter.Y, Color.Green);
+                            EmgImgProcssing.DrawCross(METState.Current.EyeImageForShow, (int)METState.Current.eye.eyeData[0].glintCenter.X, (int)METState.Current.eye.eyeData[0].glintCenter.Y, System.Drawing.Color.Green);
 					}
 				}
 			}
@@ -314,11 +314,11 @@ namespace Haytham
 				{
 					METState.Current.Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY);
 
-					METState.Current.Gaze = PointF.Subtract(METState.Current.Gaze, new Size(METState.Current.remoteCalibration.ScreenTopLeft));
 
-					METState.Current.Gaze = Point.Round(METState.Current.Gaze);
+                    METState.Current.Gaze = new AForge.Point((int)METState.Current.Gaze.X,(int)METState.Current.Gaze.Y);
+                    METState.Current.Gaze = AForge.Point.Subtract(METState.Current.Gaze, new AForge.Point(METState.Current.remoteCalibration.ScreenTopLeft.X, METState.Current.remoteCalibration.ScreenTopLeft.Y));
 
-					METState.Current.server.Send("Gaze", new string[] { METState.Current.Gaze.X.ToString(), METState.Current.Gaze.Y.ToString() });
+					METState.Current.server.Send("Gaze", new string[] { ((int)METState.Current.Gaze.X).ToString(), ((int)METState.Current.Gaze.Y).ToString() });
 
 				}
 
@@ -427,9 +427,9 @@ namespace Haytham
 
 					Size ROI_Size = new Size(METState.Current.monitor.RectangleCorners[1].X - METState.Current.monitor.RectangleCorners[0].X, METState.Current.monitor.RectangleCorners[2].Y - METState.Current.monitor.RectangleCorners[0].Y);
 
-					Point ROI_Corner = new Point(METState.Current.monitor.RectangleCorners[0].X, METState.Current.monitor.RectangleCorners[0].Y);
+                    System.Drawing.Point ROI_Corner = new System.Drawing.Point(METState.Current.monitor.RectangleCorners[0].X, METState.Current.monitor.RectangleCorners[0].Y);
 
-					Rectangle ROI_Rect = new Rectangle(ROI_Corner, ROI_Size);
+                    System.Drawing.Rectangle ROI_Rect = new System.Drawing.Rectangle(ROI_Corner, ROI_Size);
 
 					METState.Current.DAS.Detect(e.image, ROI_Rect);
 
@@ -450,11 +450,11 @@ namespace Haytham
 					if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].pupilFound && METState.Current.monitor.IsGazeInsideRectangle())
 					{
 						///Gaze point in the computer screen. coordinates change from [0, screen.size(in pixles)] in each dimension
-						Point Screengaze = METState.Current.monitor.CalculateRectangleGazePoint(METState.Current.Gaze, METState.Current.SceneToMonitor_Mapping);
+                        AForge.Point Screengaze = METState.Current.monitor.CalculateRectangleGazePoint(METState.Current.Gaze, METState.Current.SceneToMonitor_Mapping);
 
 						METState.Current.server.Send("Gaze", new string[] {
-                           Screengaze.X.ToString(), 
-                          Screengaze.Y.ToString(),
+                          ((int)Screengaze.X).ToString(), 
+                         ((int) Screengaze.Y).ToString(),
 METState.Current.monitor.RectangleCorners[0].X.ToString(),
  METState.Current.monitor.RectangleCorners[0].Y.ToString(),
  METState.Current.monitor.RectangleCorners[1].X.ToString(),
@@ -490,7 +490,7 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 
 			#region Draw gaze cross on image
 			if (METState.Current.ShowGaze) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow,
-				Convert.ToInt32(METState.Current.Gaze.X), Convert.ToInt32(METState.Current.Gaze.Y), Color.Red);
+                Convert.ToInt32(METState.Current.Gaze.X), Convert.ToInt32(METState.Current.Gaze.Y), System.Drawing.Color.Red);
 			#endregion Draw gaze cross on image
 
 			#region Draw Calibration points
@@ -499,11 +499,11 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 				Graphics gr2 = Graphics.FromImage(METState.Current.SceneImageForShow.Bitmap);
 
 				// Create a new pen.
-				Pen pen = new Pen(Color.Blue);
+                Pen pen = new Pen(System.Drawing.Color.Blue);
 
 				// Set the pen's width.
 				pen.Width = 2.0F;
-				foreach (PointF p in METState.Current.EyeToScene_Mapping.ScenePoints.ToArray())
+				foreach (AForge.Point p in METState.Current.EyeToScene_Mapping.ScenePoints.ToArray())
 				{
 					gr2.DrawArc(pen, p.X - 5, p.Y - 5, 10, 10, 0, 360);
 				}
@@ -564,20 +564,20 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 			if (TrackerEventEye != null)
 			{
 				MainMethodEye(this, e);
-
+try
+					{
 				if (METState.Current.syncCameras && (METState.Current.SceneCamera != null && METState.Current.SceneCamera.IsRunning))
 				{
 
-					try
-					{
+					
 						// METState.Current.camera1Acquired.WaitOne();
-					}
-					catch (Exception err)
-					{ }
+				
 
 				}
 				TrackerEventEye(this, e);//Raise the event
-
+                    }
+catch (Exception err)
+{ }
 			}
 		}
 		public void OnTrackerEventScene(METEventArg e)//protected virtual
@@ -613,10 +613,10 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 
 		}
 
-		public Point GetClientGazeBeforeGesture()
+        public AForge.Point GetClientGazeBeforeGesture()
 		{
 
-			Point gaze = new Point(0, 0);
+            AForge.Point gaze = new AForge.Point(0, 0);
 
 			if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
 			{
@@ -625,10 +625,10 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 				Eye.EyeData eyedata = METState.Current.eye.GetEyeDataBeforeGesture(out index, out found);
 				if (found)
 				{
-					Point eyeFeature = METState.Current.eye.GetEyeFeature(eyedata);
+                    AForge.Point eyeFeature = METState.Current.eye.GetEyeFeature(eyedata);
 
 					if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated)
-						gaze = Point.Round(METState.Current.EyeToRemoteDisplay_Mapping.Map(eyeFeature.X, eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY));
+                        gaze =METState.Current.EyeToRemoteDisplay_Mapping.Map(eyeFeature.X, eyeFeature.Y, METState.Current.GazeErrorX, METState.Current.GazeErrorY);
 				}
 
 			}

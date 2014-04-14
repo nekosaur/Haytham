@@ -41,7 +41,7 @@ namespace Haytham
 
         public  int ScreenWidth;
         public  int ScreenHeight;
-        public Point   ScreenTopLeft;
+        public AForge.Point   ScreenTopLeft;
 
         private void setPoints(int n, int m)// grid of n*m points
         {
@@ -78,7 +78,7 @@ namespace Haytham
 
             ScreenWidth = rect.Width;
             ScreenHeight = rect.Height;
-            ScreenTopLeft = new Point(rect.Left, rect.Top);
+            ScreenTopLeft = new AForge.Point((float)rect.Left, (float)rect.Top);
             
             ChangeForm(rect, "this");
             setPoints(n, m);

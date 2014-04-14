@@ -211,7 +211,7 @@ namespace Haytham
                 return false;
             }
         }
-        public bool DrawLine(Image<Bgr, Byte> InputImage, Point p1, Point p2, Color color)
+        public bool DrawLine(Image<Bgr, Byte> InputImage, AForge.Point p1, AForge.Point p2, Color color)
         {
 
             Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
@@ -225,7 +225,8 @@ namespace Haytham
             // Set the LineJoin property.
             pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
 
-            gr2.DrawLine(pen, p1, p2);
+
+            gr2.DrawLine(pen, new Point((int)p1.X, (int)p1.Y), new Point((int)p2.X, (int)p2.Y));
             gr2.Dispose();
             return true;
 
@@ -321,7 +322,7 @@ namespace Haytham
             // }
 
         }
-        public void DrawRectangle(Image<Bgr, Byte> InputImage, PointF[] corners, int expand, bool fill, string text)
+        public void DrawRectangle(Image<Bgr, Byte> InputImage, AForge.Point[] corners, int expand, bool fill, string text)
         {
             Point[] ExpandedCorners = new Point[4];
             for (int i = 0; i < 4; i++)
@@ -382,7 +383,7 @@ namespace Haytham
             // }
 
         }
-        public void DrawRectangle(Image<Bgr, Byte> InputImage, PointF center, SizeF size)
+        public void DrawRectangle(Image<Bgr, Byte> InputImage, AForge.Point center, SizeF size)
         {
 
             Graphics gr3 = Graphics.FromImage(InputImage.Bitmap);
@@ -428,7 +429,7 @@ namespace Haytham
         /// </summary>
         /// <param name="points">The points to be fitted</param>
         /// <returns>An ellipse</returns>
-        public Ellipse EllipseLeastSquareFitting(PointF[] points)
+        public Ellipse EllipseLeastSquareFitting(AForge.Point[] points)
         {
             IntPtr seq = Marshal.AllocHGlobal(StructSize.MCvSeq);
             IntPtr block = Marshal.AllocHGlobal(StructSize.MCvSeqBlock);
