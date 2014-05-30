@@ -1937,6 +1937,7 @@ namespace Haytham
 			METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect); ;
 			METState.Current.remoteCalibration.ShowDialog();
 
+			METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
 
 		}
 
@@ -1960,9 +1961,10 @@ namespace Haytham
 			///Set the METState.Current.RemoteOrHeadMount 
 			Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
-			METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect); ;
+			METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect);
 			METState.Current.remoteCalibration.ShowDialog();
 
+			METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
 		}
 
 		private void checkEditShowOpticalFlow_CheckedChanged(object sender, EventArgs e)

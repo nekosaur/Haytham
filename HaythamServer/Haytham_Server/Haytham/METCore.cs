@@ -324,6 +324,16 @@ namespace Haytham
 
 
 			}
+			METState.Current.server.Send("Eye", new string[]
+                                                {
+                                                  METState.Current.eye.eyeData[0].time.Ticks.ToString(),
+                                                  METState.Current.Gaze.X.ToString(), 
+                                                  METState.Current.Gaze.Y.ToString(),
+                                                  METState.Current.eye.eyeData[0].pupilDiameter.ToString(),
+                                                  METState.Current.eye.eyeData[0].pupilFound.ToString(),
+                                                  ((float)METState.Current.eye.eyeData[0].pupilCenter.X/METState.Current.EyeCamera.VideoSize.Width).ToString(),
+                                                  ((float)METState.Current.eye.eyeData[0].pupilCenter.Y/METState.Current.EyeCamera.VideoSize.Height).ToString(),
+                                                });
 
 			#endregion Remote
 

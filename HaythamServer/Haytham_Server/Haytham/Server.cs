@@ -240,7 +240,7 @@ namespace Haytham
             bool yes=false;
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
-                if (kvp.Value.status["_VisualMarker"])
+                if (kvp.Value.Status["_VisualMarker"])
                 {
                     yes = true;
                     break;
@@ -256,10 +256,10 @@ namespace Haytham
 
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
-                if (kvp.Value.status["_VisualMarker"])
+                if (kvp.Value.Status["_VisualMarker"])
                 {
 
-                    foreach (KeyValuePair<string, string> usrdataitem in kvp.Value.userData)
+                    foreach (KeyValuePair<string, string> usrdataitem in kvp.Value.UserData)
                     {
                         if (usrdataitem.Key.StartsWith("Marker_6_"))
                         {
@@ -287,7 +287,7 @@ namespace Haytham
                 condition = "_" + condition;
                 if (clients.ContainsKey(clientName))
                 {
-                    temp = clients[clientName].status.ContainsKey(condition) ? clients[clientName].status[condition] : false;
+                    temp = clients[clientName].Status.ContainsKey(condition) ? clients[clientName].Status[condition] : false;
                 }
             }
             return temp;
@@ -326,7 +326,7 @@ namespace Haytham
                         {
                             if (kvp.Value.ClientType == "Monitor")
                             {
-                                clients[kvp.Value.ClientName].writer.Write(message);
+                                clients[kvp.Value.ClientName].Writer.Write(message);
 
                             }
                         }
@@ -336,7 +336,7 @@ namespace Haytham
                         {
                             if (GetCondition(kvp.Value.ClientName, key))
                             {
-                                clients[kvp.Value.ClientName].writer.Write(message);
+                                clients[kvp.Value.ClientName].Writer.Write(message);
 
                             }
                         }
@@ -345,14 +345,28 @@ namespace Haytham
                     case "Gaze":
                         if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
                         {
-                            if (activeScreen!="" && clients.ContainsKey(activeScreen) && GetCondition(activeScreen, key)) clients[activeScreen].writer.Write(message);
-                            else if (activeScreen != "" && clients.ContainsKey("TV1") && GetCondition("TV1", key)) clients["TV1"].writer.Write(message);
+                            if (activeScreen!="" && clients.ContainsKey(activeScreen) && GetCondition(activeScreen, key)) clients[activeScreen].Writer.Write(message);
+                            else if (activeScreen != "" && clients.ContainsKey("TV1") && GetCondition("TV1", key)) clients["TV1"].Writer.Write(message);
                         }
                         else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
                         {
                             foreach (KeyValuePair<string, Client> kvp in METState.Current.server.clients)
                             {
-                                if (kvp.Value.ClientType == "Monitor") clients[kvp.Value.ClientName].writer.Write(message);
+                                if (kvp.Value.ClientType == "Monitor" && kvp.Value.Status["_Gaze"]) clients[kvp.Value.ClientName].Writer.Write(message);
+                            }
+                        }
+                        break;
+                    case "Eye":
+                        if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
+                        {
+                          if (activeScreen != "" && clients.ContainsKey(activeScreen) && GetCondition(activeScreen, key)) clients[activeScreen].Writer.Write(message);
+                          else if (activeScreen != "" && clients.ContainsKey("TV1") && GetCondition("TV1", key)) clients["TV1"].Writer.Write(message);
+                        }
+                        else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
+                        {
+                          foreach (KeyValuePair<string, Client> kvp in METState.Current.server.clients)
+                          {
+                            if (kvp.Value.ClientType == "Monitor" && kvp.Value.Status["_Eye"]) clients[kvp.Value.ClientName].Writer.Write(message);
                             }
                         }
                         break;
@@ -362,7 +376,7 @@ namespace Haytham
                         {
                             if (GetCondition(kvp.Value.ClientName, key))
                             {
-                                clients[kvp.Value.ClientName].writer.Write(message);
+                                clients[kvp.Value.ClientName].Writer.Write(message);
 
                             }
                         }
@@ -382,7 +396,7 @@ namespace Haytham
         /// <param name="message"></param>Provide the message in a right format e.g.: "Gaze-121-203" OR "Commands-D_U"
         public void Send(string clientName, string message)
         {
-            clients[clientName].writer.Write((string)message);
+            clients[clientName].Writer.Write((string)message);
         }
 
 
