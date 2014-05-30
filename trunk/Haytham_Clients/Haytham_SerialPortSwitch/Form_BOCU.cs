@@ -372,12 +372,12 @@ namespace Haytham_Client
 
             PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
             PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
-            PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
-            PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
-            PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
+           // PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
+           // PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
+            //PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
             Thread.Sleep(10);
-            PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
-            PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
+            //PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
+            //PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
             PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
             PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
             PortBOCU.WriteLine((char)0 + (char)0 + command + (char)0 + (char)0);
