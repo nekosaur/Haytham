@@ -1,3 +1,0 @@
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\Haytahm.ExtData\obj\Release\Haytham.ExtData.csprojResolveAssemblyReference.cache
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\Haytahm.ExtData\obj\Release\Haytham.ExtData.dll
