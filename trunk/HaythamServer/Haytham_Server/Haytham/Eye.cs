@@ -469,7 +469,7 @@ namespace Haytham
             }
             else// Pupil found
             {
-                METState.Current.eye.PupilBlob.SelectedBlob = PupilBlob.blobs_Filtered[0];
+                METState.Current.eye.PupilBlob. SelectedBlob = PupilBlob.blobs_Filtered[0];
 
                 #region distance from borders
                 //if (PupilBlob.blobs_Filtered.Count == 1)

@@ -12,7 +12,7 @@ namespace Haytham
 {
     public partial class AnimatedCursor : Form
     {
-        private class PointerImage
+        public class PointerImage
         {
             public string name;
             public Image FullImage;
@@ -37,12 +37,79 @@ namespace Haytham
 
         public Point coordinates;// = METState.Current.remoteCalibration.calibPoints[1];
 
-        PointerImage pointerImage = new PointerImage();
+       public PointerImage pointerImage = new PointerImage();
         Point oldPoint = new Point(0, 0);
 
         bool haveHandle = false;
-        public Timer timerSpeed = new Timer();
+       
         int frame = 0;
+
+        public bool updatePointerImage()
+        {
+            bool SamplingTime = false;
+            pointerImage.Rotation += pointerImage.RotVelocity;
+            pointerImage.Rotation = pointerImage.Rotation % 360;
+            //a == <bool condition> ? <true value> : <false value>;
+
+            pointerImage.Scale = pointerImage.ScaleIncreasing ? pointerImage.Scale + pointerImage.ScaleVelocity : pointerImage.Scale - pointerImage.ScaleVelocity;
+            pointerImage.Scale = pointerImage.Scale >= pointerImage.ScaleMax ? pointerImage.ScaleMax : pointerImage.Scale;
+
+            pointerImage.Scale = pointerImage.Scale <= pointerImage.ScaleMin ? pointerImage.ScaleMin : pointerImage.Scale;
+
+
+
+            if (pointerImage.ScaleIncreasing)
+            {
+                if (pointerImage.Scale >= pointerImage.ScaleMax) pointerImage.ScaleIncreasing = false;
+            }
+            else
+            {
+                if (pointerImage.Scale <= pointerImage.ScaleMin )
+                {
+
+                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+                    {
+                        if (METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Yes) { 
+                            METState.Current.GlassServer.client.myGlassReady_State = myGlass.Client.Ready_State.No;
+                            pointerImage.ScaleIncreasing = true;
+                            SamplingTime = true; 
+                        }
+                        else {//take the sample next time 
+                            pointerImage.ScaleIncreasing = true;
+                        }
+                        
+                    }
+                    else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
+                    {
+                        
+                        pointerImage.ScaleIncreasing = true;
+                        SamplingTime = true; 
+                    }
+
+                }
+            }
+
+
+            pointerImage.frameWidth_Scaled = (int)(pointerImage.frameWidth_Orginal * pointerImage.Scale);
+            pointerImage.frameHeight_Scaled = (int)(pointerImage.frameHeight_Orginal * pointerImage.Scale);
+
+            Bitmap temp = FrameImage;
+            SetBits(temp);
+
+
+            this.Left = coordinates.X - temp.Width / 2;// (int)left;
+            this.Top = coordinates.Y - temp.Height / 2;// (int)top;          
+
+
+
+
+            frame++;
+            if (frame >= pointerImage.frameCount) frame = 0;
+
+
+
+            return SamplingTime;
+        }
 
         public AnimatedCursor()
         {
@@ -58,9 +125,6 @@ namespace Haytham
 
             frame = 0;
 
-            timerSpeed.Interval = 50;
-            timerSpeed.Enabled = true;
-            timerSpeed.Tick += new EventHandler(timerSpeed_Tick);
 
             this.DoubleClick += new EventHandler(Form2_DoubleClick);
 
@@ -101,88 +165,6 @@ namespace Haytham
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             UpdateStyles();
-        }
-
-        void timerSpeed_Tick(object sender, EventArgs e)
-        {
-
-
-            pointerImage.Rotation += pointerImage.RotVelocity;
-            pointerImage.Rotation = pointerImage.Rotation % 360;
-            //a == <bool condition> ? <true value> : <false value>;
-
-            pointerImage.Scale = pointerImage.ScaleIncreasing ? pointerImage.Scale + pointerImage.ScaleVelocity : pointerImage.Scale - pointerImage.ScaleVelocity;
-            pointerImage.Scale = pointerImage.Scale >= pointerImage.ScaleMax ? pointerImage.ScaleMax : pointerImage.Scale;
-            
-            pointerImage.Scale = pointerImage.Scale <= pointerImage.ScaleMin ? pointerImage.ScaleMin : pointerImage.Scale;
-
-
-
-            if (pointerImage.ScaleIncreasing)
-            {
-                if (pointerImage.Scale >= pointerImage.ScaleMax) pointerImage.ScaleIncreasing = false;
-            }
-            else
-            {
-                if (pointerImage.Scale <= pointerImage.ScaleMin)
-                {
-                    pointerImage.ScaleIncreasing = true;
-
-
-                    ///-----------------------------------------------------------------------------
-                  //  if (METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget < METState.Current.remoteCalibration.calibPoints.Count)
-                   // {
-                        METState.Current.EyeToRemoteDisplay_Mapping.Destination[0, METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget] = coordinates.X;
-                        METState.Current.EyeToRemoteDisplay_Mapping.Destination[1, METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget] = coordinates.Y;
-
-                        METState.Current.EyeToRemoteDisplay_Mapping.Source[0, METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                        METState.Current.EyeToRemoteDisplay_Mapping.Source[1, METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-                        if (METState.Current.remoteCalibration.calibPoints.Count >= (METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget + 2))
-                        {
-                            coordinates = METState.Current.remoteCalibration.calibPoints[METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget + 2];
-                            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget++;
-                        }
-                        else
-                        {
-                            METState.Current.EyeToRemoteDisplay_Mapping.Calibrate();
-                            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = true;
-
-
-                            METState.Current.remoteCalibration.finish();
-
-                            timerSpeed.Enabled = false;
-                        }
-                       
-                   // }
-                   // else 
-                   // {
- 
-
-
-                   // }
-                   
-                   
-                }
-            }
-
-
-            pointerImage.frameWidth_Scaled = (int)(pointerImage.frameWidth_Orginal * pointerImage.Scale);
-            pointerImage.frameHeight_Scaled = (int)(pointerImage.frameHeight_Orginal * pointerImage.Scale);
-
-            Bitmap temp = FrameImage;
-            SetBits(temp);
-
-
-            this.Left = coordinates.X - temp.Width / 2;// (int)left;
-            this.Top = coordinates.Y - temp.Height / 2;// (int)top;          
-
-
-
-
-            frame++;
-            if (frame >= pointerImage.frameCount) frame = 0;
-
         }
 
 
@@ -270,7 +252,7 @@ namespace Haytham
 
         void Form2_DoubleClick(object sender, EventArgs e)
         {
-            timerSpeed.Enabled = false;
+           
             this.Dispose();
         }
 

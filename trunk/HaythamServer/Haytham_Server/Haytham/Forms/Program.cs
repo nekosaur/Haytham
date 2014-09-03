@@ -20,7 +20,7 @@ namespace Haytham
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());//METState.Current.mainform                       
+         Application.Run(new MainForm());//METState.Current.mainform                       
         }
 
 

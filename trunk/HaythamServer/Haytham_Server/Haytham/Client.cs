@@ -255,6 +255,7 @@ namespace Haytham
       this.socketStream.Close();
       this.connection.Close();
       this.server.DisplayMessage("\r\n" + this.ClientName + " disconnected \r\n");
+      this.server.DisplayMessage("*********************************************\r\n");
       this.server.RemoveClient(this.ClientName);
     }
 
@@ -278,6 +279,9 @@ namespace Haytham
         case METState.RemoteOrMobile.MobileEyeTracking:
           this.CalibrateMobile(method);
           break;
+        case METState.RemoteOrMobile.GoogleGalss:
+          this.CalibrateGlass(method);
+          break;
       }
     }
 
@@ -290,8 +294,8 @@ namespace Haytham
     private void CalibrateMobile(CalibrationMethod method)
     {
       METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
-      METState.Current.GazeErrorX = 0;
-      METState.Current.GazeErrorY = 0;
+      METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
+      METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
       METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
       METState.Current.EyeToScene_Mapping.Calibrated = false;
 
@@ -316,10 +320,10 @@ namespace Haytham
     /// <param name="method">
     /// One of the calibraton methods.
     /// </param>
-    private void CalibrateRemote(CalibrationMethod method)
+    private void CalibrateGlass(CalibrationMethod method)
     {
-      METState.Current.GazeErrorX = 0;
-      METState.Current.GazeErrorY = 0;
+        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
+        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
       METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
       METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
 
@@ -335,10 +339,31 @@ namespace Haytham
           break;
       }
 
-      METState.Current.remoteCalibration.ShowDialog();
+     // METState.Current.remoteCalibration.ShowDialog();
       this.Writer.Write("CalibrationFinished");
     }
+    private void CalibrateRemote(CalibrationMethod method)
+    {
+        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
+        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
+        METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
+        METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
 
+        switch (method)
+        {
+            case CalibrationMethod.Point4:
+                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+                METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds);
+                break;
+            case CalibrationMethod.Point9:
+                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds);
+                break;
+        }
+
+        
+        this.Writer.Write("CalibrationFinished");
+    }
     /// <summary>
     /// Gets the user data.
     /// </summary>

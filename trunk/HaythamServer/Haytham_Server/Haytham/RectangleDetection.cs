@@ -403,10 +403,10 @@ namespace Haytham
             // TODO: it is not a good way. make it more accurate
             bool itis = false;
 
-            if ((RectangleCorners[0].X + RectangleCorners[3].X) / 2 < METState.Current.Gaze.X &
-                (RectangleCorners[1].X + RectangleCorners[2].X) / 2 > METState.Current.Gaze.X &
-                (RectangleCorners[2].Y + RectangleCorners[3].Y) / 2 > METState.Current.Gaze.Y &
-                (RectangleCorners[0].Y + RectangleCorners[1].Y) / 2 < METState.Current.Gaze.Y)
+            if ((RectangleCorners[0].X + RectangleCorners[3].X) / 2 < METState.Current.Gaze_HMGT.X &
+                (RectangleCorners[1].X + RectangleCorners[2].X) / 2 > METState.Current.Gaze_HMGT.X &
+                (RectangleCorners[2].Y + RectangleCorners[3].Y) / 2 > METState.Current.Gaze_HMGT.Y &
+                (RectangleCorners[0].Y + RectangleCorners[1].Y) / 2 < METState.Current.Gaze_HMGT.Y)
                 itis = true;
 
             return itis;
