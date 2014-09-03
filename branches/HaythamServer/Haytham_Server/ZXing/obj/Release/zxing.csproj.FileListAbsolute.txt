@@ -1,0 +1,5 @@
+C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.csprojResolveAssemblyReference.cache
+C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.dll
+C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.pdb
+C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\ZXing\zxing.dll
+C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\GlassGaze Version\HaythamServer\Haytham_Server\ZXing\zxing.pdb
