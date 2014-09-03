@@ -59,10 +59,6 @@ namespace Haytham
 
 
 
-
-
-
-
         /// <summary>
         /// Detect Blobs in the bitmap image
         /// </summary>
@@ -84,6 +80,7 @@ namespace Haytham
 
                 ///Get Image
                 this.image = AForge.Imaging.Image.Clone(inputImage, PixelFormat.Format24bppRgb);//
+
                 _imageWidth = this.image.Width;
                 _imageHeight = this.image.Height;
 
@@ -168,10 +165,7 @@ namespace Haytham
             }
         }
 
-       
-
-
-
+        
         public void DrawBlobImage()
         {
 

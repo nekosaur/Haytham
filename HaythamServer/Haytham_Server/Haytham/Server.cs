@@ -86,6 +86,9 @@ namespace Haytham
         {
             Thread.Sleep(2000);
             string ip = getip();
+
+            METState.Current.ip = ip;
+
             METState.Current.METCoreObject.SendToForm("Server IP : " + ip, "lblIP");
 
             DisplayMessage("Server IP : " + ip + "\r\n");

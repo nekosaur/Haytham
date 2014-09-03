@@ -32,7 +32,6 @@ namespace Haytham
         private void button1_Click(object sender, EventArgs e)
         {
             METState.Current.remoteOrMobile =  METState.RemoteOrMobile.MobileEyeTracking;
-
            Go();
         }
 
@@ -40,6 +39,14 @@ namespace Haytham
         {
             METState.Current.remoteOrMobile = METState.RemoteOrMobile.RemoteEyeTracking;
            Go();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            METState.Current.remoteOrMobile = METState.RemoteOrMobile.GoogleGalss;
+         
+               
+            Go();
         }
 
 

@@ -82,6 +82,33 @@ namespace Haytham
             imagetemp.Ptr = processed_image;
             return imagetemp;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputimg"></param>
+        /// <param name="threshold"></param>
+        /// <param name="inverse"></param>
+        /// <param name="constant">-1 or constant param</param>
+        /// <returns></returns>
+        public Image<Gray, Byte> Filter_Threshold2(Image<Gray, Byte> inputimg, int threshold, bool inverse)
+        {
+
+            IntPtr grayimage = inputimg.Ptr;
+            IntPtr processed_image;
+            Image<Gray, Byte> imagetemp = inputimg.CopyBlank();
+            processed_image = imagetemp.Ptr;
+
+            if (inverse == false)
+            {
+                CvInvoke.cvThreshold(grayimage, processed_image, (double)threshold,255,  THRESH.CV_THRESH_BINARY | THRESH.CV_THRESH_OTSU);
+            }
+            else
+            {
+                CvInvoke.cvThreshold(grayimage, processed_image, (double)threshold,255, THRESH.CV_THRESH_BINARY_INV | THRESH.CV_THRESH_OTSU);
+            }
+            imagetemp.Ptr = processed_image;
+            return imagetemp;
+        }
         public Image<Gray, Byte> Filter_GlintAdaptiveThreshold(Image<Gray, Byte> inputimg, int threshold, bool inverse)
         {
 
@@ -189,15 +216,16 @@ namespace Haytham
 
         public bool DrawCircle(Image<Bgr, Byte> InputImage, int x, int y, Color color)
         {
+            Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
+
             if (x > 0 & x < InputImage.Width & y > 0 & y < InputImage.Height)
             {
-                Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
-
+                
                 // Create a new pen.
                 Pen pen = new Pen(color);
 
                 // Set the pen's width.
-                pen.Width = 2.0F;
+                pen.Width = 5.0F;
 
                 // Set the LineJoin property.
                 pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
@@ -208,9 +236,33 @@ namespace Haytham
             }
             else
             {
+                gr2.Dispose();
                 return false;
             }
         }
+
+        public bool DrawText(Image<Bgr, Byte> InputImage, int x, int y,String txt, Color color)
+        {
+            Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
+
+               
+            if (x > 0 & x < InputImage.Width & y > 0 & y < InputImage.Height)
+            {
+  
+                var font = new Font("Arial", 50);
+                var brush = new SolidBrush(color);
+
+                gr2.DrawString(txt, font, brush, (float)x, (float)y);
+                gr2.Dispose();
+                return true;
+            }
+            else
+            {
+                gr2.Dispose();
+                return false;
+            }
+        }
+   
         public bool DrawLine(Image<Bgr, Byte> InputImage, AForge.Point p1, AForge.Point p2, Color color)
         {
 
@@ -258,6 +310,34 @@ namespace Haytham
                 return false;
             }
         }
+        public bool DrawCross(Bitmap InputImage, int x, int y, Color color)
+        {
+            if (x > 0 & x < InputImage.Width & y > 0 & y < InputImage.Height)
+            {
+                Graphics gr2 = Graphics.FromImage(InputImage);
+
+                // Create a new pen.
+                Pen pen = new Pen(color);
+
+                // Set the pen's width.
+                pen.Width = 2.0F;
+
+                // Set the LineJoin property.
+                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
+
+
+                gr2.DrawLine(pen, x, 0, x, InputImage.Height);
+                gr2.DrawLine(pen, 0, y, InputImage.Width, y);
+
+                gr2.Dispose();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void DrawRectangle(Image<Bgr, Byte> InputImage, Point[] corners, int expand, bool fill, string text)
         {
             Point[] ExpandedCorners = new Point[4];

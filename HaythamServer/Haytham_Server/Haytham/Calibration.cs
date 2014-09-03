@@ -20,7 +20,9 @@ namespace Haytham
         public Matrix<double> Source = new Matrix<double>(2, 9);
         public Matrix<double> PolynomialCoeffs;
         public Matrix<double> Homography = new Matrix<double>(3, 3);
-      
+
+        public float GazeErrorX = 0;
+        public float GazeErrorY = 0;
 
         public void Calibrate()
         {

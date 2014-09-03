@@ -72,13 +72,13 @@ namespace Haytham
 
         //
 
-        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking };
+        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGalss};
         public RemoteOrMobile remoteOrMobile;
 
         //Cameras
         public Haytham.VideoSource.IVideoSource EyeCamera;
 		public Haytham.VideoSource.IVideoSource SceneCamera;     
-        public bool syncCameras;
+
         public AutoResetEvent camera1Acquired = null;
         public bool eye_VFlip;
         public bool scene_VFlip;
@@ -174,10 +174,18 @@ namespace Haytham
         //Gaze
         public Boolean ShowGaze;
         public Boolean GazeSmoother = false;
-        public AForge.Point Gaze;
-        public float GazeErrorX = 0;
-        public float GazeErrorY = 0;
+        //public AForge.Point Gaze;
+
+        public AForge.Point Gaze_RGT;
+        public AForge.Point Gaze_HMGT;
+
+        public AForge.Point Gaze_SnapShot_Glass;
+
         public int gazeMedian = 10;
+
+        
+
+
         //calibration
         public enum Calibration_EyeFeature { Pupil, PupilGlintVector,Glint };
         public Calibration_EyeFeature calibration_eyeFeature;
@@ -185,7 +193,8 @@ namespace Haytham
         public AForge.Point eyeFeature;
         //remote
         public RemoteCalibration remoteCalibration;
-
+        public cursor mCursor=new cursor();
+        //public Size HMD_Resolution = new Size(640,480);
 
         //Chart
         //          Define some variables
@@ -198,6 +207,7 @@ namespace Haytham
         //Scene
 
         public bool showScreenSize;
+        public Size GlassFrontView_Resolution = new Size(0, 0);
 
 
         public Boolean showScreen ;
@@ -205,7 +215,8 @@ namespace Haytham
       
 
         //Server & Client
-
+        public myGlass.Server GlassServer ;//= new myGlass.Server();
+        public string ip="";
 
         //Others
         public int testslider = 1;
@@ -220,6 +231,10 @@ namespace Haytham
 		//extData
 		public ExtDataHandler DataHandler = new ExtDataHandler();
 
+        //
+
+        public Dictionary<string, int> commands = new Dictionary<string, int>();
+           
 
     }
 }
