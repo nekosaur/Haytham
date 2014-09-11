@@ -177,6 +177,12 @@
     <Compile Include="Forms\qrCode.Designer.cs">
       <DependentUpon>qrCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Glass\fullScreenImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Glass\fullScreenImage.Designer.cs">
+      <DependentUpon>fullScreenImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RemoteCalibration.cs" />
     <Compile Include="Glass\Client.cs" />
     <Compile Include="Glass\constants.cs" />
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\qrCode.resx">
       <DependentUpon>qrCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Glass\fullScreenImage.resx">
+      <DependentUpon>fullScreenImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
