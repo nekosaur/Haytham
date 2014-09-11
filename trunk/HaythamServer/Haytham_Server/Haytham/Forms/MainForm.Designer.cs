@@ -352,7 +352,7 @@
             this.tabPage_Camera.Controls.Add(this.gbEyeCameraDevice);
             this.tabPage_Camera.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Camera.Name = "tabPage_Camera";
-            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_Camera.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Camera.TabIndex = 0;
             this.tabPage_Camera.Text = "Camera";
@@ -596,6 +596,7 @@
             this.txtImageName.Size = new System.Drawing.Size(178, 26);
             this.txtImageName.TabIndex = 74;
             this.txtImageName.Visible = false;
+            this.txtImageName.TextChanged += new System.EventHandler(this.txtImageName_TextChanged);
             // 
             // button7
             // 
@@ -640,10 +641,10 @@
             // TrackBar1
             // 
             this.TrackBar1.AutoSize = false;
-            this.TrackBar1.Location = new System.Drawing.Point(18, 968);
+            this.TrackBar1.Location = new System.Drawing.Point(45, 855);
             this.TrackBar1.Maximum = 255;
             this.TrackBar1.Name = "TrackBar1";
-            this.TrackBar1.Size = new System.Drawing.Size(219, 42);
+            this.TrackBar1.Size = new System.Drawing.Size(219, 78);
             this.TrackBar1.TabIndex = 75;
             this.TrackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.TrackBar1.Value = 200;
@@ -680,7 +681,7 @@
             this.tabPage_Eye.Controls.Add(this.groupBox4);
             this.tabPage_Eye.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Eye.Name = "tabPage_Eye";
-            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_Eye.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Eye.TabIndex = 1;
             this.tabPage_Eye.Text = "Eye";
@@ -1072,7 +1073,7 @@
             this.tabPage_Scene.Controls.Add(this.groupBox7);
             this.tabPage_Scene.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Scene.Name = "tabPage_Scene";
-            this.tabPage_Scene.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_Scene.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Scene.TabIndex = 2;
             this.tabPage_Scene.Text = "Scene";
             this.tabPage_Scene.UseVisualStyleBackColor = true;
@@ -1093,7 +1094,7 @@
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox8.Location = new System.Drawing.Point(0, 332);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(517, 117);
+            this.groupBox8.Size = new System.Drawing.Size(342, 117);
             this.groupBox8.TabIndex = 63;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lens Distortion Correction";
@@ -1144,7 +1145,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(517, 332);
+            this.groupBox7.Size = new System.Drawing.Size(342, 332);
             this.groupBox7.TabIndex = 62;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Screen Detection";
@@ -1260,7 +1261,7 @@
             this.tabPage_Calibration.Controls.Add(this.panel5);
             this.tabPage_Calibration.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Calibration.Name = "tabPage_Calibration";
-            this.tabPage_Calibration.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_Calibration.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Calibration.TabIndex = 3;
             this.tabPage_Calibration.Text = "Calibration";
             this.tabPage_Calibration.UseVisualStyleBackColor = true;
@@ -1278,7 +1279,7 @@
             this.gbCalibrationGlass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCalibrationGlass.Name = "gbCalibrationGlass";
             this.gbCalibrationGlass.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbCalibrationGlass.Size = new System.Drawing.Size(517, 349);
+            this.gbCalibrationGlass.Size = new System.Drawing.Size(342, 349);
             this.gbCalibrationGlass.TabIndex = 62;
             this.gbCalibrationGlass.TabStop = false;
             this.gbCalibrationGlass.Text = "Gaze Estimation for the Glass ";
@@ -1356,7 +1357,7 @@
             this.gbCalibrationRemote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCalibrationRemote.Name = "gbCalibrationRemote";
             this.gbCalibrationRemote.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbCalibrationRemote.Size = new System.Drawing.Size(517, 138);
+            this.gbCalibrationRemote.Size = new System.Drawing.Size(342, 138);
             this.gbCalibrationRemote.TabIndex = 3;
             this.gbCalibrationRemote.TabStop = false;
             this.gbCalibrationRemote.Text = "Gaze Estimation in the remote display";
@@ -1389,7 +1390,7 @@
             this.gbCalibrationHM.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbCalibrationHM.Location = new System.Drawing.Point(0, 222);
             this.gbCalibrationHM.Name = "gbCalibrationHM";
-            this.gbCalibrationHM.Size = new System.Drawing.Size(517, 262);
+            this.gbCalibrationHM.Size = new System.Drawing.Size(342, 262);
             this.gbCalibrationHM.TabIndex = 61;
             this.gbCalibrationHM.TabStop = false;
             this.gbCalibrationHM.Text = "Gaze Estimation in the scene image";
@@ -1434,7 +1435,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(517, 222);
+            this.panel5.Size = new System.Drawing.Size(342, 222);
             this.panel5.TabIndex = 61;
             // 
             // rbGlint
@@ -1496,7 +1497,7 @@
             this.tabPage_Data.Controls.Add(this.groupBox10);
             this.tabPage_Data.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Data.Name = "tabPage_Data";
-            this.tabPage_Data.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_Data.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Data.TabIndex = 4;
             this.tabPage_Data.Text = "Data";
             this.tabPage_Data.UseVisualStyleBackColor = true;
@@ -1510,7 +1511,7 @@
             this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox11.Location = new System.Drawing.Point(0, 222);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(517, 717);
+            this.groupBox11.Size = new System.Drawing.Size(342, 717);
             this.groupBox11.TabIndex = 63;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Plot";
@@ -1553,7 +1554,7 @@
             series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series1.Name = "PupilDiam";
             this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(511, 217);
+            this.chart3.Size = new System.Drawing.Size(336, 217);
             this.chart3.TabIndex = 47;
             this.chart3.Text = "chart3";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1613,7 +1614,7 @@
             series2.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series2.Name = "PupilY";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(511, 217);
+            this.chart2.Size = new System.Drawing.Size(336, 217);
             this.chart2.TabIndex = 46;
             this.chart2.Text = "chart2";
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1664,7 +1665,7 @@
             series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series3.Name = "PupilX";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(511, 212);
+            this.chart1.Size = new System.Drawing.Size(336, 212);
             this.chart1.TabIndex = 45;
             this.chart1.Text = "chart1";
             title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1686,7 +1687,7 @@
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox10.Location = new System.Drawing.Point(0, 0);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(517, 222);
+            this.groupBox10.Size = new System.Drawing.Size(342, 222);
             this.groupBox10.TabIndex = 63;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Record Videos and EyeData";
@@ -1743,7 +1744,7 @@
             this.tabPage_Clients.Controls.Add(this.groupBox12);
             this.tabPage_Clients.Location = new System.Drawing.Point(4, 54);
             this.tabPage_Clients.Name = "tabPage_Clients";
-            this.tabPage_Clients.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_Clients.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Clients.TabIndex = 5;
             this.tabPage_Clients.Text = "Clients";
             this.tabPage_Clients.UseVisualStyleBackColor = true;
@@ -1755,7 +1756,7 @@
             this.panelClients.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelClients.Location = new System.Drawing.Point(0, 354);
             this.panelClients.Name = "panelClients";
-            this.panelClients.Size = new System.Drawing.Size(517, 79);
+            this.panelClients.Size = new System.Drawing.Size(342, 79);
             this.panelClients.TabIndex = 64;
             this.panelClients.TabStop = false;
             this.panelClients.Text = "Clients";
@@ -1781,7 +1782,7 @@
             this.groupBox12.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox12.Location = new System.Drawing.Point(0, 0);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(517, 354);
+            this.groupBox12.Size = new System.Drawing.Size(342, 354);
             this.groupBox12.TabIndex = 63;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Messages ";
@@ -1795,7 +1796,7 @@
             this.TextBoxServer.Name = "TextBoxServer";
             this.TextBoxServer.ReadOnly = true;
             this.TextBoxServer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TextBoxServer.Size = new System.Drawing.Size(511, 329);
+            this.TextBoxServer.Size = new System.Drawing.Size(336, 329);
             this.TextBoxServer.TabIndex = 38;
             // 
             // tabPage_Gesture
@@ -1808,7 +1809,7 @@
             this.tabPage_Gesture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage_Gesture.Name = "tabPage_Gesture";
             this.tabPage_Gesture.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage_Gesture.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_Gesture.Size = new System.Drawing.Size(342, 970);
             this.tabPage_Gesture.TabIndex = 6;
             this.tabPage_Gesture.Text = "Gestures";
             this.tabPage_Gesture.UseVisualStyleBackColor = true;
@@ -1828,7 +1829,7 @@
             this.groupBox19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox19.Size = new System.Drawing.Size(509, 445);
+            this.groupBox19.Size = new System.Drawing.Size(334, 445);
             this.groupBox19.TabIndex = 3;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Custom gestures  (made only by head yaw and pitch)";
@@ -1946,7 +1947,7 @@
             this.groupBox20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox20.Size = new System.Drawing.Size(509, 445);
+            this.groupBox20.Size = new System.Drawing.Size(334, 445);
             this.groupBox20.TabIndex = 3;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Head yaw and pitch";
@@ -2156,7 +2157,7 @@
             this.groupBox16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox16.Size = new System.Drawing.Size(509, 118);
+            this.groupBox16.Size = new System.Drawing.Size(334, 118);
             this.groupBox16.TabIndex = 5;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Head Roll";
@@ -2214,7 +2215,7 @@
             this.groupBox17.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox17.Size = new System.Drawing.Size(509, 97);
+            this.groupBox17.Size = new System.Drawing.Size(334, 97);
             this.groupBox17.TabIndex = 3;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Blink";
@@ -2251,7 +2252,7 @@
             this.tabPage_ExtData.Location = new System.Drawing.Point(4, 54);
             this.tabPage_ExtData.Name = "tabPage_ExtData";
             this.tabPage_ExtData.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage_ExtData.Size = new System.Drawing.Size(517, 1107);
+            this.tabPage_ExtData.Size = new System.Drawing.Size(342, 970);
             this.tabPage_ExtData.TabIndex = 7;
             this.tabPage_ExtData.Text = "ExtData";
             this.tabPage_ExtData.UseVisualStyleBackColor = true;
@@ -2267,7 +2268,7 @@
             this.groupBox13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox13.Size = new System.Drawing.Size(509, 106);
+            this.groupBox13.Size = new System.Drawing.Size(334, 106);
             this.groupBox13.TabIndex = 0;
             this.groupBox13.TabStop = false;
             // 
@@ -2377,7 +2378,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox_imgScene);
             this.splitContainer2.Size = new System.Drawing.Size(1646, 944);
-            this.splitContainer2.SplitterDistance = 744;
+            this.splitContainer2.SplitterDistance = 741;
             this.splitContainer2.SplitterWidth = 6;
             this.splitContainer2.TabIndex = 73;
             // 
@@ -2388,7 +2389,7 @@
             this.groupBox_imgEye.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_imgEye.Location = new System.Drawing.Point(0, 0);
             this.groupBox_imgEye.Name = "groupBox_imgEye";
-            this.groupBox_imgEye.Size = new System.Drawing.Size(744, 944);
+            this.groupBox_imgEye.Size = new System.Drawing.Size(741, 944);
             this.groupBox_imgEye.TabIndex = 67;
             this.groupBox_imgEye.TabStop = false;
             this.groupBox_imgEye.Text = "Eye";
@@ -2401,7 +2402,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 22);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(738, 919);
+            this.panel1.Size = new System.Drawing.Size(735, 919);
             this.panel1.TabIndex = 73;
             // 
             // imEye
@@ -2421,7 +2422,7 @@
             this.groupBox_imgScene.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_imgScene.Location = new System.Drawing.Point(0, 0);
             this.groupBox_imgScene.Name = "groupBox_imgScene";
-            this.groupBox_imgScene.Size = new System.Drawing.Size(896, 944);
+            this.groupBox_imgScene.Size = new System.Drawing.Size(899, 944);
             this.groupBox_imgScene.TabIndex = 68;
             this.groupBox_imgScene.TabStop = false;
             this.groupBox_imgScene.Text = "Scene";
@@ -2435,7 +2436,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 22);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(890, 919);
+            this.panel2.Size = new System.Drawing.Size(893, 919);
             this.panel2.TabIndex = 74;
             // 
             // imSceneProcessed
@@ -2460,6 +2461,7 @@
             this.imScene.TabStop = false;
             this.imScene.Paint += new System.Windows.Forms.PaintEventHandler(this.imScene_Paint);
             this.imScene.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseClick);
+            this.imScene.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imScene_MouseMove);
             // 
             // groupBox18
             // 

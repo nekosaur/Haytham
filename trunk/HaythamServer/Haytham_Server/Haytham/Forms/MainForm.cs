@@ -96,6 +96,7 @@ namespace Haytham
             splitContainer1.Panel2.VerticalScroll.Visible = true;
             splitContainer1.Panel2.HorizontalScroll.Visible = true;
             splitContainer1.Panel1.HorizontalScroll.Minimum = 0;
+            splitContainer1.Panel1.VerticalScroll.Minimum = 0;
 
 
             groupBox14.Size = new Size(panel6.Width, splitContainer1.Panel2.Height - panel6.Height);
@@ -1654,9 +1655,13 @@ namespace Haytham
 
                     del = delegate()
                     {
-                        imScene.Width = ((Image)message).Width;
-                        imScene.Height = ((Image)message).Height;
-                        imScene.Image =  (Image)((Image)message).Clone();
+                        if ((Image)message != null)
+                        {
+                            imScene.Width = ((Image)message).Width;
+                            imScene.Height = ((Image)message).Height;
+                            imScene.Image = (Image)((Image)message).Clone();
+                        }
+                        else { imScene.Image = null; }
                         return 0;
                     };
                     Invoke(del);
@@ -2435,7 +2440,12 @@ namespace Haytham
             METState.Current.EyeForExport = checkBox1.Checked;
         }
 
-       
+        String tempPreToolTipTxt = "";
+        private void imScene_MouseMove(object sender, MouseEventArgs e)
+        {
+           
+
+        }
 
 
 
@@ -2449,55 +2459,55 @@ namespace Haytham
 
         private void imScene_Paint(object sender, PaintEventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
-            {
-                Func<int> del = delegate()
-                {
+            //if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            //{
+            //    Func<int> del = delegate()
+            //    {
 
-                    if (METState.Current.EyeToScene_Mapping.Calibrated == true)
-                    {
-
-
-
-                        try
-                        {
-
-
-                            SizeF s = new SizeF(imScene.Width, imScene.Height);
-                          //  METState.Current.Gaze_HMGT = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X,
-                            //    METState.Current.eyeFeature.Y, METState.Current.EyeToScene_Mapping.GazeErrorX, METState.Current.EyeToScene_Mapping.GazeErrorY);
-
-                            //Point coord = new Point(
-                            //    (int)
-                            //    (METState.Current.Gaze_HMGT.X * s.Width / (double)METState.Current.GlassFrontView_Resolution.Width),
-                            //    (int)
-                            //    (METState.Current.Gaze_HMGT.Y * s.Height / (double)METState.Current.GlassFrontView_Resolution.Height));
+            //        if (METState.Current.EyeToScene_Mapping.Calibrated == true)
+            //        {
 
 
 
-                            Point coord = new Point(
-                                (int)
-                                (METState.Current.Gaze_HMGT.X),
-                                (int)
-                                (METState.Current.Gaze_HMGT.Y));
+            //            try
+            //            {
 
 
-                            e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
+            //                SizeF s = new SizeF(imScene.Width, imScene.Height);
+            //              //  METState.Current.Gaze_HMGT = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X,
+            //                //    METState.Current.eyeFeature.Y, METState.Current.EyeToScene_Mapping.GazeErrorX, METState.Current.EyeToScene_Mapping.GazeErrorY);
 
-                        }
-                        catch (Exception ex)
-                        {
+            //                //Point coord = new Point(
+            //                //    (int)
+            //                //    (METState.Current.Gaze_HMGT.X * s.Width / (double)METState.Current.GlassFrontView_Resolution.Width),
+            //                //    (int)
+            //                //    (METState.Current.Gaze_HMGT.Y * s.Height / (double)METState.Current.GlassFrontView_Resolution.Height));
 
-                        }
-                    }
-                    return 0;
-                };
-                Invoke(del);
-            }
-            else if (_bitmapimScene != null)
-            {
-                e.Graphics.DrawImage(_bitmapimScene, 0, 0, _bitmapimScene.Width, _bitmapimScene.Height);
-            }
+
+
+            //                Point coord = new Point(
+            //                    (int)
+            //                    (METState.Current.Gaze_HMGT.X),
+            //                    (int)
+            //                    (METState.Current.Gaze_HMGT.Y));
+
+
+            //                e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
+
+            //            }
+            //            catch (Exception ex)
+            //            {
+
+            //            }
+            //        }
+            //        return 0;
+            //    };
+            //    Invoke(del);
+            //}
+            //else if (_bitmapimScene != null)
+            //{
+            //    e.Graphics.DrawImage(_bitmapimScene, 0, 0, _bitmapimScene.Width, _bitmapimScene.Height);
+            //}
         }
 
         private void imSceneProcessed_Paint(object sender, PaintEventArgs e)
@@ -2619,24 +2629,25 @@ namespace Haytham
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
+                METState.Current.METCoreObject.SendToForm(null, "imScene");
                 Haytham.Glass.SceneImage test = new Haytham.Glass.SceneImage();
-                Image img = Image.FromFile(@"ProImages\" + txtImageName.Text + ".jpg");
+                Image img = Image.FromFile(@"ProImages\" + txtImageName.Text);// + ".jpg");
 
-               //Point testPoint = test.getCalibrationTarget(img, -1, 1, false);
+                //Point testPoint = test.getCalibrationTarget(img, -1, 1, false);
                 Point testPoint = test.getCalibrationTarget(img, TrackBar1.Value, 1, false);
 
                 METState.Current.METCoreObject.SendToForm(test.result_Image, "imScene");
-              // METState.Current.METCoreObject.SendToForm(test.temp_Image, "imScene");
+                // METState.Current.METCoreObject.SendToForm(test.temp_Image, "imScene");
 
 
 
-            //}
-            //catch (Exception er)
-            //{
-            //    Console.WriteLine("Image not found");
-            //}
+            }
+            catch (Exception er)
+            {
+                Console.WriteLine("Image not found");
+            }
 
 
         }
@@ -2654,6 +2665,11 @@ namespace Haytham
         }
 
         private void tabPage_Glass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtImageName_TextChanged(object sender, EventArgs e)
         {
 
         }
