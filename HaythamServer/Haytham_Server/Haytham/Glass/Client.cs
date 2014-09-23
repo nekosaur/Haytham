@@ -14,8 +14,18 @@ namespace myGlass
     using System.Data;
     using Haytham;
     using System.Linq;
-
+    
     using System.Threading;
+    using Newtonsoft.Json;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Json;
+    using System.Web.Script.Serialization;
+    using System.Collections.Generic;
+    using System.Collections;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
+
 
     using System.Security.Cryptography;
 
@@ -41,10 +51,10 @@ namespace myGlass
 
         public int numberOfPictures = 0;
         public Image bitmap;
-        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3, FXPAL = 4 };
+        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3 ,waitingForJSON_size=5,waitingForJSON=6};
         Mode mode = Mode.mainLoop;
 
-        public enum Ready_State : int { No = 0, Yes = 1 };
+        public enum Ready_State : int { No = 0, Yes = 1 ,Finished=-1};
         public Ready_State myGlassReady_State = Ready_State.No;
 
         private int failedBlobDetectionCount = 0;
@@ -85,12 +95,16 @@ namespace myGlass
         /// </param>
         public Client(TcpClient socket, Server serverValue)
         {
+
+   this.server = serverValue;
+       
+     finish("New Connection established!");
             this.tcpClient = socket;
 
             // create NetworkStream object for Socket
             this.socketStream = this.tcpClient.GetStream();
 
-            this.server = serverValue;
+         
 
 
 
@@ -98,6 +112,35 @@ namespace myGlass
 
         #endregion
 
+
+        public void serverThread()
+        {
+
+
+            try
+            {
+                System.Net.Sockets.UdpClient udpClient = new System.Net.Sockets.UdpClient(constants.SERVER_PORT_UDP);
+                IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
+
+                byte[] data = new byte[1024];
+                data = udpClient.Receive(ref sender);
+                udpClient.Close();
+                string stringData = Encoding.ASCII.GetString(data, 0, data.Length);
+
+
+                server.GlassIP = sender.Address.ToString();
+
+                server.udpServer = new UdpClient(constants.SERVER_PORT_UDP_GAZE);
+                server.remoteEP = new IPEndPoint(IPAddress.Parse(server.GlassIP), constants.SERVER_PORT_UDP_GAZE);
+                server.sendSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+                METState.Current.METCoreObject.SendToForm("Glass IP: " + server.GlassIP + "\r\n", "tbOutput");
+
+
+            }
+            catch (Exception e){ }
+
+        }
 
         /// <summary>
         ///   Runs this instance.
@@ -112,6 +155,15 @@ namespace myGlass
             byte[] message;
             string msg = "";
             byte[] received;
+
+            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_WHAT_IS_YOUR_IP);
+                            
+            Thread thdUDPServer = new Thread(new ThreadStart(serverThread));
+            thdUDPServer.Start();
+
+
+            Thread.Sleep(500);
+
             do
             {
                 try
@@ -150,7 +202,47 @@ namespace myGlass
                                 }
                             }
                             break;
-                  
+   
+                        case Mode.waitingForJSON_size:
+                            {
+                                byte[] buffer = new byte[4];
+                                //updateUI("Waiting for data.  Expecting " + progressData_Remaining + " more bytes.");
+                                int bytesRead = METState.Current.GlassServer.client.socketStream.Read(buffer, 0, buffer.Length);
+                                if (bytesRead == 4)
+                                {
+                                    progressData_Total = byteArrayToInt(buffer);
+                                    progressData_Remaining = progressData_Total;
+                                    dataOutputStream = new MemoryStream();
+                    
+                                    mode = Mode.waitingForJSON;
+
+
+                                } 
+                            else mode = Mode.mainLoop;
+
+                            }
+                            break;
+                        case Mode.waitingForJSON:
+                            {
+                                int prg = getJson();
+
+                                if (prg == 1)
+                                {
+                                    METState.Current.GlassServer.Send( MessageType.toGLASS_DataReceived);
+                                   
+                                    mode = Mode.mainLoop;
+                                
+                                }
+                                else if (prg == -1)
+                                {
+
+                                    mode = Mode.mainLoop;
+                                }
+
+
+
+                            }
+                            break;
                         case Mode.waitingForHeader:
                             {
                                 int prg = getHeader();
@@ -183,13 +275,15 @@ namespace myGlass
                                             Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.X), Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.Y), System.Drawing.Color.Red);
                                         #endregion Draw gaze cross on image
 
-                                        myGlass.fullScreenImage mFull_Img = new fullScreenImage((Bitmap)bitmap);
-                                        mFull_Img.ShowDialog();
+                                       // myGlass.fullScreenImage mFull_Img = new fullScreenImage((Bitmap)bitmap);
+                                       // mFull_Img.ShowDialog();
 
                                         METState.Current.METCoreObject.SendToForm(bitmap, "imScene");
+                                                                        
 
                                         METState.Current.GlassFrontView_Resolution = new Size(bitmap.Width, bitmap.Height);
-
+                                        
+                                        
 
                                         snapshot = 0;
                                     }
@@ -308,19 +402,43 @@ namespace myGlass
 
                 }
             }
-            while (cnt<10 && !msg.StartsWith("CLIENT>>> TERMINATE") && tcpClient.Client.Connected);
+            while (cnt==0 && !msg.StartsWith("CLIENT>>> TERMINATE") && tcpClient.Client.Connected); //cnt < 10 &&
 
             // close the socket connection
-            METState.Current.METCoreObject.SendToForm("Client has disconnected!!!!", "tbOutput");
-            METState.Current.METCoreObject.SendToForm("*********************************************\r\n", "tbOutput");
-
-            tcpClient.Client.Close();
-            socketStream.Close();
-            tcpClient.Close();
+            finish( "Client has disconnected!!!!");
+             
+                METState.Current.METCoreObject.SendToForm("*********************************************\r\n", "tbOutput");
 
 
         }
-        int wait = 4000;
+
+        private void finish(String msg)
+        {
+            try
+            {
+                METState.Current.METCoreObject.SendToForm( msg , "tbOutput");
+
+
+                
+                //server.remoteEP = null;
+               // server.sendSocket.Disconnect(true);
+                //server.sendSocket.Close();
+                server.udpServer.Close();
+               // server.udpServer = null;
+
+            }
+            catch (Exception e)
+            { }
+
+            try { 
+            tcpClient.Client.Close();
+           // socketStream.Close();
+            tcpClient.Close();
+            }
+            catch (Exception e)
+            { }
+        }
+            int wait = 4000;
         private void interpretMSG(byte[] msg)
         {
             // we can insure that this is a correct msg by if(GetIndicator(msg)==GetX(msg))
@@ -332,6 +450,13 @@ namespace myGlass
 
                     {
                         myGlassReady_State = Ready_State.Yes;
+                    }
+
+                    break;
+                case MessageType.toHAYTHAM_Calibrate_Display_Finished:
+                    {
+                        myGlassReady_State = Ready_State.Finished;
+
                     }
 
                     break;
@@ -450,6 +575,20 @@ namespace myGlass
 
                     }
                     break;
+                case MessageType.toHAYTHAM_JsonComming:
+                    {
+                        #region ready to get the picture
+                        
+                        METState.Current.METCoreObject.SendToForm(0, "progressbar");
+
+                        dataOutputStream = new MemoryStream();
+
+                        mode = Mode.waitingForJSON_size;
+
+                        #endregion
+
+                    }
+                    break;
                 case MessageType.toHAYTHAM_HeadderComming:
                     {
                         #region ready to get the picture
@@ -493,7 +632,9 @@ namespace myGlass
                     break;
                 default:
                     {
-                   
+
+                        
+                            
 
                     }
                     break;
@@ -570,6 +711,7 @@ namespace myGlass
             }
             return progress;
         }
+
         private int getPicture()
         {
             int progress = 0;//0:progress 1:successfuly finished  -1:Failed
@@ -613,18 +755,17 @@ namespace myGlass
 
                         bitmap = Image.FromStream(dataOutputStream);
 
-               
-                        string folder = @"ProImages\";
+                     
+
+                        string folder = @"fromGlass\Images\";
 
                         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
                         String photoTime = DateTime.Now.ToString("mm.ss");
                         String SuspiciousPath = Path.Combine(folder, photoTime + ".jpg");
-                         //bitmap.Save(SuspiciousPath);
+                        // bitmap.Save(SuspiciousPath);
 
-
-
-
+    
                         dataOutputStream.Flush();
                         dataOutputStream.Close();
                         progress = 1;
@@ -649,6 +790,88 @@ namespace myGlass
             return progress;
         }
 
+        private int getJson()
+        {
+            int progress = 0;//0:progress 1:successfuly finished  -1:Failed
+
+            try
+            {
+                //// Read the data from the stream in chunks
+                byte[] buffer = new byte[constants.CHUNK_SIZE];
+                //updateUI("Waiting for data.  Expecting " + progressData_Remaining + " more bytes.");
+                int bytesRead = socketStream.Read(buffer, 0, buffer.Length);
+
+                
+                int prg = 100 - (int)((progressData_Remaining / progressData_Total) * 100.0);
+
+                METState.Current.METCoreObject.SendToForm("(" + prg + "%) : Read " + bytesRead + " bytes into buffer", "tbOutput");
+                METState.Current.METCoreObject.SendToForm(prg, "progressbar");
+
+                progressData_Remaining -= bytesRead;
+
+                if (progressData_Remaining>=0) dataOutputStream.Write(buffer, 0, bytesRead);
+                else dataOutputStream.Write(buffer, 0, (int)(bytesRead - Math.Abs(progressData_Remaining)));
+
+                //dataOutputStream.WriteByte(buffer);
+
+
+               
+                if (progressData_Remaining <= 0)
+                {
+                    // check the integrity of the data
+                    byte[] data = dataOutputStream.ToArray();
+
+                    String jsonString = Encoding.UTF8.GetString(data);//didn't help     .TrimEnd('\0');                    
+
+                    var json_serializer = new JavaScriptSerializer();
+
+                    string folder = @"fromGlass\Jsons\";
+                    if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+                    {
+           
+                    }{
+                  
+                    }{
+                        myJsonClass mjson = new myJsonClass();
+                        mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
+                        if (mjson.img != null)
+                        {
+                            String SuspiciousPath = Path.Combine(folder, mjson.name + ".jpg");
+                            mjson.img.Save(SuspiciousPath);
+                        }
+                        myJsonClass_test temp = new myJsonClass_test(mjson);
+                        System.Web.Script.Serialization.JavaScriptSerializer jSearializer =
+                        new System.Web.Script.Serialization.JavaScriptSerializer();
+                        String s = jSearializer.Serialize(temp);
+                        System.IO.File.WriteAllText(Path.Combine(folder, temp.name + ".txt"), s);
+
+                        METState.Current.METCoreObject.SendToForm(mjson.img, "imScene");
+                        METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
+
+                    }
+
+                    METState.Current.METCoreObject.SendToForm("Picture received", "tbOutput");
+                    METState.Current.METCoreObject.SendToForm(0, "progressbar");
+
+
+
+                    dataOutputStream.Flush();
+                    dataOutputStream.Close();
+                    progress = 1;
+
+
+
+                }
+            }
+            catch (IOException e)
+            {
+                progress = -1;
+            }
+            return progress;
+        }
+
+
         public int GetIndicator(byte[] a)
         {
             byte[] ret = new byte[4];
@@ -668,6 +891,13 @@ namespace myGlass
             Array.Copy(a, 8, ret, 0, 4);
             return byteArrayToInt(ret);
         }
+        public int GetIP(byte[] a)
+        {
+            byte[] ret = new byte[8];
+            Array.Copy(a, 4, ret, 0, 8);
+            return byteArrayToInt(ret);
+        }
+
         public int byteArrayToInt(byte[] b)
         {
             if (BitConverter.IsLittleEndian) Array.Reverse(b);
