@@ -69,6 +69,7 @@ namespace Haytham
 
                     if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
                     {
+
                         if (METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Yes) { 
                             METState.Current.GlassServer.client.myGlassReady_State = myGlass.Client.Ready_State.No;
                             pointerImage.ScaleIncreasing = true;

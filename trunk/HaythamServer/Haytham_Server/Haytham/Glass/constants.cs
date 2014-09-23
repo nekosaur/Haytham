@@ -18,5 +18,10 @@ namespace myGlass
         public const int display_W=640;
         public const int display_H = 360;
 
+             public const int  SERVER_PORT =  4444;
+             public const int SERVER_PORT_UDP = 4343;
+             public const int SERVER_PORT_UDP_GAZE = 4545;
+
+
     }
 }

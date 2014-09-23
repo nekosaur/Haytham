@@ -35,13 +35,21 @@ namespace myGlass
             }
 
         }
-        
+
+
+
+        public string GlassIP="";
+
+
         public Client client;
         public Thread clientThread;
         private TcpListener tcpListener; // listen for client connection
        
-        private Socket mSocket;
-        private IPEndPoint ipEndPoint;
+
+        //UDP
+        public UdpClient udpServer;
+        public IPEndPoint remoteEP;
+        public Socket sendSocket;
 
         private Thread getClientThread;
 
@@ -76,136 +84,6 @@ namespace myGlass
             METState.Current.METCoreObject.SendToForm("state changed to " + s, "tbOutput");
         }
 
-        private void getClient()
-        {
-
-
-
-            Thread.Sleep(500);
-            string ip = getip();
-            METState.Current.METCoreObject.SendToForm("Server IP : " + ip + "\r\n", "tbOutput");
-            setState(State.connecting);
-
-            ////TCP
-            /// set up Socket
-            IPAddress localip = IPAddress.Parse(ip);
-            tcpListener = new TcpListener(localip, 4444);
-            tcpListener.Start();
-
-
-
-            ////
-
-            //Thread tcpAccept_thread = new Thread(new ThreadStart(tcpAccept));
-            //tcpAccept_thread.Start();
-
-            ////......................
-            //Start server
-            const int Port = 4444;
-            mSocket = new Socket(AddressFamily.InterNetwork,
-            SocketType.Dgram, ProtocolType.Udp);
-            METState.Current.METCoreObject.SendToForm("Running server...", "tbOutput");
-            METState.Current.METCoreObject.SendToForm("Waiting....\r\n", "tbOutput");
-            mSocket.Bind(new IPEndPoint(IPAddress.Any, Port));
-         
-
-                while (!_shouldStop_getClient)
-                {
-                    string msg = "";
-                    try
-                    {
-                    ipEndPoint = new IPEndPoint(IPAddress.Any, 0);
-                    tempRemoteEP = (EndPoint)ipEndPoint;
-                    byte[] buffer = new byte[1000];
-                    //Recive message from anyone.
-                    //Server could crash here if there is another server
-                    //on the network listening at the same port.
-
-                    mSocket.ReceiveFrom(buffer, ref tempRemoteEP);
-                    //mSocket.ReceiveTimeout = 3000;
-                    msg = System.Text.Encoding.UTF8.GetString(buffer).TrimEnd('\0');
-
-
-                    METState.Current.METCoreObject.SendToForm("Server got '" + msg + "' from " + tempRemoteEP.ToString() + "\n", "tbOutput");
-
-                    if (msg.StartsWith("Hello Haytham!"))
-                    {
-                        try
-                        {
-                            //Replay to client and send your ip 
-                            byte[] temp = Encoding.ASCII.GetBytes(ip);
-                            mSocket.SendTo(temp, tempRemoteEP);
-
-                            //client.tcpClient.Close();
-                            //client = null;
-                            _shouldStop_AcceptSocket = false;
-
-                            Thread tcpAccept_thread = new Thread(new ThreadStart(tcpAccept));
-                            tcpAccept_thread.Start();
-
-                        }
-                        catch (IOException e)
-                        {
-                            continue;
-                        }
-                    }
-                    
-            }
-            catch (IOException ex)
-            {
-                continue;  
-            }
-
-
-                }
-
-
-        }
-
-        private void tcpAccept()
-        {
-            //string ip = getip();
-            
-
-            while (!_shouldStop_AcceptSocket)
-            {
-                try
-                {
-
-
-
-                    ///////...........................
-                    //if (!tcpListener.Pending())
-                    //{
-                    //    //Thread.Sleep(500); // choose a number (in milliseconds) that makes sense
-                    //    continue; // skip to next iteration of loop
-                    //}
-                    //else // Enter here only if have pending clients
-                    //{
-
-                       client.tcpClient.Client.Disconnect(false);
-                       clientThread = null;
-
-                        client = new Client(tcpListener.AcceptTcpClient(), this);
-
-                        clientThread = new Thread(new ThreadStart(client.Run));
-                        clientThread.Start();
-                        METState.Current.METCoreObject.SendToForm("Glass connected\r\n", "tbOutput");
-
-                        _shouldStop_AcceptSocket=true;
-                    //}
-
-
-                }
-
-                catch (IOException ex)
-                {
-
-                    continue; // skip to next iteration of loop
-                }
-
-            }
-        }
 
         private void getClient2()
         {
@@ -220,14 +98,15 @@ namespace myGlass
             ////TCP
             /// set up Socket
             IPAddress localip = IPAddress.Parse(ip);
-            tcpListener = new TcpListener(localip, 4444);
+            tcpListener = new TcpListener(localip, constants.SERVER_PORT);
             tcpListener.Start();
 
 
 
             //Start server
-            const int Port = 4444;
-            mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+           
+            //mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
             METState.Current.METCoreObject.SendToForm("Running server...", "tbOutput");
             METState.Current.METCoreObject.SendToForm("Waiting....\r\n", "tbOutput");
          
@@ -255,8 +134,22 @@ namespace myGlass
                                     //else // Enter here only if have pending clients
                                     //{
 
-                                    Client tempClient;
 
+                                    //????????????????????????????
+                                    //if (clientThread != null)
+                                    //{
+                                    //    client.tcpClient.Client.Disconnect(false);
+                                    //    clientThread = null;
+                                    //    METState.Current.METCoreObject.SendToForm("previous client closed!", "tbOutput");
+                                    //    METState.Current.METCoreObject.SendToForm("*********************************************\r\n", "tbOutput");
+                                    //}
+                                    //????????????????????
+
+
+                                   // Thread.Sleep(500);
+
+                                    Thread.Sleep(500);
+                                    Client tempClient;
                                     tempClient = new Client(tcpListener.AcceptTcpClient(), this);
 
 
@@ -264,7 +157,10 @@ namespace myGlass
                                     clientThread = new Thread(new ThreadStart(client.Run));
                                     clientThread.Start();
 
-                                    METState.Current.METCoreObject.SendToForm("Glass connected\r\n", "tbOutput");
+
+
+
+                                    METState.Current.METCoreObject.SendToForm("Glass connected", "tbOutput");
                                     METState.Current.METCoreObject.SendToForm("Hide", "IPform");
                                     
                                     
@@ -363,6 +259,40 @@ namespace myGlass
         }
 
     }
+
+        public void SendGaze_via_UDP(int indicator, Point pnt)
+        {
+            if (connected)
+            {
+                try
+                {
+
+                    byte[] i = BitConverter.GetBytes(indicator);
+                    byte[] x = BitConverter.GetBytes(pnt.X);
+                    byte[] y = BitConverter.GetBytes(pnt.Y);
+
+                    byte[] packed = new byte[constants.MSG_SIZE];//[indicator,x,x,x,x,y,y,y,y]
+
+                    Array.Copy(i, 0, packed, 0, i.Length);
+                    Array.Copy(x, 0, packed, 4, x.Length);
+                    Array.Copy(y, 0, packed, 8, y.Length);
+
+
+
+
+                    udpServer.Send(packed, packed.Length, remoteEP);
+                    //sendSocket.Disconnect(true);
+                    //sendSocket.Close();
+                   // udpServer.Close();
+
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+
+        }
 
 
         public void Send(int indicator)

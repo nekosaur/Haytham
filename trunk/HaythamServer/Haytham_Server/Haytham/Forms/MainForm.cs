@@ -84,7 +84,7 @@ namespace Haytham
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+
             METState.Current.test = trackBarTest.Value;//for test
             //-------------------------------------------------------------
             //groupBox_imgEye.AutoSize = true;
@@ -129,7 +129,7 @@ namespace Haytham
             }
             else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
             {
-               
+
                 gbSceneCameraDevice.Visible = false;
                 gbStartBoth.Visible = false;
 
@@ -146,8 +146,8 @@ namespace Haytham
                 checkBox3.Visible = false;
 
 
-               
-                
+
+
             }
 
 
@@ -306,10 +306,10 @@ namespace Haytham
             METState.Current.SceneForExport = checkBox3.Checked;
 
 
-            
+
 
             //Glass
-             Type t = typeof(myGlass.MessageType);
+            Type t = typeof(myGlass.MessageType);
             //METState.Current.commands = t.GetProperties(System.Reflection.BindingFlags.Instance)
             //     .ToDictionary(prop => prop.Name, prop => (int)prop.GetValue(t, null));
 
@@ -319,7 +319,7 @@ namespace Haytham
             foreach (var item in properties)
             {
                 string name = item.Name;
-                int val = (int) item.GetValue(null);
+                int val = (int)item.GetValue(null);
                 if (name.StartsWith("toGLASS")) METState.Current.commands.Add(name, val);
             }
 
@@ -331,9 +331,9 @@ namespace Haytham
             }
 
 
-           METState.Current.GlassServer = new myGlass.Server(this);
+            METState.Current.GlassServer = new myGlass.Server(this);
 
- 
+
         }
 
 
@@ -942,7 +942,7 @@ namespace Haytham
                 if (METState.Current.GlassServer.gazeStream_RGT == myGlass.Server.GazeStream.RGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_RGT, coord);
                 if (METState.Current.GlassServer.gazeStream_HMGT == myGlass.Server.GazeStream.HMGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_HMGT, coord);
 
-           
+
 
                 p_mouse = new Point(coord.X, coord.Y);
 
@@ -1256,7 +1256,7 @@ namespace Haytham
             METState.Current.detectGlint = cbGlintDetection.Checked;
 
             if (METState.Current.detectGlint) rbPupilGlint.Checked = true;
-            else rdOnlyPupil.Checked=true;
+            else rdOnlyPupil.Checked = true;
 
             if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
             else if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
@@ -1628,20 +1628,21 @@ namespace Haytham
             switch (controlName)
             {
 
-                case "GlassTemp":
+                case "Update Glass Picturebox":
 
                     try
                     {
                         //imScene.Image = null;
-                        imScene.Image = (Image)METState.Current.GlassServer.client.bitmap.Clone();  
-                        imScene.Invalidate();
+                        _bitmapPicturebox2 = (Bitmap)imScene.Image;//(Image)METState.Current.GlassServer.client.bitmap.Clone();  
+                        pictureBox2.Invalidate();
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
-                    
+
                     }
-                   
+
                     break;
+             
                 case "progressbar":
 
                     del = delegate()
@@ -2169,7 +2170,7 @@ namespace Haytham
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
             METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect); ;
-  
+
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
 
         }
@@ -2195,7 +2196,7 @@ namespace Haytham
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
             METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect);
- 
+
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
@@ -2443,11 +2444,50 @@ namespace Haytham
         String tempPreToolTipTxt = "";
         private void imScene_MouseMove(object sender, MouseEventArgs e)
         {
-           
+          
 
         }
 
+        private Bitmap _bitmapPicturebox2;
+        private void Picturebox2_Paint(object sender, PaintEventArgs e)
+        {
 
+
+            if (_bitmapPicturebox2 != null)
+            {
+                e.Graphics.DrawImage(_bitmapPicturebox2, 0, 0, pictureBox2.Width, pictureBox2.Height);
+            }
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            {
+                Func<int> del = delegate()
+                {
+
+                    if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
+                    {
+
+
+
+                        try
+                        {
+
+                            SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
+                            Point coord = new Point((int)(METState.Current.Gaze_RGT.X * s.Width / (double)myGlass.constants.display_W), (int)(METState.Current.Gaze_RGT.Y * s.Height / (double)myGlass.constants.display_H));
+
+                            e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    return 0;
+                };
+                Invoke(del);
+            }
+
+
+        }
 
         private void imEye_Paint(object sender, PaintEventArgs e)
         {
@@ -2541,18 +2581,20 @@ namespace Haytham
 
         private void button3_Click(object sender, EventArgs e)
         {
+            METState.Current.GlassServer.gazeStream_RGT = myGlass.Server.GazeStream.NoStreaming;
+
             int n = Int32.Parse(((Button)sender).Tag.ToString());
             n = (int)Math.Sqrt(n);
 
-            if (n==2)
+            if (n == 2)
             {
                 METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
 
             }
-            else if (n==3)
+            else if (n == 3)
             {
                 METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-            
+
             }
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-1, -1));//only show the msg to the user not the point
@@ -2566,7 +2608,7 @@ namespace Haytham
             METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
             METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
 
-            
+
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
@@ -2603,7 +2645,7 @@ namespace Haytham
                 METState.Current.EyeToScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
             }
-            
+
             METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
             METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
             METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
@@ -2614,16 +2656,16 @@ namespace Haytham
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-1, -1));
             Thread.Sleep(2000);//??
-            
 
-           
+
+
 
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
 
-  
+
 
         }
 
@@ -2652,15 +2694,15 @@ namespace Haytham
 
         }
 
-    
+
         private void pictureBox1_Paint_1(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            
+
             IPform.ShowDialog();
         }
 
@@ -2673,6 +2715,45 @@ namespace Haytham
         {
 
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            METState.Current.GlassServer.gazeStream_RGT = myGlass.Server.GazeStream.NoStreaming;
+
+            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_LetsCorrectOffset);
+
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated)
+                    {
+                        SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
+                        Point coord = new Point((int)(e.X * (double)myGlass.constants.display_W / (double)s.Width), (int)(e.Y * (double)myGlass.constants.display_H / (double)s.Height));
+
+
+                        AForge.Point Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, coord.X, coord.Y);
+
+                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
+                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
+
+
+                    }
+                }
+            }
+
+
+        }
+
 
 
 

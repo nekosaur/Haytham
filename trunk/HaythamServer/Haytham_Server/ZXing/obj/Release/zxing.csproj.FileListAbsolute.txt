@@ -27,8 +27,3 @@ C:\Users\diako\Dropbox\FXPAL\Step1 (FXPAL)\HaythamServer\Haytham_Server\ZXing\ob
 C:\Users\diako\Dropbox\FXPAL\Step1 (FXPAL)\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.pdb
 C:\Users\diako\Dropbox\FXPAL\Step1 (FXPAL)\HaythamServer\Haytham_Server\ZXing\zxing.dll
 C:\Users\diako\Dropbox\FXPAL\Step1 (FXPAL)\HaythamServer\Haytham_Server\ZXing\zxing.pdb
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.csprojResolveAssemblyReference.cache
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.dll
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.pdb
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll
-C:\Users\diako.PAL\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.pdb

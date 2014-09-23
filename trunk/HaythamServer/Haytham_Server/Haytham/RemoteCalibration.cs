@@ -108,10 +108,19 @@ namespace Haytham
 
         void timerSpeed_Tick(object sender, EventArgs e)
         {
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss
+                &&( !Haytham.METState.Current.GlassServer.client.tcpClient.Connected
+                || METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Finished))
+            {
 
-            bool temp = mycursor.updatePointerImage();
-            if (temp) getSample();
+                finish();
 
+                timerSpeed.Enabled = false;
+                return;
+            }
+              bool temp = mycursor.updatePointerImage();
+                if (temp) getSample();
+            
 
         }
 

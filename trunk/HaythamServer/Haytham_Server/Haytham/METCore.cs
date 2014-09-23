@@ -318,8 +318,8 @@ namespace Haytham
 			if (METState.Current.eye.eyeData[0].pupilFound)
 			{
 
-				if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
-				{
+                if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
+                {
                     METState.Current.Gaze_RGT = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX, METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY);
 
 
@@ -329,14 +329,21 @@ namespace Haytham
 
                     METState.Current.server.Send("Gaze", new string[] { ((int)METState.Current.Gaze_RGT.X).ToString(), ((int)METState.Current.Gaze_RGT.Y).ToString() });
 
-                    if (METState.Current.GlassServer.gazeStream_RGT == myGlass.Server.GazeStream.RGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_RGT, new Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y));
-				}
+                    if (METState.Current.GlassServer.gazeStream_RGT == myGlass.Server.GazeStream.RGT)
+                    {
+                      //  METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_RGT , new Point((int)METState.Current.Gaze_RGT.X , (int)METState.Current.Gaze_RGT.Y));
+                        METState.Current.GlassServer.SendGaze_via_UDP(myGlass.MessageType.toGLASS_GAZE_RGT, new Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y));
+
+                        METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
+    
+                     }
+                }
                 if (METState.Current.EyeToScene_Mapping.Calibrated == true)
                 {
                     
                     CalculateGazeOnScene();
-                    //SendToForm("Draw Gaze on imScene", "GlassTemp");
-                    if (METState.Current.GlassServer.gazeStream_HMGT == myGlass.Server.GazeStream.HMGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_HMGT, new Point((int)METState.Current.Gaze_HMGT.X, (int)METState.Current.Gaze_HMGT.Y));
+                    //
+                    if (METState.Current.GlassServer.gazeStream_HMGT == myGlass.Server.GazeStream.HMGT) METState.Current.GlassServer.SendGaze_via_UDP(myGlass.MessageType.toGLASS_GAZE_HMGT, new Point((int)METState.Current.Gaze_HMGT.X, (int)METState.Current.Gaze_HMGT.Y));
                 }
 			}
 			METState.Current.server.Send("Eye", new string[]
@@ -390,6 +397,18 @@ namespace Haytham
 			SendToForm("", "textBoxTimerEye");//update the timer text box and show the ProcessTimeEyeBranch
 			METState.Current.ProcessTimeEyeBranch.TimerResults.Clear();
 		}
+
+
+
+
+
+
+
+
+
+
+
+
 		public void MainMethodScene(object sender, METEventArg e)
 		{
 			METState.Current.ProcessTimeSceneBranch.Timer("Total", "Start");
