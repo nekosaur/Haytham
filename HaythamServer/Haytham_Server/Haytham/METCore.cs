@@ -355,7 +355,11 @@ namespace Haytham
                                                   METState.Current.eye.eyeData[0].pupilFound.ToString(),
                                                   ((float)METState.Current.eye.eyeData[0].pupilCenter.X/METState.Current.EyeCamera.VideoSize.Width).ToString(),
                                                   ((float)METState.Current.eye.eyeData[0].pupilCenter.Y/METState.Current.EyeCamera.VideoSize.Height).ToString(),
+
+
                                                 });
+
+
 
 			#endregion Remote
 
@@ -415,6 +419,16 @@ namespace Haytham
 
 			#region Gaze estimation on scene
 			if (METState.Current.EyeToScene_Mapping.Calibrated == true) CalculateGazeOnScene();
+
+
+            //send gaze in scene image anyway
+            METState.Current.server.Send("GazeInScene", new string[] {
+                          ((int)METState.Current.Gaze_HMGT.X).ToString(), 
+                         ((int) METState.Current.Gaze_HMGT.Y).ToString(),
+
+
+
+                        });
 			#endregion Gaze estimation on scene
 
 
@@ -491,7 +505,7 @@ namespace Haytham
 
 					#region  Gaze
 
-					if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].pupilFound && METState.Current.monitor.IsGazeInsideRectangle())
+					if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].pupilFound  && METState.Current.monitor.IsGazeInsideRectangle());
 					{
 						///Gaze point in the computer screen. coordinates change from [0, screen.size(in pixles)] in each dimension
                         AForge.Point Screengaze = METState.Current.monitor.CalculateRectangleGazePoint(METState.Current.Gaze_HMGT, METState.Current.SceneToMonitor_Mapping);
@@ -511,12 +525,12 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
                         });
 
 
-
-						//debug.
-						// METState.Current.METCoreObject.SendToForm(Math.Sqrt(dx * dx + dy * dy), "chartTest");
-
 					}
+                    
+
 					#endregion  Gaze
+
+
 
 
 				}

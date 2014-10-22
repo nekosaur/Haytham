@@ -2499,8 +2499,8 @@ namespace Haytham
 
         private void imScene_Paint(object sender, PaintEventArgs e)
         {
-            //if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
-            //{
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            {
             //    Func<int> del = delegate()
             //    {
 
@@ -2543,11 +2543,11 @@ namespace Haytham
             //        return 0;
             //    };
             //    Invoke(del);
-            //}
-            //else if (_bitmapimScene != null)
-            //{
-            //    e.Graphics.DrawImage(_bitmapimScene, 0, 0, _bitmapimScene.Width, _bitmapimScene.Height);
-            //}
+            }
+            else if (_bitmapimScene != null)
+            {
+                e.Graphics.DrawImage(_bitmapimScene, 0, 0, _bitmapimScene.Width, _bitmapimScene.Height);
+            }
         }
 
         private void imSceneProcessed_Paint(object sender, PaintEventArgs e)

@@ -359,6 +359,14 @@ namespace Haytham
                             }
                         }
                         break;
+                    case "GazeInScene":
+                       
+                            foreach (KeyValuePair<string, Client> kvp in METState.Current.server.clients)
+                            {
+                                if (kvp.Value.ClientType == "Monitor" && kvp.Value.Status["_Gaze"]) clients[kvp.Value.ClientName].Writer.Write(message);
+                            }
+                        
+                        break;
                     case "Eye":
                         if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
                         {
