@@ -224,6 +224,7 @@ namespace Haytham
             if (METState.Current.GAdaptive) GrayImg = EmgImgProcssing.Filter_GlintAdaptiveThreshold(GrayImg, 255, false).Erode(1).Dilate(1);
             else GrayImg = EmgImgProcssing.Filter_Threshold(GrayImg, threshold, false);//.Erode(2).Dilate(2);//;
 
+           // METState.Current.EyeImageTest = GrayImg;
 
            // GrayImg = GrayImg.Erode(1).Dilate(1);
 
@@ -233,7 +234,7 @@ namespace Haytham
             AForge.Point tempGlintCenter = new AForge.Point(0, 0);
 
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Start");
-            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 4, 20, 4, 20, 0.4, 10);
+            glintBlob = new Blob_Aforge(GrayImg.Bitmap, 5, 30, 5, 30, 0.4, 10);
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Stop");
 
 
@@ -243,16 +244,17 @@ namespace Haytham
             {
 
                 glintBlob.SelectedBlob = glintBlob.blobs_Filtered[0];
-
+                tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
 
                 if (glintBlob.blobs_Filtered.Count >= 2)
                 {
 
+                    List<Blob> temp = glintBlob.blobs_Filtered;
 
+                  
+                    List<double> dists = new List<double>();
 
-                    List<double> dists=new List<double>();
-
-                    foreach (AForge.Imaging.Blob blob in glintBlob.blobs_Filtered)
+                    foreach (AForge.Imaging.Blob blob in temp)
                     {
 
                         tempGlintCenter = CorrectGlintPoint(blob.CenterOfGravity);
@@ -262,25 +264,25 @@ namespace Haytham
 
                     }
                    int i= dists.IndexOf(dists.Min());
+                    ////----------------------------------------------------This filter takes the one which is closer to the pupil 
+                    glintBlob.SelectedBlob = temp[i];
+                    tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
 
 
-                    ///Choose the glint in the right side
-                    //if (blobClose1.CenterOfGravity.X > blobClose2.CenterOfGravity.X) glintBlob.SelectedBlob = blobClose1;
-                    //else glintBlob.SelectedBlob = blobClose2;
+                    ////----------------------------------------------------This filter takes the average of the two closest glint to the pupil
+                    //dists.RemoveAt(i);
+                    //temp.RemoveAt(i);
+                    //i = dists.IndexOf(dists.Min());//this will select the second closest glint
+                    //AForge.Point tempGlintCenter2 = CorrectGlintPoint(temp[i].CenterOfGravity);
+                    //tempGlintCenter = new AForge.Point((tempGlintCenter.X + tempGlintCenter2.X) / 2, (tempGlintCenter.Y + tempGlintCenter2.Y) / 2);
 
-                    //choose the closest glint
-                   glintBlob.SelectedBlob = glintBlob.blobs_Filtered[i];
                 }
       
 
 
                 #endregion filter blob
 
-                tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
-
-                //   METState.Current.EyeImageTest = new Image<Gray, byte>(glintBlob.image);
-
-
+            
 
             }
 
