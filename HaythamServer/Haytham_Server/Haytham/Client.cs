@@ -279,9 +279,7 @@ namespace Haytham
         case METState.RemoteOrMobile.MobileEyeTracking:
           this.CalibrateMobile(method);
           break;
-        case METState.RemoteOrMobile.GoogleGalss:
-          this.CalibrateGlass(method);
-          break;
+
       }
     }
 
@@ -314,50 +312,22 @@ namespace Haytham
       }
     }
 
-    /// <summary>
-    /// Calls calibration for remote tracking mode
-    /// </summary>
-    /// <param name="method">
-    /// One of the calibraton methods.
-    /// </param>
-    private void CalibrateGlass(CalibrationMethod method)
-    {
-        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
-      METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-      METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
-
-      switch (method)
-      {
-        case CalibrationMethod.Point4:
-          METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
-          METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds);
-          break;
-        case CalibrationMethod.Point9:
-          METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-          METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds);
-          break;
-      }
-
-     // METState.Current.remoteCalibration.ShowDialog();
-      this.Writer.Write("CalibrationFinished");
-    }
     private void CalibrateRemote(CalibrationMethod method)
     {
-        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
-        METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-        METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+        METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+        METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
+        METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+        METState.Current.EyeToDisplay_Mapping.Calibrated = false;
 
         switch (method)
         {
             case CalibrationMethod.Point4:
-                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
-                METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds);
+                METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+                METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds, RemoteCalibration.Task.Calib_Display);
                 break;
             case CalibrationMethod.Point9:
-                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds);
+                METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds, RemoteCalibration.Task.Calib_Display);
                 break;
         }
 

@@ -180,6 +180,9 @@
     <Compile Include="Forms\qrCode.Designer.cs">
       <DependentUpon>qrCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="Glass\Experiments\CalibExp.cs" />
+    <Compile Include="Glass\Experiments\Sampling_Display.cs" />
+    <Compile Include="Glass\Experiments\Sampling_Scene.cs" />
     <Compile Include="Glass\fullScreenImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +190,7 @@
       <DependentUpon>fullScreenImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Glass\myJsonClass.cs" />
+    <Compile Include="Glass\Calibration_Scene.cs" />
     <Compile Include="RemoteCalibration.cs" />
     <Compile Include="Glass\Client.cs" />
     <Compile Include="Glass\constants.cs" />

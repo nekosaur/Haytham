@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------------
 // </copyright>
 // <author>Diako Mardanbegi</author>
-// <email>dima@itu.dk</email>
+// <email>dima@itu.dk</email>f
 
 using System;
 using System.Collections.Generic;
@@ -70,8 +70,61 @@ namespace Haytham
             // accept connections on a different thread
             getClientThread = new Thread(new ThreadStart(getClient));
             getClientThread.Start();
-        }//end Server
 
+
+
+
+            Thread thdUDPServer = new Thread(new ThreadStart(udpReceiverThread));
+            thdUDPServer.Start();
+
+        }//end Server
+        public void udpReceiverThread()
+        {
+
+            try
+            {
+                System.Net.Sockets.UdpClient udpClient = new System.Net.Sockets.UdpClient(1234);
+                IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
+
+                do
+                {
+
+                    byte[] data = new byte[1024];
+                    data = udpClient.Receive(ref sender);
+                    
+                    string stringData = Encoding.ASCII.GetString(data, 0, data.Length);
+                    Console.WriteLine("....................."+ stringData);
+
+                    if (stringData == "t")
+                    {
+
+                        METState.Current.timeDifference = METState.Current.recording_timer.ElapsedMilliseconds/2;
+                        Console.WriteLine("..........Delay is ..........." + (METState.Current.recording_timer.ElapsedMilliseconds/2).ToString());
+
+
+                        METState.Current.recording_timer.Restart();
+
+                        int udp_port = 9876;
+                        System.Net.Sockets.UdpClient udpServer = new System.Net.Sockets.UdpClient(udp_port);
+                        System.Net.IPEndPoint remoteEP = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(METState.Current.tempUDPClient_ip), udp_port);
+
+                        byte[] packed = System.Text.Encoding.ASCII.GetBytes("s\n");
+                        udpServer.Send(packed, packed.Length, remoteEP);
+                        Console.WriteLine("..................... s sent to client");
+                        udpServer.Close();
+                    }
+
+                }
+                while (true);    
+
+            }
+            catch (Exception e) { 
+            
+
+
+            }
+
+        }
         public void DisplayMessage(string message)
         {
             try

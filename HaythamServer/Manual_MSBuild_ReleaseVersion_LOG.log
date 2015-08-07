@@ -1,4 +1,4 @@
-Build started 10/21/2014 11:00:45 AM.
+Build started 4/16/2015 2:00:03 PM.
 __________________________________________________
 Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham.sln" (Clean;Build target(s)):
 
@@ -8,6 +8,12 @@ Target Clean:
     __________________________________________________
     Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.csproj" (Clean target(s)):
 
+    Target CoreClean:
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.csprojResolveAssemblyReference.cache".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\obj\Release\zxing.pdb".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.pdb".
     __________________________________________________
     Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham.sln" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham.TestExtData\Haytham.TestExtData.csproj" (Clean target(s)):
 
@@ -42,14 +48,18 @@ Target Clean:
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.dll".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\AForge.Vision.GlyphRecognition.dll".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.ExtData.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Newtonsoft.Json.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\zxing.dll".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\zxing.pdb".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.csprojResolveAssemblyReference.cache".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.AnimatedCursor.resources".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.firstForm.resources".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.MainForm.resources".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.Properties.Resources.resources".
-        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.RemoteCalibration.resources".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.csproj.GenerateResource.Cache".
         Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.exe".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.Forms.qrCode.resources".
+        Deleting file "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\myGlass.fullScreenImage.resources".
     Target CleanReferencedProjects:
         __________________________________________________
         Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytahm.ExtData\Haytham.ExtData.csproj" (Clean target(s)):
@@ -79,9 +89,39 @@ Target Build:
         Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.csproj" (default targets):
 
         Target CoreCompile:
-          Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+            C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /unsafe- /checked- /nowarn:1701,1702 /nostdlib+ /errorreport:prompt /warn:4 /baseaddress:285212672 /highentropyva- /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\mscorlib.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Data.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Design.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Management.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Windows.Forms.dll /reference:C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Xml.dll /debug+ /debug:full /filealign:4096 /out:obj\Release\zxing.dll /target:library /warnaserror- /utf8output AssemblyInfo.cs BarcodeFormat.cs Binarizer.cs BinaryBitmap.cs client\result\AbstractDoCoMoResultParser.cs client\result\AddressBookAUResultParser.cs client\result\AddressBookDoCoMoResultParser.cs client\result\AddressBookParsedResult.cs client\result\BizcardResultParser.cs client\result\BookmarkDoCoMoResultParser.cs client\result\CalendarParsedResult.cs client\result\EmailAddressParsedResult.cs client\result\EmailAddressResultParser.cs client\result\EmailDoCoMoResultParser.cs client\result\GeoParsedResult.cs client\result\GeoResultParser.cs client\result\ISBNParsedResult.cs client\result\ISBNResultParser.cs client\result\optional\AbstractNDEFResultParser.cs client\result\optional\NDEFRecord.cs client\result\optional\NDEFSmartPosterParsedResult.cs client\result\optional\NDEFSmartPosterResultParser.cs client\result\optional\NDEFTextResultParser.cs client\result\optional\NDEFURIResultParser.cs client\result\ParsedResult.cs client\result\ParsedResultType.cs client\result\ProductParsedResult.cs client\result\ProductResultParser.cs client\result\ResultParser.cs client\result\SMSMMSResultParser.cs client\result\SMSParsedResult.cs client\result\TelParsedResult.cs client\result\TelResultParser.cs client\result\TextParsedResult.cs client\result\URIParsedResult.cs client\result\URIResultParser.cs client\result\URLTOResultParser.cs client\result\VCardResultParser.cs client\result\VEventResultParser.cs common\BitArray.cs common\BitMatrix.cs common\BitSource.cs common\ByteArray.cs common\ByteMatrix.cs common\CharacterSetECI.cs common\Collections.cs common\Comparator.cs common\DecoderResult.cs common\DefaultGridSampler.cs common\DetectorResult.cs common\detector\MonochromeRectangleDetector.cs common\ECI.cs common\GlobalHistogramBinarizer.cs common\GridSampler.cs common\HybridBinarizer.cs common\PerspectiveTransform.cs common\reedsolomon\GF256.cs common\reedsolomon\GF256Poly.cs common\reedsolomon\ReedSolomonDecoder.cs common\reedsolomon\ReedSolomonEncoder.cs common\reedsolomon\ReedSolomonException.cs datamatrix\DataMatrixReader.cs datamatrix\decoder\BitMatrixParser.cs datamatrix\decoder\DataBlock.cs datamatrix\decoder\DecodedBitStreamParser.cs datamatrix\decoder\Decoder.cs datamatrix\decoder\Version.cs datamatrix\detector\Detector.cs DecodeHintType.cs EncodeHintType.cs LuminanceSource.cs MultiFormatReader.cs MultiFormatWriter.cs multi\ByQuadrantReader.cs multi\GenericMultipleBarcodeReader.cs multi\MultipleBarcodeReader.cs multi\qrcode\detector\MultiDetector.cs multi\qrcode\detector\MultiFinderPatternFinder.cs multi\qrcode\QRCodeMultiReader.cs oned\Code128Reader.cs oned\Code39Reader.cs oned\EAN13Reader.cs oned\EAN13Writer.cs oned\EAN8Reader.cs oned\EAN8Writer.cs oned\ITFReader.cs oned\MultiFormatOneDReader.cs oned\MultiFormatUPCEANReader.cs oned\OneDReader.cs oned\UPCAReader.cs oned\UPCEANReader.cs oned\UPCEANWriter.cs oned\UPCEReader.cs pdf417\decoder\BitMatrixParser.cs pdf417\decoder\DecodedBitStreamParser.cs pdf417\decoder\Decoder.cs pdf417\detector\Detector.cs pdf417\PDF417Reader.cs qrcode\decoder\BitMatrixParser.cs qrcode\decoder\DataBlock.cs qrcode\decoder\DataMask.cs qrcode\decoder\DecodedBitStreamParser.cs qrcode\decoder\Decoder.cs qrcode\decoder\ErrorCorrectionLevel.cs qrcode\decoder\FormatInformation.cs qrcode\decoder\Mode.cs qrcode\decoder\Version.cs qrcode\detector\AlignmentPattern.cs qrcode\detector\AlignmentPatternFinder.cs qrcode\detector\Detector.cs qrcode\detector\FinderPattern.cs qrcode\detector\FinderPatternFinder.cs qrcode\detector\FinderPatternInfo.cs qrcode\encoder\BitVector.cs qrcode\encoder\BlockPair.cs qrcode\encoder\Encoder.cs qrcode\encoder\MaskUtil.cs qrcode\encoder\MatrixUtil.cs qrcode\encoder\QRCode.cs qrcode\QRCodeReader.cs qrcode\QRCodeWriter.cs Reader.cs ReaderException.cs Result.cs ResultMetadataType.cs ResultPoint.cs ResultPointCallback.cs RGBLuminanceSource.cs SupportClass.cs Writer.cs WriterException.cs oned\Code39Writer.cs
+            client\result\GeoResultParser.cs(71,34): warning CS0168: The variable 'nfe' is declared but never used
+            client\result\VEventResultParser.cs(61,36): warning CS0168: The variable 'iae' is declared but never used
+            common\DefaultGridSampler.cs(67,44): warning CS0168: The variable 'aioobe' is declared but never used
+            datamatrix\decoder\Decoder.cs(141,32): warning CS0168: The variable 'rse' is declared but never used
+            MultiFormatReader.cs(166,28): warning CS0168: The variable 're' is declared but never used
+            multi\ByQuadrantReader.cs(62,27): warning CS0168: The variable 're' is declared but never used
+            multi\ByQuadrantReader.cs(72,27): warning CS0168: The variable 're' is declared but never used
+            multi\ByQuadrantReader.cs(82,27): warning CS0168: The variable 're' is declared but never used
+            multi\ByQuadrantReader.cs(92,27): warning CS0168: The variable 're' is declared but never used
+            multi\GenericMultipleBarcodeReader.cs(84,27): warning CS0168: The variable 're' is declared but never used
+            qrcode\detector\Detector.cs(138,29): warning CS0168: The variable 're' is declared but never used
+            multi\qrcode\detector\MultiDetector.cs(64,28): warning CS0168: The variable 'e' is declared but never used
+            multi\qrcode\QRCodeMultiReader.cs(73,28): warning CS0168: The variable 're' is declared but never used
+            oned\OneDReader.cs(142,28): warning CS0168: The variable 're' is declared but never used
+            oned\OneDReader.cs(192,29): warning CS0168: The variable 're' is declared but never used
+            oned\MultiFormatOneDReader.cs(80,28): warning CS0168: The variable 're' is declared but never used
+            oned\MultiFormatUPCEANReader.cs(85,28): warning CS0168: The variable 're' is declared but never used
+            qrcode\decoder\DecodedBitStreamParser.cs(75,38): warning CS0168: The variable 'iae' is declared but never used
+            qrcode\decoder\DecodedBitStreamParser.cs(167,33): warning CS0168: The variable 'uee' is declared but never used
+            qrcode\decoder\DecodedBitStreamParser.cs(203,33): warning CS0168: The variable 'uce' is declared but never used
+            qrcode\decoder\Decoder.cs(141,32): warning CS0168: The variable 'rse' is declared but never used
+            qrcode\decoder\FormatInformation.cs(131,11): warning CS0675: Bitwise-or operator used on a sign-extended operand; consider casting to a smaller unsigned type first
+            qrcode\decoder\Version.cs(121,36): warning CS0168: The variable 'iae' is declared but never used
+            qrcode\encoder\Encoder.cs(199,33): warning CS0168: The variable 'uee' is declared but never used
+            RGBLuminanceSource.cs(12,18): warning CS0414: The field 'RGBLuminanceSource.__isRegionSelect' is assigned but its value is never used
+        Done building target "CoreCompile" in project "zxing.csproj".
         Target CopyFilesToOutputDirectory:
+            Copying file from "obj\Release\zxing.dll" to ".\zxing.dll".
             zxing -> C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll
+            Copying file from "obj\Release\zxing.pdb" to ".\zxing.pdb".
+
+        Done building project "zxing.csproj".
         __________________________________________________
         Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.csproj" (default targets):
 
@@ -91,157 +131,6 @@ Target Build:
         __________________________________________________
         Project "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\Haytham.csproj" is building "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.csproj" (GetNativeManifest target(s)):
 
-    Target ResolveAssemblyReferences:
-        Primary reference "InTheHand.Net.Personal".
-        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "InTheHand.Net.Personal". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
-                For SearchPath "{HintPathFromItem}".
-                Considered "..\..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\32feet.NET\NET\InTheHand.Net.Personal.dll", but it didn't exist.
-                For SearchPath "{TargetFrameworkDirectory}".
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                For SearchPath "{Registry:Software\Microsoft\.NETFramework,v4.0,AssemblyFoldersEx}".
-                Considered AssemblyFoldersEx locations.
-                For SearchPath "{AssemblyFolders}".
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2909.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2909.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2909.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2910.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2910.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2910.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\ForEachEnumerators\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\ForEachEnumerators\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\ForEachEnumerators\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2907.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2907.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2907.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft.NET\ADOMD.NET\100\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft.NET\ADOMD.NET\100\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft.NET\ADOMD.NET\100\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "c:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "c:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "c:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Tasks\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Tasks\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Tasks\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2904.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2904.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2904.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\PipelineComponents\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\PipelineComponents\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Microsoft SQL Server\100\DTS\PipelineComponents\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Program Files\IIS\Microsoft Web Deploy\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Program Files\IIS\Microsoft Web Deploy\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Program Files\IIS\Microsoft Web Deploy\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2906.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2906.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2906.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2903.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2903.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2903.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2908.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2908.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2908.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2905.0\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2905.0\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2905.0\InTheHand.Net.Personal.exe", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "c:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\InTheHand.Net.Personal.exe", but it didn't exist.
-                For SearchPath "{GAC}".
-                Considered "InTheHand.Net.Personal", which was not found in the GAC.
-                For SearchPath "{RawFileName}".
-                Considered treating "InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL" as a file name, but it didn't exist.
-                For SearchPath "bin\Release\".
-                Considered "bin\Release\InTheHand.Net.Personal.winmd", but it didn't exist.
-                Considered "bin\Release\InTheHand.Net.Personal.dll", but it didn't exist.
-                Considered "bin\Release\InTheHand.Net.Personal.exe", but it didn't exist.
-        AssemblyFoldersEx location: "{Registry:Software\Microsoft\.NETFramework,v4.0,AssemblyFoldersEx}"
-                C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\
-                C:\Program Files\Reference Assemblies\Microsoft\Workflow Manager\1.0\
-                
-                
-                C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\v2.1\ref\Caching\
-                C:\Program Files (x86)\Microsoft WCF Data Services\5.6\bin\.NETFramework\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTO40\v4.0.Framework\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTA30\v9.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTA30\v8.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTA30\v10.0\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Visual Studio Tools for Office\PIA\Office15\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Visual Studio Tools for Office\PIA\Office14\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Visual Studio Tools for Office\PIA\Common\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office14\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office12\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Common\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\Microsoft\SharePoint\PublicAssemblies\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\ReferenceAssemblies\v4.0\
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v4.0\
-                c:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Platforms\Win32\
-                c:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\VBPowerPacks\v10.0\
-                C:\Program Files (x86)\Microsoft Synchronization Services\ADO.NET\v1.0
-                C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v3.5\Desktop
-                
-                C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\TEMPLATE\WorkflowActivities\
-                C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\ISAPI\
-                C:\Program Files (x86)\Microsoft SDKs\RIA Services\v1.0\Libraries\Server\
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\ReportViewer\
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\
-                c:\Program Files (x86)\Microsoft.NET\Primary Interop Assemblies\
-                C:\Program Files (x86)\Open XML SDK\V2.5\lib
-                C:\Program Files\Microsoft SDKs\Kinect\v1.8\Assemblies\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\4.3.0.0\Type Providers\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\4.3.0.0\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\4.3.1.0\
-                C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Prototyping\Libraries\
-                C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\VSTSDB\
-                C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v2.0\Assemblies\
-                c:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\Assemblies\
-                C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\
-                c:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\
-                
-                C:\Program Files\Reference Assemblies\Microsoft\Microsoft Identity Extensions\1.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTO40\v9.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTO40\v10.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTA30\v9.0\
-                C:\Program Files\Reference Assemblies\Microsoft\VSTA30\v10.0\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office14\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office12\
-                C:\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Common\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\Microsoft\SharePoint\PublicAssemblies\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\ReferenceAssemblies\v2.0\
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\VBPowerPacks\v10.0\
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\
-                C:\Program Files (x86)\Microsoft Synchronization Services\ADO.NET\v1.0
-                C:\Program Files (x86)\Microsoft SDKs\Microsoft Sync Framework\v1.0\Runtime\ADO.NET\V2.0\x64\
-                C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\Desktop
-                C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v3.5\Desktop
-                C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\v2.1\ref
-                c:\Program Files (x86)\Microsoft Visual Studio 10.0\ReportViewer\
-                c:\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\PublicAssemblies\
-                C:\Program Files (x86)\Microsoft Visual Studio 8\Common7\IDE\PublicAssemblies\
-                C:\Program Files (x86)\Microsoft Chart Controls\Assemblies
-                C:\Program Files (x86)\Microsoft SDKs\Microsoft Sync Framework\v1.0\Runtime\x86\
-                C:\Program Files (x86)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v2.0\2.3.0.0\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\
-                C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\
-                C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 2\Assemblies\
-                C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\v2.1\ref
-    Done building target "ResolveAssemblyReferences" in project "Haytham.csproj".
     Target CoreResGen:
         Processing resource file "Forms\AnimatedCursor.resx" into "obj\Release\Haytham.AnimatedCursor.resources".
         Processing resource file "Forms\firstForm.resx" into "obj\Release\Haytham.firstForm.resources".
@@ -252,26 +141,27 @@ Target Build:
     Target GenerateTargetFrameworkMonikerAttribute:
       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
     Target CoreCompile:
-        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /unsafe- /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /warn:4 /define:TRACE /highentropyva- /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\Newtonsoft.Json.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll" /debug- /filealign:512 /nowin32manifest /optimize+ /out:obj\Release\Haytham.exe /resource:obj\Release\Haytham.AnimatedCursor.resources /resource:obj\Release\Haytham.firstForm.resources /resource:obj\Release\Haytham.MainForm.resources /resource:obj\Release\Haytham.Forms.qrCode.resources /resource:obj\Release\myGlass.fullScreenImage.resources /resource:obj\Release\Haytham.Properties.Resources.resources /resource:Resources\D_D.png,Haytham.Resources.D_D.png /resource:Resources\D_U.png,Haytham.Resources.D_U.png /resource:Resources\HMGT.png,Haytham.Resources.HMGT.png /resource:Resources\remote.png,Haytham.Resources.remote.png /resource:Resources\Cursor_1.png,Haytham.Resources.Cursor_1.png /resource:Resources\Cursor_2.png,Haytham.Resources.Cursor_2.png /resource:Resources\DL_DL.png,Haytham.Resources.DL_DL.png /resource:Resources\DL_UR.png,Haytham.Resources.DL_UR.png /resource:Resources\DR_DR.png,Haytham.Resources.DR_DR.png /resource:Resources\DR_UL.png,Haytham.Resources.DR_UL.png /resource:Resources\L_L.png,Haytham.Resources.L_L.png /resource:Resources\L_R.png,Haytham.Resources.L_R.png /resource:Resources\R_L.png,Haytham.Resources.R_L.png /resource:Resources\R_R.png,Haytham.Resources.R_R.png /resource:Resources\U_D.png,Haytham.Resources.U_D.png /resource:Resources\U_U.png,Haytham.Resources.U_U.png /resource:Resources\UL_DR.png,Haytham.Resources.UL_DR.png /resource:Resources\UL_UL.png,Haytham.Resources.UL_UL.png /resource:Resources\UR_DL.png,Haytham.Resources.UR_DL.png /resource:Resources\UR_UR.png,Haytham.Resources.UR_UR.png /resource:Resources\TL.png,Haytham.Resources.TL.png /resource:Resources\TR.png,Haytham.Resources.TR.png /target:winexe /utf8output /win32icon:Resources\Untitled-1.ico cursor.cs Forms\AnimatedCursor.cs Forms\AnimatedCursor.designer.cs Blob_Aforge.cs Calibration.cs Client.cs DetectActiveScreen.cs ExtData\DataObject.cs ExtData\ExtDataHandler.cs ExtData\ImageInfo.cs Forms\qrCode.cs Forms\qrCode.Designer.cs Glass\fullScreenImage.cs Glass\fullScreenImage.Designer.cs Glass\myJsonClass.cs RemoteCalibration.cs Glass\Client.cs Glass\constants.cs Glass\MessageType.cs Glass\SceneImage.cs Glass\Server.cs VideoSource\AforgeVideoSource.cs VideoSource\AforgeVideoSourceLite.cs VideoSource\DeviceCapabilityInfo.cs VideoSource\FileVideoSource.cs VideoSource\FindCamera.cs Forms\firstForm.cs Forms\firstForm.Designer.cs GlyphImageProcessor.cs HeadGesture.cs HeadGestureEventArgs.cs ImageProcessing_Emgu.cs IrisPatch.cs Forms\MainForm.cs Forms\MainForm.Designer.cs METEventArg.cs RectangleDetection.cs VideoSource\ImageFrame.cs VideoSource\ImageFrameReadyEventArgs.cs VideoSource\IVideoSource.cs VideoSource\PSEyeSource.cs Win32Native\NativeWin32.cs ProcessTime.cs Forms\Program.cs Properties\AssemblyInfo.cs Forms\CustomControls.cs Win32Native\Win32.cs Properties\Resources.Designer.cs Properties\Settings.Designer.cs METState.cs METCore.cs Eye.cs Server.cs TextFile.cs "C:\Users\Diako\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cs"
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /unsafe- /nowarn:1701,1702 /nostdlib+ /platform:AnyCPU /errorreport:prompt /warn:4 /define:TRACE /highentropyva- /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\InTheHand.Net.Personal.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\Newtonsoft.Json.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll" /debug- /filealign:512 /nowin32manifest /optimize+ /out:obj\Release\Haytham.exe /resource:obj\Release\Haytham.AnimatedCursor.resources /resource:obj\Release\Haytham.firstForm.resources /resource:obj\Release\Haytham.MainForm.resources /resource:obj\Release\Haytham.Forms.qrCode.resources /resource:obj\Release\myGlass.fullScreenImage.resources /resource:obj\Release\Haytham.Properties.Resources.resources /resource:Resources\D_D.png,Haytham.Resources.D_D.png /resource:Resources\D_U.png,Haytham.Resources.D_U.png /resource:Resources\HMGT.png,Haytham.Resources.HMGT.png /resource:Resources\remote.png,Haytham.Resources.remote.png /resource:Resources\Cursor_1.png,Haytham.Resources.Cursor_1.png /resource:Resources\Cursor_2.png,Haytham.Resources.Cursor_2.png /resource:Resources\DL_DL.png,Haytham.Resources.DL_DL.png /resource:Resources\DL_UR.png,Haytham.Resources.DL_UR.png /resource:Resources\DR_DR.png,Haytham.Resources.DR_DR.png /resource:Resources\DR_UL.png,Haytham.Resources.DR_UL.png /resource:Resources\L_L.png,Haytham.Resources.L_L.png /resource:Resources\L_R.png,Haytham.Resources.L_R.png /resource:Resources\R_L.png,Haytham.Resources.R_L.png /resource:Resources\R_R.png,Haytham.Resources.R_R.png /resource:Resources\U_D.png,Haytham.Resources.U_D.png /resource:Resources\U_U.png,Haytham.Resources.U_U.png /resource:Resources\UL_DR.png,Haytham.Resources.UL_DR.png /resource:Resources\UL_UL.png,Haytham.Resources.UL_UL.png /resource:Resources\UR_DL.png,Haytham.Resources.UR_DL.png /resource:Resources\UR_UR.png,Haytham.Resources.UR_UR.png /resource:Resources\TL.png,Haytham.Resources.TL.png /resource:Resources\TR.png,Haytham.Resources.TR.png /target:winexe /utf8output /win32icon:Resources\Untitled-1.ico cursor.cs Forms\AnimatedCursor.cs Forms\AnimatedCursor.designer.cs Blob_Aforge.cs Calibration.cs Client.cs DetectActiveScreen.cs ExtData\DataObject.cs ExtData\ExtDataHandler.cs ExtData\ImageInfo.cs Forms\qrCode.cs Forms\qrCode.Designer.cs Glass\Experiments\CalibExp.cs Glass\Experiments\Sampling_Display.cs Glass\Experiments\Sampling_Scene.cs Glass\fullScreenImage.cs Glass\fullScreenImage.Designer.cs Glass\myJsonClass.cs Glass\Calibration_Scene.cs RemoteCalibration.cs Glass\Client.cs Glass\constants.cs Glass\MessageType.cs Glass\SceneImage.cs Glass\Server.cs VideoSource\AforgeVideoSource.cs VideoSource\AforgeVideoSourceLite.cs VideoSource\DeviceCapabilityInfo.cs VideoSource\FileVideoSource.cs VideoSource\FindCamera.cs Forms\firstForm.cs Forms\firstForm.Designer.cs GlyphImageProcessor.cs HeadGesture.cs HeadGestureEventArgs.cs ImageProcessing_Emgu.cs IrisPatch.cs Forms\MainForm.cs Forms\MainForm.Designer.cs METEventArg.cs RectangleDetection.cs VideoSource\ImageFrame.cs VideoSource\ImageFrameReadyEventArgs.cs VideoSource\IVideoSource.cs VideoSource\PSEyeSource.cs Win32Native\NativeWin32.cs ProcessTime.cs Forms\Program.cs Properties\AssemblyInfo.cs Forms\CustomControls.cs Win32Native\Win32.cs Properties\Resources.Designer.cs Properties\Settings.Designer.cs METState.cs METCore.cs Eye.cs Server.cs TextFile.cs "C:\Users\Diako\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cs"
         Glass\myJsonClass.cs(7,7): warning CS0105: The using directive for 'System' appeared previously in this namespace
+        Glass\Calibration_Scene.cs(7,7): warning CS0105: The using directive for 'System.Drawing' appeared previously in this namespace
         Glass\Client.cs(12,11): warning CS0105: The using directive for 'System.Net.Sockets' appeared previously in this namespace
         Glass\Client.cs(23,11): warning CS0105: The using directive for 'System.Collections.Generic' appeared previously in this namespace
         Glass\Client.cs(25,11): warning CS0105: The using directive for 'System.IO' appeared previously in this namespace
         Glass\Client.cs(26,11): warning CS0105: The using directive for 'System.Runtime.Serialization' appeared previously in this namespace
         Blob_Aforge.cs(161,30): warning CS0168: The variable 'error' is declared but never used
-        Calibration.cs(172,42): warning CS0168: The variable 'e' is declared but never used
-        RemoteCalibration.cs(136,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-        RemoteCalibration.cs(137,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-        RemoteCalibration.cs(169,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-        RemoteCalibration.cs(170,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-        Glass\Client.cs(141,30): warning CS0168: The variable 'e' is declared but never used
-        Glass\Client.cs(155,20): warning CS0168: The variable 'message' is declared but never used
-        Glass\Client.cs(398,36): warning CS0168: The variable 'exception' is declared but never used
-        Glass\Client.cs(430,30): warning CS0168: The variable 'e' is declared but never used
-        Glass\Client.cs(438,30): warning CS0168: The variable 'e' is declared but never used
-        Glass\Client.cs(707,32): warning CS0168: The variable 'e' is declared but never used
-        Glass\Client.cs(786,32): warning CS0168: The variable 'e' is declared but never used
-        Glass\Client.cs(867,32): warning CS0168: The variable 'e' is declared but never used
+        Calibration.cs(187,42): warning CS0168: The variable 'e' is declared but never used
+        Glass\Experiments\Sampling_Display.cs(240,16): warning CS0219: The variable 'frN' is assigned but its value is never used
+        Glass\Calibration_Scene.cs(185,30): warning CS0168: The variable 'err' is declared but never used
+        RemoteCalibration.cs(140,129): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
+        RemoteCalibration.cs(141,129): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
+        Glass\Client.cs(148,30): warning CS0168: The variable 'e' is declared but never used
+        Glass\Client.cs(162,20): warning CS0168: The variable 'message' is declared but never used
+        Glass\Client.cs(355,36): warning CS0168: The variable 'exception' is declared but never used
+        Glass\Client.cs(387,30): warning CS0168: The variable 'e' is declared but never used
+        Glass\Client.cs(396,30): warning CS0168: The variable 'e' is declared but never used
+        Glass\Client.cs(819,32): warning CS0168: The variable 'e' is declared but never used
+        Glass\Client.cs(898,32): warning CS0168: The variable 'e' is declared but never used
+        Glass\Client.cs(981,32): warning CS0168: The variable 'e' is declared but never used
         Glass\Server.cs(174,52): warning CS0168: The variable 'ex' is declared but never used
         Glass\Server.cs(255,30): warning CS0168: The variable 'e' is declared but never used
         Glass\Server.cs(289,34): warning CS0168: The variable 'e' is declared but never used
@@ -280,30 +170,35 @@ Target Build:
         HeadGesture.cs(1092,21): warning CS0162: Unreachable code detected
         HeadGesture.cs(1096,21): warning CS0162: Unreachable code detected
         IrisPatch.cs(260,30): warning CS0168: The variable 'ee' is declared but never used
-        Forms\MainForm.cs(440,30): warning CS0168: The variable 'error' is declared but never used
-        Forms\MainForm.cs(1453,30): warning CS0168: The variable 'er' is declared but never used
-        Forms\MainForm.cs(1791,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
-        Forms\MainForm.cs(1806,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
-        Forms\MainForm.cs(1557,20): warning CS0219: The variable 's' is assigned but its value is never used
-        Forms\MainForm.cs(1639,38): warning CS0168: The variable 'e' is declared but never used
-        Forms\MainForm.cs(2306,38): warning CS0168: The variable 'eee' is declared but never used
-        Forms\MainForm.cs(2479,42): warning CS0168: The variable 'ex' is declared but never used
-        Forms\MainForm.cs(2689,30): warning CS0168: The variable 'er' is declared but never used
+        Forms\MainForm.cs(465,30): warning CS0168: The variable 'error' is declared but never used
+        Forms\MainForm.cs(1316,30): warning CS0168: The variable 'er' is declared but never used
+        Forms\MainForm.cs(1657,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
+        Forms\MainForm.cs(1672,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
+        Forms\MainForm.cs(1420,20): warning CS0219: The variable 's' is assigned but its value is never used
+        Forms\MainForm.cs(1503,38): warning CS0168: The variable 'e' is declared but never used
+        Forms\MainForm.cs(2287,38): warning CS0168: The variable 'eee' is declared but never used
+        Forms\MainForm.cs(2462,42): warning CS0168: The variable 'ex' is declared but never used
+        Forms\MainForm.cs(2675,30): warning CS0168: The variable 'er' is declared but never used
         Forms\CustomControls.cs(28,30): warning CS0168: The variable 'e' is declared but never used
-        METCore.cs(279,23): warning CS0168: The variable 'err' is declared but never used
-        METCore.cs(508,168): warning CS0642: Possible mistaken empty statement
-        METCore.cs(637,18): warning CS0168: The variable 'err' is declared but never used
-        METCore.cs(654,22): warning CS0168: The variable 'err' is declared but never used
-        METCore.cs(845,21): warning CS0168: The variable 'er' is declared but never used
+        METCore.cs(280,38): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(625,183): warning CS0642: Possible mistaken empty statement
+        METCore.cs(754,34): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(771,34): warning CS0168: The variable 'err' is declared but never used
+        METCore.cs(963,30): warning CS0168: The variable 'er' is declared but never used
+        METCore.cs(1008,30): warning CS0168: The variable 'e' is declared but never used
         Server.cs(81,30): warning CS0168: The variable 'e' is declared but never used
         Server.cs(398,30): warning CS0168: The variable 'e' is declared but never used
+        Glass\Experiments\Sampling_Display.cs(45,13): warning CS0169: The field 'Haytham.Sampling_Display.N' is never used
+        Glass\Calibration_Scene.cs(17,13): warning CS0414: The field 'Haytham.Glass.Experiments.Calibration_Scene.frN' is assigned but its value is never used
+        RemoteCalibration.cs(43,13): warning CS0169: The field 'Haytham.RemoteCalibration.N' is never used
+        Glass\Client.cs(399,13): warning CS0414: The field 'myGlass.Client.wait' is assigned but its value is never used
         Glass\Server.cs(26,31): warning CS0169: The field 'myGlass.Server._shouldStop_AcceptSocket' is never used
         Glass\Server.cs(65,18): warning CS0169: The field 'myGlass.Server.tempRemoteEP' is never used
-        Forms\MainForm.cs(2444,16): warning CS0414: The field 'Haytham.MainForm.tempPreToolTipTxt' is assigned but its value is never used
+        Forms\MainForm.cs(2425,16): warning CS0414: The field 'Haytham.MainForm.tempPreToolTipTxt' is assigned but its value is never used
         VideoSource\PSEyeSource.cs(483,24): warning CS0649: Field 'Haytham.VideoSource.PSEyeSource.monikorString' is never assigned to, and will always have its default value null
     Done building target "CoreCompile" in project "Haytham.csproj".
     Target GenerateSerializationAssemblies:
-        C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\sgen.exe /assembly:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.exe" /proxytypes /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\Newtonsoft.Json.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll" 
+        C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\sgen.exe /assembly:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\obj\Release\Haytham.exe" /proxytypes /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Math.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.DirectShow.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Video.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytahm.ExtData\bin\Release\Haytham.ExtData.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\InTheHand.Net.Personal.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /reference:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Blend\Newtonsoft.Json.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.Design.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.DataVisualization.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" /reference:"C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\ZXing\zxing.dll" 
     Target _CopyFilesMarkedCopyLocal:
         Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.dll" to "bin\Release\AForge.dll".
         Copying file from "C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Aforge.NET\AForge.Imaging.dll" to "bin\Release\AForge.Imaging.dll".
@@ -347,9 +242,12 @@ Target Build:
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Emgu.CV.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Emgu.CV.UI.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Emgu.Util.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.ExtData (Diako-VAIO's conflicted copy 2015-04-08).dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Haytham.ExtData.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\InTheHand.Net.Personal.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\Newtonsoft.Json.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\ZedGraph.dll
+        C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\zxing (Diako-VAIO's conflicted copy 2015-04-08).dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\zxing.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\x64\opencv_calib3d242.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\x64\opencv_contrib242.dll
@@ -381,7 +279,7 @@ Target Build:
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\x86\opencv_objdetect242.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\x86\opencv_photo242.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\Haytham\bin\Release\x86\tbb.dll
-        44 File(s) copied
+        47 File(s) copied
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.CV.UI.dll
         C:\Users\Diako\Desktop\Dropbox\my Software\HMET\Public\SVN\trunk\HaythamServer\Haytham_Server\DLLs\Emgu\Emgu.Util.dll
@@ -450,26 +348,51 @@ Target Build:
 
 Build succeeded.
 
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "InTheHand.Net.Personal". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+client\result\GeoResultParser.cs(71,34): warning CS0168: The variable 'nfe' is declared but never used
+client\result\VEventResultParser.cs(61,36): warning CS0168: The variable 'iae' is declared but never used
+common\DefaultGridSampler.cs(67,44): warning CS0168: The variable 'aioobe' is declared but never used
+datamatrix\decoder\Decoder.cs(141,32): warning CS0168: The variable 'rse' is declared but never used
+MultiFormatReader.cs(166,28): warning CS0168: The variable 're' is declared but never used
+multi\ByQuadrantReader.cs(62,27): warning CS0168: The variable 're' is declared but never used
+multi\ByQuadrantReader.cs(72,27): warning CS0168: The variable 're' is declared but never used
+multi\ByQuadrantReader.cs(82,27): warning CS0168: The variable 're' is declared but never used
+multi\ByQuadrantReader.cs(92,27): warning CS0168: The variable 're' is declared but never used
+multi\GenericMultipleBarcodeReader.cs(84,27): warning CS0168: The variable 're' is declared but never used
+qrcode\detector\Detector.cs(138,29): warning CS0168: The variable 're' is declared but never used
+multi\qrcode\detector\MultiDetector.cs(64,28): warning CS0168: The variable 'e' is declared but never used
+multi\qrcode\QRCodeMultiReader.cs(73,28): warning CS0168: The variable 're' is declared but never used
+oned\OneDReader.cs(142,28): warning CS0168: The variable 're' is declared but never used
+oned\OneDReader.cs(192,29): warning CS0168: The variable 're' is declared but never used
+oned\MultiFormatOneDReader.cs(80,28): warning CS0168: The variable 're' is declared but never used
+oned\MultiFormatUPCEANReader.cs(85,28): warning CS0168: The variable 're' is declared but never used
+qrcode\decoder\DecodedBitStreamParser.cs(75,38): warning CS0168: The variable 'iae' is declared but never used
+qrcode\decoder\DecodedBitStreamParser.cs(167,33): warning CS0168: The variable 'uee' is declared but never used
+qrcode\decoder\DecodedBitStreamParser.cs(203,33): warning CS0168: The variable 'uce' is declared but never used
+qrcode\decoder\Decoder.cs(141,32): warning CS0168: The variable 'rse' is declared but never used
+qrcode\decoder\FormatInformation.cs(131,11): warning CS0675: Bitwise-or operator used on a sign-extended operand; consider casting to a smaller unsigned type first
+qrcode\decoder\Version.cs(121,36): warning CS0168: The variable 'iae' is declared but never used
+qrcode\encoder\Encoder.cs(199,33): warning CS0168: The variable 'uee' is declared but never used
+RGBLuminanceSource.cs(12,18): warning CS0414: The field 'RGBLuminanceSource.__isRegionSelect' is assigned but its value is never used
 Glass\myJsonClass.cs(7,7): warning CS0105: The using directive for 'System' appeared previously in this namespace
+Glass\Calibration_Scene.cs(7,7): warning CS0105: The using directive for 'System.Drawing' appeared previously in this namespace
 Glass\Client.cs(12,11): warning CS0105: The using directive for 'System.Net.Sockets' appeared previously in this namespace
 Glass\Client.cs(23,11): warning CS0105: The using directive for 'System.Collections.Generic' appeared previously in this namespace
 Glass\Client.cs(25,11): warning CS0105: The using directive for 'System.IO' appeared previously in this namespace
 Glass\Client.cs(26,11): warning CS0105: The using directive for 'System.Runtime.Serialization' appeared previously in this namespace
 Blob_Aforge.cs(161,30): warning CS0168: The variable 'error' is declared but never used
-Calibration.cs(172,42): warning CS0168: The variable 'e' is declared but never used
-RemoteCalibration.cs(136,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-RemoteCalibration.cs(137,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-RemoteCalibration.cs(169,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-RemoteCalibration.cs(170,141): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
-Glass\Client.cs(141,30): warning CS0168: The variable 'e' is declared but never used
-Glass\Client.cs(155,20): warning CS0168: The variable 'message' is declared but never used
-Glass\Client.cs(398,36): warning CS0168: The variable 'exception' is declared but never used
-Glass\Client.cs(430,30): warning CS0168: The variable 'e' is declared but never used
-Glass\Client.cs(438,30): warning CS0168: The variable 'e' is declared but never used
-Glass\Client.cs(707,32): warning CS0168: The variable 'e' is declared but never used
-Glass\Client.cs(786,32): warning CS0168: The variable 'e' is declared but never used
-Glass\Client.cs(867,32): warning CS0168: The variable 'e' is declared but never used
+Calibration.cs(187,42): warning CS0168: The variable 'e' is declared but never used
+Glass\Experiments\Sampling_Display.cs(240,16): warning CS0219: The variable 'frN' is assigned but its value is never used
+Glass\Calibration_Scene.cs(185,30): warning CS0168: The variable 'err' is declared but never used
+RemoteCalibration.cs(140,129): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
+RemoteCalibration.cs(141,129): warning CS1690: Accessing a member on 'Haytham.AnimatedCursor.coordinates' may cause a runtime exception because it is a field of a marshal-by-reference class
+Glass\Client.cs(148,30): warning CS0168: The variable 'e' is declared but never used
+Glass\Client.cs(162,20): warning CS0168: The variable 'message' is declared but never used
+Glass\Client.cs(355,36): warning CS0168: The variable 'exception' is declared but never used
+Glass\Client.cs(387,30): warning CS0168: The variable 'e' is declared but never used
+Glass\Client.cs(396,30): warning CS0168: The variable 'e' is declared but never used
+Glass\Client.cs(819,32): warning CS0168: The variable 'e' is declared but never used
+Glass\Client.cs(898,32): warning CS0168: The variable 'e' is declared but never used
+Glass\Client.cs(981,32): warning CS0168: The variable 'e' is declared but never used
 Glass\Server.cs(174,52): warning CS0168: The variable 'ex' is declared but never used
 Glass\Server.cs(255,30): warning CS0168: The variable 'e' is declared but never used
 Glass\Server.cs(289,34): warning CS0168: The variable 'e' is declared but never used
@@ -478,28 +401,33 @@ HeadGesture.cs(1067,21): warning CS0162: Unreachable code detected
 HeadGesture.cs(1092,21): warning CS0162: Unreachable code detected
 HeadGesture.cs(1096,21): warning CS0162: Unreachable code detected
 IrisPatch.cs(260,30): warning CS0168: The variable 'ee' is declared but never used
-Forms\MainForm.cs(440,30): warning CS0168: The variable 'error' is declared but never used
-Forms\MainForm.cs(1453,30): warning CS0168: The variable 'er' is declared but never used
-Forms\MainForm.cs(1791,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
-Forms\MainForm.cs(1806,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
-Forms\MainForm.cs(1557,20): warning CS0219: The variable 's' is assigned but its value is never used
-Forms\MainForm.cs(1639,38): warning CS0168: The variable 'e' is declared but never used
-Forms\MainForm.cs(2306,38): warning CS0168: The variable 'eee' is declared but never used
-Forms\MainForm.cs(2479,42): warning CS0168: The variable 'ex' is declared but never used
-Forms\MainForm.cs(2689,30): warning CS0168: The variable 'er' is declared but never used
+Forms\MainForm.cs(465,30): warning CS0168: The variable 'error' is declared but never used
+Forms\MainForm.cs(1316,30): warning CS0168: The variable 'er' is declared but never used
+Forms\MainForm.cs(1657,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
+Forms\MainForm.cs(1672,29): warning CS0252: Possible unintended reference comparison; to get a value comparison, cast the left hand side to type 'string'
+Forms\MainForm.cs(1420,20): warning CS0219: The variable 's' is assigned but its value is never used
+Forms\MainForm.cs(1503,38): warning CS0168: The variable 'e' is declared but never used
+Forms\MainForm.cs(2287,38): warning CS0168: The variable 'eee' is declared but never used
+Forms\MainForm.cs(2462,42): warning CS0168: The variable 'ex' is declared but never used
+Forms\MainForm.cs(2675,30): warning CS0168: The variable 'er' is declared but never used
 Forms\CustomControls.cs(28,30): warning CS0168: The variable 'e' is declared but never used
-METCore.cs(279,23): warning CS0168: The variable 'err' is declared but never used
-METCore.cs(508,168): warning CS0642: Possible mistaken empty statement
-METCore.cs(637,18): warning CS0168: The variable 'err' is declared but never used
-METCore.cs(654,22): warning CS0168: The variable 'err' is declared but never used
-METCore.cs(845,21): warning CS0168: The variable 'er' is declared but never used
+METCore.cs(280,38): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(625,183): warning CS0642: Possible mistaken empty statement
+METCore.cs(754,34): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(771,34): warning CS0168: The variable 'err' is declared but never used
+METCore.cs(963,30): warning CS0168: The variable 'er' is declared but never used
+METCore.cs(1008,30): warning CS0168: The variable 'e' is declared but never used
 Server.cs(81,30): warning CS0168: The variable 'e' is declared but never used
 Server.cs(398,30): warning CS0168: The variable 'e' is declared but never used
+Glass\Experiments\Sampling_Display.cs(45,13): warning CS0169: The field 'Haytham.Sampling_Display.N' is never used
+Glass\Calibration_Scene.cs(17,13): warning CS0414: The field 'Haytham.Glass.Experiments.Calibration_Scene.frN' is assigned but its value is never used
+RemoteCalibration.cs(43,13): warning CS0169: The field 'Haytham.RemoteCalibration.N' is never used
+Glass\Client.cs(399,13): warning CS0414: The field 'myGlass.Client.wait' is assigned but its value is never used
 Glass\Server.cs(26,31): warning CS0169: The field 'myGlass.Server._shouldStop_AcceptSocket' is never used
 Glass\Server.cs(65,18): warning CS0169: The field 'myGlass.Server.tempRemoteEP' is never used
-Forms\MainForm.cs(2444,16): warning CS0414: The field 'Haytham.MainForm.tempPreToolTipTxt' is assigned but its value is never used
+Forms\MainForm.cs(2425,16): warning CS0414: The field 'Haytham.MainForm.tempPreToolTipTxt' is assigned but its value is never used
 VideoSource\PSEyeSource.cs(483,24): warning CS0649: Field 'Haytham.VideoSource.PSEyeSource.monikorString' is never assigned to, and will always have its default value null
-    49 Warning(s)
+    79 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:12.44
+Time Elapsed 00:00:17.92
