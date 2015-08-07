@@ -53,13 +53,22 @@
             this.cmbDeviceCapabilityEye = new System.Windows.Forms.ComboBox();
             this.cmbDeviceEye = new System.Windows.Forms.ComboBox();
             this.tabPage_Glass = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.txtImageName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.target_B_max = new System.Windows.Forms.NumericUpDown();
+            this.target_B_min = new System.Windows.Forms.NumericUpDown();
+            this.target_G_max = new System.Windows.Forms.NumericUpDown();
+            this.target_G_min = new System.Windows.Forms.NumericUpDown();
+            this.target_R_max = new System.Windows.Forms.NumericUpDown();
+            this.target_R_min = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.txtImageName = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.TrackBar1 = new Haytham.TransparentTrackBar();
             this.lbCommandsToGlass = new System.Windows.Forms.ListBox();
             this.tbOutput = new System.Windows.Forms.TextBox();
             this.tabPage_Eye = new System.Windows.Forms.TabPage();
@@ -110,6 +119,7 @@
             this.cbShowScreen = new System.Windows.Forms.CheckBox();
             this.tabPage_Calibration = new System.Windows.Forms.TabPage();
             this.gbCalibrationGlass = new System.Windows.Forms.GroupBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -224,8 +234,14 @@
             this.gbSceneCameraDevice.SuspendLayout();
             this.gbEyeCameraDevice.SuspendLayout();
             this.tabPage_Glass.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.target_B_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_B_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_G_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_G_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_R_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_R_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TrackBar1)).BeginInit();
             this.tabPage_Eye.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -311,7 +327,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -322,8 +338,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox14);
             this.splitContainer1.Panel2.Controls.Add(this.panel6);
-            this.splitContainer1.Size = new System.Drawing.Size(1268, 668);
-            this.splitContainer1.SplitterDistance = 367;
+            this.splitContainer1.Size = new System.Drawing.Size(1133, 691);
+            this.splitContainer1.SplitterDistance = 285;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 43;
             // 
@@ -341,11 +357,11 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(367, 668);
+            this.tabControl1.Size = new System.Drawing.Size(285, 691);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 0;
             // 
@@ -355,10 +371,10 @@
             this.tabPage_Camera.Controls.Add(this.gbSceneCameraDevice);
             this.tabPage_Camera.Controls.Add(this.gbEyeCameraDevice);
             this.tabPage_Camera.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Camera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Camera.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Camera.Name = "tabPage_Camera";
-            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage_Camera.Size = new System.Drawing.Size(359, 624);
+            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_Camera.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Camera.TabIndex = 0;
             this.tabPage_Camera.Text = "Camera";
             this.tabPage_Camera.UseVisualStyleBackColor = true;
@@ -368,17 +384,17 @@
             this.gbStartBoth.Controls.Add(this.startBoothVideos);
             this.gbStartBoth.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbStartBoth.Location = new System.Drawing.Point(2, 334);
-            this.gbStartBoth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbStartBoth.Margin = new System.Windows.Forms.Padding(2);
             this.gbStartBoth.Name = "gbStartBoth";
-            this.gbStartBoth.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbStartBoth.Size = new System.Drawing.Size(355, 69);
+            this.gbStartBoth.Padding = new System.Windows.Forms.Padding(2);
+            this.gbStartBoth.Size = new System.Drawing.Size(273, 69);
             this.gbStartBoth.TabIndex = 54;
             this.gbStartBoth.TabStop = false;
             // 
             // startBoothVideos
             // 
             this.startBoothVideos.Location = new System.Drawing.Point(49, 16);
-            this.startBoothVideos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startBoothVideos.Margin = new System.Windows.Forms.Padding(2);
             this.startBoothVideos.Name = "startBoothVideos";
             this.startBoothVideos.Size = new System.Drawing.Size(115, 37);
             this.startBoothVideos.TabIndex = 55;
@@ -397,10 +413,10 @@
             this.gbSceneCameraDevice.Controls.Add(this.label8);
             this.gbSceneCameraDevice.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbSceneCameraDevice.Location = new System.Drawing.Point(2, 168);
-            this.gbSceneCameraDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSceneCameraDevice.Margin = new System.Windows.Forms.Padding(2);
             this.gbSceneCameraDevice.Name = "gbSceneCameraDevice";
-            this.gbSceneCameraDevice.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbSceneCameraDevice.Size = new System.Drawing.Size(355, 166);
+            this.gbSceneCameraDevice.Padding = new System.Windows.Forms.Padding(2);
+            this.gbSceneCameraDevice.Size = new System.Drawing.Size(273, 166);
             this.gbSceneCameraDevice.TabIndex = 52;
             this.gbSceneCameraDevice.TabStop = false;
             this.gbSceneCameraDevice.Text = "Scene Camera";
@@ -409,7 +425,7 @@
             // 
             this.cb_scene_VFlip.AutoSize = true;
             this.cb_scene_VFlip.Location = new System.Drawing.Point(8, 136);
-            this.cb_scene_VFlip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_scene_VFlip.Margin = new System.Windows.Forms.Padding(2);
             this.cb_scene_VFlip.Name = "cb_scene_VFlip";
             this.cb_scene_VFlip.Size = new System.Drawing.Size(80, 17);
             this.cb_scene_VFlip.TabIndex = 57;
@@ -420,7 +436,7 @@
             // btnSettingsScene
             // 
             this.btnSettingsScene.Location = new System.Drawing.Point(8, 84);
-            this.btnSettingsScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettingsScene.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettingsScene.Name = "btnSettingsScene";
             this.btnSettingsScene.Size = new System.Drawing.Size(84, 37);
             this.btnSettingsScene.TabIndex = 10;
@@ -431,7 +447,7 @@
             // btnStartScene
             // 
             this.btnStartScene.Location = new System.Drawing.Point(97, 84);
-            this.btnStartScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartScene.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartScene.Name = "btnStartScene";
             this.btnStartScene.Size = new System.Drawing.Size(115, 37);
             this.btnStartScene.TabIndex = 9;
@@ -446,7 +462,7 @@
             this.cmbDeviceCapabilityScene.FormattingEnabled = true;
             this.cmbDeviceCapabilityScene.Location = new System.Drawing.Point(59, 46);
             this.cmbDeviceCapabilityScene.Name = "cmbDeviceCapabilityScene";
-            this.cmbDeviceCapabilityScene.Size = new System.Drawing.Size(287, 21);
+            this.cmbDeviceCapabilityScene.Size = new System.Drawing.Size(205, 21);
             this.cmbDeviceCapabilityScene.TabIndex = 7;
             // 
             // label6
@@ -466,7 +482,7 @@
             this.cmbDeviceScene.FormattingEnabled = true;
             this.cmbDeviceScene.Location = new System.Drawing.Point(49, 18);
             this.cmbDeviceScene.Name = "cmbDeviceScene";
-            this.cmbDeviceScene.Size = new System.Drawing.Size(297, 21);
+            this.cmbDeviceScene.Size = new System.Drawing.Size(213, 21);
             this.cmbDeviceScene.TabIndex = 5;
             this.cmbDeviceScene.DropDown += new System.EventHandler(this.cmbDeviceScene_DropDown);
             this.cmbDeviceScene.SelectedIndexChanged += new System.EventHandler(this.cmbDeviceScene_SelectedIndexChanged);
@@ -492,10 +508,10 @@
             this.gbEyeCameraDevice.Controls.Add(this.cmbDeviceEye);
             this.gbEyeCameraDevice.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbEyeCameraDevice.Location = new System.Drawing.Point(2, 2);
-            this.gbEyeCameraDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbEyeCameraDevice.Margin = new System.Windows.Forms.Padding(2);
             this.gbEyeCameraDevice.Name = "gbEyeCameraDevice";
-            this.gbEyeCameraDevice.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbEyeCameraDevice.Size = new System.Drawing.Size(355, 166);
+            this.gbEyeCameraDevice.Padding = new System.Windows.Forms.Padding(2);
+            this.gbEyeCameraDevice.Size = new System.Drawing.Size(273, 166);
             this.gbEyeCameraDevice.TabIndex = 51;
             this.gbEyeCameraDevice.TabStop = false;
             this.gbEyeCameraDevice.Text = "Eye Camera";
@@ -503,8 +519,10 @@
             // cb_eye_VFlip
             // 
             this.cb_eye_VFlip.AutoSize = true;
+            this.cb_eye_VFlip.Checked = true;
+            this.cb_eye_VFlip.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_eye_VFlip.Location = new System.Drawing.Point(8, 133);
-            this.cb_eye_VFlip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_eye_VFlip.Margin = new System.Windows.Forms.Padding(2);
             this.cb_eye_VFlip.Name = "cb_eye_VFlip";
             this.cb_eye_VFlip.Size = new System.Drawing.Size(80, 17);
             this.cb_eye_VFlip.TabIndex = 57;
@@ -515,7 +533,7 @@
             // btnSettingsEye
             // 
             this.btnSettingsEye.Location = new System.Drawing.Point(8, 84);
-            this.btnSettingsEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettingsEye.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettingsEye.Name = "btnSettingsEye";
             this.btnSettingsEye.Size = new System.Drawing.Size(84, 37);
             this.btnSettingsEye.TabIndex = 10;
@@ -526,7 +544,7 @@
             // btnStartEye
             // 
             this.btnStartEye.Location = new System.Drawing.Point(97, 84);
-            this.btnStartEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartEye.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartEye.Name = "btnStartEye";
             this.btnStartEye.Size = new System.Drawing.Size(115, 37);
             this.btnStartEye.TabIndex = 9;
@@ -561,7 +579,7 @@
             this.cmbDeviceCapabilityEye.FormattingEnabled = true;
             this.cmbDeviceCapabilityEye.Location = new System.Drawing.Point(61, 50);
             this.cmbDeviceCapabilityEye.Name = "cmbDeviceCapabilityEye";
-            this.cmbDeviceCapabilityEye.Size = new System.Drawing.Size(287, 21);
+            this.cmbDeviceCapabilityEye.Size = new System.Drawing.Size(205, 21);
             this.cmbDeviceCapabilityEye.TabIndex = 8;
             // 
             // cmbDeviceEye
@@ -571,81 +589,224 @@
             this.cmbDeviceEye.FormattingEnabled = true;
             this.cmbDeviceEye.Location = new System.Drawing.Point(50, 24);
             this.cmbDeviceEye.Name = "cmbDeviceEye";
-            this.cmbDeviceEye.Size = new System.Drawing.Size(297, 21);
+            this.cmbDeviceEye.Size = new System.Drawing.Size(213, 21);
             this.cmbDeviceEye.TabIndex = 6;
             this.cmbDeviceEye.DropDown += new System.EventHandler(this.cmbDeviceEye_DropDown);
             this.cmbDeviceEye.SelectedIndexChanged += new System.EventHandler(this.cmbDeviceEye_SelectedIndexChanged);
             // 
             // tabPage_Glass
             // 
+            this.tabPage_Glass.Controls.Add(this.groupBox1);
             this.tabPage_Glass.Controls.Add(this.button8);
-            this.tabPage_Glass.Controls.Add(this.txtImageName);
-            this.tabPage_Glass.Controls.Add(this.button7);
             this.tabPage_Glass.Controls.Add(this.progressBar1);
             this.tabPage_Glass.Controls.Add(this.pictureBox2);
             this.tabPage_Glass.Controls.Add(this.label7);
-            this.tabPage_Glass.Controls.Add(this.TrackBar1);
             this.tabPage_Glass.Controls.Add(this.lbCommandsToGlass);
             this.tabPage_Glass.Controls.Add(this.tbOutput);
             this.tabPage_Glass.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Glass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Glass.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Glass.Name = "tabPage_Glass";
-            this.tabPage_Glass.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Glass.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Glass.TabIndex = 8;
             this.tabPage_Glass.Text = "Glass";
             this.tabPage_Glass.UseVisualStyleBackColor = true;
             this.tabPage_Glass.Click += new System.EventHandler(this.tabPage_Glass_Click);
             // 
-            // button8
+            // groupBox1
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.Location = new System.Drawing.Point(0, 436);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(237, 60);
-            this.button8.TabIndex = 73;
-            this.button8.Text = "Show QRCode";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.groupBox1.Controls.Add(this.target_B_max);
+            this.groupBox1.Controls.Add(this.target_B_min);
+            this.groupBox1.Controls.Add(this.target_G_max);
+            this.groupBox1.Controls.Add(this.target_G_min);
+            this.groupBox1.Controls.Add(this.target_R_max);
+            this.groupBox1.Controls.Add(this.target_R_min);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.txtImageName);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 436);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(277, 169);
+            this.groupBox1.TabIndex = 76;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Visible = false;
             // 
-            // txtImageName
+            // target_B_max
             // 
-            this.txtImageName.Location = new System.Drawing.Point(104, 519);
-            this.txtImageName.Name = "txtImageName";
-            this.txtImageName.Size = new System.Drawing.Size(120, 20);
-            this.txtImageName.TabIndex = 74;
-            this.txtImageName.Visible = false;
-            this.txtImageName.TextChanged += new System.EventHandler(this.txtImageName_TextChanged);
+            this.target_B_max.Location = new System.Drawing.Point(167, 138);
+            this.target_B_max.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_B_max.Name = "target_B_max";
+            this.target_B_max.Size = new System.Drawing.Size(63, 20);
+            this.target_B_max.TabIndex = 85;
+            this.target_B_max.Value = new decimal(new int[] {
+            95,
+            0,
+            0,
+            0});
+            this.target_B_max.ValueChanged += new System.EventHandler(this.target_B_max_ValueChanged);
+            // 
+            // target_B_min
+            // 
+            this.target_B_min.Location = new System.Drawing.Point(79, 137);
+            this.target_B_min.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_B_min.Name = "target_B_min";
+            this.target_B_min.Size = new System.Drawing.Size(63, 20);
+            this.target_B_min.TabIndex = 84;
+            this.target_B_min.ValueChanged += new System.EventHandler(this.target_B_min_ValueChanged);
+            // 
+            // target_G_max
+            // 
+            this.target_G_max.Location = new System.Drawing.Point(167, 112);
+            this.target_G_max.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_G_max.Name = "target_G_max";
+            this.target_G_max.Size = new System.Drawing.Size(63, 20);
+            this.target_G_max.TabIndex = 83;
+            this.target_G_max.Value = new decimal(new int[] {
+            95,
+            0,
+            0,
+            0});
+            this.target_G_max.ValueChanged += new System.EventHandler(this.target_G_max_ValueChanged);
+            // 
+            // target_G_min
+            // 
+            this.target_G_min.Location = new System.Drawing.Point(79, 111);
+            this.target_G_min.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_G_min.Name = "target_G_min";
+            this.target_G_min.Size = new System.Drawing.Size(63, 20);
+            this.target_G_min.TabIndex = 82;
+            this.target_G_min.ValueChanged += new System.EventHandler(this.target_G_min_ValueChanged);
+            // 
+            // target_R_max
+            // 
+            this.target_R_max.Location = new System.Drawing.Point(167, 83);
+            this.target_R_max.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_R_max.Name = "target_R_max";
+            this.target_R_max.Size = new System.Drawing.Size(63, 20);
+            this.target_R_max.TabIndex = 81;
+            this.target_R_max.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_R_max.ValueChanged += new System.EventHandler(this.target_R_max_ValueChanged);
+            // 
+            // target_R_min
+            // 
+            this.target_R_min.Location = new System.Drawing.Point(79, 82);
+            this.target_R_min.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.target_R_min.Name = "target_R_min";
+            this.target_R_min.Size = new System.Drawing.Size(63, 20);
+            this.target_R_min.TabIndex = 73;
+            this.target_R_min.Value = new decimal(new int[] {
+            125,
+            0,
+            0,
+            0});
+            this.target_R_min.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 137);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 13);
+            this.label14.TabIndex = 80;
+            this.label14.Text = "B";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(17, 111);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 13);
+            this.label13.TabIndex = 77;
+            this.label13.Text = "G";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 85);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(15, 13);
+            this.label12.TabIndex = 73;
+            this.label12.Text = "R";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(18, 502);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Location = new System.Drawing.Point(8, 18);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 51);
             this.button7.TabIndex = 73;
             this.button7.Text = "detect target";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // txtImageName
+            // 
+            this.txtImageName.Location = new System.Drawing.Point(110, 34);
+            this.txtImageName.Name = "txtImageName";
+            this.txtImageName.Size = new System.Drawing.Size(120, 20);
+            this.txtImageName.TabIndex = 74;
+            this.txtImageName.TextChanged += new System.EventHandler(this.txtImageName_TextChanged);
+            // 
+            // button8
+            // 
+            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button8.Location = new System.Drawing.Point(0, 376);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(277, 60);
+            this.button8.TabIndex = 73;
+            this.button8.Text = "Show QRCode";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar1.Location = new System.Drawing.Point(0, 426);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Location = new System.Drawing.Point(0, 366);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(237, 10);
+            this.progressBar1.Size = new System.Drawing.Size(277, 10);
             this.progressBar1.TabIndex = 47;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 217);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(0, 157);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(237, 209);
+            this.pictureBox2.Size = new System.Drawing.Size(277, 209);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 46;
             this.pictureBox2.TabStop = false;
@@ -665,19 +826,6 @@
             this.label7.Text = "Double click on the msg you want to send";
             this.label7.Visible = false;
             // 
-            // TrackBar1
-            // 
-            this.TrackBar1.AutoSize = false;
-            this.TrackBar1.Location = new System.Drawing.Point(30, 556);
-            this.TrackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.TrackBar1.Maximum = 255;
-            this.TrackBar1.Name = "TrackBar1";
-            this.TrackBar1.Size = new System.Drawing.Size(146, 51);
-            this.TrackBar1.TabIndex = 75;
-            this.TrackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.TrackBar1.Value = 200;
-            this.TrackBar1.Visible = false;
-            // 
             // lbCommandsToGlass
             // 
             this.lbCommandsToGlass.Dock = System.Windows.Forms.DockStyle.Top;
@@ -685,9 +833,9 @@
             this.lbCommandsToGlass.FormattingEnabled = true;
             this.lbCommandsToGlass.ItemHeight = 20;
             this.lbCommandsToGlass.Location = new System.Drawing.Point(0, 153);
-            this.lbCommandsToGlass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbCommandsToGlass.Margin = new System.Windows.Forms.Padding(2);
             this.lbCommandsToGlass.Name = "lbCommandsToGlass";
-            this.lbCommandsToGlass.Size = new System.Drawing.Size(237, 64);
+            this.lbCommandsToGlass.Size = new System.Drawing.Size(277, 4);
             this.lbCommandsToGlass.TabIndex = 44;
             this.lbCommandsToGlass.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbCommandsToGlass_MouseDoubleClick);
             // 
@@ -699,7 +847,7 @@
             this.tbOutput.Name = "tbOutput";
             this.tbOutput.ReadOnly = true;
             this.tbOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbOutput.Size = new System.Drawing.Size(237, 153);
+            this.tbOutput.Size = new System.Drawing.Size(277, 153);
             this.tbOutput.TabIndex = 39;
             // 
             // tabPage_Eye
@@ -708,10 +856,10 @@
             this.tabPage_Eye.Controls.Add(this.groupBox6);
             this.tabPage_Eye.Controls.Add(this.groupBox4);
             this.tabPage_Eye.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Eye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Eye.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Eye.Name = "tabPage_Eye";
-            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage_Eye.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_Eye.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Eye.TabIndex = 1;
             this.tabPage_Eye.Text = "Eye";
             this.tabPage_Eye.UseVisualStyleBackColor = true;
@@ -727,10 +875,10 @@
             this.groupBox5.Controls.Add(this.cbGlintDetection);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(2, 248);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(233, 120);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Size = new System.Drawing.Size(273, 120);
             this.groupBox5.TabIndex = 60;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Glint Detection";
@@ -739,7 +887,7 @@
             // 
             this.cbGM.AutoSize = true;
             this.cbGM.Location = new System.Drawing.Point(18, 67);
-            this.cbGM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGM.Margin = new System.Windows.Forms.Padding(2);
             this.cbGM.Name = "cbGM";
             this.cbGM.Size = new System.Drawing.Size(60, 17);
             this.cbGM.TabIndex = 59;
@@ -754,7 +902,7 @@
             this.panel4.Controls.Add(this.rbGGaussian);
             this.panel4.Controls.Add(this.rbGMean);
             this.panel4.Location = new System.Drawing.Point(9, 141);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 112);
             this.panel4.TabIndex = 69;
@@ -764,7 +912,7 @@
             // 
             this.trackBarGABlockSize.AutoSize = false;
             this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarGABlockSize.Maximum = 151;
             this.trackBarGABlockSize.Minimum = 33;
             this.trackBarGABlockSize.Name = "trackBarGABlockSize";
@@ -788,7 +936,7 @@
             // 
             this.rbGGaussian.AutoSize = true;
             this.rbGGaussian.Location = new System.Drawing.Point(112, 11);
-            this.rbGGaussian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGGaussian.Margin = new System.Windows.Forms.Padding(2);
             this.rbGGaussian.Name = "rbGGaussian";
             this.rbGGaussian.Size = new System.Drawing.Size(69, 17);
             this.rbGGaussian.TabIndex = 61;
@@ -801,7 +949,7 @@
             this.rbGMean.AutoSize = true;
             this.rbGMean.Checked = true;
             this.rbGMean.Location = new System.Drawing.Point(35, 11);
-            this.rbGMean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGMean.Margin = new System.Windows.Forms.Padding(2);
             this.rbGMean.Name = "rbGMean";
             this.rbGMean.Size = new System.Drawing.Size(52, 17);
             this.rbGMean.TabIndex = 60;
@@ -815,7 +963,7 @@
             this.cbGA.AutoSize = true;
             this.cbGA.Checked = true;
             this.cbGA.Location = new System.Drawing.Point(18, 42);
-            this.cbGA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGA.Margin = new System.Windows.Forms.Padding(2);
             this.cbGA.Name = "cbGA";
             this.cbGA.Size = new System.Drawing.Size(47, 17);
             this.cbGA.TabIndex = 58;
@@ -828,7 +976,7 @@
             // 
             this.trackBarThresholdGlint.AutoSize = false;
             this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
-            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarThresholdGlint.Maximum = 255;
             this.trackBarThresholdGlint.Minimum = 120;
             this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
@@ -842,14 +990,14 @@
             // 
             this.trackBarGAConstant.AutoSize = false;
             this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
-            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarGAConstant.Maximum = 0;
             this.trackBarGAConstant.Minimum = -100;
             this.trackBarGAConstant.Name = "trackBarGAConstant";
             this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
             this.trackBarGAConstant.TabIndex = 68;
             this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGAConstant.Value = -100;
+            this.trackBarGAConstant.Value = -80;
             this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
             // 
             // cbShowGlint
@@ -863,7 +1011,7 @@
             this.cbShowGlint.FlatAppearance.BorderSize = 0;
             this.cbShowGlint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowGlint.Location = new System.Drawing.Point(195, 0);
-            this.cbShowGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowGlint.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowGlint.Name = "cbShowGlint";
             this.cbShowGlint.Size = new System.Drawing.Size(14, 18);
             this.cbShowGlint.TabIndex = 57;
@@ -875,7 +1023,7 @@
             this.cbGlintDetection.Checked = true;
             this.cbGlintDetection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbGlintDetection.Location = new System.Drawing.Point(83, 0);
-            this.cbGlintDetection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGlintDetection.Margin = new System.Windows.Forms.Padding(2);
             this.cbGlintDetection.Name = "cbGlintDetection";
             this.cbGlintDetection.Size = new System.Drawing.Size(106, 17);
             this.cbGlintDetection.TabIndex = 56;
@@ -895,10 +1043,10 @@
             this.groupBox6.Controls.Add(this.cbPupilDetection);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox6.Location = new System.Drawing.Point(2, 72);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox6.Size = new System.Drawing.Size(233, 176);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Size = new System.Drawing.Size(273, 176);
             this.groupBox6.TabIndex = 60;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pupil Detection";
@@ -907,7 +1055,7 @@
             // 
             this.cbPM.AutoSize = true;
             this.cbPM.Location = new System.Drawing.Point(17, 69);
-            this.cbPM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPM.Margin = new System.Windows.Forms.Padding(2);
             this.cbPM.Name = "cbPM";
             this.cbPM.Size = new System.Drawing.Size(60, 17);
             this.cbPM.TabIndex = 59;
@@ -922,7 +1070,7 @@
             this.panel3.Controls.Add(this.rbPGaussian);
             this.panel3.Controls.Add(this.rbPMean);
             this.panel3.Location = new System.Drawing.Point(7, 190);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(202, 112);
             this.panel3.TabIndex = 67;
@@ -932,7 +1080,7 @@
             // 
             this.trackBarPABlockSize.AutoSize = false;
             this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarPABlockSize.Maximum = 151;
             this.trackBarPABlockSize.Minimum = 33;
             this.trackBarPABlockSize.Name = "trackBarPABlockSize";
@@ -956,7 +1104,7 @@
             // 
             this.rbPGaussian.AutoSize = true;
             this.rbPGaussian.Location = new System.Drawing.Point(112, 11);
-            this.rbPGaussian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPGaussian.Margin = new System.Windows.Forms.Padding(2);
             this.rbPGaussian.Name = "rbPGaussian";
             this.rbPGaussian.Size = new System.Drawing.Size(69, 17);
             this.rbPGaussian.TabIndex = 61;
@@ -969,7 +1117,7 @@
             this.rbPMean.AutoSize = true;
             this.rbPMean.Checked = true;
             this.rbPMean.Location = new System.Drawing.Point(35, 11);
-            this.rbPMean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPMean.Margin = new System.Windows.Forms.Padding(2);
             this.rbPMean.Name = "rbPMean";
             this.rbPMean.Size = new System.Drawing.Size(52, 17);
             this.rbPMean.TabIndex = 60;
@@ -983,7 +1131,7 @@
             this.cbPA.AutoSize = true;
             this.cbPA.Checked = true;
             this.cbPA.Location = new System.Drawing.Point(18, 44);
-            this.cbPA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPA.Margin = new System.Windows.Forms.Padding(2);
             this.cbPA.Name = "cbPA";
             this.cbPA.Size = new System.Drawing.Size(47, 17);
             this.cbPA.TabIndex = 58;
@@ -995,7 +1143,7 @@
             // cbRemoveGlint
             // 
             this.cbRemoveGlint.Location = new System.Drawing.Point(18, 131);
-            this.cbRemoveGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRemoveGlint.Margin = new System.Windows.Forms.Padding(2);
             this.cbRemoveGlint.Name = "cbRemoveGlint";
             this.cbRemoveGlint.Size = new System.Drawing.Size(148, 17);
             this.cbRemoveGlint.TabIndex = 66;
@@ -1006,7 +1154,7 @@
             // cbDilateErode
             // 
             this.cbDilateErode.Location = new System.Drawing.Point(18, 110);
-            this.cbDilateErode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDilateErode.Margin = new System.Windows.Forms.Padding(2);
             this.cbDilateErode.Name = "cbDilateErode";
             this.cbDilateErode.Size = new System.Drawing.Size(148, 17);
             this.cbDilateErode.TabIndex = 65;
@@ -1018,21 +1166,21 @@
             // 
             this.trackBarPAConstant.AutoSize = false;
             this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
-            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarPAConstant.Maximum = 50;
             this.trackBarPAConstant.Minimum = 5;
             this.trackBarPAConstant.Name = "trackBarPAConstant";
             this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
             this.trackBarPAConstant.TabIndex = 64;
             this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPAConstant.Value = 15;
+            this.trackBarPAConstant.Value = 20;
             this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
             // 
             // trackBarThresholdEye
             // 
             this.trackBarThresholdEye.AutoSize = false;
             this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
-            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarThresholdEye.Maximum = 255;
             this.trackBarThresholdEye.Name = "trackBarThresholdEye";
             this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
@@ -1052,7 +1200,7 @@
             this.cbShowPupil.FlatAppearance.BorderSize = 0;
             this.cbShowPupil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowPupil.Location = new System.Drawing.Point(195, -2);
-            this.cbShowPupil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowPupil.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowPupil.Name = "cbShowPupil";
             this.cbShowPupil.Size = new System.Drawing.Size(14, 18);
             this.cbShowPupil.TabIndex = 56;
@@ -1064,7 +1212,7 @@
             this.cbPupilDetection.Checked = true;
             this.cbPupilDetection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbPupilDetection.Location = new System.Drawing.Point(83, -1);
-            this.cbPupilDetection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPupilDetection.Margin = new System.Windows.Forms.Padding(2);
             this.cbPupilDetection.Name = "cbPupilDetection";
             this.cbPupilDetection.Size = new System.Drawing.Size(106, 17);
             this.cbPupilDetection.TabIndex = 55;
@@ -1078,10 +1226,10 @@
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(2, 2);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(233, 70);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(273, 70);
             this.groupBox4.TabIndex = 59;
             this.groupBox4.TabStop = false;
             // 
@@ -1096,7 +1244,7 @@
             this.cbShowIris.FlatAppearance.BorderSize = 0;
             this.cbShowIris.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowIris.Location = new System.Drawing.Point(194, 24);
-            this.cbShowIris.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowIris.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowIris.Name = "cbShowIris";
             this.cbShowIris.Size = new System.Drawing.Size(14, 18);
             this.cbShowIris.TabIndex = 3;
@@ -1107,7 +1255,7 @@
             // 
             this.trackBarControl2.AutoSize = false;
             this.trackBarControl2.Location = new System.Drawing.Point(51, 23);
-            this.trackBarControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarControl2.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarControl2.Maximum = 500;
             this.trackBarControl2.Minimum = 80;
             this.trackBarControl2.Name = "trackBarControl2";
@@ -1134,9 +1282,9 @@
             this.tabPage_Scene.Controls.Add(this.cbShowGaze);
             this.tabPage_Scene.Controls.Add(this.groupBox7);
             this.tabPage_Scene.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Scene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Scene.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Scene.Name = "tabPage_Scene";
-            this.tabPage_Scene.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Scene.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Scene.TabIndex = 2;
             this.tabPage_Scene.Text = "Scene";
             this.tabPage_Scene.UseVisualStyleBackColor = true;
@@ -1157,10 +1305,10 @@
             this.groupBox8.Controls.Add(this.cbSceneUnDistortion);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox8.Location = new System.Drawing.Point(0, 216);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox8.Size = new System.Drawing.Size(237, 76);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Size = new System.Drawing.Size(277, 76);
             this.groupBox8.TabIndex = 63;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lens Distortion Correction";
@@ -1168,7 +1316,7 @@
             // btnSceneCameraCalibration
             // 
             this.btnSceneCameraCalibration.Location = new System.Drawing.Point(37, 26);
-            this.btnSceneCameraCalibration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSceneCameraCalibration.Margin = new System.Windows.Forms.Padding(2);
             this.btnSceneCameraCalibration.Name = "btnSceneCameraCalibration";
             this.btnSceneCameraCalibration.Size = new System.Drawing.Size(161, 35);
             this.btnSceneCameraCalibration.TabIndex = 59;
@@ -1179,7 +1327,7 @@
             // cbSceneUnDistortion
             // 
             this.cbSceneUnDistortion.Location = new System.Drawing.Point(136, 0);
-            this.cbSceneUnDistortion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSceneUnDistortion.Margin = new System.Windows.Forms.Padding(2);
             this.cbSceneUnDistortion.Name = "cbSceneUnDistortion";
             this.cbSceneUnDistortion.Size = new System.Drawing.Size(62, 13);
             this.cbSceneUnDistortion.TabIndex = 58;
@@ -1197,7 +1345,7 @@
             this.cbShowGaze.FlatAppearance.BorderSize = 0;
             this.cbShowGaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowGaze.Location = new System.Drawing.Point(7, 299);
-            this.cbShowGaze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowGaze.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowGaze.Name = "cbShowGaze";
             this.cbShowGaze.Size = new System.Drawing.Size(14, 18);
             this.cbShowGaze.TabIndex = 67;
@@ -1213,10 +1361,10 @@
             this.groupBox7.Controls.Add(this.cbShowScreen);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox7.Size = new System.Drawing.Size(237, 216);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Size = new System.Drawing.Size(277, 216);
             this.groupBox7.TabIndex = 62;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Screen Detection";
@@ -1242,7 +1390,7 @@
             this.cbShowEdges.FlatAppearance.BorderSize = 0;
             this.cbShowEdges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowEdges.Location = new System.Drawing.Point(195, -1);
-            this.cbShowEdges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowEdges.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowEdges.Name = "cbShowEdges";
             this.cbShowEdges.Size = new System.Drawing.Size(14, 18);
             this.cbShowEdges.TabIndex = 68;
@@ -1253,7 +1401,7 @@
             // 
             this.trackBarB.AutoSize = false;
             this.trackBarB.Location = new System.Drawing.Point(18, 32);
-            this.trackBarB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarB.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarB.Maximum = 360;
             this.trackBarB.Name = "trackBarB";
             this.trackBarB.Size = new System.Drawing.Size(185, 24);
@@ -1266,7 +1414,7 @@
             // 
             this.trackBarG.AutoSize = false;
             this.trackBarG.Location = new System.Drawing.Point(18, 60);
-            this.trackBarG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarG.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarG.Maximum = 360;
             this.trackBarG.Minimum = 5;
             this.trackBarG.Name = "trackBarG";
@@ -1280,7 +1428,7 @@
             // 
             this.trackBarControl3.AutoSize = false;
             this.trackBarControl3.Location = new System.Drawing.Point(25, 47);
-            this.trackBarControl3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBarControl3.Margin = new System.Windows.Forms.Padding(2);
             this.trackBarControl3.Maximum = 100;
             this.trackBarControl3.Minimum = 5;
             this.trackBarControl3.Name = "trackBarControl3";
@@ -1322,7 +1470,7 @@
             this.cbShowScreen.FlatAppearance.BorderSize = 0;
             this.cbShowScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowScreen.Location = new System.Drawing.Point(203, 0);
-            this.cbShowScreen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowScreen.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowScreen.Name = "cbShowScreen";
             this.cbShowScreen.Size = new System.Drawing.Size(14, 18);
             this.cbShowScreen.TabIndex = 58;
@@ -1336,15 +1484,16 @@
             this.tabPage_Calibration.Controls.Add(this.gbCalibrationHM);
             this.tabPage_Calibration.Controls.Add(this.panel5);
             this.tabPage_Calibration.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Calibration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Calibration.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Calibration.Name = "tabPage_Calibration";
-            this.tabPage_Calibration.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Calibration.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Calibration.TabIndex = 3;
             this.tabPage_Calibration.Text = "Calibration";
             this.tabPage_Calibration.UseVisualStyleBackColor = true;
             // 
             // gbCalibrationGlass
             // 
+            this.gbCalibrationGlass.Controls.Add(this.checkBox5);
             this.gbCalibrationGlass.Controls.Add(this.button9);
             this.gbCalibrationGlass.Controls.Add(this.button5);
             this.gbCalibrationGlass.Controls.Add(this.button6);
@@ -1355,15 +1504,26 @@
             this.gbCalibrationGlass.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbCalibrationGlass.Location = new System.Drawing.Point(0, 404);
             this.gbCalibrationGlass.Name = "gbCalibrationGlass";
-            this.gbCalibrationGlass.Size = new System.Drawing.Size(237, 227);
+            this.gbCalibrationGlass.Size = new System.Drawing.Size(277, 272);
             this.gbCalibrationGlass.TabIndex = 62;
             this.gbCalibrationGlass.TabStop = false;
             this.gbCalibrationGlass.Text = "Gaze Estimation for the Glass ";
             // 
+            // checkBox5
+            // 
+            this.checkBox5.Location = new System.Drawing.Point(11, 153);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(163, 34);
+            this.checkBox5.TabIndex = 72;
+            this.checkBox5.Text = "Automatic target detection";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(173, 59);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(51, 50);
             this.button9.TabIndex = 71;
@@ -1374,8 +1534,8 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(31, 157);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Location = new System.Drawing.Point(26, 199);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(83, 50);
             this.button5.TabIndex = 70;
@@ -1386,8 +1546,8 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(118, 157);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Location = new System.Drawing.Point(113, 199);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(83, 50);
             this.button6.TabIndex = 69;
@@ -1421,7 +1581,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(9, 59);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(73, 50);
             this.button3.TabIndex = 65;
@@ -1433,7 +1593,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(86, 59);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(83, 50);
             this.button4.TabIndex = 64;
@@ -1449,7 +1609,7 @@
             this.gbCalibrationRemote.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbCalibrationRemote.Location = new System.Drawing.Point(0, 314);
             this.gbCalibrationRemote.Name = "gbCalibrationRemote";
-            this.gbCalibrationRemote.Size = new System.Drawing.Size(237, 90);
+            this.gbCalibrationRemote.Size = new System.Drawing.Size(277, 90);
             this.gbCalibrationRemote.TabIndex = 3;
             this.gbCalibrationRemote.TabStop = false;
             this.gbCalibrationRemote.Text = "Gaze Estimation in the remote display";
@@ -1457,7 +1617,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(8, 25);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 50);
             this.button1.TabIndex = 65;
@@ -1468,7 +1628,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(131, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 50);
             this.button2.TabIndex = 64;
@@ -1483,10 +1643,10 @@
             this.gbCalibrationHM.Controls.Add(this.btnCalibration_Polynomial);
             this.gbCalibrationHM.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbCalibrationHM.Location = new System.Drawing.Point(0, 144);
-            this.gbCalibrationHM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbCalibrationHM.Margin = new System.Windows.Forms.Padding(2);
             this.gbCalibrationHM.Name = "gbCalibrationHM";
-            this.gbCalibrationHM.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbCalibrationHM.Size = new System.Drawing.Size(237, 170);
+            this.gbCalibrationHM.Padding = new System.Windows.Forms.Padding(2);
+            this.gbCalibrationHM.Size = new System.Drawing.Size(277, 170);
             this.gbCalibrationHM.TabIndex = 61;
             this.gbCalibrationHM.TabStop = false;
             this.gbCalibrationHM.Text = "Gaze Estimation in the scene image";
@@ -1504,7 +1664,7 @@
             // btnCalibration_Homography
             // 
             this.btnCalibration_Homography.Location = new System.Drawing.Point(8, 24);
-            this.btnCalibration_Homography.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalibration_Homography.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalibration_Homography.Name = "btnCalibration_Homography";
             this.btnCalibration_Homography.Size = new System.Drawing.Size(83, 50);
             this.btnCalibration_Homography.TabIndex = 63;
@@ -1515,7 +1675,7 @@
             // btnCalibration_Polynomial
             // 
             this.btnCalibration_Polynomial.Location = new System.Drawing.Point(131, 24);
-            this.btnCalibration_Polynomial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalibration_Polynomial.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalibration_Polynomial.Name = "btnCalibration_Polynomial";
             this.btnCalibration_Polynomial.Size = new System.Drawing.Size(83, 50);
             this.btnCalibration_Polynomial.TabIndex = 62;
@@ -1531,9 +1691,9 @@
             this.panel5.Controls.Add(this.cbGazeSmoothing);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(237, 144);
+            this.panel5.Size = new System.Drawing.Size(277, 144);
             this.panel5.TabIndex = 61;
             // 
             // rbGlint
@@ -1542,7 +1702,7 @@
             this.rbGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rbGlint.Location = new System.Drawing.Point(8, 47);
-            this.rbGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbGlint.Name = "rbGlint";
             this.rbGlint.Size = new System.Drawing.Size(80, 17);
             this.rbGlint.TabIndex = 67;
@@ -1557,7 +1717,7 @@
             this.rbPupilGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbPupilGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rbPupilGlint.Location = new System.Drawing.Point(8, 26);
-            this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbPupilGlint.Name = "rbPupilGlint";
             this.rbPupilGlint.Size = new System.Drawing.Size(106, 17);
             this.rbPupilGlint.TabIndex = 59;
@@ -1572,7 +1732,7 @@
             this.rdOnlyPupil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rdOnlyPupil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rdOnlyPupil.Location = new System.Drawing.Point(7, 5);
-            this.rdOnlyPupil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdOnlyPupil.Margin = new System.Windows.Forms.Padding(2);
             this.rdOnlyPupil.Name = "rdOnlyPupil";
             this.rdOnlyPupil.Size = new System.Drawing.Size(82, 17);
             this.rdOnlyPupil.TabIndex = 58;
@@ -1585,7 +1745,7 @@
             this.cbGazeSmoothing.Checked = true;
             this.cbGazeSmoothing.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbGazeSmoothing.Location = new System.Drawing.Point(7, 115);
-            this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2);
             this.cbGazeSmoothing.Name = "cbGazeSmoothing";
             this.cbGazeSmoothing.Size = new System.Drawing.Size(148, 17);
             this.cbGazeSmoothing.TabIndex = 66;
@@ -1598,9 +1758,9 @@
             this.tabPage_Data.Controls.Add(this.groupBox11);
             this.tabPage_Data.Controls.Add(this.groupBox10);
             this.tabPage_Data.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Data.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Data.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Data.Name = "tabPage_Data";
-            this.tabPage_Data.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Data.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Data.TabIndex = 4;
             this.tabPage_Data.Text = "Data";
             this.tabPage_Data.UseVisualStyleBackColor = true;
@@ -1613,10 +1773,10 @@
             this.groupBox11.Controls.Add(this.chart1);
             this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox11.Location = new System.Drawing.Point(0, 144);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox11.Size = new System.Drawing.Size(237, 466);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox11.Size = new System.Drawing.Size(277, 466);
             this.groupBox11.TabIndex = 63;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Plot";
@@ -1646,7 +1806,7 @@
             this.chart3.ChartAreas.Add(chartArea1);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart3.Location = new System.Drawing.Point(2, 294);
-            this.chart3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart3.Margin = new System.Windows.Forms.Padding(2);
             this.chart3.Name = "chart3";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1660,7 +1820,7 @@
             series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series1.Name = "PupilDiam";
             this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(233, 141);
+            this.chart3.Size = new System.Drawing.Size(273, 141);
             this.chart3.TabIndex = 47;
             this.chart3.Text = "chart3";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1676,7 +1836,7 @@
             // cbPlot
             // 
             this.cbPlot.Location = new System.Drawing.Point(27, -1);
-            this.cbPlot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPlot.Margin = new System.Windows.Forms.Padding(2);
             this.cbPlot.Name = "cbPlot";
             this.cbPlot.Size = new System.Drawing.Size(183, 17);
             this.cbPlot.TabIndex = 58;
@@ -1708,7 +1868,7 @@
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart2.Location = new System.Drawing.Point(2, 153);
-            this.chart2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart2.Margin = new System.Windows.Forms.Padding(2);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1722,7 +1882,7 @@
             series2.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series2.Name = "PupilY";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(233, 141);
+            this.chart2.Size = new System.Drawing.Size(273, 141);
             this.chart2.TabIndex = 46;
             this.chart2.Text = "chart2";
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1760,7 +1920,7 @@
             this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart1.Location = new System.Drawing.Point(2, 15);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1774,7 +1934,7 @@
             series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series3.Name = "PupilX";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(233, 138);
+            this.chart1.Size = new System.Drawing.Size(273, 138);
             this.chart1.TabIndex = 45;
             this.chart1.Text = "chart1";
             title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1795,20 +1955,18 @@
             this.groupBox10.Controls.Add(this.btn_Record);
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox10.Location = new System.Drawing.Point(0, 0);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox10.Size = new System.Drawing.Size(237, 144);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox10.Size = new System.Drawing.Size(277, 144);
             this.groupBox10.TabIndex = 63;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Record Videos and EyeData";
             // 
             // checkBox3
             // 
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Location = new System.Drawing.Point(109, 91);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(86, 23);
             this.checkBox3.TabIndex = 60;
@@ -1819,7 +1977,7 @@
             // checkBox1
             // 
             this.checkBox1.Location = new System.Drawing.Point(36, 91);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(86, 23);
             this.checkBox1.TabIndex = 59;
@@ -1832,7 +1990,7 @@
             this.btn_RecordProgress.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_RecordProgress.ForeColor = System.Drawing.Color.Red;
             this.btn_RecordProgress.Location = new System.Drawing.Point(36, 74);
-            this.btn_RecordProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_RecordProgress.Margin = new System.Windows.Forms.Padding(2);
             this.btn_RecordProgress.MarqueeAnimationSpeed = 10;
             this.btn_RecordProgress.Name = "btn_RecordProgress";
             this.btn_RecordProgress.Size = new System.Drawing.Size(150, 10);
@@ -1856,9 +2014,9 @@
             this.tabPage_Clients.Controls.Add(this.panelClients);
             this.tabPage_Clients.Controls.Add(this.groupBox12);
             this.tabPage_Clients.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Clients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Clients.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Clients.Name = "tabPage_Clients";
-            this.tabPage_Clients.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Clients.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Clients.TabIndex = 5;
             this.tabPage_Clients.Text = "Clients";
             this.tabPage_Clients.UseVisualStyleBackColor = true;
@@ -1869,10 +2027,10 @@
             this.panelClients.Controls.Add(this.radioButtonAutoActivation);
             this.panelClients.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelClients.Location = new System.Drawing.Point(0, 230);
-            this.panelClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelClients.Margin = new System.Windows.Forms.Padding(2);
             this.panelClients.Name = "panelClients";
-            this.panelClients.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelClients.Size = new System.Drawing.Size(237, 53);
+            this.panelClients.Padding = new System.Windows.Forms.Padding(2);
+            this.panelClients.Size = new System.Drawing.Size(277, 53);
             this.panelClients.TabIndex = 64;
             this.panelClients.TabStop = false;
             this.panelClients.Text = "Clients";
@@ -1896,10 +2054,10 @@
             this.groupBox12.Controls.Add(this.TextBoxServer);
             this.groupBox12.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox12.Location = new System.Drawing.Point(0, 0);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox12.Size = new System.Drawing.Size(237, 230);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Size = new System.Drawing.Size(277, 230);
             this.groupBox12.TabIndex = 63;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Messages ";
@@ -1912,7 +2070,7 @@
             this.TextBoxServer.Name = "TextBoxServer";
             this.TextBoxServer.ReadOnly = true;
             this.TextBoxServer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TextBoxServer.Size = new System.Drawing.Size(233, 213);
+            this.TextBoxServer.Size = new System.Drawing.Size(273, 213);
             this.TextBoxServer.TabIndex = 38;
             // 
             // tabPage_Gesture
@@ -1923,8 +2081,8 @@
             this.tabPage_Gesture.Controls.Add(this.groupBox17);
             this.tabPage_Gesture.Location = new System.Drawing.Point(4, 40);
             this.tabPage_Gesture.Name = "tabPage_Gesture";
-            this.tabPage_Gesture.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage_Gesture.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_Gesture.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Gesture.Size = new System.Drawing.Size(277, 647);
             this.tabPage_Gesture.TabIndex = 6;
             this.tabPage_Gesture.Text = "Gestures";
             this.tabPage_Gesture.UseVisualStyleBackColor = true;
@@ -1942,7 +2100,7 @@
             this.groupBox19.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox19.Location = new System.Drawing.Point(3, 432);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(231, 289);
+            this.groupBox19.Size = new System.Drawing.Size(271, 289);
             this.groupBox19.TabIndex = 3;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Custom gestures  (made only by head yaw and pitch)";
@@ -2050,7 +2208,7 @@
             this.groupBox20.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox20.Location = new System.Drawing.Point(3, 143);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(231, 289);
+            this.groupBox20.Size = new System.Drawing.Size(271, 289);
             this.groupBox20.TabIndex = 3;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Head yaw and pitch";
@@ -2240,7 +2398,7 @@
             this.groupBox16.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox16.Location = new System.Drawing.Point(3, 66);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(231, 77);
+            this.groupBox16.Size = new System.Drawing.Size(271, 77);
             this.groupBox16.TabIndex = 5;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Head Roll";
@@ -2266,7 +2424,7 @@
             // checkBox2
             // 
             this.checkBox2.Location = new System.Drawing.Point(64, 0);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(117, 19);
             this.checkBox2.TabIndex = 85;
@@ -2282,7 +2440,7 @@
             this.checkEditShowOpticalFlow.FlatAppearance.BorderSize = 0;
             this.checkEditShowOpticalFlow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkEditShowOpticalFlow.Location = new System.Drawing.Point(185, 1);
-            this.checkEditShowOpticalFlow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkEditShowOpticalFlow.Margin = new System.Windows.Forms.Padding(2);
             this.checkEditShowOpticalFlow.Name = "checkEditShowOpticalFlow";
             this.checkEditShowOpticalFlow.Size = new System.Drawing.Size(14, 18);
             this.checkEditShowOpticalFlow.TabIndex = 82;
@@ -2296,7 +2454,7 @@
             this.groupBox17.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox17.Location = new System.Drawing.Point(3, 3);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(231, 63);
+            this.groupBox17.Size = new System.Drawing.Size(271, 63);
             this.groupBox17.TabIndex = 3;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Blink";
@@ -2329,10 +2487,10 @@
             // 
             this.tabPage_ExtData.Controls.Add(this.groupBox13);
             this.tabPage_ExtData.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_ExtData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_ExtData.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_ExtData.Name = "tabPage_ExtData";
-            this.tabPage_ExtData.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage_ExtData.Size = new System.Drawing.Size(237, 624);
+            this.tabPage_ExtData.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_ExtData.Size = new System.Drawing.Size(277, 647);
             this.tabPage_ExtData.TabIndex = 7;
             this.tabPage_ExtData.Text = "ExtData";
             this.tabPage_ExtData.UseVisualStyleBackColor = true;
@@ -2346,7 +2504,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox13.Location = new System.Drawing.Point(3, 3);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(231, 69);
+            this.groupBox13.Size = new System.Drawing.Size(271, 69);
             this.groupBox13.TabIndex = 0;
             this.groupBox13.TabStop = false;
             // 
@@ -2409,10 +2567,10 @@
             this.groupBox14.Controls.Add(this.tableLayoutPanel1);
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 24);
-            this.groupBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox14.Size = new System.Drawing.Size(898, 644);
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox14.Size = new System.Drawing.Size(845, 667);
             this.groupBox14.TabIndex = 1;
             this.groupBox14.TabStop = false;
             // 
@@ -2433,7 +2591,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 627);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(841, 650);
             this.tableLayoutPanel1.TabIndex = 75;
             // 
             // splitContainer2
@@ -2441,7 +2599,7 @@
             this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Location = new System.Drawing.Point(-207, 3);
+            this.splitContainer2.Location = new System.Drawing.Point(-260, 3);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -2451,8 +2609,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox_imgScene);
-            this.splitContainer2.Size = new System.Drawing.Size(1097, 614);
-            this.splitContainer2.SplitterDistance = 492;
+            this.splitContainer2.Size = new System.Drawing.Size(1097, 637);
+            this.splitContainer2.SplitterDistance = 244;
             this.splitContainer2.TabIndex = 73;
             // 
             // groupBox_imgEye
@@ -2461,10 +2619,10 @@
             this.groupBox_imgEye.Controls.Add(this.panel1);
             this.groupBox_imgEye.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_imgEye.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_imgEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_imgEye.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_imgEye.Name = "groupBox_imgEye";
-            this.groupBox_imgEye.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgEye.Size = new System.Drawing.Size(492, 614);
+            this.groupBox_imgEye.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_imgEye.Size = new System.Drawing.Size(244, 637);
             this.groupBox_imgEye.TabIndex = 67;
             this.groupBox_imgEye.TabStop = false;
             this.groupBox_imgEye.Text = "Eye";
@@ -2476,14 +2634,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(488, 597);
+            this.panel1.Size = new System.Drawing.Size(240, 620);
             this.panel1.TabIndex = 73;
             // 
             // imEye
             // 
+            this.imEye.Dock = System.Windows.Forms.DockStyle.Top;
             this.imEye.Location = new System.Drawing.Point(0, 0);
             this.imEye.Name = "imEye";
-            this.imEye.Size = new System.Drawing.Size(60, 60);
+            this.imEye.Size = new System.Drawing.Size(240, 550);
             this.imEye.TabIndex = 72;
             this.imEye.TabStop = false;
             this.imEye.Paint += new System.Windows.Forms.PaintEventHandler(this.imEye_Paint);
@@ -2494,10 +2653,10 @@
             this.groupBox_imgScene.Controls.Add(this.panel2);
             this.groupBox_imgScene.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_imgScene.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_imgScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_imgScene.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_imgScene.Name = "groupBox_imgScene";
-            this.groupBox_imgScene.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgScene.Size = new System.Drawing.Size(601, 614);
+            this.groupBox_imgScene.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_imgScene.Size = new System.Drawing.Size(849, 637);
             this.groupBox_imgScene.TabIndex = 68;
             this.groupBox_imgScene.TabStop = false;
             this.groupBox_imgScene.Text = "Scene";
@@ -2510,7 +2669,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 15);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(597, 597);
+            this.panel2.Size = new System.Drawing.Size(845, 620);
             this.panel2.TabIndex = 74;
             // 
             // imSceneProcessed
@@ -2518,7 +2677,7 @@
             this.imSceneProcessed.Dock = System.Windows.Forms.DockStyle.Left;
             this.imSceneProcessed.Location = new System.Drawing.Point(60, 0);
             this.imSceneProcessed.Name = "imSceneProcessed";
-            this.imSceneProcessed.Size = new System.Drawing.Size(250, 597);
+            this.imSceneProcessed.Size = new System.Drawing.Size(250, 620);
             this.imSceneProcessed.TabIndex = 75;
             this.imSceneProcessed.TabStop = false;
             this.imSceneProcessed.Paint += new System.Windows.Forms.PaintEventHandler(this.imSceneProcessed_Paint);
@@ -2528,7 +2687,7 @@
             this.imScene.Dock = System.Windows.Forms.DockStyle.Left;
             this.imScene.Location = new System.Drawing.Point(0, 0);
             this.imScene.Name = "imScene";
-            this.imScene.Size = new System.Drawing.Size(60, 597);
+            this.imScene.Size = new System.Drawing.Size(60, 620);
             this.imScene.TabIndex = 73;
             this.imScene.TabStop = false;
             this.imScene.Paint += new System.Windows.Forms.PaintEventHandler(this.imScene_Paint);
@@ -2540,7 +2699,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox18, 3);
             this.groupBox18.Controls.Add(this.trackBarTest);
             this.groupBox18.Controls.Add(this.chartTest);
-            this.groupBox18.Location = new System.Drawing.Point(3, 623);
+            this.groupBox18.Location = new System.Drawing.Point(3, 646);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(564, 1);
             this.groupBox18.TabIndex = 3;
@@ -2584,7 +2743,7 @@
             this.chartTest.ChartAreas.Add(chartArea4);
             this.chartTest.Dock = System.Windows.Forms.DockStyle.Left;
             this.chartTest.Location = new System.Drawing.Point(3, 16);
-            this.chartTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartTest.Margin = new System.Windows.Forms.Padding(2);
             this.chartTest.Name = "chartTest";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -2616,7 +2775,7 @@
             this.imEyeTest.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
             this.imEyeTest.Location = new System.Drawing.Point(3, 3);
             this.imEyeTest.Name = "imEyeTest";
-            this.imEyeTest.Size = new System.Drawing.Size(1, 608);
+            this.imEyeTest.Size = new System.Drawing.Size(1, 504);
             this.imEyeTest.TabIndex = 70;
             this.imEyeTest.TabStop = false;
             this.imEyeTest.Visible = false;
@@ -2635,15 +2794,15 @@
             this.panel6.Controls.Add(this.comboBox_EyeTimer);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(898, 24);
+            this.panel6.Size = new System.Drawing.Size(845, 24);
             this.panel6.TabIndex = 0;
             // 
             // splitter7
             // 
             this.splitter7.Location = new System.Drawing.Point(557, 0);
-            this.splitter7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter7.Margin = new System.Windows.Forms.Padding(2);
             this.splitter7.Name = "splitter7";
             this.splitter7.Size = new System.Drawing.Size(2, 24);
             this.splitter7.TabIndex = 73;
@@ -2654,7 +2813,7 @@
             this.lblIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblIP.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblIP.Location = new System.Drawing.Point(378, 0);
-            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(2);
             this.lblIP.Multiline = true;
             this.lblIP.Name = "lblIP";
             this.lblIP.ReadOnly = true;
@@ -2666,7 +2825,7 @@
             // splitter6
             // 
             this.splitter6.Location = new System.Drawing.Point(376, 0);
-            this.splitter6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter6.Margin = new System.Windows.Forms.Padding(2);
             this.splitter6.Name = "splitter6";
             this.splitter6.Size = new System.Drawing.Size(2, 24);
             this.splitter6.TabIndex = 71;
@@ -2687,7 +2846,7 @@
             // splitter3
             // 
             this.splitter3.Location = new System.Drawing.Point(312, 0);
-            this.splitter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter3.Margin = new System.Windows.Forms.Padding(2);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(2, 24);
             this.splitter3.TabIndex = 65;
@@ -2708,7 +2867,7 @@
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(246, 0);
-            this.splitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(2, 24);
             this.splitter2.TabIndex = 63;
@@ -2720,7 +2879,7 @@
             this.comboBox_SceneTimer.Dock = System.Windows.Forms.DockStyle.Left;
             this.comboBox_SceneTimer.FormattingEnabled = true;
             this.comboBox_SceneTimer.Location = new System.Drawing.Point(124, 0);
-            this.comboBox_SceneTimer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_SceneTimer.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_SceneTimer.Name = "comboBox_SceneTimer";
             this.comboBox_SceneTimer.Size = new System.Drawing.Size(122, 21);
             this.comboBox_SceneTimer.TabIndex = 62;
@@ -2729,7 +2888,7 @@
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(122, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(2, 24);
             this.splitter1.TabIndex = 61;
@@ -2741,7 +2900,7 @@
             this.comboBox_EyeTimer.Dock = System.Windows.Forms.DockStyle.Left;
             this.comboBox_EyeTimer.FormattingEnabled = true;
             this.comboBox_EyeTimer.Location = new System.Drawing.Point(0, 0);
-            this.comboBox_EyeTimer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_EyeTimer.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_EyeTimer.Name = "comboBox_EyeTimer";
             this.comboBox_EyeTimer.Size = new System.Drawing.Size(122, 21);
             this.comboBox_EyeTimer.TabIndex = 60;
@@ -2755,7 +2914,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 668);
+            this.ClientSize = new System.Drawing.Size(1133, 691);
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2777,8 +2936,15 @@
             this.gbEyeCameraDevice.PerformLayout();
             this.tabPage_Glass.ResumeLayout(false);
             this.tabPage_Glass.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.target_B_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_B_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_G_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_G_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_R_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.target_R_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TrackBar1)).EndInit();
             this.tabPage_Eye.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -3061,9 +3227,19 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox txtImageName;
-        private TransparentTrackBar TrackBar1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown target_B_max;
+        private System.Windows.Forms.NumericUpDown target_B_min;
+        private System.Windows.Forms.NumericUpDown target_G_max;
+        private System.Windows.Forms.NumericUpDown target_G_min;
+        private System.Windows.Forms.NumericUpDown target_R_max;
+        private System.Windows.Forms.NumericUpDown target_R_min;
+        private System.Windows.Forms.CheckBox checkBox5;
     }
 }
 

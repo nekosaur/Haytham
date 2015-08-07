@@ -61,9 +61,16 @@ namespace Haytham
 
         public GlyphImageProcessor visualMarker = new GlyphImageProcessor(6);//Only use 6*6 known markers in your clients
 
-        public Calibration EyeToScene_Mapping = new Calibration();
-        public Calibration SceneToMonitor_Mapping = new Calibration();
-        public Calibration EyeToRemoteDisplay_Mapping = new Calibration();
+        public Calibration EyeToScene_Mapping = new Calibration("EyeToScene");
+        public Calibration EyeToDisplay_Mapping = new Calibration("EyeToDisplay");
+
+        //Glass
+        public Calibration DisplayShownInScene_Mapping = new Calibration("DisplayShownInScene");
+        public Calibration EyeToEye_Mapping = new Calibration("EyeToEye");
+        public Boolean Scene_Calibration_Target_AutomaticDetection = false;
+
+        //mobitor inside the scene image
+        public Calibration SceneToMonitor_Mapping = new Calibration("SceneToMonitor");
 
         public ProcessTime ProcessTimeEyeBranch = new ProcessTime();
         public ProcessTime ProcessTimeSceneBranch = new ProcessTime();
@@ -174,13 +181,12 @@ namespace Haytham
         //Gaze
         public Boolean ShowGaze;
         public Boolean GazeSmoother = false;
-        //public AForge.Point Gaze;
 
         public AForge.Point Gaze_RGT;
         public AForge.Point Gaze_HMGT;
-
+     
         public AForge.Point Gaze_SnapShot_Glass;
-
+      
         public int gazeMedian = 10;
 
         
@@ -212,7 +218,16 @@ namespace Haytham
 
         public Boolean showScreen ;
         public Boolean showEdges;
-      
+
+        public int target_R_min;
+        public int target_R_max;
+        public int target_G_min;
+        public int target_G_max;
+        public int target_B_min;
+        public int target_B_max;
+
+
+
 
         //Server & Client
         public myGlass.Server GlassServer ;//= new myGlass.Server();
@@ -230,7 +245,10 @@ namespace Haytham
 
 		//extData
 		public ExtDataHandler DataHandler = new ExtDataHandler();
-
+        //public DateTime recording_time_0;
+       public string tempUDPClient_ip ="192.168.0.101";// "10.27.248.206";
+        public System.Diagnostics.Stopwatch recording_timer;
+        public long timeDifference = 0;
         //
 
         public Dictionary<string, int> commands = new Dictionary<string, int>();

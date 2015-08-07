@@ -21,36 +21,38 @@ namespace Haytham.Glass
 
         Blob[] targets_blobs;
 
-        private bool DetectCalibrationTargets(System.Drawing.Image img,int threshold, bool invertImg)
+        private bool DetectCalibrationTargets(System.Drawing.Image img, int threshold, bool invertImg)
         {
             targets_blobs = null;
 
 
-            Image<Gray, Byte> GrayImg = prepareImg3( img,threshold,invertImg);
+            Image<Gray, Byte> GrayImg = prepareImg3(img, threshold, invertImg);
 
-           // 
-            
-            boardBlob = new Blob_Aforge(GrayImg.Bitmap, 10, 150, 10, 150, 0.3, 10);
-temp_Image = GrayImg.Bitmap;
+            // 
+
+            boardBlob = new Blob_Aforge(GrayImg.Bitmap, 40, 150, 40, 150, 0.3, 10);
+
+
+            temp_Image = GrayImg.Bitmap;
 
             List<Blob> filtered = new List<Blob>();
 
             foreach (Blob b in boardBlob.blobs_all)
             {
-                 //double distToTopLeft = Math.Sqrt((Math.Pow(b.CenterOfGravity.X - 0, 2)) + (Math.Pow(b.CenterOfGravity.Y - 0, 2)));
+                //double distToTopLeft = Math.Sqrt((Math.Pow(b.CenterOfGravity.X - 0, 2)) + (Math.Pow(b.CenterOfGravity.Y - 0, 2)));
                 // double distToTopRight = Math.Sqrt((Math.Pow(b.CenterOfGravity.X - 0, 2)) + (Math.Pow(b.CenterOfGravity.Y - 0, 2)));
                 int offs = 30;
-                bool cond1=(b.CenterOfGravity.X < offs | b.CenterOfGravity.X>GrayImg.Width-offs);
-                bool cond2=(b.CenterOfGravity.Y < offs | b.CenterOfGravity.Y>GrayImg.Height-offs);
- 
-                if (cond1|cond2)
-                 {
+                bool cond1 = (b.CenterOfGravity.X < offs | b.CenterOfGravity.X > GrayImg.Width - offs);
+                bool cond2 = (b.CenterOfGravity.Y < offs | b.CenterOfGravity.Y > GrayImg.Height - offs);
 
-                 }
-                 else
-                 {
-                     filtered.Add(b);
-                 }
+                if (cond1 | cond2)
+                {
+
+                }
+                else
+                {
+                    filtered.Add(b);
+                }
             }
             boardBlob.blobs_all = filtered.ToArray();
 
@@ -87,12 +89,16 @@ temp_Image = GrayImg.Bitmap;
 
 
             //Drawing
-            int txt=1;
+            int txt = 1;
             foreach (AForge.Imaging.Blob b in targets_blobs)
             {
-                EmgImgProcssing.DrawCircle(temp, (int)b.CenterOfGravity.X, (int)b.CenterOfGravity.Y, Color.Red);
-                EmgImgProcssing.DrawText(temp, (int)b.CenterOfGravity.X, (int)b.CenterOfGravity.Y,txt.ToString(), Color.Red);
-                txt++;
+                if (b != null)
+                {
+                    EmgImgProcssing.DrawCircle(temp, (int)b.CenterOfGravity.X, (int)b.CenterOfGravity.Y, Color.Red);
+                    EmgImgProcssing.DrawText(temp, (int)b.CenterOfGravity.X, (int)b.CenterOfGravity.Y, txt.ToString(), Color.Red);
+                    txt++;
+                }
+                else return false;
             }
 
             result_Image = (Bitmap)temp.Bitmap.Clone();
@@ -101,7 +107,7 @@ temp_Image = GrayImg.Bitmap;
             return true;
 
 
-            
+
         }
 
         private Image<Gray, Byte> prepareImg1(System.Drawing.Image img,int threshold, bool invertImg){
@@ -165,9 +171,14 @@ temp_Image = GrayImg.Bitmap;
             // create filter
             ColorFiltering filter = new ColorFiltering();
             // set color ranges to keep
-            filter.Red = new AForge.IntRange(80, 255);
-            filter.Green = new AForge.IntRange(0, 50);
-            filter.Blue = new AForge.IntRange(0, 90);
+            //filter.Red = new AForge.IntRange(125, 255);
+            //filter.Green = new AForge.IntRange(0, 95);
+            //filter.Blue = new AForge.IntRange(0, 95);
+
+            filter.Red = new AForge.IntRange(METState.Current.target_R_min, METState.Current.target_R_max);
+            filter.Green = new AForge.IntRange(METState.Current.target_G_min, METState.Current.target_G_max);
+            filter.Blue = new AForge.IntRange(METState.Current.target_B_min, METState.Current.target_B_max);
+
 
             // apply the filter
             Bitmap colorChannelImg = filter.Apply((Bitmap)img);
@@ -202,6 +213,7 @@ temp_Image = GrayImg.Bitmap;
             if (DetectCalibrationTargets(img,threshold, invertImg))
       
             {
+               
                 switch (targets_blobs.Count())
                 { 
                     case 1:
@@ -226,10 +238,37 @@ temp_Image = GrayImg.Bitmap;
                 return new Point(-1, -1);
             
         }
-
-        private Blob[] getSorted_4blobs(Blob[] blbs)
+        public Point[] getCalibrationTargets(System.Drawing.Image img, int threshold, bool invertImg)
         {
 
+            Point[] points = new Point[1];
+
+            if (DetectCalibrationTargets(img, threshold, invertImg) && (targets_blobs.Length == 4 || targets_blobs.Length == 9))
+            {
+               points = new Point[targets_blobs.Length];
+                for (int i = 0; i < targets_blobs.Length; i++)
+                {
+                    points[i] = new Point((int)targets_blobs[i].CenterOfGravity.X, (int)targets_blobs[i].CenterOfGravity.Y);
+                   
+                }
+
+                return points;
+
+            }else{
+              
+               
+                    points[0] = new Point(-1, -1);
+                
+
+                return points;
+            }
+       
+        }
+
+     
+        private Blob[] getSorted_4blobs(Blob[] blbs)
+        {
+            
 
             float Mean_X = 0;
             float Mean_Y = 0;

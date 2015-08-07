@@ -7,9 +7,12 @@ using System.Text;
 using Emgu.CV;
 namespace Haytham
 {
+     [Serializable()]  
     public class Calibration
     {
+
         public Boolean Calibrated;
+    
         public enum calibration_type { calib_Polynomial, calib_Homography};
         public calibration_type CalibrationType;
         public int CalibrationTarget = 0;
@@ -18,14 +21,22 @@ namespace Haytham
 
         public Matrix<double> Destination = new Matrix<double>(2, 9);
         public Matrix<double> Source = new Matrix<double>(2, 9);
+
+    
+
         public Matrix<double> PolynomialCoeffs;
         public Matrix<double> Homography = new Matrix<double>(3, 3);
 
         public float GazeErrorX = 0;
         public float GazeErrorY = 0;
 
+        public string name="";
+
+        public Calibration(string s)
+        { name = s; }
         public void Calibrate()
         {
+           
             switch (CalibrationType)
             {
                 case Calibration.calibration_type.calib_Polynomial:
@@ -60,6 +71,9 @@ namespace Haytham
                     //textBox1.Text += "\r\n Sx8= " + (B[8, 0]) + "   X8= " + row[1];
                     //textBox1.Text += "\r\n" + (B[8, 0] - (coeffs[0, 0] * row[0] + coeffs[1, 0] * row[1] + coeffs[2, 0] * row[2] + coeffs[3, 0] * row[3] + coeffs[4, 0] * row[4] + coeffs[5, 0] * row[5]));
                     //textBox1.Text += "\r\n" +( CvInvoke.cvDotProduct(roww.Ptr, coeffsY.Ptr) - SMatrix[8, 1]);
+
+                    
+
                     break;
 
                 case Calibration.calibration_type.calib_Homography:
@@ -91,8 +105,9 @@ namespace Haytham
                     break;
             }
 
-
+          
             Calibrated = true;
+            METState.Current.METCoreObject.SaveGazeCalibrationData(this);
         }
 
         static public Matrix<double> SolveLeastSquares(Matrix<double> A, Matrix<double> B)
@@ -179,6 +194,8 @@ namespace Haytham
 
                      return output;
        }
+
+ 
 
   
     }

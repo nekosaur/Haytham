@@ -14,7 +14,7 @@ namespace myGlass
     using System.Data;
     using Haytham;
     using System.Linq;
-    
+
     using System.Threading;
     using Newtonsoft.Json;
     using System.Runtime.Serialization;
@@ -25,8 +25,8 @@ namespace myGlass
     using System.IO;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
-
-
+using Haytham.Glass.Experiments;
+  
     using System.Security.Cryptography;
 
     /// <summary>
@@ -41,6 +41,7 @@ namespace myGlass
         public double progressData_Remaining = 0;
         public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
 
+
         int headerIndex = 0;
 
         //byte[] buf = new byte[8192];
@@ -49,21 +50,27 @@ namespace myGlass
 
         System.IO.MemoryStream dataOutputStream = new MemoryStream();
 
-        public int numberOfPictures = 0;
+      
+        public Calibration tempCalibration;
+
         public Image bitmap;
-        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3 ,waitingForJSON_size=5,waitingForJSON=6};
+        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3, waitingForJSON_size = 5, waitingForJSON = 6 };
         Mode mode = Mode.mainLoop;
 
-        public enum Ready_State : int { No = 0, Yes = 1 ,Finished=-1};
+        public enum Ready_State : int { No = 0, Yes = 1 ,Error=-1};
         public Ready_State myGlassReady_State = Ready_State.No;
 
-        private int failedBlobDetectionCount = 0;
-        private int failedBlobDetectionCount_Max = 2;
-        private int snapshot = 0;
+    
+        private Boolean snapshot = false;
+       
+      
+        public Calibration_Scene myCalibration_Scene=new Calibration_Scene();
+
+        
+       
 
 
-
-
+        public Image currentImage = null;
 
         /// <summary>
         ///   Socket for accepting a connection
@@ -96,15 +103,15 @@ namespace myGlass
         public Client(TcpClient socket, Server serverValue)
         {
 
-   this.server = serverValue;
-       
-     finish("New Connection established!");
+            this.server = serverValue;
+
+            finish("New Connection established!");
             this.tcpClient = socket;
 
             // create NetworkStream object for Socket
             this.socketStream = this.tcpClient.GetStream();
 
-         
+
 
 
 
@@ -138,7 +145,7 @@ namespace myGlass
 
 
             }
-            catch (Exception e){ }
+            catch (Exception e) { }
 
         }
 
@@ -157,7 +164,7 @@ namespace myGlass
             byte[] received;
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_WHAT_IS_YOUR_IP);
-                            
+
             Thread thdUDPServer = new Thread(new ThreadStart(serverThread));
             thdUDPServer.Start();
 
@@ -202,7 +209,7 @@ namespace myGlass
                                 }
                             }
                             break;
-   
+
                         case Mode.waitingForJSON_size:
                             {
                                 byte[] buffer = new byte[4];
@@ -213,12 +220,12 @@ namespace myGlass
                                     progressData_Total = byteArrayToInt(buffer);
                                     progressData_Remaining = progressData_Total;
                                     dataOutputStream = new MemoryStream();
-                    
+
                                     mode = Mode.waitingForJSON;
 
 
-                                } 
-                            else mode = Mode.mainLoop;
+                                }
+                                else mode = Mode.mainLoop;
 
                             }
                             break;
@@ -228,10 +235,10 @@ namespace myGlass
 
                                 if (prg == 1)
                                 {
-                                    METState.Current.GlassServer.Send( MessageType.toGLASS_DataReceived);
-                                   
+                                  
                                     mode = Mode.mainLoop;
-                                
+                                    METState.Current.GlassServer.Send(MessageType.toGLASS_DataReceived);
+
                                 }
                                 else if (prg == -1)
                                 {
@@ -265,121 +272,71 @@ namespace myGlass
 
                                 if (prg == 1)
                                 {
-                                    if (snapshot == 1)
+
+
+                                    if (snapshot)
                                     {
                                         mode = Mode.mainLoop;
 
-                                        #region Draw gaze cross on image
-                                        if (METState.Current.ShowGaze) EmgImgProcssing.DrawCross((Bitmap)bitmap,
+                                        #region Draw gaze  on image
+                                        if (METState.Current.ShowGaze)
+                                        {
+                                            //This will show the gaze obtained from eyeToScene when taking the snapshot
 
-                                            Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.X), Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.Y), System.Drawing.Color.Red);
+                                            EmgImgProcssing.DrawCircle((Bitmap)bitmap,
+
+                                            Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.X), Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.Y), System.Drawing.Color.LightGreen);
+
+                               
+
+
+                                        }
                                         #endregion Draw gaze cross on image
 
-                                       // myGlass.fullScreenImage mFull_Img = new fullScreenImage((Bitmap)bitmap);
-                                       // mFull_Img.ShowDialog();
 
-                                        METState.Current.METCoreObject.SendToForm(bitmap, "imScene");
-                                                                        
+                                        //METState.Current.METCoreObject.SendToForm(bitmap, "imScene");
+                                        //METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");    
 
                                         METState.Current.GlassFrontView_Resolution = new Size(bitmap.Width, bitmap.Height);
-                                        
-                                        
 
-                                        snapshot = 0;
+                                        currentImage = bitmap;
+
+
+                                        snapshot = false;
                                     }
-                                    else
+                                   
+                                    else if  (CalibExp.scene_is_sampling)
+                                    {
+
+                                        mode = Mode.mainLoop;
+   currentImage =new Bitmap( bitmap);//This will be automatically shown in the form
+
+                                        CalibExp.mySampling_Scene.ProcessImg(bitmap);
+
+                                     
+                                        METState.Current.GlassFrontView_Resolution = new Size(bitmap.Width, bitmap.Height);
+
+
+                                         
+
+                                    }
+                                    else if (myCalibration_Scene.is_sampling)//calibration
                                     {
                                         mode = Mode.mainLoop;
+  currentImage =new Bitmap( bitmap);//This will be automatically shown in the form
 
+                                        myCalibration_Scene.ProcessImg(bitmap);
+
+                                      
                                         METState.Current.GlassFrontView_Resolution = new Size(bitmap.Width, bitmap.Height);
 
-                                        Point result = processImg(bitmap, METState.Current.EyeToScene_Mapping.CalibrationTarget + 1);// this function should be able to detect one or n points otherwise it returns -1
-                                        // Point result = processImg(bitmap, numberOfPictures);// this function should be able to detect one or n points otherwise it returns -1
 
-
-                                        if (result.X != -1 && result.Y != -1)//if !(-1,-1) :if target is detected in the image
-                                        {
-
-
-
-                                            METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
-                                            METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
-
-                                            if (METState.Current.EyeToScene_Mapping.CalibrationTarget < numberOfPictures)
-                                            {
-
-                                                failedBlobDetectionCount = 0;
-
-                                                METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(result.X, result.Y));
-                                                METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = result.X;///METState.Current.Kw_SceneImg;
-                                                METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = result.Y;///METState.Current.Kh_SceneImg;
-
-
-
-                                                METState.Current.EyeToScene_Mapping.CalibrationTarget++;
-
-
-                                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget == numberOfPictures)
-                                                {
-                                                    server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-2, -2));//point x (th) of y (total)
-
-                                                    METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                                                    METState.Current.EyeToScene_Mapping.Calibrate();
-
-
-                                                    METState.Current.EyeToScene_Mapping.Calibrated = true;
-
-
-                                                }
-                                                else
-                                                {
-                                                    //tell the user to look at the next target
-                                                    server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-4, -4));//point x (th) of y (total)
-
-                                                    //wait between points
-                                                    Thread.Sleep(wait);//??
-
-                                                    //take picture
-                                                    server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(METState.Current.EyeToScene_Mapping.CalibrationTarget + 1, numberOfPictures));//point x (th) of y (total)
-                                                    //get eye sample
-                                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-                                                }
-
-                                            }
-
-                                        }
-                                        else if (result.X == -1 && result.Y == -1)
-                                        {
-                                            failedBlobDetectionCount++;
-
-                                            if (failedBlobDetectionCount <= failedBlobDetectionCount_Max)
-                                            {
-                                                //tell the user to look at the next target
-                                                server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-5, -5));//point x (th) of y (total)
-
-                                                //wait between points
-                                                Thread.Sleep(wait);
-
-                                                //take the sample again
-                                                //take picture
-                                                server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(METState.Current.EyeToScene_Mapping.CalibrationTarget + 1, numberOfPictures));//point x (th) of y (total)
-                                                //get eye sample
-                                                METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                                METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-                                            }
-                                            else
-                                            {
-                                                failedBlobDetectionCount = 0;
-                                                //Calibration terminated!
-                                                server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-3, -3));//point x (th) of y (total)
-
-
-                                            }
-                                        }
-                                        //
+                                    
+                                          
+                                      
                                     }
+                                          
+
                                 }
                                 else if (prg == -1)
                                 {
@@ -402,12 +359,12 @@ namespace myGlass
 
                 }
             }
-            while (cnt==0 && !msg.StartsWith("CLIENT>>> TERMINATE") && tcpClient.Client.Connected); //cnt < 10 &&
+            while (cnt == 0 && !msg.StartsWith("CLIENT>>> TERMINATE") && tcpClient.Client.Connected); //cnt < 10 &&
 
             // close the socket connection
-            finish( "Client has disconnected!!!!");
-             
-                METState.Current.METCoreObject.SendToForm("*********************************************\r\n", "tbOutput");
+            finish("Client has disconnected!!!!");
+
+            METState.Current.METCoreObject.SendToForm("*********************************************\r\n", "tbOutput");
 
 
         }
@@ -416,145 +373,206 @@ namespace myGlass
         {
             try
             {
-                METState.Current.METCoreObject.SendToForm( msg , "tbOutput");
+                METState.Current.METCoreObject.SendToForm(msg, "tbOutput");
 
 
-                
+
                 //server.remoteEP = null;
-               // server.sendSocket.Disconnect(true);
+                // server.sendSocket.Disconnect(true);
                 //server.sendSocket.Close();
                 server.udpServer.Close();
-               // server.udpServer = null;
+                // server.udpServer = null;
 
             }
             catch (Exception e)
             { }
 
-            try { 
-            tcpClient.Client.Close();
-           // socketStream.Close();
-            tcpClient.Close();
+            try
+            {
+                tcpClient.Client.Close();
+                // socketStream.Close();
+                tcpClient.Close();
             }
             catch (Exception e)
             { }
         }
-            int wait = 4000;
+        int wait = 4000;
         private void interpretMSG(byte[] msg)
         {
             // we can insure that this is a correct msg by if(GetIndicator(msg)==GetX(msg))
-            int indicator=GetIndicator(msg);
+            int indicator = GetIndicator(msg);
             switch (indicator)
             {
 
                 case MessageType.toHAYTHAM_READY:
-
                     {
                         myGlassReady_State = Ready_State.Yes;
+
+                        //Experiment
+                        if (CalibExp.scene_is_sampling)
+                        {
+                            CalibExp.mySampling_Scene.UserIsReady();
+                            myGlassReady_State = Ready_State.No;
+                        }
+                        else if ( myCalibration_Scene.is_sampling)
+                        {
+
+
+                            myCalibration_Scene.UserIsReady();
+                            myGlassReady_State = Ready_State.No;
+                        }
                     }
 
                     break;
                 case MessageType.toHAYTHAM_Calibrate_Display_Finished:
                     {
-                        myGlassReady_State = Ready_State.Finished;
+                        myGlassReady_State = Ready_State.Error;
 
                     }
 
                     break;
-                case MessageType.toHAYTHAM_SceneCalibrationReady://The client reurns this msg after it received "Calibrate scene" from Haytham and when the user is ready
+                case MessageType.toHAYTHAM_Calibrate_Display:
                     {
-                        // calibratingScene_State = CalibratingScene_State.none;//We wait for an msg from the client saying that the picture is ready to send to the Haytham
-
-
-                        //wait for the user to fixate on the first target
-                        Thread.Sleep(wait);
-
-                        //get eye sample
-                        METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                        METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-
-                        //take the first picture 
-                        server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(METState.Current.EyeToScene_Mapping.CalibrationTarget + 1, numberOfPictures));//point x (th) of y (total)
-
-
-
-
-
-                    }
-                    break;
-                case MessageType.toHAYTHAM_Calibrate_Scene_4:
-                    {
-
-
-
-                        METState.Current.GlassServer.client.numberOfPictures = 4;
-                        METState.Current.EyeToScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
-
-
-                        METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
-                        METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
-                        METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
-
-
-                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                        METState.Current.EyeToScene_Mapping.Calibrated = false;// ta click rooye scene noghtegiri shavad na eslah
-
-                        METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-1, -1));
-                        Thread.Sleep(2000);//??
-
-                    }
-                    break;
-                case MessageType.toHAYTHAM_Calibrate_Display_4:
-                    {
-
-                        int n = 2;
-                        METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+                        myGlassReady_State = Ready_State.No;
+                        int n;
+                        METState.Current.EyeToEye_Mapping.Calibrated = false;
+                        n = 3;
+                        METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
 
                         METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-1, -1));//only show the msg to the user not the point
                         Thread.Sleep(3000);//??
 
 
-                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
 
 
-                        METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-                        METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+                        METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+                        METState.Current.EyeToDisplay_Mapping.Calibrated = false;
 
 
 
-                        ///Set the METState.Current.RemoteOrHeadMount 
                         Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-   
+                        METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.Calib_Display); ;
 
-                        METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect); ;
 
-                        //...Here you can send some commands to HMD if you want to show something there
-                        // METState.Current.remoteCalibration.ShowDialog();
 
+                    }
+                    break;
+
+                case MessageType.toHAYTHAM_Calibrate_ReUse:
+                    {
+                        myGlassReady_State = Ready_State.No;
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
+                        METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
+                        METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
+
+
+
+                        int n;
+                        if (METState.Current.EyeToDisplay_Mapping.Calibrated)
+                        {
+
+
+                            CalibExp.EyeToDisplay_Mapping_4points.GazeErrorX = 0;
+                            CalibExp.EyeToDisplay_Mapping_4points.GazeErrorY = 0;
+                            CalibExp.EyeToDisplay_Mapping_4points.Calibrated = false;
+                            CalibExp.EyeToDisplay_Mapping_4points.CalibrationType = Calibration.calibration_type.calib_Homography;
+
+
+
+                            METState.Current.EyeToEye_Mapping.Calibrated = false;
+                            n = 3;
+                            METState.Current.EyeToEye_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+
+                            METState.Current.EyeToEye_Mapping.CalibrationTarget = 0;
+
+                            if (METState.Current.EyeToDisplay_Mapping.CalibrationTarget == 8)
+                            {
+
+                                //METState.Current.EyeToEye_Mapping.Destination[0, 0] = METState.Current.EyeToDisplay_Mapping.Source[0, 0];
+                                //METState.Current.EyeToEye_Mapping.Destination[1, 0] = METState.Current.EyeToDisplay_Mapping.Source[1, 0];
+
+                                //METState.Current.EyeToEye_Mapping.Destination[0, 1] = METState.Current.EyeToDisplay_Mapping.Source[0, 2];
+                                //METState.Current.EyeToEye_Mapping.Destination[1, 1] = METState.Current.EyeToDisplay_Mapping.Source[1, 2];
+
+                                //METState.Current.EyeToEye_Mapping.Destination[0, 2] = METState.Current.EyeToDisplay_Mapping.Source[0, 6];
+                                //METState.Current.EyeToEye_Mapping.Destination[1, 2] = METState.Current.EyeToDisplay_Mapping.Source[1, 6];
+
+                                //METState.Current.EyeToEye_Mapping.Destination[0, 3] = METState.Current.EyeToDisplay_Mapping.Source[0, 8];
+                                //METState.Current.EyeToEye_Mapping.Destination[1, 3] = METState.Current.EyeToDisplay_Mapping.Source[1, 8];
+
+                                METState.Current.EyeToEye_Mapping.Destination = METState.Current.EyeToDisplay_Mapping.Source;
+
+
+                            }
+                            else if (METState.Current.EyeToDisplay_Mapping.CalibrationTarget == 3)
+                            {
+
+                                METState.Current.EyeToEye_Mapping.Destination[0, 0] = METState.Current.EyeToDisplay_Mapping.Source[0, 0];
+                                METState.Current.EyeToEye_Mapping.Destination[1, 0] = METState.Current.EyeToDisplay_Mapping.Source[1, 0];
+
+                                METState.Current.EyeToEye_Mapping.Destination[0, 1] = METState.Current.EyeToDisplay_Mapping.Source[0, 1];
+                                METState.Current.EyeToEye_Mapping.Destination[1, 1] = METState.Current.EyeToDisplay_Mapping.Source[1, 1];
+
+                                METState.Current.EyeToEye_Mapping.Destination[0, 2] = METState.Current.EyeToDisplay_Mapping.Source[0, 2];
+                                METState.Current.EyeToEye_Mapping.Destination[1, 2] = METState.Current.EyeToDisplay_Mapping.Source[1, 2];
+
+                                METState.Current.EyeToEye_Mapping.Destination[0, 3] = METState.Current.EyeToDisplay_Mapping.Source[0, 3];
+                                METState.Current.EyeToEye_Mapping.Destination[1, 3] = METState.Current.EyeToDisplay_Mapping.Source[1, 3];
+                            }
+
+
+                            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-1, -1));//only show the msg to the user not the point
+                            Thread.Sleep(3000);//??
+
+                            Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
+
+                            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.eyeToeye);
+
+                        }
+                        else
+                        {
+                            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_ERROR_MasterNOTFound);
+
+                        }
 
                     }
                     break;
                 case MessageType.toHAYTHAM_Calibrate_Display_Correct:
                     {
 
-                        if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated)
+                        if (METState.Current.EyeToDisplay_Mapping.Calibrated )
                         {
 
-                            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-3, -3));//Look at the white circle
+                            //METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-3, -3));//Look at the white circle
 
 
-                            Thread.Sleep(4000);//??
-
-                            AForge.Point Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, 320, 180);
-
-                            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
-                            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
+                            //Thread.Sleep(4000);//??
 
 
-                            METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-3, -4));//done!
+                            //if (METState.Current.EyeToDisplay_Mapping.Calibrated)
+                            //{
+                            //    AForge.Point Gaze = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, myGlass.constants.display_W / 2, myGlass.constants.display_H / 2);
+
+                            //    METState.Current.EyeToDisplay_Mapping.GazeErrorX = Gaze.X;// 
+                            //    METState.Current.EyeToDisplay_Mapping.GazeErrorY = Gaze.Y;//
+                            //}
+                            //if (METState.Current.EyeToDisplay_Master_Mapping.Calibrated)
+                            //{
+                            //    AForge.Point normalizedEye = METState.Current.EyeToEye_Mapping.Calibrated ? METState.Current.EyeToEye_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, 0, 0) : METState.Current.eyeFeature;
+
+                            //    AForge.Point Gaze = METState.Current.EyeToDisplay_Master_Mapping.Map(normalizedEye.X, normalizedEye.Y, myGlass.constants.display_W / 2, myGlass.constants.display_H / 2);
+
+                            //    METState.Current.EyeToDisplay_Master_Mapping.GazeErrorX = Gaze.X;// 
+                            //    METState.Current.EyeToDisplay_Master_Mapping.GazeErrorY = Gaze.Y;//
+                            //}
+
+
+                            //METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-3, -4));//done!
                         }
                         else
                         {
@@ -564,11 +582,56 @@ namespace myGlass
 
                     }
                     break;
+                case MessageType.toHAYTHAM_SceneCalibration_Start:
+                    {
+
+
+
+
+                        int n = (int)Math.Sqrt(myCalibration_Scene.numberOfPictures);
+                        myCalibration_Scene = new Calibration_Scene(n, n);
+
+
+                        myGlassReady_State = Ready_State.No;
+                        myCalibration_Scene.is_sampling = true;
+                        
+
+                    }
+                    break;
+                case MessageType.toHAYTHAM_Calibrate_Scene:
+                    {
+
+
+                        //This is needed here
+                        myCalibration_Scene.numberOfPictures =9;
+
+                        METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-1, -1));
+                        
+
+                    }
+                    break;
+             
+                case MessageType.toHAYTHAM_Calibrate_Scene_Correct:
+                    {
+
+                        //correctOffset_Scene = true;
+
+
+                        //METState.Current.GlassServer.client.numberOfPictures = 1;
+
+                        //METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-6, -6));//start correct offset activity in glass
+                        //Thread.Sleep(2000);//??
+
+                    }
+                    break;
+                
                 case MessageType.toHAYTHAM_SnapshotComming:
                     {
                         METState.Current.Gaze_SnapShot_Glass = METState.Current.Gaze_HMGT;
+                       
+
                         #region ready to get the picture
-                        snapshot = 1;
+                        snapshot = true;
 
 
                         #endregion
@@ -578,7 +641,7 @@ namespace myGlass
                 case MessageType.toHAYTHAM_JsonComming:
                     {
                         #region ready to get the picture
-                        
+
                         METState.Current.METCoreObject.SendToForm(0, "progressbar");
 
                         dataOutputStream = new MemoryStream();
@@ -610,6 +673,32 @@ namespace myGlass
 
                     }
                     break;
+                case MessageType.toHAYTHAM_Experiment_display_Start:
+                    {
+
+                        int n;
+                       
+                        n = 3;
+                        myGlassReady_State = Ready_State.No;
+
+
+                        Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
+
+                        CalibExp .mySampling_Display = new Sampling_Display(n, n, rect); 
+
+                    }
+                    break;
+                case MessageType.toHAYTHAM_Experiment_scene_Start:
+                    {
+
+                        myGlassReady_State = Ready_State.No;
+
+                        CalibExp.mySampling_Scene = new Sampling_Scene(3, 3);//CURRENTLY ONLY WORKS WITH 9 POINTS
+                        CalibExp.scene_is_sampling = true;
+
+                    }
+                    break; 
+
                 case MessageType.toHAYTHAM_StreamGaze_RGT_START:
                     {
                         METState.Current.GlassServer.gazeStream_RGT = myGlass.Server.GazeStream.RGT;
@@ -633,8 +722,8 @@ namespace myGlass
                 default:
                     {
 
-                        
-                            
+
+
 
                     }
                     break;
@@ -644,21 +733,44 @@ namespace myGlass
 
 
         }
-        private Point processImg(Image img, int num)
+
+
+        public void Calibrate_DisplayshownInSceneMapping(Point[] result)
         {
 
+            METState.Current.DisplayShownInScene_Mapping.GazeErrorX = 0;
+            METState.Current.DisplayShownInScene_Mapping.GazeErrorY = 0;
+
+            METState.Current.DisplayShownInScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+            METState.Current.DisplayShownInScene_Mapping.Calibrated = false;
 
 
 
-            Haytham.Glass.SceneImage test = new Haytham.Glass.SceneImage();
+            METState.Current.DisplayShownInScene_Mapping.Destination[0, 0] = result[0].X;
+            METState.Current.DisplayShownInScene_Mapping.Destination[1, 0] = result[0].Y;
+            METState.Current.DisplayShownInScene_Mapping.Destination[0, 1] = result[1].X;
+            METState.Current.DisplayShownInScene_Mapping.Destination[1, 1] = result[1].Y;
+            METState.Current.DisplayShownInScene_Mapping.Destination[0, 2] = result[2].X;
+            METState.Current.DisplayShownInScene_Mapping.Destination[1, 2] = result[2].Y;
+            METState.Current.DisplayShownInScene_Mapping.Destination[0, 3] = result[3].X;
+            METState.Current.DisplayShownInScene_Mapping.Destination[1, 3] = result[3].Y;
 
-            Point testPoint = test.getCalibrationTarget(img, 200, num, false);
+            METState.Current.DisplayShownInScene_Mapping.Source[0, 0] = 0;
+            METState.Current.DisplayShownInScene_Mapping.Source[1, 0] = 0;
+            METState.Current.DisplayShownInScene_Mapping.Source[0, 1] = myGlass.constants.display_W;
+            METState.Current.DisplayShownInScene_Mapping.Source[1, 1] = 0;
+            METState.Current.DisplayShownInScene_Mapping.Source[0, 2] = 0;
+            METState.Current.DisplayShownInScene_Mapping.Source[1, 2] = myGlass.constants.display_H;
+            METState.Current.DisplayShownInScene_Mapping.Source[0, 3] = myGlass.constants.display_W;
+            METState.Current.DisplayShownInScene_Mapping.Source[1, 3] = myGlass.constants.display_H;
 
-            METState.Current.METCoreObject.SendToForm(test.result_Image, "imScene");
+            METState.Current.DisplayShownInScene_Mapping.Calibrate();
+            METState.Current.DisplayShownInScene_Mapping.Calibrated = true;
 
-            return testPoint;
         }
 
+
+        
         private int getHeader()
         {
             int progress = 0;//0:progress 1:successfuly finished  -1:Failed
@@ -755,17 +867,17 @@ namespace myGlass
 
                         bitmap = Image.FromStream(dataOutputStream);
 
-                     
+
 
                         string folder = @"fromGlass\Images\";
 
                         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-                        String photoTime = DateTime.Now.ToString("mm.ss");
+                        String photoTime = DateTime.Now.ToString("hh.mm.ss");
                         String SuspiciousPath = Path.Combine(folder, photoTime + ".jpg");
-                        // bitmap.Save(SuspiciousPath);
+                       // bitmap.Save(SuspiciousPath);
 
-    
+
                         dataOutputStream.Flush();
                         dataOutputStream.Close();
                         progress = 1;
@@ -801,7 +913,7 @@ namespace myGlass
                 //updateUI("Waiting for data.  Expecting " + progressData_Remaining + " more bytes.");
                 int bytesRead = socketStream.Read(buffer, 0, buffer.Length);
 
-                
+
                 int prg = 100 - (int)((progressData_Remaining / progressData_Total) * 100.0);
 
                 METState.Current.METCoreObject.SendToForm("(" + prg + "%) : Read " + bytesRead + " bytes into buffer", "tbOutput");
@@ -809,13 +921,13 @@ namespace myGlass
 
                 progressData_Remaining -= bytesRead;
 
-                if (progressData_Remaining>=0) dataOutputStream.Write(buffer, 0, bytesRead);
+                if (progressData_Remaining >= 0) dataOutputStream.Write(buffer, 0, bytesRead);
                 else dataOutputStream.Write(buffer, 0, (int)(bytesRead - Math.Abs(progressData_Remaining)));
 
                 //dataOutputStream.WriteByte(buffer);
 
 
-               
+
                 if (progressData_Remaining <= 0)
                 {
                     // check the integrity of the data
@@ -825,34 +937,36 @@ namespace myGlass
 
                     var json_serializer = new JavaScriptSerializer();
 
+                    {//MagicPointing
                     string folder = @"fromGlass\Jsons\";
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-                    {
-           
-                    }{
-                  
-                    }{
+                   
+
+                      
                         myJsonClass mjson = new myJsonClass();
                         mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
-                        if (mjson.img != null)
-                        {
-                            String SuspiciousPath = Path.Combine(folder, mjson.name + ".jpg");
-                            mjson.img.Save(SuspiciousPath);
-                        }
                         myJsonClass_test temp = new myJsonClass_test(mjson);
-                        System.Web.Script.Serialization.JavaScriptSerializer jSearializer =
-                        new System.Web.Script.Serialization.JavaScriptSerializer();
-                        String s = jSearializer.Serialize(temp);
-                        System.IO.File.WriteAllText(Path.Combine(folder, temp.name + ".txt"), s);
+                        System.IO.StreamWriter file = new System.IO.StreamWriter(folder + temp.name + ".csv");
+                        file.Write(temp.text);
 
-                        METState.Current.METCoreObject.SendToForm(mjson.img, "imScene");
-                        METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
-
+                        file.Close();
                     }
+
+                    {//calib experiment
+
+                    //myJsonClass mjson = new myJsonClass();
+                    //mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
+
+                    
+                    //    // ProcessJson_test(mjson);
+                    //    CalibExp.ProcessJson(mjson);
+                    }
+
 
                     METState.Current.METCoreObject.SendToForm("Picture received", "tbOutput");
                     METState.Current.METCoreObject.SendToForm(0, "progressbar");
+
 
 
 
@@ -871,7 +985,33 @@ namespace myGlass
             return progress;
         }
 
+        public void ProcessJson_test(myJsonClass mjson)
+        {
 
+
+            string folder = @"fromGlass\Jsons\";
+
+            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+
+            if (mjson.img != null)
+            {
+                String SuspiciousPath = Path.Combine(folder, mjson.name + ".jpg");
+                mjson.img.Save(SuspiciousPath);
+            }
+            myJsonClass_test temp = new myJsonClass_test(mjson);
+           
+
+            System.Web.Script.Serialization.JavaScriptSerializer jSearializer =
+            new System.Web.Script.Serialization.JavaScriptSerializer();
+            String s = jSearializer.Serialize(temp);
+            System.IO.File.WriteAllText(Path.Combine(folder, temp.name + ".txt"), s);
+
+            METState.Current.METCoreObject.SendToForm(mjson.img, "imScene");
+            METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
+
+        
+        }
         public int GetIndicator(byte[] a)
         {
             byte[] ret = new byte[4];
@@ -945,6 +1085,7 @@ namespace myGlass
             return int.Parse(HexID, System.Globalization.NumberStyles.HexNumber);
         }
 
+        
 
     }
 }

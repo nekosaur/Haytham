@@ -240,7 +240,32 @@ namespace Haytham
                 return false;
             }
         }
+        public bool DrawCircle(Bitmap InputImage, int x, int y, Color color)
+        {
+            Graphics gr2 = Graphics.FromImage(InputImage);
 
+            if (x > 0 & x < InputImage.Width & y > 0 & y < InputImage.Height)
+            {
+
+                // Create a new pen.
+                Pen pen = new Pen(color);
+
+                // Set the pen's width.
+                pen.Width = 5.0F;
+
+                // Set the LineJoin property.
+                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
+
+                gr2.DrawArc(pen, x - 5, y - 5, 10, 10, 0, 360);
+                gr2.Dispose();
+                return true;
+            }
+            else
+            {
+                gr2.Dispose();
+                return false;
+            }
+        }
         public bool DrawText(Image<Bgr, Byte> InputImage, int x, int y,String txt, Color color)
         {
             Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
@@ -310,6 +335,67 @@ namespace Haytham
                 return false;
             }
         }
+        public bool DrawCross(Image<Bgr, Byte> InputImage, AForge.Point p, Color color)
+        {
+
+            Point pnt = new Point(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+
+            if (pnt.X > 0 & pnt.X < InputImage.Width & pnt.Y > 0 & pnt.Y < InputImage.Height)
+            {
+                Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
+
+                // Create a new pen.
+                Pen pen = new Pen(color);
+
+                // Set the pen's width.
+                pen.Width = 2.0F;
+
+                // Set the LineJoin property.
+                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
+
+
+                gr2.DrawLine(pen, pnt.X, 0, pnt.X, InputImage.Height);
+                gr2.DrawLine(pen, 0, pnt.Y, InputImage.Width, pnt.Y);
+
+                gr2.Dispose();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool DrawCross(Image<Bgr, Byte> InputImage, AForge.Point p, AForge.Point[] ROI, Color color)
+        {
+
+            Point pnt = new Point(Convert.ToInt32(p.X), Convert.ToInt32(p.Y));
+
+            if (pnt.X > 0 & pnt.X < InputImage.Width & pnt.Y > 0 & pnt.Y < InputImage.Height)
+            {
+                Graphics gr2 = Graphics.FromImage(InputImage.Bitmap);
+
+                // Create a new pen.
+                Pen pen = new Pen(color);
+
+                // Set the pen's width.
+                pen.Width = 2.0F;
+
+                // Set the LineJoin property.
+                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.MiterClipped;
+
+
+                gr2.DrawLine(pen, pnt.X, ROI[0].Y, pnt.X, ROI[3].Y);
+                gr2.DrawLine(pen,  ROI[0].X, pnt.Y,  ROI[1].X, pnt.Y);
+
+                gr2.Dispose();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool DrawCross(Bitmap InputImage, int x, int y, Color color)
         {
             if (x > 0 & x < InputImage.Width & y > 0 & y < InputImage.Height)

@@ -39,6 +39,7 @@ using System.Reflection;
 using Emgu.CV.Structure;
 using Emgu.CV;
 using System.Windows.Forms.DataVisualization.Charting;
+using Haytham.Glass.Experiments;
 
 
 //using ;
@@ -84,6 +85,14 @@ namespace Haytham
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
+            METState.Current.target_R_min = (int)target_R_min.Value;
+            METState.Current.target_R_max = (int)target_R_max.Value;
+            METState.Current.target_G_min = (int)target_G_min.Value;
+            METState.Current.target_G_max = (int)target_G_max.Value;
+            METState.Current.target_B_min = (int)target_B_min.Value;
+            METState.Current.target_B_max = (int)target_B_max.Value;
+
 
             METState.Current.test = trackBarTest.Value;//for test
             //-------------------------------------------------------------
@@ -310,6 +319,8 @@ namespace Haytham
 
             //Glass
             Type t = typeof(myGlass.MessageType);
+            METState.Current.Scene_Calibration_Target_AutomaticDetection = checkBox5.Checked;
+
             //METState.Current.commands = t.GetProperties(System.Reflection.BindingFlags.Instance)
             //     .ToDictionary(prop => prop.Name, prop => (int)prop.GetValue(t, null));
 
@@ -334,7 +345,21 @@ namespace Haytham
             METState.Current.GlassServer = new myGlass.Server(this);
 
 
+
+
+            //Loading gaze calibration data (if there is any!)
+        //EyeToScene_Mapping 
+        //EyeToRemoteDisplay_Mapping
+        //DisplayToScene_Mapping 
+
+
+            METState.Current.METCoreObject.LoadGazeCalibrationData( ref METState.Current.EyeToScene_Mapping);
+            METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.EyeToDisplay_Mapping);
+
+            METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.DisplayShownInScene_Mapping);
+
         }
+
 
 
 
@@ -750,168 +775,6 @@ namespace Haytham
             this.btnSettingsScene.Visible = dev.HasSettings;
         }
 
-        private void imScene_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    if (METState.Current.EyeToScene_Mapping.Calibrated == false)//not to do one point calibration during the main calibration
-                    {
-                        switch (METState.Current.EyeToScene_Mapping.CalibrationType)
-                        {
-                            case Calibration.calibration_type.calib_Polynomial:
-
-                                METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
-                                METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
-
-                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 9 & btnCalibration_Polynomial.Enabled == false)
-                                {
-
-                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
-                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
-                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
-
-                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-
-                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
-
-                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 9)
-                                    {
-
-                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                                        METState.Current.EyeToScene_Mapping.Calibrate();
-
-
-                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
-                                        btnCalibration_Polynomial.Enabled = true;
-
-                                        lbl_calibration.Visible = false;
-                                    }
-                                }
-                                break;
-                            case Calibration.calibration_type.calib_Homography:
-                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 4 & btnCalibration_Homography.Enabled == false)
-                                {
-
-                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
-                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
-                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
-
-                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-
-                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
-
-                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 4)
-                                    {
-
-                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                                        METState.Current.EyeToScene_Mapping.Calibrate();
-
-
-                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
-                                        btnCalibration_Homography.Enabled = true;
-                                        lbl_calibration.Visible = false;
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        AForge.Point Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
-
-                        METState.Current.EyeToScene_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
-                        METState.Current.EyeToScene_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
-
-                    }
-                }
-            }
-
-            else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    if (METState.Current.EyeToScene_Mapping.Calibrated == false)//not to do one point calibration during the main calibration
-                    {
-                        switch (METState.Current.EyeToScene_Mapping.CalibrationType)
-                        {
-                            case Calibration.calibration_type.calib_Polynomial:
-
-                                METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
-                                METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
-
-                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 9 & btnCalibration_Polynomial.Enabled == false)
-                                {
-
-                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
-                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
-                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
-
-                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-
-                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
-
-                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 9)
-                                    {
-
-                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                                        METState.Current.EyeToScene_Mapping.Calibrate();
-
-
-                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
-                                        btnCalibration_Polynomial.Enabled = true;
-
-                                        lbl_calibration.Visible = false;
-                                    }
-                                }
-                                break;
-                            case Calibration.calibration_type.calib_Homography:
-                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 4 & btnCalibration_Homography.Enabled == false)
-                                {
-
-                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
-                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
-                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
-
-                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
-                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
-
-
-                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
-
-                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 4)
-                                    {
-
-                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-                                        METState.Current.EyeToScene_Mapping.Calibrate();
-
-
-                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
-                                        btnCalibration_Homography.Enabled = true;
-                                        lbl_calibration.Visible = false;
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        AForge.Point Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
-
-                        METState.Current.EyeToScene_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
-                        METState.Current.EyeToScene_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
-
-                    }
-                }
-            }
-        }
         private void trackBarG_ValueChanged(object sender, EventArgs e)
         {
             METState.Current.monitor.GThreshold = trackBarG.Value;
@@ -1634,6 +1497,7 @@ namespace Haytham
                     {
                         //imScene.Image = null;
                         _bitmapPicturebox2 = (Bitmap)imScene.Image;//(Image)METState.Current.GlassServer.client.bitmap.Clone();  
+                        
                         pictureBox2.Invalidate();
                     }
                     catch (Exception e)
@@ -1661,6 +1525,8 @@ namespace Haytham
                             imScene.Width = ((Image)message).Width;
                             imScene.Height = ((Image)message).Height;
                             imScene.Image = (Image)((Image)message).Clone();
+
+                            
                         }
                         else { imScene.Image = null; }
                         return 0;
@@ -2058,16 +1924,18 @@ namespace Haytham
                             groupBox_imgEye.Width = _bitmapimEye.Width;
                             imEye.Width = _bitmapimEye.Width;
                             imEye.Height = _bitmapimEye.Height;
+                            
                         });
 
                     bFirstFrameEye = true;
                 }
 
+               
                 imEye.Invalidate();
 
                 //pictureBox1.Invalidate();
                 // imEye.Image = METState.Current.EyeImageForShow;
-                // imEyeTest.Image = METState.Current.EyeImageTest;
+                 imEyeTest.Image = METState.Current.EyeImageTest;
 
             }
 
@@ -2088,8 +1956,9 @@ namespace Haytham
                         (MethodInvoker)delegate
                         {
                             //groupBox_imgScene.Width = _bitmapimScene.Width;
-                            imScene.Width = _bitmapimScene.Width;
-                            imScene.Height = _bitmapimScene.Height;
+                          
+                             imScene.Width = _bitmapimScene.Width;
+                             imScene.Height = _bitmapimScene.Height;
                         });
 
                     bFirstFrameScene = true;
@@ -2126,6 +1995,114 @@ namespace Haytham
 
         }
 
+        private void imScene_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            {
+                if (e.Button == MouseButtons.Left &&  METState.Current.GlassServer.client.currentImage != null)
+                {
+                    if (CalibExp.scene_is_sampling)//click on the target
+                    {
+
+                        CalibExp.mySampling_Scene.GetSample(new Point(e.X, e.Y));
+                        METState.Current.GlassServer.client.currentImage = null;
+                    }
+                    else if (METState.Current.GlassServer.client.myCalibration_Scene.is_sampling)
+                    {
+                        METState.Current.GlassServer.client.myCalibration_Scene.GetSample(new Point(e.X, e.Y));
+                        METState.Current.GlassServer.client.currentImage = null;
+                    }
+                    //else //correct offset
+                    //{
+                    //    AForge.Point Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
+
+                    //    METState.Current.EyeToScene_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
+                    //    METState.Current.EyeToScene_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
+
+                    //}
+                }
+            }
+
+            else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (METState.Current.EyeToScene_Mapping.Calibrated == false)//not to do one point calibration during the main calibration
+                    {
+                        switch (METState.Current.EyeToScene_Mapping.CalibrationType)
+                        {
+                            case Calibration.calibration_type.calib_Polynomial:
+
+                                METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
+                                METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
+
+                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 9 & btnCalibration_Polynomial.Enabled == false)
+                                {
+
+                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
+                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
+                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
+
+                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
+                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
+
+
+                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
+
+                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 9)
+                                    {
+
+                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
+                                        METState.Current.EyeToScene_Mapping.Calibrate();
+
+
+                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
+                                        btnCalibration_Polynomial.Enabled = true;
+
+                                        lbl_calibration.Visible = false;
+                                    }
+                                }
+                                break;
+                            case Calibration.calibration_type.calib_Homography:
+                                if (METState.Current.EyeToScene_Mapping.CalibrationTarget < 4 & btnCalibration_Homography.Enabled == false)
+                                {
+
+                                    METState.Current.EyeToScene_Mapping.ScenePoints.Add(new AForge.Point(e.X, e.Y));
+                                    METState.Current.EyeToScene_Mapping.Destination[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.X;///METState.Current.Kw_SceneImg;
+                                    METState.Current.EyeToScene_Mapping.Destination[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = e.Y;///METState.Current.Kh_SceneImg;
+
+                                    METState.Current.EyeToScene_Mapping.Source[0, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
+                                    METState.Current.EyeToScene_Mapping.Source[1, METState.Current.EyeToScene_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
+
+
+                                    METState.Current.EyeToScene_Mapping.CalibrationTarget++;
+
+                                    if (METState.Current.EyeToScene_Mapping.CalibrationTarget == 4)
+                                    {
+
+                                        METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
+                                        METState.Current.EyeToScene_Mapping.Calibrate();
+
+
+                                        METState.Current.EyeToScene_Mapping.Calibrated = true;
+                                        btnCalibration_Homography.Enabled = true;
+                                        lbl_calibration.Visible = false;
+                                    }
+                                }
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        AForge.Point Gaze = METState.Current.EyeToScene_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, e.X, e.Y);
+
+                        METState.Current.EyeToScene_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
+                        METState.Current.EyeToScene_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
+
+                    }
+                }
+            }
+        }
         private void cb_eye_VFlip_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.eye_VFlip = cb_eye_VFlip.Checked;
@@ -2157,19 +2134,21 @@ namespace Haytham
             // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+            METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToDisplay_Mapping.Calibrated = false;
 
-            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+            METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
-            METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect); ;
+     
+            METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect, RemoteCalibration.Task.Calib_Display);
+ 
 
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
 
@@ -2183,20 +2162,22 @@ namespace Haytham
             // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+            METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToDisplay_Mapping.Calibrated = false;
 
-            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+            METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
-            METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect);
 
+           
+                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.Calib_Display);
+      
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
@@ -2267,7 +2248,7 @@ namespace Haytham
         {
 
             #region Export
-            if (METState.Current.SceneIsRecording == false & METState.Current.EyeIsRecording == false)// Record
+            if (METState.Current.SceneIsRecording == false & METState.Current.EyeIsRecording == false & METState.Current.TextFileDataExport == null)// Record
             {
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -2313,14 +2294,27 @@ namespace Haytham
                     if (codecOK)
                     {
                         // TextFile
-                        METState.Current.DataHandler.OpenLog(dir + ".obd.csv");
+                       // METState.Current.DataHandler.OpenLog(dir + ".obd.csv");
 
                         string textdir = dir.Substring(0, extesion_index);
                         METState.Current.TextFileDataExport = new TextFile(textdir);
-                        string GazeDataLine = "Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture , GazeX , GazeY , Time";
+                        string GazeDataLine = "Time, Pupil Center X , Pupil Center Y , Glint Center X , Glint Center Y , Pupil Diameter , Blink , DbBlink , HeadGesture , GazeX , GazeY ";
                         if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
 
+                        //************************************send a command to all clients
+                        int udp_port = 9876;
+                        System.Net.Sockets.UdpClient udpServer = new System.Net.Sockets.UdpClient(udp_port);
+                        System.Net.IPEndPoint remoteEP = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(METState.Current.tempUDPClient_ip), udp_port);
 
+                        byte[] packed = System.Text.Encoding.ASCII.GetBytes( "IP," + METState.Current.ip );
+                        udpServer.Send(packed, packed.Length, remoteEP);
+                        udpServer.Close();
+                        //************************************
+
+                        //set time to zero
+                       // METState.Current.recording_time_0 = DateTime.Now;
+                        METState.Current.recording_timer = new Stopwatch();
+                        METState.Current.recording_timer.Start();
 
                     #endregion SetRecord
 
@@ -2348,7 +2342,7 @@ namespace Haytham
                         }
                         #endregion RedFrame
 
-                        if (METState.Current.SceneIsRecording | METState.Current.EyeIsRecording)
+                        if (METState.Current.SceneIsRecording | METState.Current.EyeIsRecording | METState.Current.TextFileDataExport != null)
                         {
                             btn_Record.Text = "Recording..." + "\r\n" + "Click to Stop";// "Recording. Click to Stop";
 
@@ -2386,6 +2380,16 @@ namespace Haytham
                 METState.Current.TextFileDataExport.CloseFile();
                 METState.Current.TextFileDataExport = null;
                 btn_Record.Text = "Export";
+
+                // //************************************send a command to all clients
+                int udp_port = 9876;
+                System.Net.Sockets.UdpClient udpServer = new System.Net.Sockets.UdpClient(udp_port);
+                System.Net.IPEndPoint remoteEP = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(METState.Current.tempUDPClient_ip), udp_port);
+                byte[] packed = System.Text.Encoding.ASCII.GetBytes("e\n");
+                udpServer.Send(packed, packed.Length, remoteEP);
+                udpServer.Close();
+                //************************************
+
 
 
 
@@ -2453,16 +2457,16 @@ namespace Haytham
         {
 
 
-            if (_bitmapPicturebox2 != null)
-            {
-                e.Graphics.DrawImage(_bitmapPicturebox2, 0, 0, pictureBox2.Width, pictureBox2.Height);
-            }
+            //if (_bitmapPicturebox2 != null)
+            //{
+            //    e.Graphics.DrawImage(_bitmapPicturebox2, 0, 0, pictureBox2.Width, pictureBox2.Height);
+            //}
             if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
             {
                 Func<int> del = delegate()
                 {
 
-                    if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated == true)
+                    if (METState.Current.EyeToDisplay_Mapping.Calibrated == true)
                     {
 
 
@@ -2472,8 +2476,10 @@ namespace Haytham
 
                             SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
                             Point coord = new Point((int)(METState.Current.Gaze_RGT.X * s.Width / (double)myGlass.constants.display_W), (int)(METState.Current.Gaze_RGT.Y * s.Height / (double)myGlass.constants.display_H));
+                            e.Graphics.DrawEllipse(new Pen(Color.Green, 2f), coord.X, coord.Y, 3, 3);
 
-                            e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
+                            // coord = new Point((int)(METState.Current.Gaze_RGT2.X * s.Width / (double)myGlass.constants.display_W), (int)(METState.Current.Gaze_RGT2.Y * s.Height / (double)myGlass.constants.display_H));
+                            //e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
 
                         }
                         catch (Exception ex)
@@ -2493,7 +2499,12 @@ namespace Haytham
         {
             if (_bitmapimEye != null)
             {
-                e.Graphics.DrawImage(_bitmapimEye, 0, 0, _bitmapimEye.Width, _bitmapimEye.Height);
+               // int h = (int)(((float)_bitmapimEye.Height / (float)_bitmapimEye.Width) * (float)imEye.Width);
+                //if (imEye.Height != h) imEye.Height = (int)(((float)_bitmapimEye.Height / (float)_bitmapimEye.Width) * (float)imEye.Width);
+
+                
+               // e.Graphics.DrawImage(_bitmapimEye, 0, 0, _bitmapimEye.Width, _bitmapimEye.Height);
+                e.Graphics.DrawImage(_bitmapimEye, 0, 0, imEye.Width, imEye.Height);
             }
         }
 
@@ -2550,6 +2561,7 @@ namespace Haytham
             }
         }
 
+
         private void imSceneProcessed_Paint(object sender, PaintEventArgs e)
         {
             if (_bitmapimSceneProcessed != null)
@@ -2588,12 +2600,12 @@ namespace Haytham
 
             if (n == 2)
             {
-                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
+                METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
 
             }
             else if (n == 3)
             {
-                METState.Current.EyeToRemoteDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
+                METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
             }
 
@@ -2601,19 +2613,19 @@ namespace Haytham
             Thread.Sleep(2000);//??
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
 
 
-            METState.Current.EyeToRemoteDisplay_Mapping.CalibrationTarget = 0;
-            METState.Current.EyeToRemoteDisplay_Mapping.Calibrated = false;
+            METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToDisplay_Mapping.Calibrated = false;
 
 
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect); ;
+            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect,RemoteCalibration.Task.Calib_Display); ;
 
             //...Here you can send some commands to HMD if you want to show something there
             // METState.Current.remoteCalibration.ShowDialog();
@@ -2631,7 +2643,7 @@ namespace Haytham
 
             int n = Int32.Parse(((Button)sender).Tag.ToString());
 
-            METState.Current.GlassServer.client.numberOfPictures = n;
+            METState.Current.GlassServer.client.myCalibration_Scene.numberOfPictures = n;
 
             n = (int)Math.Sqrt(n);
 
@@ -2646,15 +2658,9 @@ namespace Haytham
 
             }
 
-            METState.Current.EyeToScene_Mapping.ScenePoints = new List<AForge.Point>();
-            METState.Current.EyeToScene_Mapping.GazeErrorX = 0;
-            METState.Current.EyeToScene_Mapping.GazeErrorY = 0;
-
-
-            METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
-            METState.Current.EyeToScene_Mapping.Calibrated = false;// ta click rooye scene noghtegiri shavad na eslah
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-1, -1));
+
             Thread.Sleep(2000);//??
 
 
@@ -2675,12 +2681,15 @@ namespace Haytham
             {
                 METState.Current.METCoreObject.SendToForm(null, "imScene");
                 Haytham.Glass.SceneImage test = new Haytham.Glass.SceneImage();
-                Image img = Image.FromFile(@"ProImages\" + txtImageName.Text);// + ".jpg");
+                string nm = @"fromGlass\Images\" + txtImageName.Text + ".jpg";
+                Image img = Image.FromFile(nm);
 
                 //Point testPoint = test.getCalibrationTarget(img, -1, 1, false);
-                Point testPoint = test.getCalibrationTarget(img, TrackBar1.Value, 1, false);
+                Point testPoint = test.getCalibrationTarget(img, 200, 1, false);
 
                 METState.Current.METCoreObject.SendToForm(test.result_Image, "imScene");
+                METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
+
                 // METState.Current.METCoreObject.SendToForm(test.temp_Image, "imScene");
 
 
@@ -2735,16 +2744,16 @@ namespace Haytham
             {
                 if (e.Button == MouseButtons.Right)
                 {
-                    if (METState.Current.EyeToRemoteDisplay_Mapping.Calibrated)
+                    if (METState.Current.EyeToDisplay_Mapping.Calibrated)
                     {
                         SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
                         Point coord = new Point((int)(e.X * (double)myGlass.constants.display_W / (double)s.Width), (int)(e.Y * (double)myGlass.constants.display_H / (double)s.Height));
 
 
-                        AForge.Point Gaze = METState.Current.EyeToRemoteDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, coord.X, coord.Y);
+                        AForge.Point Gaze = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, coord.X, coord.Y);
 
-                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
-                        METState.Current.EyeToRemoteDisplay_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
+                        METState.Current.EyeToDisplay_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
 
 
                     }
@@ -2752,6 +2761,42 @@ namespace Haytham
             }
 
 
+        }
+
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_R_min = (int)target_R_min.Value;
+        }
+
+        private void target_R_max_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_R_max = (int)target_R_max.Value;
+        }
+
+        private void target_G_min_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_G_min = (int)target_G_min.Value;
+        }
+
+        private void target_G_max_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_G_max = (int)target_G_max.Value;
+        }
+
+        private void target_B_min_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_B_min = (int)target_B_min.Value;
+        }
+
+        private void target_B_max_ValueChanged(object sender, EventArgs e)
+        {
+            METState.Current.target_B_max = (int)target_B_max.Value;
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            METState.Current.Scene_Calibration_Target_AutomaticDetection = checkBox5.Checked;
         }
 
 
