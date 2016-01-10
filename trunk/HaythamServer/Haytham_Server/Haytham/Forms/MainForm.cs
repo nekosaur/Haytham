@@ -40,7 +40,7 @@ using Emgu.CV.Structure;
 using Emgu.CV;
 using System.Windows.Forms.DataVisualization.Charting;
 using Haytham.Glass.Experiments;
-
+using Haytham.SCRL;
 
 //using ;
 
@@ -50,6 +50,11 @@ namespace Haytham
     public partial class MainForm : Form
     {
         public Forms.qrCode IPform = new Forms.qrCode();
+
+        
+        public  MainWindowSCRL SCRL_wpf;
+        public SCRL_Mind SCRL_mind;
+
         //gesture tab
         private PictureBox[] headGesturePictures;
         private Button[] headGestureButtons;
@@ -85,6 +90,11 @@ namespace Haytham
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            METState.Current.headRollGestures = checkBox2.Checked;
+            METState.Current.SCRL_Threshold = (int)numericUpDown2.Value;
+            Conditions.speed_mind = (float)trackBar1.Value;
+            label22.Text = trackBar1.Value.ToString();
+
 
             METState.Current.target_R_min = (int)target_R_min.Value;
             METState.Current.target_R_max = (int)target_R_max.Value;
@@ -169,8 +179,7 @@ namespace Haytham
             //Gesture tab
             METState.Current.ShowOpticalFlow = checkEditShowOpticalFlow.Checked;
 
-            METState.Current.headRollGestures = checkBox2.Checked;
-
+      
             headGesturePictures = new PictureBox[50];
             headGestureButtons = new Button[4];
 
@@ -276,7 +285,6 @@ namespace Haytham
             METState.Current.monitor.GThreshold = trackBarG.Value;
 
 
-
             METState.Current.enablePlot = cbPlot.Checked;
             METState.Current.IrisDiameter = trackBarControl2.Value;
 
@@ -315,7 +323,8 @@ namespace Haytham
             METState.Current.SceneForExport = checkBox3.Checked;
 
 
-
+            //SCRL
+            METState.Current.SCRL_State = METState.SCRL_States.None;
 
             //Glass
             Type t = typeof(myGlass.MessageType);
@@ -1548,6 +1557,19 @@ namespace Haytham
                     break;
 
 
+                case "label_SCRL":
+                    if (label_SCRL.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "label_SCRL" });
+                    }
+                    else
+                    {
+                        label_SCRL.Text = (string)message;
+
+
+                    }
+                    break;
+
                 case "IPform":
                     if (IPform.InvokeRequired)
                     {
@@ -2246,7 +2268,7 @@ namespace Haytham
 
         private void btn_Record_Click(object sender, EventArgs e)
         {
-
+            
             #region Export
             if (METState.Current.SceneIsRecording == false & METState.Current.EyeIsRecording == false & METState.Current.TextFileDataExport == null)// Record
             {
@@ -2311,8 +2333,7 @@ namespace Haytham
                         udpServer.Close();
                         //************************************
 
-                        //set time to zero
-                       // METState.Current.recording_time_0 = DateTime.Now;
+                      
                         METState.Current.recording_timer = new Stopwatch();
                         METState.Current.recording_timer.Start();
 
@@ -2448,7 +2469,27 @@ namespace Haytham
         String tempPreToolTipTxt = "";
         private void imScene_MouseMove(object sender, MouseEventArgs e)
         {
-          
+            METState.Current.debugPoint = new Point(e.X, e.Y);
+
+
+
+            String txt = FXPAL.FXPAL_Utils.GetCursorString(e.X, e.Y);
+
+
+            if (txt == "" && txt != tempPreToolTipTxt)
+            {
+                ToolTip tt = new ToolTip();
+                tt.Hide(this.imScene);
+                tt = new ToolTip();
+                tempPreToolTipTxt = txt;
+            }
+            else if (txt != tempPreToolTipTxt)
+            {
+                ToolTip tt = new ToolTip();
+                tt.SetToolTip(this.imScene, txt);
+
+                tempPreToolTipTxt = txt;
+            }
 
         }
 
@@ -2715,6 +2756,15 @@ namespace Haytham
             IPform.ShowDialog();
         }
 
+           private void button10_Click(object sender, EventArgs e)
+        {
+
+               SCRL_wpf=new MainWindowSCRL(textBox1.Text);
+               SCRL_wpf.ShowDialog();
+
+        }
+
+    
         private void tabPage_Glass_Click(object sender, EventArgs e)
         {
 
@@ -2799,6 +2849,62 @@ namespace Haytham
             METState.Current.Scene_Calibration_Target_AutomaticDetection = checkBox5.Checked;
         }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+    
+
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            SCRL_wpf = new MainWindowSCRL();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+            SCRL_mind = new SCRL_Mind(textBox1.Text, METState.SCRL_demos.Facebook);
+            SCRL_mind.ShowDialog();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+            SCRL_mind = new SCRL_Mind(textBox1.Text, METState.SCRL_demos.MenuScrollViewer);
+            SCRL_mind.ShowDialog();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            SCRL_mind = new SCRL_Mind(textBox1.Text, METState.SCRL_demos.MindReading);
+            SCRL_mind.ShowDialog();
+        }
+
+        private void radioButton1_CheckedChanged_6(object sender, EventArgs e)
+        {
+            METState.Current.SCRL_stopMode = METState.SCRL_StopMode.EyeGrip;
+        }
+
+        private void radioButton2_CheckedChanged_6(object sender, EventArgs e)
+        {
+            METState.Current.SCRL_stopMode = METState.SCRL_StopMode.Manual;
+        }
+
+        private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
+        {
+            METState.Current.SCRL_Threshold =(int) numericUpDown2.Value;
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            Conditions.speed_mind =(float) trackBar1.Value;
+            label22.Text = trackBar1.Value.ToString();
+        }
+
+
+     
 
 
 
