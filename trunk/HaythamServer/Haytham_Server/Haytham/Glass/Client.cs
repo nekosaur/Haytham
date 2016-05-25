@@ -14,7 +14,7 @@ namespace myGlass
     using System.Data;
     using Haytham;
     using System.Linq;
-
+    using Haytham.FXPAL;
     using System.Threading;
     using Newtonsoft.Json;
     using System.Runtime.Serialization;
@@ -54,7 +54,7 @@ using Haytham.Glass.Experiments;
         public Calibration tempCalibration;
 
         public Image bitmap;
-        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3, waitingForJSON_size = 5, waitingForJSON = 6 };
+        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3,FXPAL = 4, waitingForJSON_size = 5, waitingForJSON = 6 };
         Mode mode = Mode.mainLoop;
 
         public enum Ready_State : int { No = 0, Yes = 1 ,Error=-1};
@@ -287,7 +287,8 @@ using Haytham.Glass.Experiments;
 
                                             Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.X), Convert.ToInt32(METState.Current.Gaze_SnapShot_Glass.Y), System.Drawing.Color.LightGreen);
 
-                               
+
+                                            FXPAL_Utils.UpdateUI();
 
 
                                         }
@@ -867,7 +868,7 @@ using Haytham.Glass.Experiments;
 
                         bitmap = Image.FromStream(dataOutputStream);
 
-
+                        FXPAL_Utils.SetupHyperImage(bitmap);
 
                         string folder = @"fromGlass\Images\";
 
@@ -937,30 +938,44 @@ using Haytham.Glass.Experiments;
 
                     var json_serializer = new JavaScriptSerializer();
 
-                    {//MagicPointing
                     string folder = @"fromGlass\Jsons\";
                     if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-                   
-
+                    {//MagicPointing
                       
-                        myJsonClass mjson = new myJsonClass();
-                        mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
-                        myJsonClass_test temp = new myJsonClass_test(mjson);
-                        System.IO.StreamWriter file = new System.IO.StreamWriter(folder + temp.name + ".csv");
-                        file.Write(temp.text);
 
-                        file.Close();
+
+
+                        //myJsonClass mjson = new myJsonClass();
+                        //mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
+                        //myJsonClass_test temp = new myJsonClass_test(mjson);
+                        //System.IO.StreamWriter file = new System.IO.StreamWriter(folder + temp.name + ".csv");
+                        //file.Write(temp.text);
+
+                        //file.Close();
                     }
-
+                    {
+                        Bitmap keptImage = new Bitmap(10, 10);
+                        if (FXPAL_Utils.mHyperImage != null) keptImage = new Bitmap(FXPAL_Utils.mHyperImage.img);
+                        FXPAL_Utils.mHyperImage = json_serializer.Deserialize<HyperImage>(jsonString);
+                        if (FXPAL_Utils.mHyperImage.img == null) FXPAL_Utils.mHyperImage.img = keptImage;
+                        String SuspiciousPath = Path.Combine(folder, FXPAL_Utils.mHyperImage.name + ".jpg");
+                        FXPAL_Utils.mHyperImage.img.Save(SuspiciousPath);
+                        HyperImage_without_image temp = new HyperImage_without_image(FXPAL_Utils.mHyperImage);
+                        System.Web.Script.Serialization.JavaScriptSerializer jSearializer =
+                        new System.Web.Script.Serialization.JavaScriptSerializer();
+                        String s = jSearializer.Serialize(temp);
+                        System.IO.File.WriteAllText(Path.Combine(folder, temp.name + ".txt"), s);
+                        FXPAL_Utils.UpdateUI();
+                    }
                     {//calib experiment
 
-                    //myJsonClass mjson = new myJsonClass();
-                    //mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
+                        //myJsonClass mjson = new myJsonClass();
+                        //mjson = json_serializer.Deserialize<myJsonClass>(jsonString);
 
-                    
-                    //    // ProcessJson_test(mjson);
-                    //    CalibExp.ProcessJson(mjson);
+
+                        //    // ProcessJson_test(mjson);
+                        //    CalibExp.ProcessJson(mjson);
                     }
 
 

@@ -43,7 +43,7 @@ namespace Haytham
     public class METCore
     {
         public _SendToForm SendToForm;
-
+        private Boolean FXPAL_ON = true;
         public event TrackerEventHandler TrackerEventEye;
         public event TrackerEventHandler TrackerEventScene;
         public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
@@ -406,7 +406,7 @@ namespace Haytham
                         METState.Current.Gaze_HMGT = new AForge.Point((int)Gaze_From_EyeToEyeToScene.X, (int)Gaze_From_EyeToEyeToScene.Y);
 
 
-                        EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, Gaze_From_EyeToEyeToScene, System.Drawing.Color.Green);
+                        if (!FXPAL_ON) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, Gaze_From_EyeToEyeToScene, System.Drawing.Color.Green);
 
 
 
@@ -431,14 +431,14 @@ namespace Haytham
                         displayCorners[3].Y = (float)METState.Current.DisplayShownInScene_Mapping.Destination[1, 2];
 
 
-                        EmgImgProcssing.DrawRectangle(METState.Current.SceneImageForShow, displayCorners, 0, true, " display ");
+                        if (!FXPAL_ON) EmgImgProcssing.DrawRectangle(METState.Current.SceneImageForShow, displayCorners, 0, true, " display ");
 
                         if (Gaze_From_EyeToEyeToDisplay_IsInDisplay)
                         {
 
                             AForge.Point temp = METState.Current.DisplayShownInScene_Mapping.Map(Gaze_From_EyeToEyeToDisplay.X, Gaze_From_EyeToEyeToDisplay.Y, 0, 0);
 
-                            EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, temp, displayCorners, System.Drawing.Color.Green);
+                            if (!FXPAL_ON) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, temp, displayCorners, System.Drawing.Color.Green);
 
                         }
                  
@@ -452,8 +452,8 @@ namespace Haytham
 
 
 
-                    METState.Current.METCoreObject.SendToForm(METState.Current.SceneImageForShow.Bitmap, "imScene");
-                    METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
+                    if (!FXPAL_ON) METState.Current.METCoreObject.SendToForm(METState.Current.SceneImageForShow.Bitmap, "imScene");
+                    if (!FXPAL_ON) METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
 
 
 
@@ -499,9 +499,6 @@ namespace Haytham
                     //string time_st = time.TotalMilliseconds.ToString();
                     string time_st  = (METState.Current.recording_timer.ElapsedMilliseconds- METState.Current.timeDifference ).ToString();
 
-                   
-
-
 
                     //text file
                     if (METState.Current.TextFileDataExport != null)
@@ -534,6 +531,9 @@ namespace Haytham
             METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Stop");
 
             #endregion Record Eye Data
+            //if (METState.Current.SCRL_State == METState.SCRL_States.Rolling)
+                SCRL_Log();
+
 
             METState.Current.ProcessTimeEyeBranch.Timer("Total", "Stop");
             SendToForm("", "textBoxTimerEye");//update the timer text box and show the ProcessTimeEyeBranch
@@ -544,7 +544,48 @@ namespace Haytham
 
 
 
+        private void SCRL_Log() {
 
+            if (METState.Current.SCRL_DataExport_Eye != null)
+            {
+                try
+
+                {
+                    //TimeSpan time = (DateTime.Now - METState.Current.recording_time_0);
+                    //string time_st = time.TotalMilliseconds.ToString();
+                    string time_st =  METState.Current.SCRL_stopwatch.ElapsedMilliseconds .ToString();
+                   
+                    //
+
+                    string GazeDataLine =
+                          time_st
+                           
+                      + "," + Math.Round(METState.Current.eye.eyeData[0].pupilCenter.X)
+                       + "," + Math.Round(METState.Current.eye.eyeData[0].pupilCenter.Y)
+                       + "," + METState.Current.eye.eyeData[0].glintCenter.X
+                       + "," + METState.Current.eye.eyeData[0].glintCenter.Y
+                       + "," + METState.Current.eye.eyeData[0].pupilDiameter
+                       + "," + METState.Current.SCRL_Flag
+
+                           ;
+
+
+                    
+                        METState.Current.SCRL_DataExport_Eye.WriteLine(GazeDataLine);
+                     if( METState.Current.SCRL_Flag == " -> Space Pressed")   METState.Current.SCRL_Flag = "";
+
+
+
+                }
+                catch (Exception er)
+                {
+                    METState.Current.TextFileDataExport.WriteLine("error");
+
+                }
+
+            }
+
+        }
 
 
 

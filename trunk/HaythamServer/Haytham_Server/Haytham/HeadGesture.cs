@@ -85,7 +85,7 @@ namespace Haytham
 
         //.......................................................................
         private const Int32 longStopLength = 15;
-        int sequenceSize = 600; 
+        public int sequenceSize = 600; 
         public List<GestureBasicCharacters> gestureSequenceLinear = new List<GestureBasicCharacters>();//MAx 500 frames 
         public List<GestureBasicCharacters> gestureSequenceTorsion = new List<GestureBasicCharacters>();//MAx 500 frames 
         public List<GestureBasicCharacters> gestureTestList = new List<GestureBasicCharacters>();//MAx 500 frames 
@@ -999,7 +999,7 @@ namespace Haytham
         /// <param name="p1">First point</param>
         /// <param name="p2">Second point</param>
         /// <returns>Distance between two points</returns>
-        private static double GetDistance(Point p1, Point p2)
+        public static double GetDistance(Point p1, Point p2)
         {
             float dx = p1.X - p2.X;
             float dy = p1.Y - p2.Y;

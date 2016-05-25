@@ -47,6 +47,7 @@ namespace Haytham
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "animatedCursor";
+            this.Load += new System.EventHandler(this.AnimatedCursor_Load);
             this.ResumeLayout(false);
 
         }

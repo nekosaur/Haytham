@@ -91,6 +91,7 @@ namespace Haytham
         private int doubleblinkWaitingTime_Counter;
 
         public HeadGesture headGesture = new HeadGesture();
+      
 
         /// <summary>
         /// 123
@@ -991,26 +992,32 @@ namespace Haytham
         public AForge.Point GetEyeFeature(EyeData eyedata)
         {
             AForge.Point pnt = new AForge.Point(0, 0);
+            AForge.Point pnt_s = new AForge.Point(0, 0);
 
             if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Pupil)
             {
 
                 pnt = eyedata.pupilCenter;
-                if (METState.Current.GazeSmoother) pnt = GetPupilCenterMedian(METState.Current.gazeMedian);
+                if (METState.Current.GazeSmoother) pnt_s = GetPupilCenterMedian(METState.Current.gazeMedian);
             }
             else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.PupilGlintVector)
             {
                 pnt.X = eyedata.glintCenter.X - eyedata.pupilCenter.X;
                 pnt.Y = eyedata.glintCenter.Y - eyedata.pupilCenter.Y;
-                if (METState.Current.GazeSmoother) pnt = GetPupilGlintVectorMedian(METState.Current.gazeMedian);
+                if (METState.Current.GazeSmoother) pnt_s = GetPupilGlintVectorMedian(METState.Current.gazeMedian);
             }
             else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Glint)
             {
                 pnt.X = eyedata.glintCenter.X ;
                 pnt.Y = eyedata.glintCenter.Y ;
-                if (METState.Current.GazeSmoother) pnt = GetGlintCenterMedian(METState.Current.gazeMedian);
+                if (METState.Current.GazeSmoother) pnt_s = GetGlintCenterMedian(METState.Current.gazeMedian);
 
             }
+
+
+           if(METState.Current.SCRL_State != METState.SCRL_States.None) SCRL.Classifier.eyeData_Update(pnt_s,pnt);
+
+            if (METState.Current.GazeSmoother) pnt = pnt_s;
             return pnt;
         
         }
