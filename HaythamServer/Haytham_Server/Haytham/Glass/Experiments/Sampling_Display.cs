@@ -122,6 +122,7 @@ namespace Haytham
         void Run()
         {
 
+
             mycursor = new AnimatedCursor();
             mycursor.coordinates = calibPoints[pointIndex[0]];
 

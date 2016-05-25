@@ -82,9 +82,13 @@ namespace Haytham
                     }
                     else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
                     {
-                        
+
                         pointerImage.ScaleIncreasing = true;
-                        SamplingTime = true; 
+                        SamplingTime = true;
+                    }
+                    else {
+                        pointerImage.ScaleIncreasing = true;
+                        SamplingTime = true;
                     }
 
                 }
@@ -95,6 +99,7 @@ namespace Haytham
             pointerImage.frameHeight_Scaled = (int)(pointerImage.frameHeight_Orginal * pointerImage.Scale);
 
             Bitmap temp = FrameImage;
+            
             SetBits(temp);
 
 
@@ -301,6 +306,11 @@ namespace Haytham
                 Win32.ReleaseDC(IntPtr.Zero, screenDC);
                 Win32.DeleteDC(memDc);
             }
+        }
+
+        private void AnimatedCursor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

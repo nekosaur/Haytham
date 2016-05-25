@@ -35,12 +35,15 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
 using AForge.Vision.GlyphRecognition;
-
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 namespace Haytham
 {
     //delegates
     public delegate void TrackerEventHandler(object sender, METEventArg e);
     public delegate void _SendToForm(object message, string controlName);
+
 
 
     public sealed class METState
@@ -77,7 +80,37 @@ namespace Haytham
         
         public TextFile TextFileDataExport;
 
-        //
+        //SCRL
+        public TextFile SCRL_DataExport_Eye;
+        public System.IO.StreamWriter SCRL_DataExport_ImageRoll;
+        public int SCRL_Pos=0;
+       
+        public SCRL_States SCRL_State = SCRL_States.Left;
+        public enum SCRL_States {None, Left, Right, Rolling ,stopped, Left2, Right2};
+
+        public String SCRL_Flag= "";
+        public Stopwatch SCRL_stopwatch = new Stopwatch();
+    
+        public double circle_center_offset=20;
+
+
+        public double SCRL_image_width;
+        public double SCRL_image_height;
+
+        public double SCRL_window_H;
+        public double SCRL_window_W;
+        public enum SCRL_StopMode { EyeGrip, Manual };
+        public SCRL_StopMode SCRL_stopMode;
+        public int SCRL_Threshold=50;
+        public  string[] SCRL_images_final_names;
+        public  BitmapImage[] SCRL_images_final;
+     
+        ////SCRL_Mind
+     
+        public enum SCRL_demos { MindReading , Facebook, MenuScrollViewer };
+        public SCRL_demos demos_mode;
+        public Dictionary<string, int> SCRL_images_result_names = new Dictionary<string, int>();
+
 
         public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGalss};
         public RemoteOrMobile remoteOrMobile;
