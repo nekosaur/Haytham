@@ -112,7 +112,7 @@ namespace Haytham
         public Dictionary<string, int> SCRL_images_result_names = new Dictionary<string, int>();
 
 
-        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGalss};
+        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGlass};
         public RemoteOrMobile remoteOrMobile;
 
         //Cameras

@@ -94,7 +94,7 @@ namespace Haytham
             mycursor = new AnimatedCursor();
             mycursor.coordinates = calibPoints[1];
 
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
                
 
@@ -115,7 +115,7 @@ namespace Haytham
 
         void timerSpeed_Tick(object sender, EventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass
                 &&( !Haytham.METState.Current.GlassServer.client.tcpClient.Connected
                 || METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Error))
             {
@@ -149,13 +149,13 @@ namespace Haytham
                     METState.Current.EyeToDisplay_Mapping.CalibrationTarget++;
 
 
-                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, mycursor.coordinates);
+                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, mycursor.coordinates);
 
 
                 }
                 else
                 {
-                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
                     {
                         METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-2, -2));
 

@@ -25,160 +25,152 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.IO;
 using System.Diagnostics;
 using System.Threading;
-using System.Reflection;
 using Emgu.CV.Structure;
 using Emgu.CV;
-using System.Windows.Forms.DataVisualization.Charting;
 using Haytham.Glass.Experiments;
 using Haytham.SCRL;
 
-//using ;
-
 namespace Haytham
 {
-
     public partial class MainForm : Form
     {
         public Forms.qrCode IPform = new Forms.qrCode();
-
         
-        public  MainWindowSCRL SCRL_wpf;
+        public MainWindowSCRL SCRL_wpf;
         public SCRL_Mind SCRL_mind;
 
-        //gesture tab
+        // Gesture tab
         private PictureBox[] headGesturePictures;
         private Button[] headGestureButtons;
 
-        //
-        private Dictionary<string, System.Windows.Forms.Button> btnClients = new Dictionary<string, Button>();
-        private Dictionary<string, System.Windows.Forms.Label> lblClients = new Dictionary<string, Label>();
-        private Dictionary<string, System.Windows.Forms.TextBox> txtClients = new Dictionary<string, TextBox>();
-        private Dictionary<string, System.Windows.Forms.RadioButton> radClients = new Dictionary<string, RadioButton>();
-
+        // Clients tab
+        private Dictionary<string, Button> btnClients = new Dictionary<string, Button>();
+        private Dictionary<string, Label> lblClients = new Dictionary<string, Label>();
+        private Dictionary<string, TextBox> txtClients = new Dictionary<string, TextBox>();
+        private Dictionary<string, RadioButton> radClients = new Dictionary<string, RadioButton>();
         private Dictionary<int, string> ClientsPos = new Dictionary<int, string>();
-
 
         public MainForm()
         {
             InitializeComponent();
 
-            // update control style
+            // Update control style
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
 
+            // Set icon
+            Icon icon = new Icon(Properties.Resources.AppIcon, 64, 64);
+            this.Icon = icon;
+
+            // ??
             METState.Current.METCoreObject.SendToForm = new _SendToForm(UpdateControl);
 
-
-            Icon ico = new Icon(Properties.Resources.Untitled_1, 64, 64);
-            this.Icon = ico;
-
-
-            ///Set the METState.Current.RemoteOrHeadMount 
-            firstForm firstform = new firstForm(); ;
-            firstform.ShowDialog();
-            //
+            // Show SplashScreen
+            // (Set the METState.Current.RemoteOrHeadMount)
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.ShowDialog();
         }
 
+        /// <summary>
+        /// Sets up initial configuration of MainForm
+        /// </summary>
+        /// 
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            METState.Current.headRollGestures = checkBox2.Checked;
-            METState.Current.SCRL_Threshold = (int)numericUpDown2.Value;
-            Conditions.speed_mind = (float)trackBar1.Value;
-            label22.Text = trackBar1.Value.ToString();
+            METState.Current.headRollGestures = cbHeadRollGestures.Checked;
+            METState.Current.SCRL_Threshold = (int)nudSCRLSensitivity.Value;
+            Conditions.speed_mind = (float)tbSpeedMind.Value;
+            lbSpeedMindValue.Text = tbSpeedMind.Value.ToString();
 
+            METState.Current.target_R_min = (int)nudTargetRMin.Value;
+            METState.Current.target_R_max = (int)nudTargetRMax.Value;
+            METState.Current.target_G_min = (int)nudTargetGMin.Value;
+            METState.Current.target_G_max = (int)nudTargetGMax.Value;
+            METState.Current.target_B_min = (int)nudTargetBMin.Value;
+            METState.Current.target_B_max = (int)nudTargetBMax.Value;
 
-            METState.Current.target_R_min = (int)target_R_min.Value;
-            METState.Current.target_R_max = (int)target_R_max.Value;
-            METState.Current.target_G_min = (int)target_G_min.Value;
-            METState.Current.target_G_max = (int)target_G_max.Value;
-            METState.Current.target_B_min = (int)target_B_min.Value;
-            METState.Current.target_B_max = (int)target_B_max.Value;
-
-
-            METState.Current.test = trackBarTest.Value;//for test
-            //-------------------------------------------------------------
             //groupBox_imgEye.AutoSize = true;
             //groupBox_imgScene.AutoSize = true;
-
             //groupBox13.Height = splitContainer1.Panel2.Height;
-            splitContainer1.Panel2.AutoScroll = true;
 
-            splitContainer1.Panel2.VerticalScroll.Visible = true;
-            splitContainer1.Panel2.HorizontalScroll.Visible = true;
-            splitContainer1.Panel1.HorizontalScroll.Minimum = 0;
-            splitContainer1.Panel1.VerticalScroll.Minimum = 0;
+            rootContainer.Panel2.AutoScroll = true;
+            rootContainer.Panel2.VerticalScroll.Visible = true;
+            rootContainer.Panel2.HorizontalScroll.Visible = true;
+            rootContainer.Panel1.HorizontalScroll.Minimum = 0;
+            rootContainer.Panel1.VerticalScroll.Minimum = 0;
 
+            gbMain.Size = new Size(pnlTop.Width, rootContainer.Panel2.Height - pnlTop.Height);
+            gbMain.AutoSize = true;
 
-            groupBox14.Size = new Size(panel6.Width, splitContainer1.Panel2.Height - panel6.Height);
-            groupBox14.AutoSize = true;
-
-
-            ///------------------------------------------------------------------
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.MobileEyeTracking)
+            switch (METState.Current.remoteOrMobile)
             {
-                gbCalibrationRemote.Visible = false;
-                gbCalibrationGlass.Visible = false;
-                tabControl1.TabPages.Remove(this.tabPage_Glass);
+                case METState.RemoteOrMobile.MobileEyeTracking:
+                    // Remove stuff related to Google Glass
+                    leftTabs.TabPages.Remove(this.tabPage_Glass);
+                    gbCalibrationRemote.Visible = false;
+                    gbCalibrationGlass.Visible = false;
+                    break;
 
+                case METState.RemoteOrMobile.RemoteEyeTracking:
+                    // Remove stuff related to Google Glass
+                    leftTabs.TabPages.Remove(this.tabPage_Glass);
+                    gbCalibrationGlass.Visible = false;
+
+                    // Remove start both section, and scene camera selection,
+                    // since we're remoting
+                    gbSceneCameraDevice.Visible = false;
+                    gbStartBoth.Visible = false;
+
+                    // Also remove Scene tab, and scene calibration group,
+                    // and scene image
+                    leftTabs.TabPages.Remove(this.tabPage_Scene);
+                    gbCalibrationScene.Visible = false;
+                    gbSceneImage.Visible = false;
+                    
+                    // Do we need to hide scene processed? It's inside gbSceneImage
+                    // imSceneProcessed.Visible = false;
+
+                    // Hide scene timer from top panel, and some other stuff
+                    cmbSceneTimer.Visible = false;
+                    gbClientsSettings.Visible = false; // was rbAutoActivation but it's the only thing inside gbClientSettings
+                    cbRecordSceneVideo.Visible = false;
+                    break;
+
+                case METState.RemoteOrMobile.GoogleGlass:
+                    // Hide scene camera selection, and start both button
+                    gbSceneCameraDevice.Visible = false;
+                    gbStartBoth.Visible = false;
+
+                    // Hide scene and extdata tabs
+                    leftTabs.TabPages.Remove(this.tabPage_Scene);
+                    leftTabs.TabPages.Remove(this.tabPage_ExtData);
+
+                    // Hide calibration stuff
+                    gbCalibrationScene.Visible = false;
+                    gbCalibrationRemote.Visible = false;
+
+                    gbSceneImage.Visible = false;
+                    //imSceneProcessed.Visible = false;
+
+                    // Hide timer and other stuff
+                    cmbSceneTimer.Visible = false;
+                    rbAutoActivation.Visible = false;
+                    cbRecordSceneVideo.Visible = false;
+                    break;
             }
-            else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
-            {
-                tabControl1.TabPages.Remove(this.tabPage_Glass);
-                gbSceneCameraDevice.Visible = false;
-                gbStartBoth.Visible = false;
-
-                tabControl1.TabPages.Remove(this.tabPage_Scene);
-                gbCalibrationHM.Visible = false;
-                gbCalibrationGlass.Visible = false;
-
-                groupBox_imgScene.Visible = false;
-                imSceneProcessed.Visible = false;
-                comboBox_SceneTimer.Visible = false;
-                radioButtonAutoActivation.Visible = false;
-                checkBox3.Visible = false;
-            }
-            else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
-            {
-
-                gbSceneCameraDevice.Visible = false;
-                gbStartBoth.Visible = false;
-
-                tabControl1.TabPages.Remove(this.tabPage_Scene);
-                tabControl1.TabPages.Remove(this.tabPage_ExtData);
-
-                gbCalibrationHM.Visible = false;
-                gbCalibrationRemote.Visible = false;
-
-                //groupBox_imgScene.Visible = false;
-                imSceneProcessed.Visible = false;
-                comboBox_SceneTimer.Visible = false;
-                radioButtonAutoActivation.Visible = false;
-                checkBox3.Visible = false;
-
-
-
-
-            }
-
-
-            //..............
-
-
-
+            
+            // Add handlers
             METState.Current.eye.headGesture.Gesture += new HeadGesture.GestureHandler(this.gestureIcons);
             METState.Current.eye.Gesture += new Eye.GestureHandler(this.gestureIcons);
-            //Gesture tab
-            METState.Current.ShowOpticalFlow = checkEditShowOpticalFlow.Checked;
-
+            
+            // Gesture tab
+            METState.Current.ShowOpticalFlow = cbEditShowOpticalFlow.Checked;
       
             headGesturePictures = new PictureBox[50];
             headGestureButtons = new Button[4];
@@ -208,7 +200,6 @@ namespace Haytham
             pbTRight.Tag = "TR";
             pbTLeft.Tag = "TL";
 
-
             headGesturePictures[0] = pbUp1;
             headGesturePictures[1] = pbRight1;
             headGesturePictures[2] = pbDown1;
@@ -232,7 +223,6 @@ namespace Haytham
             headGesturePictures[16] = pbTRight;
             headGesturePictures[17] = pbTLeft;
 
-
             headGestureButtons[0] = btn_Custom1;
             headGestureButtons[1] = btn_Custom2;
             headGestureButtons[2] = btn_Custom3;
@@ -244,20 +234,12 @@ namespace Haytham
 
             METState.Current.showScreen = cbShowScreen.Checked;
             METState.Current.showEdges = cbShowEdges.Checked;
-
-
             METState.Current.showIris = cbShowIris.Checked;
             METState.Current.showPupil = cbShowPupil.Checked;
             METState.Current.showGlint = cbShowGlint.Checked;
-
             METState.Current.sceneCameraUnDistortion = cbSceneUnDistortion.Checked;
-
-            METState.Current.eye_VFlip = cb_eye_VFlip.Checked;
-            METState.Current.scene_VFlip = cb_scene_VFlip.Checked;
-
-            // Cursor.Show();
-
-
+            METState.Current.eye_VFlip = cbEyeVerticalFlip.Checked;
+            METState.Current.scene_VFlip = cbSceneVerticalFlip.Checked;
             METState.Current.GazeSmoother = cbGazeSmoothing.Checked;
 
 
@@ -269,27 +251,20 @@ namespace Haytham
             else if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
 
             METState.Current.glintThreshold = trackBarThresholdGlint.Value;
-
             METState.Current.PupilThreshold = trackBarThresholdEye.Value;
             METState.Current.DilateErode = cbDilateErode.Checked;
-
             METState.Current.detectPupil = cbPupilDetection.Checked;
             METState.Current.detectGlint = cbGlintDetection.Checked;
-
             METState.Current.RemoveGlint = cbRemoveGlint.Checked;
-
             METState.Current.ShowGaze = cbShowGaze.Checked;
-
-            METState.Current.monitor.rectangleMinSize = trackBarControl3.Value;
-            METState.Current.monitor.BThreshold = trackBarB.Value;
-            METState.Current.monitor.GThreshold = trackBarG.Value;
-
-
+            METState.Current.monitor.rectangleMinSize = tbMonitorMinSize.Value;
+            METState.Current.monitor.BThreshold = tbMonitorBThreshold.Value;
+            METState.Current.monitor.GThreshold = tbMonitorGThreshold.Value;
             METState.Current.enablePlot = cbPlot.Checked;
-            METState.Current.IrisDiameter = trackBarControl2.Value;
+            METState.Current.IrisDiameter = tbIrisDiameter.Value;
 
-            METState.Current.monitor.Real_Rectangle_W = 1440;//1920;// 1280;//;//Default
-            METState.Current.monitor.Real_Rectangle_H = 900;//1080;//2024;//;//Default
+            METState.Current.monitor.Real_Rectangle_W = 1440; //1920;// 1280;//;//Default
+            METState.Current.monitor.Real_Rectangle_H = 900; //1080;//2024;//;//Default
 
             cmbDeviceEye.Text = "Loading ...";
             cmbDeviceScene.Text = "Loading ...";
@@ -305,9 +280,9 @@ namespace Haytham
             METState.Current.PAdaptive_Constant = trackBarPAConstant.Value;
             METState.Current.PAdaptive_type = rbPMean.Checked ? Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C : Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C;
             //          glint
-            METState.Current.PAdaptive = cbGA.Checked;
-            trackBarGAConstant.Enabled = cbGA.Checked;
-            trackBarThresholdGlint.Enabled = cbGM.Checked;
+            METState.Current.PAdaptive = cbGlintAuto.Checked;
+            trackBarGAConstant.Enabled = cbGlintAuto.Checked;
+            trackBarThresholdGlint.Enabled = cbGlintManual.Checked;
 
             METState.Current.GAdaptive_blockSize = trackBarGABlockSize.Value % 2 != 0 ? trackBarGABlockSize.Value : trackBarGABlockSize.Value + 1;
             METState.Current.GAdaptive_Constant = trackBarGAConstant.Value - trackBarGAConstant.Maximum / 2;
@@ -319,14 +294,15 @@ namespace Haytham
             //imSceneProcessed.SizeMode = PictureBoxSizeMode.AutoSize;
             //imEyeTest.SizeMode = PictureBoxSizeMode.AutoSize;
 
-            METState.Current.EyeForExport = checkBox1.Checked;
-            METState.Current.SceneForExport = checkBox3.Checked;
+            METState.Current.EyeForExport = cbRecordEyeVideo.Checked;
+            METState.Current.SceneForExport = cbRecordSceneVideo.Checked;
 
 
-            //SCRL
+            // SCRL
             METState.Current.SCRL_State = METState.SCRL_States.None;
 
-            //Glass
+
+            // Glass
             Type t = typeof(myGlass.MessageType);
             METState.Current.Scene_Calibration_Target_AutomaticDetection = checkBox5.Checked;
 
@@ -345,37 +321,23 @@ namespace Haytham
 
             foreach (KeyValuePair<string, int> pair in METState.Current.commands)
             {
-
                 lbCommandsToGlass.Items.Add(pair.Key);
-
             }
-
 
             METState.Current.GlassServer = new myGlass.Server(this);
 
-
-
-
             //Loading gaze calibration data (if there is any!)
-        //EyeToScene_Mapping 
-        //EyeToRemoteDisplay_Mapping
-        //DisplayToScene_Mapping 
+            //EyeToScene_Mapping 
+            //EyeToRemoteDisplay_Mapping
+            //DisplayToScene_Mapping 
 
-
-            METState.Current.METCoreObject.LoadGazeCalibrationData( ref METState.Current.EyeToScene_Mapping);
+            METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.EyeToScene_Mapping);
             METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.EyeToDisplay_Mapping);
-
             METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.DisplayShownInScene_Mapping);
-
         }
-
-
-
 
         private void gestureIcons(object sender, HeadGestureEventArgs e)
         {
-
-
             foreach (PictureBox pb in headGesturePictures)
             {
                 if ((pb != null) && (string)pb.Tag == e.Gesture)
@@ -386,13 +348,12 @@ namespace Haytham
                     if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.temp3 = e.Gesture;
                 }
             }
+
             foreach (Button btn in headGestureButtons)
             {
                 if ((string)btn.Tag == e.Gesture)
                 {
-
                     btn.BackColor = Color.Pink;
-
                     if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.temp3 = e.Gesture;
                 }
             }
@@ -400,29 +361,22 @@ namespace Haytham
             if ((string)btnBlink.Tag == e.Gesture)
             {
                 btnBlink.BackColor = Color.Pink;
-
                 if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.temp1 = "1";
             }
+
             if ((string)btnDbBlink.Tag == e.Gesture)
             {
                 btnDbBlink.BackColor = Color.Pink;
-
                 if (METState.Current.TextFileDataExport != null) METState.Current.TextFileDataExport.temp2 = "1";
             }
 
-
-
             //send for Clients
-
-
-
             AForge.Point gaze = e.HasBegining ? METState.Current.METCoreObject.GetClientGazeBeforeGesture() : new AForge.Point(0, 0);
 
             int index = 0;
             bool found = false;
             string gazedMarker = METState.Current.visualMarker.GetGazedMarkerBeforeGesture(out index, out found);
             METState.Current.server.Send("Commands", new string[] { ((int)gaze.X).ToString(), ((int)gaze.Y).ToString(), gazedMarker, e.Gesture });
-
 
             UpdateControl("", "timerReset");
         }
@@ -443,15 +397,16 @@ namespace Haytham
                     pb.BackColor = Color.White;
                 }
             }
+
             foreach (Button btn in headGestureButtons)
             {
-
                 btn.BackColor = Color.White;
-
             }
+
             btnBlink.BackColor = Color.White;
             btnDbBlink.BackColor = Color.White;
         }
+
         //Build full name of the resource
         private string getResourceName(string gestureName, bool activeImage)
         {
@@ -461,6 +416,7 @@ namespace Haytham
 
             return "Haytham.Resources." + gestureName + active + ".png";
         }
+
         protected override void Dispose(bool disposing)
         {
             try
@@ -478,12 +434,12 @@ namespace Haytham
             }
         }
 
-        //...................................................................
         private void CreateClientControl(string clientName)
         {
             AddControls(clientName);
             ShowControls(clientName);
         }
+
         private void HighLight_Client(string clientName)
         {
             foreach (KeyValuePair<string, Label> kvp in lblClients)
@@ -498,8 +454,8 @@ namespace Haytham
                 }
             }
             // if (lblClients.ContainsKey(clientName) == true)
-
         }
+
         private int GetPosForClient()
         {
             int n = 1;
@@ -509,7 +465,6 @@ namespace Haytham
             {
                 if (ClientsPos.ContainsKey(i) != true)
                 {
-
                     n = i;
                     break;
                 }
@@ -518,17 +473,15 @@ namespace Haytham
 
             if (ClientsPos.Count() + 1 == i & n == 1) n = i;
 
-
             return n;
         }
+
         // Function to create Control array
         // 'anyControl' is type of control, 'cNumber' is number of control
         private void AddControls(string clientName)
         {
-
             if (btnClients.ContainsKey(clientName) != true)
             {
-
                 lblClients.Add(clientName, new Label());
                 txtClients.Add(clientName, new TextBox());
                 btnClients.Add(clientName, new Button());
@@ -541,46 +494,42 @@ namespace Haytham
                 txtClients[clientName].Tag = tg;
                 btnClients[clientName].Tag = tg;
                 radClients[clientName].Tag = tg;
-
             }
-
-
-
         }
+
         private void RemoveControls(string clientName)
         {
-
             if (btnClients.ContainsKey(clientName))
             {
-                panelClients.Controls.Remove(btnClients[clientName]);
-
-                panelClients.Controls.Remove(lblClients[clientName]);
-
-                panelClients.Controls.Remove(txtClients[clientName]);
-                panelClients.Controls.Remove(radClients[clientName]);
+                gbClientsSettings.Controls.Remove(btnClients[clientName]);
+                gbClientsSettings.Controls.Remove(lblClients[clientName]);
+                gbClientsSettings.Controls.Remove(txtClients[clientName]);
+                gbClientsSettings.Controls.Remove(radClients[clientName]);
 
                 ClientsPos.Remove((int)(btnClients[clientName].Tag));
                 lblClients.Remove(clientName);
                 txtClients.Remove(clientName);
                 btnClients.Remove(clientName);
+
                 if (radClients[clientName].Checked)
                 {
                     METState.Current.server.activeScreen = "";
                     METState.Current.server.ForcedActiveScreen = "";
-                    radioButtonAutoActivation.Checked = true;
-                };
+                    rbAutoActivation.Checked = true;
+                }
+
                 radClients.Remove(clientName);
             }
         }
+
         private void ShowControls(string clientName)
         {
-            int xPos = 10;//distance from left and right eadge & between controls
-            int yPos = 10;//vertical distance between controls
+            int xPos = 10; //distance from left and right eadge & between controls
+            int yPos = 10; //vertical distance between controls
 
-            int w = panelClients.Width;//220
+            int w = gbClientsSettings.Width;//220
             int h = 24;
-            int top0 = radioButtonAutoActivation.Top + radioButtonAutoActivation.Height;//distance from top eadge
-
+            int top0 = rbAutoActivation.Top + rbAutoActivation.Height;//distance from top eadge
 
             //lbl
             lblClients[clientName].AutoSize = true;
@@ -589,23 +538,20 @@ namespace Haytham
             lblClients[clientName].TextAlign = ContentAlignment.MiddleLeft;
             lblClients[clientName].BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblClients[clientName].Text = clientName;
-
             lblClients[clientName].Left = xPos;
             lblClients[clientName].Top = ((int)(lblClients[clientName].Tag) - 1) * 2 * h + yPos + top0;
 
-            panelClients.Controls.Add(lblClients[clientName]);
+            gbClientsSettings.Controls.Add(lblClients[clientName]);
 
             //rad
             radClients[clientName].AutoSize = true;
             // radClients[clientName].Width = w / 3;
             radClients[clientName].Height = h;
             radClients[clientName].Text = "Active";
-
-            radClients[clientName].Left = radioButtonAutoActivation.Left;// xPos + 2 * w / 3;
+            radClients[clientName].Left = rbAutoActivation.Left;// xPos + 2 * w / 3;
             radClients[clientName].Top = lblClients[clientName].Top;
-
-            panelClients.Controls.Add(radClients[clientName]);
             radClients[clientName].Visible = clientName.StartsWith("Monitor") | clientName.StartsWith("TV") ? true : false;
+            gbClientsSettings.Controls.Add(radClients[clientName]);
             radClients[clientName].CheckedChanged += new System.EventHandler(Click_radClients);
 
             //txt
@@ -613,28 +559,22 @@ namespace Haytham
             txtClients[clientName].Height = h;
             txtClients[clientName].BackColor = System.Drawing.SystemColors.Info;
             txtClients[clientName].Text = "";
-
             txtClients[clientName].Left = xPos;
             txtClients[clientName].Top = radClients[clientName].Top + radClients[clientName].Height;
-
-            panelClients.Controls.Add(txtClients[clientName]);
+            gbClientsSettings.Controls.Add(txtClients[clientName]);
             txtClients[clientName].KeyDown += new System.Windows.Forms.KeyEventHandler(KeyDown_txtClients);//// the Event 
 
             //btn
             btnClients[clientName].Width = 2 * (w - 3 * xPos) / 5; ;
             btnClients[clientName].Height = h;
             btnClients[clientName].Text = "send";
-
             btnClients[clientName].Left = txtClients[clientName].Left + txtClients[clientName].Width + xPos;
             btnClients[clientName].Top = radClients[clientName].Top + radClients[clientName].Height;
 
-            panelClients.Controls.Add(btnClients[clientName]);
-
+            gbClientsSettings.Controls.Add(btnClients[clientName]);
             btnClients[clientName].Click += new System.EventHandler(Click_btnClients);//// the Event of click Button
-
-
-
         }
+
         public void Click_btnClients(Object sender, System.EventArgs e)
         {
             //System.Windows.Forms.MessageBox.Show("send to " +  ((System.Windows.Forms.Button)sender).Tag.ToString());
@@ -642,8 +582,8 @@ namespace Haytham
             string cName = ClientsPos[tg];
 
             SendTextToClient(cName);
-
         }
+
         public void Click_radClients(Object sender, System.EventArgs e)
         {
             //System.Windows.Forms.MessageBox.Show("send to " +  ((System.Windows.Forms.Button)sender).Tag.ToString());
@@ -653,41 +593,28 @@ namespace Haytham
 
             METState.Current.server.ForcedActiveScreen = radClients[cName].Checked ? cName : "";
             METState.Current.server.activeScreen = METState.Current.server.ForcedActiveScreen;
-
-
         }
+
         public void KeyDown_txtClients(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-
                 int tg = (int)(((System.Windows.Forms.TextBox)sender).Tag);
 
                 string cName = ClientsPos[tg];
                 SendTextToClient(cName);
             }
-
-
         }
+
         public void SendTextToClient(string cName)
         {
             METState.Current.server.Send(cName, txtClients[cName].Text);
-
-
-
-
             METState.Current.METCoreObject.SendToForm("\r\n To " + cName + ": " + txtClients[cName].Text + "\r\n", "TextBoxServer");
             txtClients[cName].Text = "";
-
         }
-
-
-        //.......................................................................
-
 
         private void cmbDevice_Update(bool eye, bool scene)
         {
-
             System.Threading.Tasks.Task.Factory.StartNew(() =>
                 {
                     var find = new VideoSource.FindCamera();
@@ -708,7 +635,6 @@ namespace Haytham
                             cmbDeviceEye.Items.AddRange(devices);
                             cmbDeviceEye.EndUpdate();
                             cmbDeviceEye.SelectedItem = eyeSelDvc;
-
                         }
                         if (scene)
                         {
@@ -720,7 +646,6 @@ namespace Haytham
                             cmbDeviceScene.Items.AddRange(devices);
                             cmbDeviceScene.EndUpdate();
                             cmbDeviceScene.SelectedItem = SelDvc;
-
                         }
 
                         if (eye & scene)
@@ -751,7 +676,6 @@ namespace Haytham
                 });
         }
 
-
         private void cmbDeviceEye_SelectedIndexChanged(object sender, EventArgs e)
         {
             var dev = cmbDeviceEye.SelectedItem as VideoSource.IVideoSource;
@@ -766,8 +690,8 @@ namespace Haytham
             cmbCap.EndUpdate();
 
             this.btnSettingsEye.Visible = dev.HasSettings;
-
         }
+
         private void cmbDeviceScene_SelectedIndexChanged(object sender, EventArgs e)
         {
             var dev = cmbDeviceScene.SelectedItem as VideoSource.IVideoSource;
@@ -786,22 +710,25 @@ namespace Haytham
 
         private void trackBarG_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.monitor.GThreshold = trackBarG.Value;
+            METState.Current.monitor.GThreshold = tbMonitorGThreshold.Value;
         }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             METState.Current.GlassServer.Close();
             METState.Current.server.Close();
             Thread.Sleep(10);
             // METState.Current.server = null;
-
         }
+
         private void lbCommandsToGlass_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             METState.Current.GlassServer.Send(
                 (int)(METState.Current.commands[(string)lbCommandsToGlass.SelectedItem]));
         }
+
         Point p_mouse = new Point(0, 0);
+
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
             SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
@@ -814,48 +741,34 @@ namespace Haytham
                 if (METState.Current.GlassServer.gazeStream_RGT == myGlass.Server.GazeStream.RGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_RGT, coord);
                 if (METState.Current.GlassServer.gazeStream_HMGT == myGlass.Server.GazeStream.HMGT) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_GAZE_HMGT, coord);
 
-
-
                 p_mouse = new Point(coord.X, coord.Y);
-
-
-
             }
         }
+
         private void cbRemoveGlint_CheckedChanged(object sender, EventArgs e)
         {
-
             METState.Current.RemoveGlint = cbRemoveGlint.Checked;
-
         }
 
         private void radioButtonAutoActivation_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonAutoActivation.Checked) METState.Current.server.ForcedActiveScreen = "";
+            if (rbAutoActivation.Checked) METState.Current.server.ForcedActiveScreen = "";
         }
-
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.enablePlot = cbPlot.Checked;
         }
 
-
-
         private void button1_Click_2(object sender, EventArgs e)
         {
             METState.Current.METCoreObject.SaveCameraCalibrationData();
-
         }
-
-
 
         private void trackBarControl4_ValueChanged(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_blockSize = trackBarPABlockSize.Value % 2 != 0 ? trackBarPABlockSize.Value : trackBarPABlockSize.Value + 1;
-
         }
-
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -865,47 +778,37 @@ namespace Haytham
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C;
-
         }
-
 
         private void rbGMean_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C;
-
         }
 
         private void rbGGaussian_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C;
-
         }
 
         private void trackBarGABlockSize_ValueChanged(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_blockSize = trackBarGABlockSize.Value % 2 != 0 ? trackBarGABlockSize.Value : trackBarGABlockSize.Value + 1;
-
         }
-
 
         private void cbGazeSmoothing_CheckedChanged(object sender, EventArgs e)
         {
             METState.Current.GazeSmoother = cbGazeSmoothing.Checked;
-
         }
-
-
 
         private void trackBarControl3_MouseEnter(object sender, EventArgs e)
         {
             METState.Current.showScreenSize = true;
         }
+
         private void trackBarControl3_MouseLeave(object sender, EventArgs e)
         {
             METState.Current.showScreenSize = false;
-
         }
-
 
         private void btnEyeStart_Click(object sender, EventArgs e)
         {
@@ -946,13 +849,13 @@ namespace Haytham
             }
         }
 
-
         private void btnEyeSettingClick(object sender, EventArgs e)
         {
             var src = (cmbDeviceEye.SelectedItem as VideoSource.IVideoSource);
             if (src != null && src.HasSettings)
                 src.ShowSettings();
         }
+
         private void btnSceneSetting_Click(object sender, EventArgs e)
         {
             var src = (cmbDeviceScene.SelectedItem as VideoSource.IVideoSource);
@@ -962,7 +865,6 @@ namespace Haytham
 
         private void btnSceneStart_Click(object sender, EventArgs e)
         {
-
             if (btnStartScene.Text == "Start")
             {
                 btnStartScene.Text = "Stop";
@@ -1037,10 +939,7 @@ namespace Haytham
                 //panelImScene.Width = 0;
                 startBoothVideos.Enabled = true;
             }
-
         }
-
-
 
         private void button1_Click_5(object sender, EventArgs e)
         {
@@ -1053,74 +952,57 @@ namespace Haytham
 
         private void transparentTrackBar1_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.IrisDiameter = trackBarControl2.Value;
-
+            METState.Current.IrisDiameter = tbIrisDiameter.Value;
         }
 
         private void checkBox2_CheckedChanged_2(object sender, EventArgs e)
         {
             cbShowIris.BackColor = cbShowIris.Checked ? Color.Yellow : Color.Transparent;
             METState.Current.showIris = cbShowIris.Checked;
-
         }
 
         private void checkBox2_CheckedChanged_3(object sender, EventArgs e)
         {
             METState.Current.detectPupil = cbPupilDetection.Checked;
             METState.Current.firstPupilDetection = cbPupilDetection.Checked;
-
         }
 
         private void checkBox2_CheckedChanged_4(object sender, EventArgs e)
         {
             cbShowPupil.BackColor = cbShowPupil.Checked ? Color.Yellow : Color.Transparent;
-
             METState.Current.showPupil = cbShowPupil.Checked;
-
         }
-
-
 
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
         {
             METState.Current.PAdaptive = true;
             trackBarPAConstant.Enabled = cbPA.Checked;
-
         }
 
         private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
         {
             METState.Current.PAdaptive = false;
             trackBarThresholdEye.Enabled = cbPM.Checked;
-
         }
-
-
 
         private void transparentTrackBar1_ValueChanged_1(object sender, EventArgs e)
         {
             METState.Current.PupilThreshold = trackBarThresholdEye.Value;
-
         }
 
         private void transparentTrackBar1_ValueChanged_2(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_Constant = trackBarPAConstant.Value;
-
         }
-
-
 
         private void checkBox2_CheckedChanged_6(object sender, EventArgs e)
         {
             METState.Current.DilateErode = cbDilateErode.Checked;
-
         }
 
         private void checkBox3_CheckedChanged_1(object sender, EventArgs e)
         {
             METState.Current.RemoveGlint = cbRemoveGlint.Checked;
-
         }
 
         private void checkBox2_CheckedChanged_7(object sender, EventArgs e)
@@ -1133,118 +1015,94 @@ namespace Haytham
             if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
             else if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
             else if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
-
         }
 
         private void checkBox2_CheckedChanged_8(object sender, EventArgs e)
         {
             cbShowGlint.BackColor = cbShowGlint.Checked ? Color.Yellow : Color.Transparent;
-
             METState.Current.showGlint = cbShowGlint.Checked;
-
         }
 
         private void radioButton2_CheckedChanged_2(object sender, EventArgs e)
         {
             METState.Current.GAdaptive = true;
-            trackBarGAConstant.Enabled = cbGA.Checked;
-
+            trackBarGAConstant.Enabled = cbGlintAuto.Checked;
         }
 
         private void radioButton1_CheckedChanged_2(object sender, EventArgs e)
         {
             METState.Current.GAdaptive = false;
-            trackBarThresholdGlint.Enabled = cbGM.Checked;
-
+            trackBarThresholdGlint.Enabled = cbGlintManual.Checked;
         }
 
         private void transparentTrackBar2_ValueChanged(object sender, EventArgs e)
         {
             METState.Current.glintThreshold = trackBarThresholdGlint.Value;
-
         }
 
         private void transparentTrackBar1_ValueChanged_3(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_Constant = trackBarGAConstant.Value - trackBarGAConstant.Maximum / 2;
-
         }
-
-
 
         private void radioButton2_CheckedChanged_3(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C;
-
         }
 
         private void radioButton1_CheckedChanged_3(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C;
-
         }
 
         private void trackBarPABlockSize_ValueChanged(object sender, EventArgs e)
         {
             METState.Current.PAdaptive_blockSize = trackBarPABlockSize.Value % 2 != 0 ? trackBarPABlockSize.Value : trackBarPABlockSize.Value + 1;
-
         }
 
         private void radioButton2_CheckedChanged_4(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C;
-
         }
 
         private void radioButton1_CheckedChanged_4(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_type = Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C;
-
         }
 
         private void transparentTrackBar1_ValueChanged_4(object sender, EventArgs e)
         {
             METState.Current.GAdaptive_blockSize = trackBarGABlockSize.Value % 2 != 0 ? trackBarGABlockSize.Value : trackBarGABlockSize.Value + 1;
-
         }
-
-
 
         private void checkBox2_CheckedChanged_10(object sender, EventArgs e)
         {
             cbShowScreen.BackColor = cbShowScreen.Checked ? Color.Yellow : Color.Transparent;
-
             METState.Current.showScreen = cbShowScreen.Checked;
-
         }
 
         private void transparentTrackBar1_ValueChanged_5(object sender, EventArgs e)
         {
-            METState.Current.monitor.BThreshold = trackBarB.Value;
-
+            METState.Current.monitor.BThreshold = tbMonitorBThreshold.Value;
         }
 
         private void transparentTrackBar2_ValueChanged_1(object sender, EventArgs e)
         {
-            METState.Current.monitor.GThreshold = trackBarG.Value;
-
+            METState.Current.monitor.GThreshold = tbMonitorGThreshold.Value;
         }
 
         private void transparentTrackBar3_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.monitor.rectangleMinSize = trackBarControl3.Value;
-
+            METState.Current.monitor.rectangleMinSize = tbMonitorMinSize.Value;
         }
 
         private void checkBox2_CheckedChanged_11(object sender, EventArgs e)
         {
             METState.Current.sceneCameraUnDistortion = cbSceneUnDistortion.Checked;
-
         }
 
         private void button1_Click_6(object sender, EventArgs e)
         {
-
             imSceneProcessed.SizeMode = PictureBoxSizeMode.AutoSize;
             #region camera calibration
             try
@@ -1332,18 +1190,14 @@ namespace Haytham
             #endregion camera calibration
         }
 
-
-
         private void radioButton2_CheckedChanged_5(object sender, EventArgs e)
         {
             if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
-
         }
 
         private void radioButton1_CheckedChanged_5(object sender, EventArgs e)
         {
             if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
-
         }
 
         private void button1_Click_7(object sender, EventArgs e)
@@ -1358,9 +1212,6 @@ namespace Haytham
             METState.Current.EyeToScene_Mapping.CalibrationTarget = 0;
             METState.Current.EyeToScene_Mapping.Calibrated = false;// ta click rooye scene noghtegiri shavad na eslah
             METState.Current.EyeToScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-
-
-
 
             btnCalibration_Polynomial.Enabled = false;
         }
@@ -1385,16 +1236,12 @@ namespace Haytham
         private void checkBox2_CheckedChanged_13(object sender, EventArgs e)
         {
             METState.Current.GazeSmoother = cbGazeSmoothing.Checked;
-
         }
-
-
 
         private void cbShowGaze_CheckedChanged_2(object sender, EventArgs e)
         {
             cbShowGaze.BackColor = cbShowGaze.Checked ? Color.Yellow : Color.Transparent;
             METState.Current.ShowGaze = cbShowGaze.Checked;
-
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -1402,17 +1249,10 @@ namespace Haytham
 
         }
 
-
         private void checkBox2_CheckedChanged_14(object sender, EventArgs e)
         {
             METState.Current.enablePlot = cbPlot.Checked;
-
         }
-
-
-
-
-
 
         private void cbShowEdges_CheckedChanged(object sender, EventArgs e)
         {
@@ -1421,9 +1261,6 @@ namespace Haytham
             METState.Current.showEdges = cbShowEdges.Checked;
         }
 
-
-        //.......................................................................Updating the Form.......................................................................
-
         public void UpdateControl(object message, string controlName)
         {
             string s = "";
@@ -1431,41 +1268,37 @@ namespace Haytham
             {
                 switch (controlName)
                 {
-
                     case "textBoxTimerEye":
-                        if (comboBox_EyeTimer.InvokeRequired)
+                        if (cmbEyeTimer.InvokeRequired)
                         {
                             Invoke(new _SendToForm(UpdateControl), new object[] { message, "textBoxTimerEye" });
                         }
                         else
                         {
-
-                            comboBox_EyeTimer.Items.Clear();
+                            cmbEyeTimer.Items.Clear();
                             foreach (KeyValuePair<string, object> kvp in METState.Current.ProcessTimeEyeBranch.TimerResults.Reverse())
                             {
                                 if (kvp.Key == "Total")
                                 {
                                     // comboBox_EyeTimer.Items.Add("Eye: " + kvp.Value.ToString() + " ms");// kvp.Key +
                                     // comboBox_EyeTimer.SelectedIndex = 0;
-                                    comboBox_EyeTimer.Text = "Eye: " + kvp.Value.ToString() + " ms";
+                                    cmbEyeTimer.Text = "Eye: " + kvp.Value.ToString() + " ms";
                                 }
                                 else
                                 {
-                                    comboBox_EyeTimer.Items.Add(kvp.Key + ": " + kvp.Value.ToString() + " ms");
-
+                                    cmbEyeTimer.Items.Add(kvp.Key + ": " + kvp.Value.ToString() + " ms");
                                 }
                             }
-
                         }
                         break;
                     case "textBoxTimerScene":
-                        if (comboBox_SceneTimer.InvokeRequired)
+                        if (cmbSceneTimer.InvokeRequired)
                         {
                             Invoke(new _SendToForm(UpdateControl), new object[] { message, "textBoxTimerScene" });
                         }
                         else
                         {
-                            comboBox_SceneTimer.Items.Clear();
+                            cmbSceneTimer.Items.Clear();
 
                             foreach (KeyValuePair<string, object> kvp in METState.Current.ProcessTimeSceneBranch.TimerResults.Reverse())
                             {
@@ -1476,24 +1309,21 @@ namespace Haytham
                                     {
                                         // comboBox_SceneTimer.Items.Add("Scene: " + ((double)kvp.Value + (double)METState.Current.ProcessTimeSceneBranch.TimerResults["UnDistortion"]).ToString() + " ms");// kvp.Key +
                                         // comboBox_SceneTimer.SelectedIndex = 0;
-                                        comboBox_SceneTimer.Text = "Scene: " + ((double)kvp.Value + (double)METState.Current.ProcessTimeSceneBranch.TimerResults["UnDistortion"]).ToString() + " ms";
+                                        cmbSceneTimer.Text = "Scene: " + ((double)kvp.Value + (double)METState.Current.ProcessTimeSceneBranch.TimerResults["UnDistortion"]).ToString() + " ms";
                                     }
                                     else
                                     {
-                                        comboBox_SceneTimer.Items.Add("Scene: " + kvp.Value.ToString() + " ms");// kvp.Key +
-                                        comboBox_SceneTimer.SelectedIndex = 0;
+                                        cmbSceneTimer.Items.Add("Scene: " + kvp.Value.ToString() + " ms");// kvp.Key +
+                                        cmbSceneTimer.SelectedIndex = 0;
                                     }
                                 }
                                 else
                                 {
-                                    comboBox_SceneTimer.Items.Add(kvp.Key + ": " + kvp.Value.ToString() + " ms");
+                                    cmbSceneTimer.Items.Add(kvp.Key + ": " + kvp.Value.ToString() + " ms");
                                 }
                             }
                         }
                         break;
-
-
-
                 }
             }
             Func<int> del;
@@ -1879,7 +1709,7 @@ namespace Haytham
                     break;
                 case "PanelClients_Add":
 
-                    if (panelClients.InvokeRequired)
+                    if (gbClientsSettings.InvokeRequired)
                     {
                         Invoke(new _SendToForm(UpdateControl), new object[] { message, "PanelClients_Add" });
                     }
@@ -1894,7 +1724,7 @@ namespace Haytham
                     break;
                 case "PanelClients_Remove":
 
-                    if (panelClients.InvokeRequired)
+                    if (gbClientsSettings.InvokeRequired)
                     {
                         Invoke(new _SendToForm(UpdateControl), new object[] { message, "PanelClients_Remove" });
                     }
@@ -1931,9 +1761,9 @@ namespace Haytham
 
         bool bFirstFrameEye = false;
         private Bitmap _bitmapimEye;
+
         public void imEyeUpdate(object sender, METEventArg eventArgs)
         {
-
             if (btnStartEye.Text == "Stop")//METState.Current.EyeCamera.IsRunning == true &&
             {
                 _bitmapimEye = (Bitmap)METState.Current.EyeImageForShow.Bitmap.Clone();
@@ -1943,7 +1773,7 @@ namespace Haytham
                     imEye.Invoke(
                         (MethodInvoker)delegate
                         {
-                            groupBox_imgEye.Width = _bitmapimEye.Width;
+                            gbEyeImage.Width = _bitmapimEye.Width;
                             imEye.Width = _bitmapimEye.Width;
                             imEye.Height = _bitmapimEye.Height;
                             
@@ -1951,23 +1781,20 @@ namespace Haytham
 
                     bFirstFrameEye = true;
                 }
-
                
                 imEye.Invalidate();
 
                 //pictureBox1.Invalidate();
                 // imEye.Image = METState.Current.EyeImageForShow;
                  imEyeTest.Image = METState.Current.EyeImageTest;
-
             }
-
         }
 
         bool bFirstFrameScene = false, bFirstFrameSceneProcessed = false;
         private Bitmap _bitmapimScene, _bitmapimSceneProcessed;
+
         public void imSceneUpdate(object sender, METEventArg eventArgs)
         {
-
             if (btnStartScene.Text == "Stop")
             {
                 _bitmapimScene = (Bitmap)METState.Current.SceneImageForShow.Bitmap.Clone();
@@ -2011,15 +1838,12 @@ namespace Haytham
 
                 //imScene.Image = METState.Current.SceneImageForShow;
                 //imSceneProcessed.Image = METState.Current.SceneImageProcessed;
-
             }
-
-
         }
 
         private void imScene_MouseClick(object sender, MouseEventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
                 if (e.Button == MouseButtons.Left &&  METState.Current.GlassServer.client.currentImage != null)
                 {
@@ -2120,39 +1944,33 @@ namespace Haytham
 
                         METState.Current.EyeToScene_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
                         METState.Current.EyeToScene_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
-
                     }
                 }
             }
         }
+
         private void cb_eye_VFlip_CheckedChanged(object sender, EventArgs e)
         {
-            METState.Current.eye_VFlip = cb_eye_VFlip.Checked;
-
+            METState.Current.eye_VFlip = cbEyeVerticalFlip.Checked;
         }
 
         private void cb_scene_VFlip_CheckedChanged(object sender, EventArgs e)
         {
-            METState.Current.scene_VFlip = cb_scene_VFlip.Checked;
-
+            METState.Current.scene_VFlip = cbSceneVerticalFlip.Checked;
         }
 
         private void cmbDeviceEye_DropDown(object sender, EventArgs e)
         {
             cmbDevice_Update(true, false);
-
         }
 
         private void cmbDeviceScene_DropDown(object sender, EventArgs e)
         {
             cmbDevice_Update(false, true);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
 
 
@@ -2176,44 +1994,31 @@ namespace Haytham
 
         }
 
-
         private void button2_Click_2(object sender, EventArgs e)
         {
-
-
             // MessageBox.Show("Click on 4 points in the scene image while the user is looking at the corresponding points in the field of view.");
-
-
             METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
             METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
-
-
             METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
             METState.Current.EyeToDisplay_Mapping.Calibrated = false;
-
             METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
-
-
-           
-                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.Calib_Display);
-      
+          
+            METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.Calib_Display);
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
         private void checkEditShowOpticalFlow_CheckedChanged(object sender, EventArgs e)
         {
-            checkEditShowOpticalFlow.BackColor = checkEditShowOpticalFlow.Checked ? Color.Yellow : Color.Transparent;
-
-            METState.Current.ShowOpticalFlow = checkEditShowOpticalFlow.Checked;
+            cbEditShowOpticalFlow.BackColor = cbEditShowOpticalFlow.Checked ? Color.Yellow : Color.Transparent;
+            METState.Current.ShowOpticalFlow = cbEditShowOpticalFlow.Checked;
         }
-
 
         private void checkBox2_CheckedChanged_5(object sender, EventArgs e)
         {
-            METState.Current.headRollGestures = checkBox2.Checked;
+            METState.Current.headRollGestures = cbHeadRollGestures.Checked;
         }
 
         private void radioButton4D_CheckedChanged(object sender, EventArgs e)
@@ -2233,9 +2038,6 @@ namespace Haytham
             pbDownRight2.Visible = vis;
             pbDownLeft1.Visible = vis;
             pbDownLeft2.Visible = vis;
-
-
-
         }
 
         private void radioButton8D_CheckedChanged(object sender, EventArgs e)
@@ -2250,15 +2052,6 @@ namespace Haytham
             pbDownRight2.Visible = vis;
             pbDownLeft1.Visible = vis;
             pbDownLeft2.Visible = vis;
-        }
-
-
-
-        private void trackBarTest_ValueChanged(object sender, EventArgs e)
-        {
-
-            METState.Current.test = trackBarTest.Value;
-
         }
 
         private void comboBox_SceneTimer_SelectedIndexChanged(object sender, EventArgs e)
@@ -2365,9 +2158,9 @@ namespace Haytham
 
                         if (METState.Current.SceneIsRecording | METState.Current.EyeIsRecording | METState.Current.TextFileDataExport != null)
                         {
-                            btn_Record.Text = "Recording..." + "\r\n" + "Click to Stop";// "Recording. Click to Stop";
+                            btnRecord.Text = "Recording..." + "\r\n" + "Click to Stop";// "Recording. Click to Stop";
 
-                            btn_RecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+                            pbRecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
 
 
                         }
@@ -2400,7 +2193,7 @@ namespace Haytham
 
                 METState.Current.TextFileDataExport.CloseFile();
                 METState.Current.TextFileDataExport = null;
-                btn_Record.Text = "Export";
+                btnRecord.Text = "Export";
 
                 // //************************************send a command to all clients
                 int udp_port = 9876;
@@ -2414,8 +2207,8 @@ namespace Haytham
 
 
 
-                btn_RecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-                btn_RecordProgress.Value = 0;
+                pbRecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+                pbRecordProgress.Value = 0;
 
 
             }
@@ -2434,8 +2227,6 @@ namespace Haytham
             prg_Custom2.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom2.Tag.ToString();
-
-
         }
 
         private void btn_Custom3_Click(object sender, EventArgs e)
@@ -2443,8 +2234,6 @@ namespace Haytham
             prg_Custom3.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom3.Tag.ToString();
-
-
         }
 
         private void btn_Custom4_Click(object sender, EventArgs e)
@@ -2452,29 +2241,23 @@ namespace Haytham
             prg_Custom4.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom4.Tag.ToString();
-
-
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            METState.Current.SceneForExport = checkBox3.Checked;
+            METState.Current.SceneForExport = cbRecordSceneVideo.Checked;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            METState.Current.EyeForExport = checkBox1.Checked;
+            METState.Current.EyeForExport = cbRecordEyeVideo.Checked;
         }
 
         String tempPreToolTipTxt = "";
         private void imScene_MouseMove(object sender, MouseEventArgs e)
         {
             METState.Current.debugPoint = new Point(e.X, e.Y);
-
-
-
             String txt = FXPAL.FXPAL_Utils.GetCursorString(e.X, e.Y);
-
 
             if (txt == "" && txt != tempPreToolTipTxt)
             {
@@ -2490,38 +2273,29 @@ namespace Haytham
 
                 tempPreToolTipTxt = txt;
             }
-
         }
 
         private Bitmap _bitmapPicturebox2;
         private void Picturebox2_Paint(object sender, PaintEventArgs e)
         {
-
-
             //if (_bitmapPicturebox2 != null)
             //{
             //    e.Graphics.DrawImage(_bitmapPicturebox2, 0, 0, pictureBox2.Width, pictureBox2.Height);
             //}
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
                 Func<int> del = delegate()
                 {
-
                     if (METState.Current.EyeToDisplay_Mapping.Calibrated == true)
                     {
-
-
-
                         try
                         {
-
                             SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
                             Point coord = new Point((int)(METState.Current.Gaze_RGT.X * s.Width / (double)myGlass.constants.display_W), (int)(METState.Current.Gaze_RGT.Y * s.Height / (double)myGlass.constants.display_H));
                             e.Graphics.DrawEllipse(new Pen(Color.Green, 2f), coord.X, coord.Y, 3, 3);
 
                             // coord = new Point((int)(METState.Current.Gaze_RGT2.X * s.Width / (double)myGlass.constants.display_W), (int)(METState.Current.Gaze_RGT2.Y * s.Height / (double)myGlass.constants.display_H));
                             //e.Graphics.DrawEllipse(new Pen(Color.Red, 2f), coord.X, coord.Y, 3, 3);
-
                         }
                         catch (Exception ex)
                         {
@@ -2532,8 +2306,6 @@ namespace Haytham
                 };
                 Invoke(del);
             }
-
-
         }
 
         private void imEye_Paint(object sender, PaintEventArgs e)
@@ -2551,7 +2323,7 @@ namespace Haytham
 
         private void imScene_Paint(object sender, PaintEventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
             //    Func<int> del = delegate()
             //    {
@@ -2602,7 +2374,6 @@ namespace Haytham
             }
         }
 
-
         private void imSceneProcessed_Paint(object sender, PaintEventArgs e)
         {
             if (_bitmapimSceneProcessed != null)
@@ -2629,7 +2400,6 @@ namespace Haytham
         private void rbGlint_CheckedChanged(object sender, EventArgs e)
         {
             if (rbGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Glint;
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -2653,15 +2423,10 @@ namespace Haytham
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-1, -1));//only show the msg to the user not the point
             Thread.Sleep(2000);//??
 
-
             METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
             METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
-
-
             METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
             METState.Current.EyeToDisplay_Mapping.Calibrated = false;
-
-
 
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
@@ -2670,18 +2435,11 @@ namespace Haytham
 
             //...Here you can send some commands to HMD if you want to show something there
             // METState.Current.remoteCalibration.ShowDialog();
-
-
-
-
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
-
         }
-
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             int n = Int32.Parse(((Button)sender).Tag.ToString());
 
             METState.Current.GlassServer.client.myCalibration_Scene.numberOfPictures = n;
@@ -2691,28 +2449,19 @@ namespace Haytham
             if (n == 2)
             {
                 METState.Current.EyeToScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
-
             }
             else if (n == 3)
             {
                 METState.Current.EyeToScene_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-
             }
-
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-1, -1));
 
             Thread.Sleep(2000);//??
-
-
-
-
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
-
 
         }
 
@@ -2732,19 +2481,13 @@ namespace Haytham
                 METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
 
                 // METState.Current.METCoreObject.SendToForm(test.temp_Image, "imScene");
-
-
-
             }
             catch (Exception er)
             {
                 Console.WriteLine("Image not found");
             }
-
-
         }
-
-
+        
         private void pictureBox1_Paint_1(object sender, PaintEventArgs e)
         {
 
@@ -2752,45 +2495,36 @@ namespace Haytham
 
         private void button8_Click(object sender, EventArgs e)
         {
-
             IPform.ShowDialog();
         }
 
-           private void button10_Click(object sender, EventArgs e)
+        private void button10_Click(object sender, EventArgs e)
         {
-
-               SCRL_wpf=new MainWindowSCRL(textBox1.Text);
-               SCRL_wpf.ShowDialog();
-
+            SCRL_wpf=new MainWindowSCRL(textBox1.Text);
+            SCRL_wpf.ShowDialog();
         }
-
     
         private void tabPage_Glass_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtImageName_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             METState.Current.GlassServer.gazeStream_RGT = myGlass.Server.GazeStream.NoStreaming;
-
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_LetsCorrectOffset);
-
         }
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
-
         }
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
                 if (e.Button == MouseButtons.Right)
                 {
@@ -2799,49 +2533,43 @@ namespace Haytham
                         SizeF s = new SizeF(pictureBox2.Width, pictureBox2.Height);
                         Point coord = new Point((int)(e.X * (double)myGlass.constants.display_W / (double)s.Width), (int)(e.Y * (double)myGlass.constants.display_H / (double)s.Height));
 
-
                         AForge.Point Gaze = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, coord.X, coord.Y);
 
                         METState.Current.EyeToDisplay_Mapping.GazeErrorX = Gaze.X;// / METState.Current.Kw_SceneImg);
                         METState.Current.EyeToDisplay_Mapping.GazeErrorY = Gaze.Y;// / METState.Current.Kh_SceneImg);
-
-
                     }
                 }
             }
-
-
         }
-
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_R_min = (int)target_R_min.Value;
+            METState.Current.target_R_min = (int)nudTargetRMin.Value;
         }
 
         private void target_R_max_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_R_max = (int)target_R_max.Value;
+            METState.Current.target_R_max = (int)nudTargetRMax.Value;
         }
 
         private void target_G_min_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_G_min = (int)target_G_min.Value;
+            METState.Current.target_G_min = (int)nudTargetGMin.Value;
         }
 
         private void target_G_max_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_G_max = (int)target_G_max.Value;
+            METState.Current.target_G_max = (int)nudTargetGMax.Value;
         }
 
         private void target_B_min_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_B_min = (int)target_B_min.Value;
+            METState.Current.target_B_min = (int)nudTargetBMin.Value;
         }
 
         private void target_B_max_ValueChanged(object sender, EventArgs e)
         {
-            METState.Current.target_B_max = (int)target_B_max.Value;
+            METState.Current.target_B_max = (int)nudTargetBMax.Value;
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
@@ -2851,11 +2579,7 @@ namespace Haytham
 
         private void button11_Click(object sender, EventArgs e)
         {
-
         }
-
-    
-
 
         private void button11_Click_1(object sender, EventArgs e)
         {
@@ -2864,14 +2588,12 @@ namespace Haytham
 
         private void button12_Click(object sender, EventArgs e)
         {
-
             SCRL_mind = new SCRL_Mind(textBox1.Text, METState.SCRL_demos.Facebook);
             SCRL_mind.ShowDialog();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-
             SCRL_mind = new SCRL_Mind(textBox1.Text, METState.SCRL_demos.MenuScrollViewer);
             SCRL_mind.ShowDialog();
         }
@@ -2894,27 +2616,13 @@ namespace Haytham
 
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
         {
-            METState.Current.SCRL_Threshold =(int) numericUpDown2.Value;
+            METState.Current.SCRL_Threshold =(int) nudSCRLSensitivity.Value;
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            Conditions.speed_mind =(float) trackBar1.Value;
-            label22.Text = trackBar1.Value.ToString();
+            Conditions.speed_mind =(float) tbSpeedMind.Value;
+            lbSpeedMindValue.Text = tbSpeedMind.Value.ToString();
         }
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
     }
 }

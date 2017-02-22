@@ -345,7 +345,7 @@ namespace Haytham
 
                 #region Glass
 
-                else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+                else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
                 {
 
 

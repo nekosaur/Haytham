@@ -33,13 +33,13 @@ namespace Haytham
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.rootContainer = new System.Windows.Forms.SplitContainer();
+            this.leftTabs = new System.Windows.Forms.TabControl();
             this.tabPage_Camera = new System.Windows.Forms.TabPage();
             this.gbStartBoth = new System.Windows.Forms.GroupBox();
             this.startBoothVideos = new System.Windows.Forms.Button();
             this.gbSceneCameraDevice = new System.Windows.Forms.GroupBox();
-            this.cb_scene_VFlip = new System.Windows.Forms.CheckBox();
+            this.cbSceneVerticalFlip = new System.Windows.Forms.CheckBox();
             this.btnSettingsScene = new System.Windows.Forms.Button();
             this.btnStartScene = new System.Windows.Forms.Button();
             this.cmbDeviceCapabilityScene = new System.Windows.Forms.ComboBox();
@@ -47,7 +47,7 @@ namespace Haytham
             this.cmbDeviceScene = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.gbEyeCameraDevice = new System.Windows.Forms.GroupBox();
-            this.cb_eye_VFlip = new System.Windows.Forms.CheckBox();
+            this.cbEyeVerticalFlip = new System.Windows.Forms.CheckBox();
             this.btnSettingsEye = new System.Windows.Forms.Button();
             this.btnStartEye = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,12 +56,12 @@ namespace Haytham
             this.cmbDeviceEye = new System.Windows.Forms.ComboBox();
             this.tabPage_Glass = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.target_B_max = new System.Windows.Forms.NumericUpDown();
-            this.target_B_min = new System.Windows.Forms.NumericUpDown();
-            this.target_G_max = new System.Windows.Forms.NumericUpDown();
-            this.target_G_min = new System.Windows.Forms.NumericUpDown();
-            this.target_R_max = new System.Windows.Forms.NumericUpDown();
-            this.target_R_min = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetBMax = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetBMin = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetGMax = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetGMin = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetRMax = new System.Windows.Forms.NumericUpDown();
+            this.nudTargetRMin = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,36 +74,29 @@ namespace Haytham
             this.lbCommandsToGlass = new System.Windows.Forms.ListBox();
             this.tbOutput = new System.Windows.Forms.TextBox();
             this.tabPage_Eye = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cbGM = new System.Windows.Forms.RadioButton();
+            this.gbGlintDetection = new System.Windows.Forms.GroupBox();
+            this.cbGlintManual = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.rbGGaussian = new System.Windows.Forms.RadioButton();
             this.rbGMean = new System.Windows.Forms.RadioButton();
-            this.cbGA = new System.Windows.Forms.RadioButton();
-            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.cbGlintAuto = new System.Windows.Forms.RadioButton();
             this.cbShowGlint = new System.Windows.Forms.CheckBox();
             this.cbGlintDetection = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbPM = new System.Windows.Forms.RadioButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
+            this.pnlGlintDetection = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.rbPGaussian = new System.Windows.Forms.RadioButton();
             this.rbPMean = new System.Windows.Forms.RadioButton();
             this.cbPA = new System.Windows.Forms.RadioButton();
             this.cbRemoveGlint = new System.Windows.Forms.CheckBox();
             this.cbDilateErode = new System.Windows.Forms.CheckBox();
-            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
             this.cbShowPupil = new System.Windows.Forms.CheckBox();
             this.cbPupilDetection = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gbIrisDiameter = new System.Windows.Forms.GroupBox();
             this.cbShowIris = new System.Windows.Forms.CheckBox();
-            this.trackBarControl2 = new Haytham.Forms.TransparentTrackBar();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lbIrisDiameter = new System.Windows.Forms.Label();
             this.tabPage_Scene = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -113,9 +106,6 @@ namespace Haytham
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.cbShowEdges = new System.Windows.Forms.CheckBox();
-            this.trackBarB = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarG = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarControl3 = new Haytham.Forms.TransparentTrackBar();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cbShowScreen = new System.Windows.Forms.CheckBox();
@@ -132,30 +122,30 @@ namespace Haytham
             this.gbCalibrationRemote = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.gbCalibrationHM = new System.Windows.Forms.GroupBox();
+            this.gbCalibrationScene = new System.Windows.Forms.GroupBox();
             this.lbl_calibration = new System.Windows.Forms.Label();
             this.btnCalibration_Homography = new System.Windows.Forms.Button();
             this.btnCalibration_Polynomial = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnlCalibration = new System.Windows.Forms.Panel();
             this.rbGlint = new System.Windows.Forms.RadioButton();
             this.rbPupilGlint = new System.Windows.Forms.RadioButton();
             this.rdOnlyPupil = new System.Windows.Forms.RadioButton();
             this.cbGazeSmoothing = new System.Windows.Forms.CheckBox();
             this.tabPage_Data = new System.Windows.Forms.TabPage();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.gbDataCharts = new System.Windows.Forms.GroupBox();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbPlot = new System.Windows.Forms.CheckBox();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.btn_RecordProgress = new System.Windows.Forms.ProgressBar();
-            this.btn_Record = new System.Windows.Forms.Button();
+            this.gbDataExport = new System.Windows.Forms.GroupBox();
+            this.cbRecordSceneVideo = new System.Windows.Forms.CheckBox();
+            this.cbRecordEyeVideo = new System.Windows.Forms.CheckBox();
+            this.pbRecordProgress = new System.Windows.Forms.ProgressBar();
+            this.btnRecord = new System.Windows.Forms.Button();
             this.tabPage_Clients = new System.Windows.Forms.TabPage();
-            this.panelClients = new System.Windows.Forms.GroupBox();
-            this.radioButtonAutoActivation = new System.Windows.Forms.RadioButton();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.gbClientsSettings = new System.Windows.Forms.GroupBox();
+            this.rbAutoActivation = new System.Windows.Forms.RadioButton();
+            this.gbClientsMessages = new System.Windows.Forms.GroupBox();
             this.TextBoxServer = new System.Windows.Forms.TextBox();
             this.tabPage_Gesture = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
@@ -189,8 +179,8 @@ namespace Haytham
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.pbTRight = new System.Windows.Forms.PictureBox();
             this.pbTLeft = new System.Windows.Forms.PictureBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkEditShowOpticalFlow = new System.Windows.Forms.CheckBox();
+            this.cbHeadRollGestures = new System.Windows.Forms.CheckBox();
+            this.cbEditShowOpticalFlow = new System.Windows.Forms.CheckBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.btnDbBlink = new System.Windows.Forms.Button();
             this.btnBlink = new System.Windows.Forms.Button();
@@ -202,9 +192,9 @@ namespace Haytham
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.tabPage_EyeGrip = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lbSpeedMindValue = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tbSpeedMind = new System.Windows.Forms.TrackBar();
             this.label20 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -213,27 +203,26 @@ namespace Haytham
             this.button13 = new System.Windows.Forms.Button();
             this.label_SCRL = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nudSCRLSensitivity = new System.Windows.Forms.NumericUpDown();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.gbMain = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox_imgEye = new System.Windows.Forms.GroupBox();
+            this.gbEyeImage = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imEye = new System.Windows.Forms.PictureBox();
-            this.groupBox_imgScene = new System.Windows.Forms.GroupBox();
+            this.gbSceneImage = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.imSceneProcessed = new System.Windows.Forms.PictureBox();
             this.imScene = new System.Windows.Forms.PictureBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.trackBarTest = new System.Windows.Forms.TrackBar();
             this.chartTest = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.imEyeTest = new Emgu.CV.UI.ImageBox();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.splitter7 = new System.Windows.Forms.Splitter();
             this.lblIP = new System.Windows.Forms.TextBox();
             this.splitter6 = new System.Windows.Forms.Splitter();
@@ -241,62 +230,62 @@ namespace Haytham
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.lblPupilCenter = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
-            this.comboBox_SceneTimer = new System.Windows.Forms.ComboBox();
+            this.cmbSceneTimer = new System.Windows.Forms.ComboBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.comboBox_EyeTimer = new System.Windows.Forms.ComboBox();
+            this.cmbEyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
+            this.tbIrisDiameter = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
+            this.rootContainer.Panel1.SuspendLayout();
+            this.rootContainer.Panel2.SuspendLayout();
+            this.rootContainer.SuspendLayout();
+            this.leftTabs.SuspendLayout();
             this.tabPage_Camera.SuspendLayout();
             this.gbStartBoth.SuspendLayout();
             this.gbSceneCameraDevice.SuspendLayout();
             this.gbEyeCameraDevice.SuspendLayout();
             this.tabPage_Glass.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.target_B_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_B_min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_G_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_G_min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_R_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_R_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetBMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetBMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetGMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetGMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetRMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetRMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage_Eye.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.gbGlintDetection.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
             this.groupBox6.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).BeginInit();
+            this.pnlGlintDetection.SuspendLayout();
+            this.gbIrisDiameter.SuspendLayout();
             this.tabPage_Scene.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).BeginInit();
             this.tabPage_Calibration.SuspendLayout();
             this.gbCalibrationGlass.SuspendLayout();
             this.gbCalibrationRemote.SuspendLayout();
-            this.gbCalibrationHM.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.gbCalibrationScene.SuspendLayout();
+            this.pnlCalibration.SuspendLayout();
             this.tabPage_Data.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.gbDataCharts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.groupBox10.SuspendLayout();
+            this.gbDataExport.SuspendLayout();
             this.tabPage_Clients.SuspendLayout();
-            this.panelClients.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            this.gbClientsSettings.SuspendLayout();
+            this.gbClientsMessages.SuspendLayout();
             this.tabPage_Gesture.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox20.SuspendLayout();
@@ -325,72 +314,81 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage_EyeGrip.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSpeedMind)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSCRLSensitivity)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox14.SuspendLayout();
+            this.gbMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox_imgEye.SuspendLayout();
+            this.gbEyeImage.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).BeginInit();
-            this.groupBox_imgScene.SuspendLayout();
+            this.gbSceneImage.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).BeginInit();
             this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
-            this.panel6.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).BeginInit();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // rootContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.splitContainer1.Name = "splitContainer1";
+            this.rootContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rootContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.rootContainer.Location = new System.Drawing.Point(0, 0);
+            this.rootContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.rootContainer.Name = "rootContainer";
             // 
-            // splitContainer1.Panel1
+            // rootContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            this.rootContainer.Panel1.Controls.Add(this.leftTabs);
             // 
-            // splitContainer1.Panel2
+            // rootContainer.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox14);
-            this.splitContainer1.Panel2.Controls.Add(this.panel6);
-            this.splitContainer1.Size = new System.Drawing.Size(1133, 691);
-            this.splitContainer1.SplitterDistance = 345;
-            this.splitContainer1.SplitterWidth = 3;
-            this.splitContainer1.TabIndex = 43;
+            this.rootContainer.Panel2.Controls.Add(this.gbMain);
+            this.rootContainer.Panel2.Controls.Add(this.pnlTop);
+            this.rootContainer.Size = new System.Drawing.Size(1133, 691);
+            this.rootContainer.SplitterDistance = 345;
+            this.rootContainer.SplitterWidth = 3;
+            this.rootContainer.TabIndex = 43;
             // 
-            // tabControl1
+            // leftTabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage_Camera);
-            this.tabControl1.Controls.Add(this.tabPage_Glass);
-            this.tabControl1.Controls.Add(this.tabPage_Eye);
-            this.tabControl1.Controls.Add(this.tabPage_Scene);
-            this.tabControl1.Controls.Add(this.tabPage_Calibration);
-            this.tabControl1.Controls.Add(this.tabPage_Data);
-            this.tabControl1.Controls.Add(this.tabPage_Clients);
-            this.tabControl1.Controls.Add(this.tabPage_Gesture);
-            this.tabControl1.Controls.Add(this.tabPage_ExtData);
-            this.tabControl1.Controls.Add(this.tabPage_EyeGrip);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(345, 691);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.tabControl1.TabIndex = 0;
+            this.leftTabs.Controls.Add(this.tabPage_Camera);
+            this.leftTabs.Controls.Add(this.tabPage_Glass);
+            this.leftTabs.Controls.Add(this.tabPage_Eye);
+            this.leftTabs.Controls.Add(this.tabPage_Scene);
+            this.leftTabs.Controls.Add(this.tabPage_Calibration);
+            this.leftTabs.Controls.Add(this.tabPage_Data);
+            this.leftTabs.Controls.Add(this.tabPage_Clients);
+            this.leftTabs.Controls.Add(this.tabPage_Gesture);
+            this.leftTabs.Controls.Add(this.tabPage_ExtData);
+            this.leftTabs.Controls.Add(this.tabPage_EyeGrip);
+            this.leftTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leftTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.leftTabs.Location = new System.Drawing.Point(0, 0);
+            this.leftTabs.Margin = new System.Windows.Forms.Padding(2);
+            this.leftTabs.Multiline = true;
+            this.leftTabs.Name = "leftTabs";
+            this.leftTabs.SelectedIndex = 0;
+            this.leftTabs.Size = new System.Drawing.Size(345, 691);
+            this.leftTabs.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.leftTabs.TabIndex = 0;
             // 
             // tabPage_Camera
             // 
@@ -398,9 +396,9 @@ namespace Haytham
             this.tabPage_Camera.Controls.Add(this.gbSceneCameraDevice);
             this.tabPage_Camera.Controls.Add(this.gbEyeCameraDevice);
             this.tabPage_Camera.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Camera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Camera.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Camera.Name = "tabPage_Camera";
-            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Camera.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage_Camera.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Camera.TabIndex = 0;
             this.tabPage_Camera.Text = "Camera";
@@ -411,9 +409,9 @@ namespace Haytham
             this.gbStartBoth.Controls.Add(this.startBoothVideos);
             this.gbStartBoth.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbStartBoth.Location = new System.Drawing.Point(2, 334);
-            this.gbStartBoth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbStartBoth.Margin = new System.Windows.Forms.Padding(2);
             this.gbStartBoth.Name = "gbStartBoth";
-            this.gbStartBoth.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbStartBoth.Padding = new System.Windows.Forms.Padding(2);
             this.gbStartBoth.Size = new System.Drawing.Size(333, 69);
             this.gbStartBoth.TabIndex = 54;
             this.gbStartBoth.TabStop = false;
@@ -421,7 +419,7 @@ namespace Haytham
             // startBoothVideos
             // 
             this.startBoothVideos.Location = new System.Drawing.Point(49, 16);
-            this.startBoothVideos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startBoothVideos.Margin = new System.Windows.Forms.Padding(2);
             this.startBoothVideos.Name = "startBoothVideos";
             this.startBoothVideos.Size = new System.Drawing.Size(115, 37);
             this.startBoothVideos.TabIndex = 55;
@@ -431,7 +429,7 @@ namespace Haytham
             // 
             // gbSceneCameraDevice
             // 
-            this.gbSceneCameraDevice.Controls.Add(this.cb_scene_VFlip);
+            this.gbSceneCameraDevice.Controls.Add(this.cbSceneVerticalFlip);
             this.gbSceneCameraDevice.Controls.Add(this.btnSettingsScene);
             this.gbSceneCameraDevice.Controls.Add(this.btnStartScene);
             this.gbSceneCameraDevice.Controls.Add(this.cmbDeviceCapabilityScene);
@@ -440,30 +438,30 @@ namespace Haytham
             this.gbSceneCameraDevice.Controls.Add(this.label8);
             this.gbSceneCameraDevice.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbSceneCameraDevice.Location = new System.Drawing.Point(2, 168);
-            this.gbSceneCameraDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSceneCameraDevice.Margin = new System.Windows.Forms.Padding(2);
             this.gbSceneCameraDevice.Name = "gbSceneCameraDevice";
-            this.gbSceneCameraDevice.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSceneCameraDevice.Padding = new System.Windows.Forms.Padding(2);
             this.gbSceneCameraDevice.Size = new System.Drawing.Size(333, 166);
             this.gbSceneCameraDevice.TabIndex = 52;
             this.gbSceneCameraDevice.TabStop = false;
             this.gbSceneCameraDevice.Text = "Scene Camera";
             // 
-            // cb_scene_VFlip
+            // cbSceneVerticalFlip
             // 
-            this.cb_scene_VFlip.AutoSize = true;
-            this.cb_scene_VFlip.Location = new System.Drawing.Point(8, 136);
-            this.cb_scene_VFlip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cb_scene_VFlip.Name = "cb_scene_VFlip";
-            this.cb_scene_VFlip.Size = new System.Drawing.Size(80, 17);
-            this.cb_scene_VFlip.TabIndex = 57;
-            this.cb_scene_VFlip.Text = "Flip Vertical";
-            this.cb_scene_VFlip.UseVisualStyleBackColor = true;
-            this.cb_scene_VFlip.CheckedChanged += new System.EventHandler(this.cb_scene_VFlip_CheckedChanged);
+            this.cbSceneVerticalFlip.AutoSize = true;
+            this.cbSceneVerticalFlip.Location = new System.Drawing.Point(8, 136);
+            this.cbSceneVerticalFlip.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSceneVerticalFlip.Name = "cbSceneVerticalFlip";
+            this.cbSceneVerticalFlip.Size = new System.Drawing.Size(80, 17);
+            this.cbSceneVerticalFlip.TabIndex = 57;
+            this.cbSceneVerticalFlip.Text = "Flip Vertical";
+            this.cbSceneVerticalFlip.UseVisualStyleBackColor = true;
+            this.cbSceneVerticalFlip.CheckedChanged += new System.EventHandler(this.cb_scene_VFlip_CheckedChanged);
             // 
             // btnSettingsScene
             // 
             this.btnSettingsScene.Location = new System.Drawing.Point(8, 84);
-            this.btnSettingsScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettingsScene.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettingsScene.Name = "btnSettingsScene";
             this.btnSettingsScene.Size = new System.Drawing.Size(84, 37);
             this.btnSettingsScene.TabIndex = 10;
@@ -474,7 +472,7 @@ namespace Haytham
             // btnStartScene
             // 
             this.btnStartScene.Location = new System.Drawing.Point(97, 84);
-            this.btnStartScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartScene.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartScene.Name = "btnStartScene";
             this.btnStartScene.Size = new System.Drawing.Size(115, 37);
             this.btnStartScene.TabIndex = 9;
@@ -526,7 +524,7 @@ namespace Haytham
             // 
             // gbEyeCameraDevice
             // 
-            this.gbEyeCameraDevice.Controls.Add(this.cb_eye_VFlip);
+            this.gbEyeCameraDevice.Controls.Add(this.cbEyeVerticalFlip);
             this.gbEyeCameraDevice.Controls.Add(this.btnSettingsEye);
             this.gbEyeCameraDevice.Controls.Add(this.btnStartEye);
             this.gbEyeCameraDevice.Controls.Add(this.label5);
@@ -535,30 +533,30 @@ namespace Haytham
             this.gbEyeCameraDevice.Controls.Add(this.cmbDeviceEye);
             this.gbEyeCameraDevice.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbEyeCameraDevice.Location = new System.Drawing.Point(2, 2);
-            this.gbEyeCameraDevice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbEyeCameraDevice.Margin = new System.Windows.Forms.Padding(2);
             this.gbEyeCameraDevice.Name = "gbEyeCameraDevice";
-            this.gbEyeCameraDevice.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbEyeCameraDevice.Padding = new System.Windows.Forms.Padding(2);
             this.gbEyeCameraDevice.Size = new System.Drawing.Size(333, 166);
             this.gbEyeCameraDevice.TabIndex = 51;
             this.gbEyeCameraDevice.TabStop = false;
             this.gbEyeCameraDevice.Text = "Eye Camera";
             // 
-            // cb_eye_VFlip
+            // cbEyeVerticalFlip
             // 
-            this.cb_eye_VFlip.AutoSize = true;
-            this.cb_eye_VFlip.Location = new System.Drawing.Point(8, 133);
-            this.cb_eye_VFlip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cb_eye_VFlip.Name = "cb_eye_VFlip";
-            this.cb_eye_VFlip.Size = new System.Drawing.Size(80, 17);
-            this.cb_eye_VFlip.TabIndex = 57;
-            this.cb_eye_VFlip.Text = "Flip Vertical";
-            this.cb_eye_VFlip.UseVisualStyleBackColor = true;
-            this.cb_eye_VFlip.CheckedChanged += new System.EventHandler(this.cb_eye_VFlip_CheckedChanged);
+            this.cbEyeVerticalFlip.AutoSize = true;
+            this.cbEyeVerticalFlip.Location = new System.Drawing.Point(8, 133);
+            this.cbEyeVerticalFlip.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEyeVerticalFlip.Name = "cbEyeVerticalFlip";
+            this.cbEyeVerticalFlip.Size = new System.Drawing.Size(80, 17);
+            this.cbEyeVerticalFlip.TabIndex = 57;
+            this.cbEyeVerticalFlip.Text = "Flip Vertical";
+            this.cbEyeVerticalFlip.UseVisualStyleBackColor = true;
+            this.cbEyeVerticalFlip.CheckedChanged += new System.EventHandler(this.cb_eye_VFlip_CheckedChanged);
             // 
             // btnSettingsEye
             // 
             this.btnSettingsEye.Location = new System.Drawing.Point(8, 84);
-            this.btnSettingsEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettingsEye.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettingsEye.Name = "btnSettingsEye";
             this.btnSettingsEye.Size = new System.Drawing.Size(84, 37);
             this.btnSettingsEye.TabIndex = 10;
@@ -569,7 +567,7 @@ namespace Haytham
             // btnStartEye
             // 
             this.btnStartEye.Location = new System.Drawing.Point(97, 84);
-            this.btnStartEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartEye.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartEye.Name = "btnStartEye";
             this.btnStartEye.Size = new System.Drawing.Size(115, 37);
             this.btnStartEye.TabIndex = 9;
@@ -629,9 +627,9 @@ namespace Haytham
             this.tabPage_Glass.Controls.Add(this.lbCommandsToGlass);
             this.tabPage_Glass.Controls.Add(this.tbOutput);
             this.tabPage_Glass.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Glass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Glass.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Glass.Name = "tabPage_Glass";
-            this.tabPage_Glass.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Glass.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Glass.TabIndex = 8;
             this.tabPage_Glass.Text = "Glass";
             this.tabPage_Glass.UseVisualStyleBackColor = true;
@@ -639,12 +637,12 @@ namespace Haytham
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.target_B_max);
-            this.groupBox1.Controls.Add(this.target_B_min);
-            this.groupBox1.Controls.Add(this.target_G_max);
-            this.groupBox1.Controls.Add(this.target_G_min);
-            this.groupBox1.Controls.Add(this.target_R_max);
-            this.groupBox1.Controls.Add(this.target_R_min);
+            this.groupBox1.Controls.Add(this.nudTargetBMax);
+            this.groupBox1.Controls.Add(this.nudTargetBMin);
+            this.groupBox1.Controls.Add(this.nudTargetGMax);
+            this.groupBox1.Controls.Add(this.nudTargetGMin);
+            this.groupBox1.Controls.Add(this.nudTargetRMax);
+            this.groupBox1.Controls.Add(this.nudTargetRMin);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
@@ -653,109 +651,109 @@ namespace Haytham
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 456);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 169);
+            this.groupBox1.Size = new System.Drawing.Size(337, 169);
             this.groupBox1.TabIndex = 76;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Visible = false;
             // 
-            // target_B_max
+            // nudTargetBMax
             // 
-            this.target_B_max.Location = new System.Drawing.Point(167, 138);
-            this.target_B_max.Maximum = new decimal(new int[] {
+            this.nudTargetBMax.Location = new System.Drawing.Point(167, 138);
+            this.nudTargetBMax.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_B_max.Name = "target_B_max";
-            this.target_B_max.Size = new System.Drawing.Size(63, 20);
-            this.target_B_max.TabIndex = 85;
-            this.target_B_max.Value = new decimal(new int[] {
+            this.nudTargetBMax.Name = "nudTargetBMax";
+            this.nudTargetBMax.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetBMax.TabIndex = 85;
+            this.nudTargetBMax.Value = new decimal(new int[] {
             95,
             0,
             0,
             0});
-            this.target_B_max.ValueChanged += new System.EventHandler(this.target_B_max_ValueChanged);
+            this.nudTargetBMax.ValueChanged += new System.EventHandler(this.target_B_max_ValueChanged);
             // 
-            // target_B_min
+            // nudTargetBMin
             // 
-            this.target_B_min.Location = new System.Drawing.Point(79, 137);
-            this.target_B_min.Maximum = new decimal(new int[] {
+            this.nudTargetBMin.Location = new System.Drawing.Point(79, 137);
+            this.nudTargetBMin.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_B_min.Name = "target_B_min";
-            this.target_B_min.Size = new System.Drawing.Size(63, 20);
-            this.target_B_min.TabIndex = 84;
-            this.target_B_min.ValueChanged += new System.EventHandler(this.target_B_min_ValueChanged);
+            this.nudTargetBMin.Name = "nudTargetBMin";
+            this.nudTargetBMin.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetBMin.TabIndex = 84;
+            this.nudTargetBMin.ValueChanged += new System.EventHandler(this.target_B_min_ValueChanged);
             // 
-            // target_G_max
+            // nudTargetGMax
             // 
-            this.target_G_max.Location = new System.Drawing.Point(167, 112);
-            this.target_G_max.Maximum = new decimal(new int[] {
+            this.nudTargetGMax.Location = new System.Drawing.Point(167, 112);
+            this.nudTargetGMax.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_G_max.Name = "target_G_max";
-            this.target_G_max.Size = new System.Drawing.Size(63, 20);
-            this.target_G_max.TabIndex = 83;
-            this.target_G_max.Value = new decimal(new int[] {
+            this.nudTargetGMax.Name = "nudTargetGMax";
+            this.nudTargetGMax.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetGMax.TabIndex = 83;
+            this.nudTargetGMax.Value = new decimal(new int[] {
             95,
             0,
             0,
             0});
-            this.target_G_max.ValueChanged += new System.EventHandler(this.target_G_max_ValueChanged);
+            this.nudTargetGMax.ValueChanged += new System.EventHandler(this.target_G_max_ValueChanged);
             // 
-            // target_G_min
+            // nudTargetGMin
             // 
-            this.target_G_min.Location = new System.Drawing.Point(79, 111);
-            this.target_G_min.Maximum = new decimal(new int[] {
+            this.nudTargetGMin.Location = new System.Drawing.Point(79, 111);
+            this.nudTargetGMin.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_G_min.Name = "target_G_min";
-            this.target_G_min.Size = new System.Drawing.Size(63, 20);
-            this.target_G_min.TabIndex = 82;
-            this.target_G_min.ValueChanged += new System.EventHandler(this.target_G_min_ValueChanged);
+            this.nudTargetGMin.Name = "nudTargetGMin";
+            this.nudTargetGMin.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetGMin.TabIndex = 82;
+            this.nudTargetGMin.ValueChanged += new System.EventHandler(this.target_G_min_ValueChanged);
             // 
-            // target_R_max
+            // nudTargetRMax
             // 
-            this.target_R_max.Location = new System.Drawing.Point(167, 83);
-            this.target_R_max.Maximum = new decimal(new int[] {
+            this.nudTargetRMax.Location = new System.Drawing.Point(167, 83);
+            this.nudTargetRMax.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_R_max.Name = "target_R_max";
-            this.target_R_max.Size = new System.Drawing.Size(63, 20);
-            this.target_R_max.TabIndex = 81;
-            this.target_R_max.Value = new decimal(new int[] {
+            this.nudTargetRMax.Name = "nudTargetRMax";
+            this.nudTargetRMax.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetRMax.TabIndex = 81;
+            this.nudTargetRMax.Value = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_R_max.ValueChanged += new System.EventHandler(this.target_R_max_ValueChanged);
+            this.nudTargetRMax.ValueChanged += new System.EventHandler(this.target_R_max_ValueChanged);
             // 
-            // target_R_min
+            // nudTargetRMin
             // 
-            this.target_R_min.Location = new System.Drawing.Point(79, 82);
-            this.target_R_min.Maximum = new decimal(new int[] {
+            this.nudTargetRMin.Location = new System.Drawing.Point(79, 82);
+            this.nudTargetRMin.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.target_R_min.Name = "target_R_min";
-            this.target_R_min.Size = new System.Drawing.Size(63, 20);
-            this.target_R_min.TabIndex = 73;
-            this.target_R_min.Value = new decimal(new int[] {
+            this.nudTargetRMin.Name = "nudTargetRMin";
+            this.nudTargetRMin.Size = new System.Drawing.Size(63, 20);
+            this.nudTargetRMin.TabIndex = 73;
+            this.nudTargetRMin.Value = new decimal(new int[] {
             125,
             0,
             0,
             0});
-            this.target_R_min.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.nudTargetRMin.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label14
             // 
@@ -787,7 +785,7 @@ namespace Haytham
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(8, 18);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 51);
             this.button7.TabIndex = 73;
@@ -807,9 +805,9 @@ namespace Haytham
             // 
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.Location = new System.Drawing.Point(0, 396);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(251, 60);
+            this.button8.Size = new System.Drawing.Size(337, 60);
             this.button8.TabIndex = 73;
             this.button8.Text = "Show QRCode";
             this.button8.UseVisualStyleBackColor = true;
@@ -819,9 +817,9 @@ namespace Haytham
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.Location = new System.Drawing.Point(0, 386);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(251, 10);
+            this.progressBar1.Size = new System.Drawing.Size(337, 10);
             this.progressBar1.TabIndex = 47;
             // 
             // pictureBox2
@@ -829,9 +827,9 @@ namespace Haytham
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox2.Location = new System.Drawing.Point(0, 177);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(251, 209);
+            this.pictureBox2.Size = new System.Drawing.Size(337, 209);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 46;
             this.pictureBox2.TabStop = false;
@@ -858,9 +856,9 @@ namespace Haytham
             this.lbCommandsToGlass.FormattingEnabled = true;
             this.lbCommandsToGlass.ItemHeight = 20;
             this.lbCommandsToGlass.Location = new System.Drawing.Point(0, 153);
-            this.lbCommandsToGlass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbCommandsToGlass.Margin = new System.Windows.Forms.Padding(2);
             this.lbCommandsToGlass.Name = "lbCommandsToGlass";
-            this.lbCommandsToGlass.Size = new System.Drawing.Size(251, 24);
+            this.lbCommandsToGlass.Size = new System.Drawing.Size(337, 24);
             this.lbCommandsToGlass.TabIndex = 44;
             this.lbCommandsToGlass.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbCommandsToGlass_MouseDoubleClick);
             // 
@@ -872,53 +870,53 @@ namespace Haytham
             this.tbOutput.Name = "tbOutput";
             this.tbOutput.ReadOnly = true;
             this.tbOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbOutput.Size = new System.Drawing.Size(251, 153);
+            this.tbOutput.Size = new System.Drawing.Size(337, 153);
             this.tbOutput.TabIndex = 39;
             // 
             // tabPage_Eye
             // 
-            this.tabPage_Eye.Controls.Add(this.groupBox5);
+            this.tabPage_Eye.Controls.Add(this.gbGlintDetection);
             this.tabPage_Eye.Controls.Add(this.groupBox6);
-            this.tabPage_Eye.Controls.Add(this.groupBox4);
+            this.tabPage_Eye.Controls.Add(this.gbIrisDiameter);
             this.tabPage_Eye.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Eye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Eye.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Eye.Name = "tabPage_Eye";
-            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage_Eye.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Eye.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage_Eye.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Eye.TabIndex = 1;
             this.tabPage_Eye.Text = "Eye";
             this.tabPage_Eye.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // gbGlintDetection
             // 
-            this.groupBox5.Controls.Add(this.cbGM);
-            this.groupBox5.Controls.Add(this.panel4);
-            this.groupBox5.Controls.Add(this.cbGA);
-            this.groupBox5.Controls.Add(this.trackBarThresholdGlint);
-            this.groupBox5.Controls.Add(this.trackBarGAConstant);
-            this.groupBox5.Controls.Add(this.cbShowGlint);
-            this.groupBox5.Controls.Add(this.cbGlintDetection);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(2, 248);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(247, 120);
-            this.groupBox5.TabIndex = 60;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Glint Detection";
+            this.gbGlintDetection.Controls.Add(this.cbGlintManual);
+            this.gbGlintDetection.Controls.Add(this.panel4);
+            this.gbGlintDetection.Controls.Add(this.cbGlintAuto);
+            this.gbGlintDetection.Controls.Add(this.trackBarThresholdGlint);
+            this.gbGlintDetection.Controls.Add(this.trackBarGAConstant);
+            this.gbGlintDetection.Controls.Add(this.cbShowGlint);
+            this.gbGlintDetection.Controls.Add(this.cbGlintDetection);
+            this.gbGlintDetection.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbGlintDetection.Location = new System.Drawing.Point(2, 230);
+            this.gbGlintDetection.Margin = new System.Windows.Forms.Padding(2);
+            this.gbGlintDetection.Name = "gbGlintDetection";
+            this.gbGlintDetection.Padding = new System.Windows.Forms.Padding(2);
+            this.gbGlintDetection.Size = new System.Drawing.Size(333, 120);
+            this.gbGlintDetection.TabIndex = 60;
+            this.gbGlintDetection.TabStop = false;
+            this.gbGlintDetection.Text = "Glint Detection";
             // 
-            // cbGM
+            // cbGlintManual
             // 
-            this.cbGM.AutoSize = true;
-            this.cbGM.Location = new System.Drawing.Point(18, 67);
-            this.cbGM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbGM.Name = "cbGM";
-            this.cbGM.Size = new System.Drawing.Size(60, 17);
-            this.cbGM.TabIndex = 59;
-            this.cbGM.Text = "Manual";
-            this.cbGM.UseVisualStyleBackColor = true;
-            this.cbGM.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_2);
+            this.cbGlintManual.AutoSize = true;
+            this.cbGlintManual.Location = new System.Drawing.Point(18, 67);
+            this.cbGlintManual.Margin = new System.Windows.Forms.Padding(2);
+            this.cbGlintManual.Name = "cbGlintManual";
+            this.cbGlintManual.Size = new System.Drawing.Size(60, 17);
+            this.cbGlintManual.TabIndex = 59;
+            this.cbGlintManual.Text = "Manual";
+            this.cbGlintManual.UseVisualStyleBackColor = true;
+            this.cbGlintManual.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_2);
             // 
             // panel4
             // 
@@ -927,25 +925,11 @@ namespace Haytham
             this.panel4.Controls.Add(this.rbGGaussian);
             this.panel4.Controls.Add(this.rbGMean);
             this.panel4.Location = new System.Drawing.Point(9, 141);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(202, 112);
             this.panel4.TabIndex = 69;
             this.panel4.Visible = false;
-            // 
-            // trackBarGABlockSize
-            // 
-            this.trackBarGABlockSize.AutoSize = false;
-            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarGABlockSize.Maximum = 151;
-            this.trackBarGABlockSize.Minimum = 33;
-            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
-            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGABlockSize.TabIndex = 65;
-            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGABlockSize.Value = 113;
-            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
             // 
             // label11
             // 
@@ -961,7 +945,7 @@ namespace Haytham
             // 
             this.rbGGaussian.AutoSize = true;
             this.rbGGaussian.Location = new System.Drawing.Point(112, 11);
-            this.rbGGaussian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGGaussian.Margin = new System.Windows.Forms.Padding(2);
             this.rbGGaussian.Name = "rbGGaussian";
             this.rbGGaussian.Size = new System.Drawing.Size(69, 17);
             this.rbGGaussian.TabIndex = 61;
@@ -974,7 +958,7 @@ namespace Haytham
             this.rbGMean.AutoSize = true;
             this.rbGMean.Checked = true;
             this.rbGMean.Location = new System.Drawing.Point(35, 11);
-            this.rbGMean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGMean.Margin = new System.Windows.Forms.Padding(2);
             this.rbGMean.Name = "rbGMean";
             this.rbGMean.Size = new System.Drawing.Size(52, 17);
             this.rbGMean.TabIndex = 60;
@@ -983,47 +967,19 @@ namespace Haytham
             this.rbGMean.UseVisualStyleBackColor = true;
             this.rbGMean.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_4);
             // 
-            // cbGA
+            // cbGlintAuto
             // 
-            this.cbGA.AutoSize = true;
-            this.cbGA.Checked = true;
-            this.cbGA.Location = new System.Drawing.Point(18, 42);
-            this.cbGA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbGA.Name = "cbGA";
-            this.cbGA.Size = new System.Drawing.Size(47, 17);
-            this.cbGA.TabIndex = 58;
-            this.cbGA.TabStop = true;
-            this.cbGA.Text = "Auto";
-            this.cbGA.UseVisualStyleBackColor = true;
-            this.cbGA.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_2);
-            // 
-            // trackBarThresholdGlint
-            // 
-            this.trackBarThresholdGlint.AutoSize = false;
-            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
-            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarThresholdGlint.Maximum = 255;
-            this.trackBarThresholdGlint.Minimum = 120;
-            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
-            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdGlint.TabIndex = 67;
-            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdGlint.Value = 200;
-            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
-            // 
-            // trackBarGAConstant
-            // 
-            this.trackBarGAConstant.AutoSize = false;
-            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
-            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarGAConstant.Maximum = 0;
-            this.trackBarGAConstant.Minimum = -100;
-            this.trackBarGAConstant.Name = "trackBarGAConstant";
-            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGAConstant.TabIndex = 68;
-            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGAConstant.Value = -80;
-            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
+            this.cbGlintAuto.AutoSize = true;
+            this.cbGlintAuto.Checked = true;
+            this.cbGlintAuto.Location = new System.Drawing.Point(18, 42);
+            this.cbGlintAuto.Margin = new System.Windows.Forms.Padding(2);
+            this.cbGlintAuto.Name = "cbGlintAuto";
+            this.cbGlintAuto.Size = new System.Drawing.Size(47, 17);
+            this.cbGlintAuto.TabIndex = 58;
+            this.cbGlintAuto.TabStop = true;
+            this.cbGlintAuto.Text = "Auto";
+            this.cbGlintAuto.UseVisualStyleBackColor = true;
+            this.cbGlintAuto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_2);
             // 
             // cbShowGlint
             // 
@@ -1036,7 +992,7 @@ namespace Haytham
             this.cbShowGlint.FlatAppearance.BorderSize = 0;
             this.cbShowGlint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowGlint.Location = new System.Drawing.Point(195, 0);
-            this.cbShowGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowGlint.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowGlint.Name = "cbShowGlint";
             this.cbShowGlint.Size = new System.Drawing.Size(14, 18);
             this.cbShowGlint.TabIndex = 57;
@@ -1046,7 +1002,7 @@ namespace Haytham
             // cbGlintDetection
             // 
             this.cbGlintDetection.Location = new System.Drawing.Point(83, 0);
-            this.cbGlintDetection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGlintDetection.Margin = new System.Windows.Forms.Padding(2);
             this.cbGlintDetection.Name = "cbGlintDetection";
             this.cbGlintDetection.Size = new System.Drawing.Size(106, 17);
             this.cbGlintDetection.TabIndex = 56;
@@ -1056,7 +1012,7 @@ namespace Haytham
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.cbPM);
-            this.groupBox6.Controls.Add(this.panel3);
+            this.groupBox6.Controls.Add(this.pnlGlintDetection);
             this.groupBox6.Controls.Add(this.cbPA);
             this.groupBox6.Controls.Add(this.cbRemoveGlint);
             this.groupBox6.Controls.Add(this.cbDilateErode);
@@ -1065,11 +1021,11 @@ namespace Haytham
             this.groupBox6.Controls.Add(this.cbShowPupil);
             this.groupBox6.Controls.Add(this.cbPupilDetection);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(2, 72);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Location = new System.Drawing.Point(2, 54);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox6.Size = new System.Drawing.Size(247, 176);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox6.Size = new System.Drawing.Size(333, 176);
             this.groupBox6.TabIndex = 60;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Pupil Detection";
@@ -1078,7 +1034,7 @@ namespace Haytham
             // 
             this.cbPM.AutoSize = true;
             this.cbPM.Location = new System.Drawing.Point(17, 69);
-            this.cbPM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPM.Margin = new System.Windows.Forms.Padding(2);
             this.cbPM.Name = "cbPM";
             this.cbPM.Size = new System.Drawing.Size(60, 17);
             this.cbPM.TabIndex = 59;
@@ -1086,32 +1042,18 @@ namespace Haytham
             this.cbPM.UseVisualStyleBackColor = true;
             this.cbPM.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_1);
             // 
-            // panel3
+            // pnlGlintDetection
             // 
-            this.panel3.Controls.Add(this.trackBarPABlockSize);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.rbPGaussian);
-            this.panel3.Controls.Add(this.rbPMean);
-            this.panel3.Location = new System.Drawing.Point(7, 190);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(202, 112);
-            this.panel3.TabIndex = 67;
-            this.panel3.Visible = false;
-            // 
-            // trackBarPABlockSize
-            // 
-            this.trackBarPABlockSize.AutoSize = false;
-            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarPABlockSize.Maximum = 151;
-            this.trackBarPABlockSize.Minimum = 33;
-            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
-            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPABlockSize.TabIndex = 65;
-            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPABlockSize.Value = 113;
-            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
+            this.pnlGlintDetection.Controls.Add(this.trackBarPABlockSize);
+            this.pnlGlintDetection.Controls.Add(this.label10);
+            this.pnlGlintDetection.Controls.Add(this.rbPGaussian);
+            this.pnlGlintDetection.Controls.Add(this.rbPMean);
+            this.pnlGlintDetection.Location = new System.Drawing.Point(7, 190);
+            this.pnlGlintDetection.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlGlintDetection.Name = "pnlGlintDetection";
+            this.pnlGlintDetection.Size = new System.Drawing.Size(202, 112);
+            this.pnlGlintDetection.TabIndex = 67;
+            this.pnlGlintDetection.Visible = false;
             // 
             // label10
             // 
@@ -1127,7 +1069,7 @@ namespace Haytham
             // 
             this.rbPGaussian.AutoSize = true;
             this.rbPGaussian.Location = new System.Drawing.Point(112, 11);
-            this.rbPGaussian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPGaussian.Margin = new System.Windows.Forms.Padding(2);
             this.rbPGaussian.Name = "rbPGaussian";
             this.rbPGaussian.Size = new System.Drawing.Size(69, 17);
             this.rbPGaussian.TabIndex = 61;
@@ -1140,7 +1082,7 @@ namespace Haytham
             this.rbPMean.AutoSize = true;
             this.rbPMean.Checked = true;
             this.rbPMean.Location = new System.Drawing.Point(35, 11);
-            this.rbPMean.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPMean.Margin = new System.Windows.Forms.Padding(2);
             this.rbPMean.Name = "rbPMean";
             this.rbPMean.Size = new System.Drawing.Size(52, 17);
             this.rbPMean.TabIndex = 60;
@@ -1154,7 +1096,7 @@ namespace Haytham
             this.cbPA.AutoSize = true;
             this.cbPA.Checked = true;
             this.cbPA.Location = new System.Drawing.Point(18, 44);
-            this.cbPA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPA.Margin = new System.Windows.Forms.Padding(2);
             this.cbPA.Name = "cbPA";
             this.cbPA.Size = new System.Drawing.Size(47, 17);
             this.cbPA.TabIndex = 58;
@@ -1166,7 +1108,7 @@ namespace Haytham
             // cbRemoveGlint
             // 
             this.cbRemoveGlint.Location = new System.Drawing.Point(18, 131);
-            this.cbRemoveGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRemoveGlint.Margin = new System.Windows.Forms.Padding(2);
             this.cbRemoveGlint.Name = "cbRemoveGlint";
             this.cbRemoveGlint.Size = new System.Drawing.Size(148, 17);
             this.cbRemoveGlint.TabIndex = 66;
@@ -1177,40 +1119,13 @@ namespace Haytham
             // cbDilateErode
             // 
             this.cbDilateErode.Location = new System.Drawing.Point(18, 110);
-            this.cbDilateErode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDilateErode.Margin = new System.Windows.Forms.Padding(2);
             this.cbDilateErode.Name = "cbDilateErode";
             this.cbDilateErode.Size = new System.Drawing.Size(148, 17);
             this.cbDilateErode.TabIndex = 65;
             this.cbDilateErode.Text = "Fill Gaps";
             this.cbDilateErode.UseVisualStyleBackColor = true;
             this.cbDilateErode.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_6);
-            // 
-            // trackBarPAConstant
-            // 
-            this.trackBarPAConstant.AutoSize = false;
-            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
-            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarPAConstant.Maximum = 50;
-            this.trackBarPAConstant.Minimum = 5;
-            this.trackBarPAConstant.Name = "trackBarPAConstant";
-            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPAConstant.TabIndex = 64;
-            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPAConstant.Value = 20;
-            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
-            // 
-            // trackBarThresholdEye
-            // 
-            this.trackBarThresholdEye.AutoSize = false;
-            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
-            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarThresholdEye.Maximum = 255;
-            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
-            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdEye.TabIndex = 63;
-            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdEye.Value = 70;
-            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
             // 
             // cbShowPupil
             // 
@@ -1223,7 +1138,7 @@ namespace Haytham
             this.cbShowPupil.FlatAppearance.BorderSize = 0;
             this.cbShowPupil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowPupil.Location = new System.Drawing.Point(195, -2);
-            this.cbShowPupil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowPupil.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowPupil.Name = "cbShowPupil";
             this.cbShowPupil.Size = new System.Drawing.Size(14, 18);
             this.cbShowPupil.TabIndex = 56;
@@ -1235,26 +1150,26 @@ namespace Haytham
             this.cbPupilDetection.Checked = true;
             this.cbPupilDetection.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbPupilDetection.Location = new System.Drawing.Point(83, -1);
-            this.cbPupilDetection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPupilDetection.Margin = new System.Windows.Forms.Padding(2);
             this.cbPupilDetection.Name = "cbPupilDetection";
             this.cbPupilDetection.Size = new System.Drawing.Size(106, 17);
             this.cbPupilDetection.TabIndex = 55;
             this.cbPupilDetection.UseVisualStyleBackColor = true;
             this.cbPupilDetection.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_3);
             // 
-            // groupBox4
+            // gbIrisDiameter
             // 
-            this.groupBox4.Controls.Add(this.cbShowIris);
-            this.groupBox4.Controls.Add(this.trackBarControl2);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(2, 2);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(247, 70);
-            this.groupBox4.TabIndex = 59;
-            this.groupBox4.TabStop = false;
+            this.gbIrisDiameter.Controls.Add(this.cbShowIris);
+            this.gbIrisDiameter.Controls.Add(this.tbIrisDiameter);
+            this.gbIrisDiameter.Controls.Add(this.lbIrisDiameter);
+            this.gbIrisDiameter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbIrisDiameter.Location = new System.Drawing.Point(2, 2);
+            this.gbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
+            this.gbIrisDiameter.Name = "gbIrisDiameter";
+            this.gbIrisDiameter.Padding = new System.Windows.Forms.Padding(2);
+            this.gbIrisDiameter.Size = new System.Drawing.Size(333, 52);
+            this.gbIrisDiameter.TabIndex = 59;
+            this.gbIrisDiameter.TabStop = false;
             // 
             // cbShowIris
             // 
@@ -1266,37 +1181,23 @@ namespace Haytham
             this.cbShowIris.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbShowIris.FlatAppearance.BorderSize = 0;
             this.cbShowIris.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbShowIris.Location = new System.Drawing.Point(194, 24);
-            this.cbShowIris.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowIris.Location = new System.Drawing.Point(226, 18);
+            this.cbShowIris.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowIris.Name = "cbShowIris";
             this.cbShowIris.Size = new System.Drawing.Size(14, 18);
             this.cbShowIris.TabIndex = 3;
             this.cbShowIris.UseVisualStyleBackColor = false;
             this.cbShowIris.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_2);
             // 
-            // trackBarControl2
+            // lbIrisDiameter
             // 
-            this.trackBarControl2.AutoSize = false;
-            this.trackBarControl2.Location = new System.Drawing.Point(51, 23);
-            this.trackBarControl2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarControl2.Maximum = 500;
-            this.trackBarControl2.Minimum = 80;
-            this.trackBarControl2.Name = "trackBarControl2";
-            this.trackBarControl2.Size = new System.Drawing.Size(146, 27);
-            this.trackBarControl2.TabIndex = 2;
-            this.trackBarControl2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarControl2.Value = 200;
-            this.trackBarControl2.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 28);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "IrisSize";
+            this.lbIrisDiameter.AutoSize = true;
+            this.lbIrisDiameter.Location = new System.Drawing.Point(7, 21);
+            this.lbIrisDiameter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbIrisDiameter.Name = "lbIrisDiameter";
+            this.lbIrisDiameter.Size = new System.Drawing.Size(65, 13);
+            this.lbIrisDiameter.TabIndex = 1;
+            this.lbIrisDiameter.Text = "Iris Diameter";
             // 
             // tabPage_Scene
             // 
@@ -1305,9 +1206,9 @@ namespace Haytham
             this.tabPage_Scene.Controls.Add(this.cbShowGaze);
             this.tabPage_Scene.Controls.Add(this.groupBox7);
             this.tabPage_Scene.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Scene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Scene.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Scene.Name = "tabPage_Scene";
-            this.tabPage_Scene.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Scene.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Scene.TabIndex = 2;
             this.tabPage_Scene.Text = "Scene";
             this.tabPage_Scene.UseVisualStyleBackColor = true;
@@ -1328,10 +1229,10 @@ namespace Haytham
             this.groupBox8.Controls.Add(this.cbSceneUnDistortion);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox8.Location = new System.Drawing.Point(0, 216);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox8.Size = new System.Drawing.Size(251, 76);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Size = new System.Drawing.Size(337, 76);
             this.groupBox8.TabIndex = 63;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lens Distortion Correction";
@@ -1339,7 +1240,7 @@ namespace Haytham
             // btnSceneCameraCalibration
             // 
             this.btnSceneCameraCalibration.Location = new System.Drawing.Point(37, 26);
-            this.btnSceneCameraCalibration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSceneCameraCalibration.Margin = new System.Windows.Forms.Padding(2);
             this.btnSceneCameraCalibration.Name = "btnSceneCameraCalibration";
             this.btnSceneCameraCalibration.Size = new System.Drawing.Size(161, 35);
             this.btnSceneCameraCalibration.TabIndex = 59;
@@ -1350,7 +1251,7 @@ namespace Haytham
             // cbSceneUnDistortion
             // 
             this.cbSceneUnDistortion.Location = new System.Drawing.Point(136, 0);
-            this.cbSceneUnDistortion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSceneUnDistortion.Margin = new System.Windows.Forms.Padding(2);
             this.cbSceneUnDistortion.Name = "cbSceneUnDistortion";
             this.cbSceneUnDistortion.Size = new System.Drawing.Size(62, 13);
             this.cbSceneUnDistortion.TabIndex = 58;
@@ -1368,7 +1269,7 @@ namespace Haytham
             this.cbShowGaze.FlatAppearance.BorderSize = 0;
             this.cbShowGaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowGaze.Location = new System.Drawing.Point(7, 299);
-            this.cbShowGaze.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowGaze.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowGaze.Name = "cbShowGaze";
             this.cbShowGaze.Size = new System.Drawing.Size(14, 18);
             this.cbShowGaze.TabIndex = 67;
@@ -1378,16 +1279,16 @@ namespace Haytham
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.groupBox21);
-            this.groupBox7.Controls.Add(this.trackBarControl3);
+            this.groupBox7.Controls.Add(this.tbMonitorMinSize);
             this.groupBox7.Controls.Add(this.label16);
             this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.cbShowScreen);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox7.Size = new System.Drawing.Size(251, 216);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Size = new System.Drawing.Size(337, 216);
             this.groupBox7.TabIndex = 62;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Screen Detection";
@@ -1395,8 +1296,8 @@ namespace Haytham
             // groupBox21
             // 
             this.groupBox21.Controls.Add(this.cbShowEdges);
-            this.groupBox21.Controls.Add(this.trackBarB);
-            this.groupBox21.Controls.Add(this.trackBarG);
+            this.groupBox21.Controls.Add(this.tbMonitorBThreshold);
+            this.groupBox21.Controls.Add(this.tbMonitorGThreshold);
             this.groupBox21.Location = new System.Drawing.Point(7, 100);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(221, 102);
@@ -1413,55 +1314,12 @@ namespace Haytham
             this.cbShowEdges.FlatAppearance.BorderSize = 0;
             this.cbShowEdges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowEdges.Location = new System.Drawing.Point(195, -1);
-            this.cbShowEdges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowEdges.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowEdges.Name = "cbShowEdges";
             this.cbShowEdges.Size = new System.Drawing.Size(14, 18);
             this.cbShowEdges.TabIndex = 68;
             this.cbShowEdges.UseVisualStyleBackColor = false;
             this.cbShowEdges.CheckedChanged += new System.EventHandler(this.cbShowEdges_CheckedChanged);
-            // 
-            // trackBarB
-            // 
-            this.trackBarB.AutoSize = false;
-            this.trackBarB.Location = new System.Drawing.Point(18, 32);
-            this.trackBarB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarB.Maximum = 360;
-            this.trackBarB.Name = "trackBarB";
-            this.trackBarB.Size = new System.Drawing.Size(185, 24);
-            this.trackBarB.TabIndex = 65;
-            this.trackBarB.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarB.Value = 70;
-            this.trackBarB.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
-            // 
-            // trackBarG
-            // 
-            this.trackBarG.AutoSize = false;
-            this.trackBarG.Location = new System.Drawing.Point(18, 60);
-            this.trackBarG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarG.Maximum = 360;
-            this.trackBarG.Minimum = 5;
-            this.trackBarG.Name = "trackBarG";
-            this.trackBarG.Size = new System.Drawing.Size(185, 24);
-            this.trackBarG.TabIndex = 66;
-            this.trackBarG.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarG.Value = 290;
-            this.trackBarG.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
-            // 
-            // trackBarControl3
-            // 
-            this.trackBarControl3.AutoSize = false;
-            this.trackBarControl3.Location = new System.Drawing.Point(25, 47);
-            this.trackBarControl3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBarControl3.Maximum = 100;
-            this.trackBarControl3.Minimum = 5;
-            this.trackBarControl3.Name = "trackBarControl3";
-            this.trackBarControl3.Size = new System.Drawing.Size(185, 24);
-            this.trackBarControl3.TabIndex = 67;
-            this.trackBarControl3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarControl3.Value = 30;
-            this.trackBarControl3.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
-            this.trackBarControl3.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
-            this.trackBarControl3.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
             // 
             // label16
             // 
@@ -1493,7 +1351,7 @@ namespace Haytham
             this.cbShowScreen.FlatAppearance.BorderSize = 0;
             this.cbShowScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbShowScreen.Location = new System.Drawing.Point(203, 0);
-            this.cbShowScreen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbShowScreen.Margin = new System.Windows.Forms.Padding(2);
             this.cbShowScreen.Name = "cbShowScreen";
             this.cbShowScreen.Size = new System.Drawing.Size(14, 18);
             this.cbShowScreen.TabIndex = 58;
@@ -1504,12 +1362,12 @@ namespace Haytham
             // 
             this.tabPage_Calibration.Controls.Add(this.gbCalibrationGlass);
             this.tabPage_Calibration.Controls.Add(this.gbCalibrationRemote);
-            this.tabPage_Calibration.Controls.Add(this.gbCalibrationHM);
-            this.tabPage_Calibration.Controls.Add(this.panel5);
+            this.tabPage_Calibration.Controls.Add(this.gbCalibrationScene);
+            this.tabPage_Calibration.Controls.Add(this.pnlCalibration);
             this.tabPage_Calibration.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Calibration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Calibration.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Calibration.Name = "tabPage_Calibration";
-            this.tabPage_Calibration.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Calibration.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Calibration.TabIndex = 3;
             this.tabPage_Calibration.Text = "Calibration";
             this.tabPage_Calibration.UseVisualStyleBackColor = true;
@@ -1525,9 +1383,9 @@ namespace Haytham
             this.gbCalibrationGlass.Controls.Add(this.button3);
             this.gbCalibrationGlass.Controls.Add(this.button4);
             this.gbCalibrationGlass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbCalibrationGlass.Location = new System.Drawing.Point(0, 404);
+            this.gbCalibrationGlass.Location = new System.Drawing.Point(0, 320);
             this.gbCalibrationGlass.Name = "gbCalibrationGlass";
-            this.gbCalibrationGlass.Size = new System.Drawing.Size(251, 272);
+            this.gbCalibrationGlass.Size = new System.Drawing.Size(337, 272);
             this.gbCalibrationGlass.TabIndex = 62;
             this.gbCalibrationGlass.TabStop = false;
             this.gbCalibrationGlass.Text = "Gaze Estimation for the Glass ";
@@ -1535,7 +1393,7 @@ namespace Haytham
             // checkBox5
             // 
             this.checkBox5.Location = new System.Drawing.Point(11, 153);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(163, 34);
             this.checkBox5.TabIndex = 72;
@@ -1546,7 +1404,7 @@ namespace Haytham
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(173, 59);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(51, 50);
             this.button9.TabIndex = 71;
@@ -1558,7 +1416,7 @@ namespace Haytham
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(26, 199);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(83, 50);
             this.button5.TabIndex = 70;
@@ -1570,7 +1428,7 @@ namespace Haytham
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(113, 199);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(83, 50);
             this.button6.TabIndex = 69;
@@ -1604,7 +1462,7 @@ namespace Haytham
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(9, 59);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(73, 50);
             this.button3.TabIndex = 65;
@@ -1616,7 +1474,7 @@ namespace Haytham
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(86, 59);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(83, 50);
             this.button4.TabIndex = 64;
@@ -1630,9 +1488,9 @@ namespace Haytham
             this.gbCalibrationRemote.Controls.Add(this.button1);
             this.gbCalibrationRemote.Controls.Add(this.button2);
             this.gbCalibrationRemote.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbCalibrationRemote.Location = new System.Drawing.Point(0, 314);
+            this.gbCalibrationRemote.Location = new System.Drawing.Point(0, 230);
             this.gbCalibrationRemote.Name = "gbCalibrationRemote";
-            this.gbCalibrationRemote.Size = new System.Drawing.Size(251, 90);
+            this.gbCalibrationRemote.Size = new System.Drawing.Size(337, 90);
             this.gbCalibrationRemote.TabIndex = 3;
             this.gbCalibrationRemote.TabStop = false;
             this.gbCalibrationRemote.Text = "Gaze Estimation in the remote display";
@@ -1640,7 +1498,7 @@ namespace Haytham
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(8, 25);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 50);
             this.button1.TabIndex = 65;
@@ -1651,7 +1509,7 @@ namespace Haytham
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(131, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 50);
             this.button2.TabIndex = 64;
@@ -1659,20 +1517,20 @@ namespace Haytham
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
-            // gbCalibrationHM
+            // gbCalibrationScene
             // 
-            this.gbCalibrationHM.Controls.Add(this.lbl_calibration);
-            this.gbCalibrationHM.Controls.Add(this.btnCalibration_Homography);
-            this.gbCalibrationHM.Controls.Add(this.btnCalibration_Polynomial);
-            this.gbCalibrationHM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbCalibrationHM.Location = new System.Drawing.Point(0, 144);
-            this.gbCalibrationHM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbCalibrationHM.Name = "gbCalibrationHM";
-            this.gbCalibrationHM.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbCalibrationHM.Size = new System.Drawing.Size(251, 170);
-            this.gbCalibrationHM.TabIndex = 61;
-            this.gbCalibrationHM.TabStop = false;
-            this.gbCalibrationHM.Text = "Gaze Estimation in the scene image";
+            this.gbCalibrationScene.Controls.Add(this.lbl_calibration);
+            this.gbCalibrationScene.Controls.Add(this.btnCalibration_Homography);
+            this.gbCalibrationScene.Controls.Add(this.btnCalibration_Polynomial);
+            this.gbCalibrationScene.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbCalibrationScene.Location = new System.Drawing.Point(0, 144);
+            this.gbCalibrationScene.Margin = new System.Windows.Forms.Padding(2);
+            this.gbCalibrationScene.Name = "gbCalibrationScene";
+            this.gbCalibrationScene.Padding = new System.Windows.Forms.Padding(2);
+            this.gbCalibrationScene.Size = new System.Drawing.Size(337, 86);
+            this.gbCalibrationScene.TabIndex = 61;
+            this.gbCalibrationScene.TabStop = false;
+            this.gbCalibrationScene.Text = "Gaze Estimation in the scene image";
             // 
             // lbl_calibration
             // 
@@ -1687,7 +1545,7 @@ namespace Haytham
             // btnCalibration_Homography
             // 
             this.btnCalibration_Homography.Location = new System.Drawing.Point(8, 24);
-            this.btnCalibration_Homography.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalibration_Homography.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalibration_Homography.Name = "btnCalibration_Homography";
             this.btnCalibration_Homography.Size = new System.Drawing.Size(83, 50);
             this.btnCalibration_Homography.TabIndex = 63;
@@ -1698,7 +1556,7 @@ namespace Haytham
             // btnCalibration_Polynomial
             // 
             this.btnCalibration_Polynomial.Location = new System.Drawing.Point(131, 24);
-            this.btnCalibration_Polynomial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalibration_Polynomial.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalibration_Polynomial.Name = "btnCalibration_Polynomial";
             this.btnCalibration_Polynomial.Size = new System.Drawing.Size(83, 50);
             this.btnCalibration_Polynomial.TabIndex = 62;
@@ -1706,18 +1564,18 @@ namespace Haytham
             this.btnCalibration_Polynomial.UseVisualStyleBackColor = true;
             this.btnCalibration_Polynomial.Click += new System.EventHandler(this.button1_Click_7);
             // 
-            // panel5
+            // pnlCalibration
             // 
-            this.panel5.Controls.Add(this.rbGlint);
-            this.panel5.Controls.Add(this.rbPupilGlint);
-            this.panel5.Controls.Add(this.rdOnlyPupil);
-            this.panel5.Controls.Add(this.cbGazeSmoothing);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(251, 144);
-            this.panel5.TabIndex = 61;
+            this.pnlCalibration.Controls.Add(this.rbGlint);
+            this.pnlCalibration.Controls.Add(this.rbPupilGlint);
+            this.pnlCalibration.Controls.Add(this.rdOnlyPupil);
+            this.pnlCalibration.Controls.Add(this.cbGazeSmoothing);
+            this.pnlCalibration.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCalibration.Location = new System.Drawing.Point(0, 0);
+            this.pnlCalibration.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlCalibration.Name = "pnlCalibration";
+            this.pnlCalibration.Size = new System.Drawing.Size(337, 144);
+            this.pnlCalibration.TabIndex = 61;
             // 
             // rbGlint
             // 
@@ -1725,7 +1583,7 @@ namespace Haytham
             this.rbGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rbGlint.Location = new System.Drawing.Point(8, 47);
-            this.rbGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbGlint.Name = "rbGlint";
             this.rbGlint.Size = new System.Drawing.Size(80, 17);
             this.rbGlint.TabIndex = 67;
@@ -1740,7 +1598,7 @@ namespace Haytham
             this.rbPupilGlint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rbPupilGlint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rbPupilGlint.Location = new System.Drawing.Point(8, 26);
-            this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbPupilGlint.Margin = new System.Windows.Forms.Padding(2);
             this.rbPupilGlint.Name = "rbPupilGlint";
             this.rbPupilGlint.Size = new System.Drawing.Size(106, 17);
             this.rbPupilGlint.TabIndex = 59;
@@ -1755,7 +1613,7 @@ namespace Haytham
             this.rdOnlyPupil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rdOnlyPupil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.rdOnlyPupil.Location = new System.Drawing.Point(7, 5);
-            this.rdOnlyPupil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdOnlyPupil.Margin = new System.Windows.Forms.Padding(2);
             this.rdOnlyPupil.Name = "rdOnlyPupil";
             this.rdOnlyPupil.Size = new System.Drawing.Size(82, 17);
             this.rdOnlyPupil.TabIndex = 58;
@@ -1768,7 +1626,7 @@ namespace Haytham
             this.cbGazeSmoothing.Checked = true;
             this.cbGazeSmoothing.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbGazeSmoothing.Location = new System.Drawing.Point(7, 115);
-            this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGazeSmoothing.Margin = new System.Windows.Forms.Padding(2);
             this.cbGazeSmoothing.Name = "cbGazeSmoothing";
             this.cbGazeSmoothing.Size = new System.Drawing.Size(148, 17);
             this.cbGazeSmoothing.TabIndex = 66;
@@ -1778,31 +1636,31 @@ namespace Haytham
             // 
             // tabPage_Data
             // 
-            this.tabPage_Data.Controls.Add(this.groupBox11);
-            this.tabPage_Data.Controls.Add(this.groupBox10);
+            this.tabPage_Data.Controls.Add(this.gbDataCharts);
+            this.tabPage_Data.Controls.Add(this.gbDataExport);
             this.tabPage_Data.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Data.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Data.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Data.Name = "tabPage_Data";
-            this.tabPage_Data.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Data.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Data.TabIndex = 4;
             this.tabPage_Data.Text = "Data";
             this.tabPage_Data.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
+            // gbDataCharts
             // 
-            this.groupBox11.Controls.Add(this.chart3);
-            this.groupBox11.Controls.Add(this.cbPlot);
-            this.groupBox11.Controls.Add(this.chart2);
-            this.groupBox11.Controls.Add(this.chart1);
-            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox11.Location = new System.Drawing.Point(0, 124);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox11.Size = new System.Drawing.Size(251, 466);
-            this.groupBox11.TabIndex = 63;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Plot";
+            this.gbDataCharts.Controls.Add(this.chart3);
+            this.gbDataCharts.Controls.Add(this.cbPlot);
+            this.gbDataCharts.Controls.Add(this.chart2);
+            this.gbDataCharts.Controls.Add(this.chart1);
+            this.gbDataCharts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbDataCharts.Location = new System.Drawing.Point(0, 124);
+            this.gbDataCharts.Margin = new System.Windows.Forms.Padding(2);
+            this.gbDataCharts.Name = "gbDataCharts";
+            this.gbDataCharts.Padding = new System.Windows.Forms.Padding(2);
+            this.gbDataCharts.Size = new System.Drawing.Size(337, 466);
+            this.gbDataCharts.TabIndex = 63;
+            this.gbDataCharts.TabStop = false;
+            this.gbDataCharts.Text = "Plot";
             // 
             // chart3
             // 
@@ -1829,7 +1687,7 @@ namespace Haytham
             this.chart3.ChartAreas.Add(chartArea1);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart3.Location = new System.Drawing.Point(2, 294);
-            this.chart3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart3.Margin = new System.Windows.Forms.Padding(2);
             this.chart3.Name = "chart3";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1843,7 +1701,7 @@ namespace Haytham
             series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series1.Name = "PupilDiam";
             this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(247, 141);
+            this.chart3.Size = new System.Drawing.Size(333, 141);
             this.chart3.TabIndex = 47;
             this.chart3.Text = "chart3";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1859,7 +1717,7 @@ namespace Haytham
             // cbPlot
             // 
             this.cbPlot.Location = new System.Drawing.Point(27, -1);
-            this.cbPlot.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPlot.Margin = new System.Windows.Forms.Padding(2);
             this.cbPlot.Name = "cbPlot";
             this.cbPlot.Size = new System.Drawing.Size(183, 17);
             this.cbPlot.TabIndex = 58;
@@ -1891,7 +1749,7 @@ namespace Haytham
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart2.Location = new System.Drawing.Point(2, 153);
-            this.chart2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart2.Margin = new System.Windows.Forms.Padding(2);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1905,7 +1763,7 @@ namespace Haytham
             series2.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series2.Name = "PupilY";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(247, 141);
+            this.chart2.Size = new System.Drawing.Size(333, 141);
             this.chart2.TabIndex = 46;
             this.chart2.Text = "chart2";
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1943,7 +1801,7 @@ namespace Haytham
             this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart1.Location = new System.Drawing.Point(2, 15);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -1957,7 +1815,7 @@ namespace Haytham
             series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
             series3.Name = "PupilX";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(247, 138);
+            this.chart1.Size = new System.Drawing.Size(333, 138);
             this.chart1.TabIndex = 45;
             this.chart1.Text = "chart1";
             title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1970,120 +1828,120 @@ namespace Haytham
             title3.Text = "Pupil X";
             this.chart1.Titles.Add(title3);
             // 
-            // groupBox10
+            // gbDataExport
             // 
-            this.groupBox10.Controls.Add(this.checkBox3);
-            this.groupBox10.Controls.Add(this.checkBox1);
-            this.groupBox10.Controls.Add(this.btn_RecordProgress);
-            this.groupBox10.Controls.Add(this.btn_Record);
-            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox10.Location = new System.Drawing.Point(0, 0);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox10.Size = new System.Drawing.Size(251, 124);
-            this.groupBox10.TabIndex = 63;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Record Videos and EyeData";
+            this.gbDataExport.Controls.Add(this.cbRecordSceneVideo);
+            this.gbDataExport.Controls.Add(this.cbRecordEyeVideo);
+            this.gbDataExport.Controls.Add(this.pbRecordProgress);
+            this.gbDataExport.Controls.Add(this.btnRecord);
+            this.gbDataExport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbDataExport.Location = new System.Drawing.Point(0, 0);
+            this.gbDataExport.Margin = new System.Windows.Forms.Padding(2);
+            this.gbDataExport.Name = "gbDataExport";
+            this.gbDataExport.Padding = new System.Windows.Forms.Padding(2);
+            this.gbDataExport.Size = new System.Drawing.Size(337, 124);
+            this.gbDataExport.TabIndex = 63;
+            this.gbDataExport.TabStop = false;
+            this.gbDataExport.Text = "Record Videos and EyeData";
             // 
-            // checkBox3
+            // cbRecordSceneVideo
             // 
-            this.checkBox3.Location = new System.Drawing.Point(109, 91);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(86, 23);
-            this.checkBox3.TabIndex = 60;
-            this.checkBox3.Text = "Scene video";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.cbRecordSceneVideo.Location = new System.Drawing.Point(109, 91);
+            this.cbRecordSceneVideo.Margin = new System.Windows.Forms.Padding(2);
+            this.cbRecordSceneVideo.Name = "cbRecordSceneVideo";
+            this.cbRecordSceneVideo.Size = new System.Drawing.Size(86, 23);
+            this.cbRecordSceneVideo.TabIndex = 60;
+            this.cbRecordSceneVideo.Text = "Scene video";
+            this.cbRecordSceneVideo.UseVisualStyleBackColor = true;
+            this.cbRecordSceneVideo.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // checkBox1
+            // cbRecordEyeVideo
             // 
-            this.checkBox1.Location = new System.Drawing.Point(36, 91);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 23);
-            this.checkBox1.TabIndex = 59;
-            this.checkBox1.Text = "Eye video";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbRecordEyeVideo.Location = new System.Drawing.Point(36, 91);
+            this.cbRecordEyeVideo.Margin = new System.Windows.Forms.Padding(2);
+            this.cbRecordEyeVideo.Name = "cbRecordEyeVideo";
+            this.cbRecordEyeVideo.Size = new System.Drawing.Size(86, 23);
+            this.cbRecordEyeVideo.TabIndex = 59;
+            this.cbRecordEyeVideo.Text = "Eye video";
+            this.cbRecordEyeVideo.UseVisualStyleBackColor = true;
+            this.cbRecordEyeVideo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // btn_RecordProgress
+            // pbRecordProgress
             // 
-            this.btn_RecordProgress.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_RecordProgress.ForeColor = System.Drawing.Color.Red;
-            this.btn_RecordProgress.Location = new System.Drawing.Point(36, 74);
-            this.btn_RecordProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_RecordProgress.MarqueeAnimationSpeed = 10;
-            this.btn_RecordProgress.Name = "btn_RecordProgress";
-            this.btn_RecordProgress.Size = new System.Drawing.Size(150, 10);
-            this.btn_RecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.btn_RecordProgress.TabIndex = 0;
-            this.btn_RecordProgress.Click += new System.EventHandler(this.progressBar1_Click);
+            this.pbRecordProgress.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pbRecordProgress.ForeColor = System.Drawing.Color.Red;
+            this.pbRecordProgress.Location = new System.Drawing.Point(36, 74);
+            this.pbRecordProgress.Margin = new System.Windows.Forms.Padding(2);
+            this.pbRecordProgress.MarqueeAnimationSpeed = 10;
+            this.pbRecordProgress.Name = "pbRecordProgress";
+            this.pbRecordProgress.Size = new System.Drawing.Size(150, 10);
+            this.pbRecordProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.pbRecordProgress.TabIndex = 0;
+            this.pbRecordProgress.Click += new System.EventHandler(this.progressBar1_Click);
             // 
-            // btn_Record
+            // btnRecord
             // 
-            this.btn_Record.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btn_Record.Location = new System.Drawing.Point(36, 21);
-            this.btn_Record.Name = "btn_Record";
-            this.btn_Record.Size = new System.Drawing.Size(150, 54);
-            this.btn_Record.TabIndex = 3;
-            this.btn_Record.Text = "Export";
-            this.btn_Record.UseVisualStyleBackColor = true;
-            this.btn_Record.Click += new System.EventHandler(this.btn_Record_Click);
+            this.btnRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnRecord.Location = new System.Drawing.Point(36, 21);
+            this.btnRecord.Name = "btnRecord";
+            this.btnRecord.Size = new System.Drawing.Size(150, 54);
+            this.btnRecord.TabIndex = 3;
+            this.btnRecord.Text = "Export";
+            this.btnRecord.UseVisualStyleBackColor = true;
+            this.btnRecord.Click += new System.EventHandler(this.btn_Record_Click);
             // 
             // tabPage_Clients
             // 
-            this.tabPage_Clients.Controls.Add(this.panelClients);
-            this.tabPage_Clients.Controls.Add(this.groupBox12);
+            this.tabPage_Clients.Controls.Add(this.gbClientsSettings);
+            this.tabPage_Clients.Controls.Add(this.gbClientsMessages);
             this.tabPage_Clients.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_Clients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_Clients.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_Clients.Name = "tabPage_Clients";
-            this.tabPage_Clients.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Clients.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Clients.TabIndex = 5;
             this.tabPage_Clients.Text = "Clients";
             this.tabPage_Clients.UseVisualStyleBackColor = true;
             // 
-            // panelClients
+            // gbClientsSettings
             // 
-            this.panelClients.AutoSize = true;
-            this.panelClients.Controls.Add(this.radioButtonAutoActivation);
-            this.panelClients.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelClients.Location = new System.Drawing.Point(0, 230);
-            this.panelClients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelClients.Name = "panelClients";
-            this.panelClients.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelClients.Size = new System.Drawing.Size(251, 53);
-            this.panelClients.TabIndex = 64;
-            this.panelClients.TabStop = false;
-            this.panelClients.Text = "Clients";
+            this.gbClientsSettings.AutoSize = true;
+            this.gbClientsSettings.Controls.Add(this.rbAutoActivation);
+            this.gbClientsSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbClientsSettings.Location = new System.Drawing.Point(0, 230);
+            this.gbClientsSettings.Margin = new System.Windows.Forms.Padding(2);
+            this.gbClientsSettings.Name = "gbClientsSettings";
+            this.gbClientsSettings.Padding = new System.Windows.Forms.Padding(2);
+            this.gbClientsSettings.Size = new System.Drawing.Size(337, 53);
+            this.gbClientsSettings.TabIndex = 64;
+            this.gbClientsSettings.TabStop = false;
+            this.gbClientsSettings.Text = "Clients";
             // 
-            // radioButtonAutoActivation
+            // rbAutoActivation
             // 
-            this.radioButtonAutoActivation.AutoSize = true;
-            this.radioButtonAutoActivation.Checked = true;
-            this.radioButtonAutoActivation.Location = new System.Drawing.Point(132, 18);
-            this.radioButtonAutoActivation.Name = "radioButtonAutoActivation";
-            this.radioButtonAutoActivation.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonAutoActivation.TabIndex = 0;
-            this.radioButtonAutoActivation.TabStop = true;
-            this.radioButtonAutoActivation.Text = "Auto Activation";
-            this.radioButtonAutoActivation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButtonAutoActivation.UseVisualStyleBackColor = true;
-            this.radioButtonAutoActivation.CheckedChanged += new System.EventHandler(this.radioButtonAutoActivation_CheckedChanged);
+            this.rbAutoActivation.AutoSize = true;
+            this.rbAutoActivation.Checked = true;
+            this.rbAutoActivation.Location = new System.Drawing.Point(132, 18);
+            this.rbAutoActivation.Name = "rbAutoActivation";
+            this.rbAutoActivation.Size = new System.Drawing.Size(97, 17);
+            this.rbAutoActivation.TabIndex = 0;
+            this.rbAutoActivation.TabStop = true;
+            this.rbAutoActivation.Text = "Auto Activation";
+            this.rbAutoActivation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbAutoActivation.UseVisualStyleBackColor = true;
+            this.rbAutoActivation.CheckedChanged += new System.EventHandler(this.radioButtonAutoActivation_CheckedChanged);
             // 
-            // groupBox12
+            // gbClientsMessages
             // 
-            this.groupBox12.Controls.Add(this.TextBoxServer);
-            this.groupBox12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox12.Location = new System.Drawing.Point(0, 0);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox12.Size = new System.Drawing.Size(251, 230);
-            this.groupBox12.TabIndex = 63;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Messages ";
+            this.gbClientsMessages.Controls.Add(this.TextBoxServer);
+            this.gbClientsMessages.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbClientsMessages.Location = new System.Drawing.Point(0, 0);
+            this.gbClientsMessages.Margin = new System.Windows.Forms.Padding(2);
+            this.gbClientsMessages.Name = "gbClientsMessages";
+            this.gbClientsMessages.Padding = new System.Windows.Forms.Padding(2);
+            this.gbClientsMessages.Size = new System.Drawing.Size(337, 230);
+            this.gbClientsMessages.TabIndex = 63;
+            this.gbClientsMessages.TabStop = false;
+            this.gbClientsMessages.Text = "Messages ";
             // 
             // TextBoxServer
             // 
@@ -2093,7 +1951,7 @@ namespace Haytham
             this.TextBoxServer.Name = "TextBoxServer";
             this.TextBoxServer.ReadOnly = true;
             this.TextBoxServer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TextBoxServer.Size = new System.Drawing.Size(247, 213);
+            this.TextBoxServer.Size = new System.Drawing.Size(333, 213);
             this.TextBoxServer.TabIndex = 38;
             // 
             // tabPage_Gesture
@@ -2104,8 +1962,8 @@ namespace Haytham
             this.tabPage_Gesture.Controls.Add(this.groupBox17);
             this.tabPage_Gesture.Location = new System.Drawing.Point(4, 40);
             this.tabPage_Gesture.Name = "tabPage_Gesture";
-            this.tabPage_Gesture.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage_Gesture.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_Gesture.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Gesture.Size = new System.Drawing.Size(337, 647);
             this.tabPage_Gesture.TabIndex = 6;
             this.tabPage_Gesture.Text = "Gestures";
             this.tabPage_Gesture.UseVisualStyleBackColor = true;
@@ -2123,7 +1981,7 @@ namespace Haytham
             this.groupBox19.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox19.Location = new System.Drawing.Point(3, 432);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(245, 289);
+            this.groupBox19.Size = new System.Drawing.Size(331, 289);
             this.groupBox19.TabIndex = 3;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Custom gestures  (made only by head yaw and pitch)";
@@ -2231,7 +2089,7 @@ namespace Haytham
             this.groupBox20.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox20.Location = new System.Drawing.Point(3, 143);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(245, 289);
+            this.groupBox20.Size = new System.Drawing.Size(331, 289);
             this.groupBox20.TabIndex = 3;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "Head yaw and pitch";
@@ -2416,12 +2274,12 @@ namespace Haytham
             // 
             this.groupBox16.Controls.Add(this.pbTRight);
             this.groupBox16.Controls.Add(this.pbTLeft);
-            this.groupBox16.Controls.Add(this.checkBox2);
-            this.groupBox16.Controls.Add(this.checkEditShowOpticalFlow);
+            this.groupBox16.Controls.Add(this.cbHeadRollGestures);
+            this.groupBox16.Controls.Add(this.cbEditShowOpticalFlow);
             this.groupBox16.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox16.Location = new System.Drawing.Point(3, 66);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(245, 77);
+            this.groupBox16.Size = new System.Drawing.Size(331, 77);
             this.groupBox16.TabIndex = 5;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Head Roll";
@@ -2444,33 +2302,33 @@ namespace Haytham
             this.pbTLeft.TabIndex = 87;
             this.pbTLeft.TabStop = false;
             // 
-            // checkBox2
+            // cbHeadRollGestures
             // 
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(64, 0);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(117, 19);
-            this.checkBox2.TabIndex = 85;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_5);
+            this.cbHeadRollGestures.Checked = true;
+            this.cbHeadRollGestures.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbHeadRollGestures.Location = new System.Drawing.Point(64, 0);
+            this.cbHeadRollGestures.Margin = new System.Windows.Forms.Padding(2);
+            this.cbHeadRollGestures.Name = "cbHeadRollGestures";
+            this.cbHeadRollGestures.Size = new System.Drawing.Size(117, 19);
+            this.cbHeadRollGestures.TabIndex = 85;
+            this.cbHeadRollGestures.UseVisualStyleBackColor = true;
+            this.cbHeadRollGestures.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_5);
             // 
-            // checkEditShowOpticalFlow
+            // cbEditShowOpticalFlow
             // 
-            this.checkEditShowOpticalFlow.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkEditShowOpticalFlow.BackColor = System.Drawing.Color.Transparent;
-            this.checkEditShowOpticalFlow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("checkEditShowOpticalFlow.BackgroundImage")));
-            this.checkEditShowOpticalFlow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.checkEditShowOpticalFlow.FlatAppearance.BorderSize = 0;
-            this.checkEditShowOpticalFlow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkEditShowOpticalFlow.Location = new System.Drawing.Point(185, 1);
-            this.checkEditShowOpticalFlow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkEditShowOpticalFlow.Name = "checkEditShowOpticalFlow";
-            this.checkEditShowOpticalFlow.Size = new System.Drawing.Size(14, 18);
-            this.checkEditShowOpticalFlow.TabIndex = 82;
-            this.checkEditShowOpticalFlow.UseVisualStyleBackColor = false;
-            this.checkEditShowOpticalFlow.CheckedChanged += new System.EventHandler(this.checkEditShowOpticalFlow_CheckedChanged);
+            this.cbEditShowOpticalFlow.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbEditShowOpticalFlow.BackColor = System.Drawing.Color.Transparent;
+            this.cbEditShowOpticalFlow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cbEditShowOpticalFlow.BackgroundImage")));
+            this.cbEditShowOpticalFlow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cbEditShowOpticalFlow.FlatAppearance.BorderSize = 0;
+            this.cbEditShowOpticalFlow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEditShowOpticalFlow.Location = new System.Drawing.Point(185, 1);
+            this.cbEditShowOpticalFlow.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEditShowOpticalFlow.Name = "cbEditShowOpticalFlow";
+            this.cbEditShowOpticalFlow.Size = new System.Drawing.Size(14, 18);
+            this.cbEditShowOpticalFlow.TabIndex = 82;
+            this.cbEditShowOpticalFlow.UseVisualStyleBackColor = false;
+            this.cbEditShowOpticalFlow.CheckedChanged += new System.EventHandler(this.checkEditShowOpticalFlow_CheckedChanged);
             // 
             // groupBox17
             // 
@@ -2479,7 +2337,7 @@ namespace Haytham
             this.groupBox17.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox17.Location = new System.Drawing.Point(3, 3);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(245, 63);
+            this.groupBox17.Size = new System.Drawing.Size(331, 63);
             this.groupBox17.TabIndex = 3;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Blink";
@@ -2512,10 +2370,10 @@ namespace Haytham
             // 
             this.tabPage_ExtData.Controls.Add(this.groupBox13);
             this.tabPage_ExtData.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_ExtData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_ExtData.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_ExtData.Name = "tabPage_ExtData";
-            this.tabPage_ExtData.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage_ExtData.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_ExtData.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_ExtData.Size = new System.Drawing.Size(337, 647);
             this.tabPage_ExtData.TabIndex = 7;
             this.tabPage_ExtData.Text = "ExtData";
             this.tabPage_ExtData.UseVisualStyleBackColor = true;
@@ -2529,7 +2387,7 @@ namespace Haytham
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox13.Location = new System.Drawing.Point(3, 3);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(245, 69);
+            this.groupBox13.Size = new System.Drawing.Size(331, 69);
             this.groupBox13.TabIndex = 0;
             this.groupBox13.TabStop = false;
             // 
@@ -2592,17 +2450,17 @@ namespace Haytham
             this.tabPage_EyeGrip.Controls.Add(this.textBox1);
             this.tabPage_EyeGrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.tabPage_EyeGrip.Location = new System.Drawing.Point(4, 40);
-            this.tabPage_EyeGrip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage_EyeGrip.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage_EyeGrip.Name = "tabPage_EyeGrip";
-            this.tabPage_EyeGrip.Size = new System.Drawing.Size(251, 647);
+            this.tabPage_EyeGrip.Size = new System.Drawing.Size(337, 647);
             this.tabPage_EyeGrip.TabIndex = 9;
             this.tabPage_EyeGrip.Text = "EyeGrip";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.lbSpeedMindValue);
             this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.trackBar1);
+            this.groupBox3.Controls.Add(this.tbSpeedMind);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.radioButton2);
             this.groupBox3.Controls.Add(this.radioButton1);
@@ -2611,27 +2469,27 @@ namespace Haytham
             this.groupBox3.Controls.Add(this.button13);
             this.groupBox3.Controls.Add(this.label_SCRL);
             this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.numericUpDown2);
+            this.groupBox3.Controls.Add(this.nudSCRLSensitivity);
             this.groupBox3.Controls.Add(this.button14);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 152);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(251, 426);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(337, 426);
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Qualitative Study";
             // 
-            // label22
+            // lbSpeedMindValue
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(151, 51);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(54, 13);
-            this.label22.TabIndex = 78;
-            this.label22.Text = "Sensitivity";
+            this.lbSpeedMindValue.AutoSize = true;
+            this.lbSpeedMindValue.Location = new System.Drawing.Point(151, 51);
+            this.lbSpeedMindValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSpeedMindValue.Name = "lbSpeedMindValue";
+            this.lbSpeedMindValue.Size = new System.Drawing.Size(54, 13);
+            this.lbSpeedMindValue.TabIndex = 78;
+            this.lbSpeedMindValue.Text = "Sensitivity";
             // 
             // label21
             // 
@@ -2643,19 +2501,19 @@ namespace Haytham
             this.label21.TabIndex = 77;
             this.label21.Text = "Sensitivity";
             // 
-            // trackBar1
+            // tbSpeedMind
             // 
-            this.trackBar1.Location = new System.Drawing.Point(111, 67);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.trackBar1.Maximum = 2600;
-            this.trackBar1.Minimum = 1000;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(127, 45);
-            this.trackBar1.SmallChange = 10;
-            this.trackBar1.TabIndex = 76;
-            this.trackBar1.TickFrequency = 10;
-            this.trackBar1.Value = 1800;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.tbSpeedMind.Location = new System.Drawing.Point(111, 67);
+            this.tbSpeedMind.Margin = new System.Windows.Forms.Padding(2);
+            this.tbSpeedMind.Maximum = 2600;
+            this.tbSpeedMind.Minimum = 1000;
+            this.tbSpeedMind.Name = "tbSpeedMind";
+            this.tbSpeedMind.Size = new System.Drawing.Size(127, 45);
+            this.tbSpeedMind.SmallChange = 10;
+            this.tbSpeedMind.TabIndex = 76;
+            this.tbSpeedMind.TickFrequency = 10;
+            this.tbSpeedMind.Value = 1800;
+            this.tbSpeedMind.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // label20
             // 
@@ -2671,7 +2529,7 @@ namespace Haytham
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(148, 153);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(60, 17);
             this.radioButton2.TabIndex = 74;
@@ -2684,7 +2542,7 @@ namespace Haytham
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(77, 153);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(62, 17);
             this.radioButton1.TabIndex = 73;
@@ -2745,24 +2603,24 @@ namespace Haytham
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // numericUpDown2
+            // nudSCRLSensitivity
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(77, 24);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.nudSCRLSensitivity.Location = new System.Drawing.Point(77, 24);
+            this.nudSCRLSensitivity.Margin = new System.Windows.Forms.Padding(2);
+            this.nudSCRLSensitivity.Minimum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown2.TabIndex = 70;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.nudSCRLSensitivity.Name = "nudSCRLSensitivity";
+            this.nudSCRLSensitivity.Size = new System.Drawing.Size(40, 20);
+            this.nudSCRLSensitivity.TabIndex = 70;
+            this.nudSCRLSensitivity.Value = new decimal(new int[] {
             48,
             0,
             0,
             0});
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged_1);
+            this.nudSCRLSensitivity.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged_1);
             // 
             // button14
             // 
@@ -2781,10 +2639,10 @@ namespace Haytham
             this.groupBox2.Controls.Add(this.button11);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 20);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(251, 132);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(337, 132);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Quantitative Study";
@@ -2817,24 +2675,24 @@ namespace Haytham
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(251, 20);
+            this.textBox1.Size = new System.Drawing.Size(337, 20);
             this.textBox1.TabIndex = 62;
             this.textBox1.Text = "p1";
             // 
-            // groupBox14
+            // gbMain
             // 
-            this.groupBox14.AutoSize = true;
-            this.groupBox14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox14.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox14.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox14.Location = new System.Drawing.Point(0, 24);
-            this.groupBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox14.Size = new System.Drawing.Size(785, 667);
-            this.groupBox14.TabIndex = 1;
-            this.groupBox14.TabStop = false;
+            this.gbMain.AutoSize = true;
+            this.gbMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbMain.BackColor = System.Drawing.SystemColors.Control;
+            this.gbMain.Controls.Add(this.tableLayoutPanel1);
+            this.gbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbMain.Location = new System.Drawing.Point(0, 24);
+            this.gbMain.Margin = new System.Windows.Forms.Padding(2);
+            this.gbMain.Name = "gbMain";
+            this.gbMain.Padding = new System.Windows.Forms.Padding(2);
+            this.gbMain.Size = new System.Drawing.Size(785, 667);
+            this.gbMain.TabIndex = 1;
+            this.gbMain.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -2866,28 +2724,28 @@ namespace Haytham
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox_imgEye);
+            this.splitContainer2.Panel1.Controls.Add(this.gbEyeImage);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox_imgScene);
+            this.splitContainer2.Panel2.Controls.Add(this.gbSceneImage);
             this.splitContainer2.Size = new System.Drawing.Size(1097, 637);
             this.splitContainer2.SplitterDistance = 243;
             this.splitContainer2.TabIndex = 73;
             // 
-            // groupBox_imgEye
+            // gbEyeImage
             // 
-            this.groupBox_imgEye.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox_imgEye.Controls.Add(this.panel1);
-            this.groupBox_imgEye.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_imgEye.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_imgEye.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgEye.Name = "groupBox_imgEye";
-            this.groupBox_imgEye.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgEye.Size = new System.Drawing.Size(243, 637);
-            this.groupBox_imgEye.TabIndex = 67;
-            this.groupBox_imgEye.TabStop = false;
-            this.groupBox_imgEye.Text = "Eye";
+            this.gbEyeImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbEyeImage.Controls.Add(this.panel1);
+            this.gbEyeImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbEyeImage.Location = new System.Drawing.Point(0, 0);
+            this.gbEyeImage.Margin = new System.Windows.Forms.Padding(2);
+            this.gbEyeImage.Name = "gbEyeImage";
+            this.gbEyeImage.Padding = new System.Windows.Forms.Padding(2);
+            this.gbEyeImage.Size = new System.Drawing.Size(243, 637);
+            this.gbEyeImage.TabIndex = 67;
+            this.gbEyeImage.TabStop = false;
+            this.gbEyeImage.Text = "Eye";
             // 
             // panel1
             // 
@@ -2909,19 +2767,19 @@ namespace Haytham
             this.imEye.TabStop = false;
             this.imEye.Paint += new System.Windows.Forms.PaintEventHandler(this.imEye_Paint);
             // 
-            // groupBox_imgScene
+            // gbSceneImage
             // 
-            this.groupBox_imgScene.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox_imgScene.Controls.Add(this.panel2);
-            this.groupBox_imgScene.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_imgScene.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_imgScene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgScene.Name = "groupBox_imgScene";
-            this.groupBox_imgScene.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_imgScene.Size = new System.Drawing.Size(850, 637);
-            this.groupBox_imgScene.TabIndex = 68;
-            this.groupBox_imgScene.TabStop = false;
-            this.groupBox_imgScene.Text = "Scene";
+            this.gbSceneImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbSceneImage.Controls.Add(this.panel2);
+            this.gbSceneImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbSceneImage.Location = new System.Drawing.Point(0, 0);
+            this.gbSceneImage.Margin = new System.Windows.Forms.Padding(2);
+            this.gbSceneImage.Name = "gbSceneImage";
+            this.gbSceneImage.Padding = new System.Windows.Forms.Padding(2);
+            this.gbSceneImage.Size = new System.Drawing.Size(850, 637);
+            this.gbSceneImage.TabIndex = 68;
+            this.gbSceneImage.TabStop = false;
+            this.gbSceneImage.Text = "Scene";
             // 
             // panel2
             // 
@@ -2959,7 +2817,6 @@ namespace Haytham
             // groupBox18
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox18, 3);
-            this.groupBox18.Controls.Add(this.trackBarTest);
             this.groupBox18.Controls.Add(this.chartTest);
             this.groupBox18.Location = new System.Drawing.Point(3, 646);
             this.groupBox18.Name = "groupBox18";
@@ -2968,17 +2825,6 @@ namespace Haytham
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "debug";
             this.groupBox18.Visible = false;
-            // 
-            // trackBarTest
-            // 
-            this.trackBarTest.Location = new System.Drawing.Point(325, 19);
-            this.trackBarTest.Maximum = 25;
-            this.trackBarTest.Minimum = 3;
-            this.trackBarTest.Name = "trackBarTest";
-            this.trackBarTest.Size = new System.Drawing.Size(227, 45);
-            this.trackBarTest.TabIndex = 3;
-            this.trackBarTest.Value = 21;
-            this.trackBarTest.ValueChanged += new System.EventHandler(this.trackBarTest_ValueChanged);
             // 
             // chartTest
             // 
@@ -3005,7 +2851,7 @@ namespace Haytham
             this.chartTest.ChartAreas.Add(chartArea4);
             this.chartTest.Dock = System.Windows.Forms.DockStyle.Left;
             this.chartTest.Location = new System.Drawing.Point(3, 16);
-            this.chartTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartTest.Margin = new System.Windows.Forms.Padding(2);
             this.chartTest.Name = "chartTest";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -3042,29 +2888,29 @@ namespace Haytham
             this.imEyeTest.TabStop = false;
             this.imEyeTest.Visible = false;
             // 
-            // panel6
+            // pnlTop
             // 
-            this.panel6.Controls.Add(this.splitter7);
-            this.panel6.Controls.Add(this.lblIP);
-            this.panel6.Controls.Add(this.splitter6);
-            this.panel6.Controls.Add(this.lblGlintCenter);
-            this.panel6.Controls.Add(this.splitter3);
-            this.panel6.Controls.Add(this.lblPupilCenter);
-            this.panel6.Controls.Add(this.splitter2);
-            this.panel6.Controls.Add(this.comboBox_SceneTimer);
-            this.panel6.Controls.Add(this.splitter1);
-            this.panel6.Controls.Add(this.comboBox_EyeTimer);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(785, 24);
-            this.panel6.TabIndex = 0;
+            this.pnlTop.Controls.Add(this.splitter7);
+            this.pnlTop.Controls.Add(this.lblIP);
+            this.pnlTop.Controls.Add(this.splitter6);
+            this.pnlTop.Controls.Add(this.lblGlintCenter);
+            this.pnlTop.Controls.Add(this.splitter3);
+            this.pnlTop.Controls.Add(this.lblPupilCenter);
+            this.pnlTop.Controls.Add(this.splitter2);
+            this.pnlTop.Controls.Add(this.cmbSceneTimer);
+            this.pnlTop.Controls.Add(this.splitter1);
+            this.pnlTop.Controls.Add(this.cmbEyeTimer);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(785, 24);
+            this.pnlTop.TabIndex = 0;
             // 
             // splitter7
             // 
             this.splitter7.Location = new System.Drawing.Point(557, 0);
-            this.splitter7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter7.Margin = new System.Windows.Forms.Padding(2);
             this.splitter7.Name = "splitter7";
             this.splitter7.Size = new System.Drawing.Size(2, 24);
             this.splitter7.TabIndex = 73;
@@ -3075,7 +2921,7 @@ namespace Haytham
             this.lblIP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblIP.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblIP.Location = new System.Drawing.Point(378, 0);
-            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(2);
             this.lblIP.Multiline = true;
             this.lblIP.Name = "lblIP";
             this.lblIP.ReadOnly = true;
@@ -3087,7 +2933,7 @@ namespace Haytham
             // splitter6
             // 
             this.splitter6.Location = new System.Drawing.Point(376, 0);
-            this.splitter6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter6.Margin = new System.Windows.Forms.Padding(2);
             this.splitter6.Name = "splitter6";
             this.splitter6.Size = new System.Drawing.Size(2, 24);
             this.splitter6.TabIndex = 71;
@@ -3108,7 +2954,7 @@ namespace Haytham
             // splitter3
             // 
             this.splitter3.Location = new System.Drawing.Point(312, 0);
-            this.splitter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter3.Margin = new System.Windows.Forms.Padding(2);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(2, 24);
             this.splitter3.TabIndex = 65;
@@ -3129,67 +2975,207 @@ namespace Haytham
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(246, 0);
-            this.splitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(2, 24);
             this.splitter2.TabIndex = 63;
             this.splitter2.TabStop = false;
             // 
-            // comboBox_SceneTimer
+            // cmbSceneTimer
             // 
-            this.comboBox_SceneTimer.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox_SceneTimer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.comboBox_SceneTimer.FormattingEnabled = true;
-            this.comboBox_SceneTimer.Location = new System.Drawing.Point(124, 0);
-            this.comboBox_SceneTimer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox_SceneTimer.Name = "comboBox_SceneTimer";
-            this.comboBox_SceneTimer.Size = new System.Drawing.Size(122, 21);
-            this.comboBox_SceneTimer.TabIndex = 62;
-            this.comboBox_SceneTimer.SelectedIndexChanged += new System.EventHandler(this.comboBox_SceneTimer_SelectedIndexChanged);
+            this.cmbSceneTimer.BackColor = System.Drawing.SystemColors.Control;
+            this.cmbSceneTimer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cmbSceneTimer.FormattingEnabled = true;
+            this.cmbSceneTimer.Location = new System.Drawing.Point(124, 0);
+            this.cmbSceneTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSceneTimer.Name = "cmbSceneTimer";
+            this.cmbSceneTimer.Size = new System.Drawing.Size(122, 21);
+            this.cmbSceneTimer.TabIndex = 62;
+            this.cmbSceneTimer.SelectedIndexChanged += new System.EventHandler(this.comboBox_SceneTimer_SelectedIndexChanged);
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(122, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(2, 24);
             this.splitter1.TabIndex = 61;
             this.splitter1.TabStop = false;
             // 
-            // comboBox_EyeTimer
+            // cmbEyeTimer
             // 
-            this.comboBox_EyeTimer.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox_EyeTimer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.comboBox_EyeTimer.FormattingEnabled = true;
-            this.comboBox_EyeTimer.Location = new System.Drawing.Point(0, 0);
-            this.comboBox_EyeTimer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox_EyeTimer.Name = "comboBox_EyeTimer";
-            this.comboBox_EyeTimer.Size = new System.Drawing.Size(122, 21);
-            this.comboBox_EyeTimer.TabIndex = 60;
+            this.cmbEyeTimer.BackColor = System.Drawing.SystemColors.Control;
+            this.cmbEyeTimer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cmbEyeTimer.FormattingEnabled = true;
+            this.cmbEyeTimer.Location = new System.Drawing.Point(0, 0);
+            this.cmbEyeTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbEyeTimer.Name = "cmbEyeTimer";
+            this.cmbEyeTimer.Size = new System.Drawing.Size(122, 21);
+            this.cmbEyeTimer.TabIndex = 60;
             // 
             // timerReset
             // 
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
+            // trackBarGABlockSize
+            // 
+            this.trackBarGABlockSize.AutoSize = false;
+            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGABlockSize.Maximum = 151;
+            this.trackBarGABlockSize.Minimum = 33;
+            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
+            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGABlockSize.TabIndex = 65;
+            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGABlockSize.Value = 113;
+            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
+            // 
+            // trackBarThresholdGlint
+            // 
+            this.trackBarThresholdGlint.AutoSize = false;
+            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
+            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdGlint.Maximum = 255;
+            this.trackBarThresholdGlint.Minimum = 120;
+            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
+            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdGlint.TabIndex = 67;
+            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdGlint.Value = 200;
+            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
+            // 
+            // trackBarGAConstant
+            // 
+            this.trackBarGAConstant.AutoSize = false;
+            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
+            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGAConstant.Maximum = 0;
+            this.trackBarGAConstant.Minimum = -100;
+            this.trackBarGAConstant.Name = "trackBarGAConstant";
+            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGAConstant.TabIndex = 68;
+            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGAConstant.Value = -80;
+            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
+            // 
+            // trackBarPABlockSize
+            // 
+            this.trackBarPABlockSize.AutoSize = false;
+            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPABlockSize.Maximum = 151;
+            this.trackBarPABlockSize.Minimum = 33;
+            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
+            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPABlockSize.TabIndex = 65;
+            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPABlockSize.Value = 113;
+            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
+            // 
+            // trackBarPAConstant
+            // 
+            this.trackBarPAConstant.AutoSize = false;
+            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
+            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPAConstant.Maximum = 50;
+            this.trackBarPAConstant.Minimum = 5;
+            this.trackBarPAConstant.Name = "trackBarPAConstant";
+            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPAConstant.TabIndex = 64;
+            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPAConstant.Value = 20;
+            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
+            // 
+            // trackBarThresholdEye
+            // 
+            this.trackBarThresholdEye.AutoSize = false;
+            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
+            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdEye.Maximum = 255;
+            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
+            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdEye.TabIndex = 63;
+            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdEye.Value = 70;
+            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
+            // 
+            // tbIrisDiameter
+            // 
+            this.tbIrisDiameter.AutoSize = false;
+            this.tbIrisDiameter.Location = new System.Drawing.Point(76, 17);
+            this.tbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
+            this.tbIrisDiameter.Maximum = 500;
+            this.tbIrisDiameter.Minimum = 80;
+            this.tbIrisDiameter.Name = "tbIrisDiameter";
+            this.tbIrisDiameter.Size = new System.Drawing.Size(146, 27);
+            this.tbIrisDiameter.TabIndex = 2;
+            this.tbIrisDiameter.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIrisDiameter.Value = 200;
+            this.tbIrisDiameter.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
+            // 
+            // tbMonitorBThreshold
+            // 
+            this.tbMonitorBThreshold.AutoSize = false;
+            this.tbMonitorBThreshold.Location = new System.Drawing.Point(18, 32);
+            this.tbMonitorBThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorBThreshold.Maximum = 360;
+            this.tbMonitorBThreshold.Name = "tbMonitorBThreshold";
+            this.tbMonitorBThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorBThreshold.TabIndex = 65;
+            this.tbMonitorBThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorBThreshold.Value = 70;
+            this.tbMonitorBThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
+            // 
+            // tbMonitorGThreshold
+            // 
+            this.tbMonitorGThreshold.AutoSize = false;
+            this.tbMonitorGThreshold.Location = new System.Drawing.Point(18, 60);
+            this.tbMonitorGThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorGThreshold.Maximum = 360;
+            this.tbMonitorGThreshold.Minimum = 5;
+            this.tbMonitorGThreshold.Name = "tbMonitorGThreshold";
+            this.tbMonitorGThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorGThreshold.TabIndex = 66;
+            this.tbMonitorGThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorGThreshold.Value = 290;
+            this.tbMonitorGThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
+            // 
+            // tbMonitorMinSize
+            // 
+            this.tbMonitorMinSize.AutoSize = false;
+            this.tbMonitorMinSize.Location = new System.Drawing.Point(25, 47);
+            this.tbMonitorMinSize.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorMinSize.Maximum = 100;
+            this.tbMonitorMinSize.Minimum = 5;
+            this.tbMonitorMinSize.Name = "tbMonitorMinSize";
+            this.tbMonitorMinSize.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorMinSize.TabIndex = 67;
+            this.tbMonitorMinSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorMinSize.Value = 30;
+            this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
+            this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
+            this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 691);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.rootContainer);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Haytham_Server";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.rootContainer.Panel1.ResumeLayout(false);
+            this.rootContainer.Panel2.ResumeLayout(false);
+            this.rootContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).EndInit();
+            this.rootContainer.ResumeLayout(false);
+            this.leftTabs.ResumeLayout(false);
             this.tabPage_Camera.ResumeLayout(false);
             this.gbStartBoth.ResumeLayout(false);
             this.gbSceneCameraDevice.ResumeLayout(false);
@@ -3200,59 +3186,49 @@ namespace Haytham
             this.tabPage_Glass.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.target_B_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_B_min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_G_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_G_min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_R_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.target_R_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetBMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetBMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetGMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetGMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetRMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTargetRMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage_Eye.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.gbGlintDetection.ResumeLayout(false);
+            this.gbGlintDetection.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl2)).EndInit();
+            this.pnlGlintDetection.ResumeLayout(false);
+            this.pnlGlintDetection.PerformLayout();
+            this.gbIrisDiameter.ResumeLayout(false);
+            this.gbIrisDiameter.PerformLayout();
             this.tabPage_Scene.ResumeLayout(false);
             this.tabPage_Scene.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox21.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl3)).EndInit();
             this.tabPage_Calibration.ResumeLayout(false);
             this.gbCalibrationGlass.ResumeLayout(false);
             this.gbCalibrationGlass.PerformLayout();
             this.gbCalibrationRemote.ResumeLayout(false);
-            this.gbCalibrationHM.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.gbCalibrationScene.ResumeLayout(false);
+            this.pnlCalibration.ResumeLayout(false);
+            this.pnlCalibration.PerformLayout();
             this.tabPage_Data.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
+            this.gbDataCharts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.groupBox10.ResumeLayout(false);
+            this.gbDataExport.ResumeLayout(false);
             this.tabPage_Clients.ResumeLayout(false);
             this.tabPage_Clients.PerformLayout();
-            this.panelClients.ResumeLayout(false);
-            this.panelClients.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
+            this.gbClientsSettings.ResumeLayout(false);
+            this.gbClientsSettings.PerformLayout();
+            this.gbClientsMessages.ResumeLayout(false);
+            this.gbClientsMessages.PerformLayout();
             this.tabPage_Gesture.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
@@ -3285,29 +3261,37 @@ namespace Haytham
             this.tabPage_EyeGrip.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSpeedMind)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSCRLSensitivity)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
+            this.gbMain.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox_imgEye.ResumeLayout(false);
+            this.gbEyeImage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imEye)).EndInit();
-            this.groupBox_imgScene.ResumeLayout(false);
+            this.gbSceneImage.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imSceneProcessed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imScene)).EndInit();
             this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3319,7 +3303,7 @@ namespace Haytham
         private System.Windows.Forms.ComboBox cmbDeviceCapabilityEye;
         private System.Windows.Forms.ComboBox cmbDeviceEye;
         private System.Windows.Forms.TextBox TextBoxServer;
-        private System.Windows.Forms.RadioButton radioButtonAutoActivation;
+        private System.Windows.Forms.RadioButton rbAutoActivation;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
@@ -3337,10 +3321,10 @@ namespace Haytham
         private System.Windows.Forms.Button startBoothVideos;
         private System.Windows.Forms.GroupBox gbStartBoth;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label9;
-        private TransparentTrackBar trackBarControl2;
+        private System.Windows.Forms.GroupBox gbGlintDetection;
+        private System.Windows.Forms.GroupBox gbIrisDiameter;
+        private System.Windows.Forms.Label lbIrisDiameter;
+        private TransparentTrackBar tbIrisDiameter;
         private System.Windows.Forms.CheckBox cbShowIris;
         private System.Windows.Forms.CheckBox cbPupilDetection;
         private System.Windows.Forms.CheckBox cbShowPupil;
@@ -3352,12 +3336,12 @@ namespace Haytham
         private System.Windows.Forms.CheckBox cbDilateErode;
         private System.Windows.Forms.CheckBox cbGlintDetection;
         private System.Windows.Forms.CheckBox cbShowGlint;
-        private System.Windows.Forms.RadioButton cbGM;
-        private System.Windows.Forms.RadioButton cbGA;
+        private System.Windows.Forms.RadioButton cbGlintManual;
+        private System.Windows.Forms.RadioButton cbGlintAuto;
         private TransparentTrackBar trackBarGAConstant;
         private TransparentTrackBar trackBarThresholdGlint;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlGlintDetection;
         private System.Windows.Forms.RadioButton rbPGaussian;
         private System.Windows.Forms.RadioButton rbPMean;
         private TransparentTrackBar trackBarPABlockSize;
@@ -3368,41 +3352,41 @@ namespace Haytham
         private System.Windows.Forms.RadioButton rbGGaussian;
         private System.Windows.Forms.RadioButton rbGMean;
         private System.Windows.Forms.CheckBox cbShowScreen;
-        private TransparentTrackBar trackBarControl3;
-        private TransparentTrackBar trackBarG;
-        private TransparentTrackBar trackBarB;
+        private TransparentTrackBar tbMonitorMinSize;
+        private TransparentTrackBar tbMonitorGThreshold;
+        private TransparentTrackBar tbMonitorBThreshold;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.CheckBox cbSceneUnDistortion;
         private System.Windows.Forms.Button btnSceneCameraCalibration;
-        private System.Windows.Forms.GroupBox gbCalibrationHM;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.GroupBox gbCalibrationScene;
+        private System.Windows.Forms.Panel pnlCalibration;
         private System.Windows.Forms.RadioButton rbPupilGlint;
         private System.Windows.Forms.RadioButton rdOnlyPupil;
         private System.Windows.Forms.Button btnCalibration_Homography;
         private System.Windows.Forms.Button btnCalibration_Polynomial;
         private System.Windows.Forms.CheckBox cbGazeSmoothing;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.ProgressBar btn_RecordProgress;
-        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox gbDataExport;
+        private System.Windows.Forms.ProgressBar pbRecordProgress;
+        private System.Windows.Forms.GroupBox gbDataCharts;
         private System.Windows.Forms.CheckBox cbPlot;
-        private System.Windows.Forms.GroupBox panelClients;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox gbClientsSettings;
+        private System.Windows.Forms.GroupBox gbClientsMessages;
+        private System.Windows.Forms.SplitContainer rootContainer;
+        private System.Windows.Forms.TabControl leftTabs;
         private System.Windows.Forms.TabPage tabPage_Camera;
         private System.Windows.Forms.TabPage tabPage_Eye;
         private System.Windows.Forms.TabPage tabPage_Scene;
         private System.Windows.Forms.TabPage tabPage_Calibration;
         private System.Windows.Forms.TabPage tabPage_Data;
         private System.Windows.Forms.TabPage tabPage_Clients;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.GroupBox gbMain;
+        private System.Windows.Forms.Panel pnlTop;
 
-        private System.Windows.Forms.ComboBox comboBox_EyeTimer;
+        private System.Windows.Forms.ComboBox cmbEyeTimer;
         private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.ComboBox comboBox_SceneTimer;
+        private System.Windows.Forms.ComboBox cmbSceneTimer;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter7;
         private System.Windows.Forms.TextBox lblIP;
@@ -3410,12 +3394,12 @@ namespace Haytham
         private System.Windows.Forms.Label lblGlintCenter;
         private System.Windows.Forms.Splitter splitter3;
         private System.Windows.Forms.Label lblPupilCenter;
-        private System.Windows.Forms.GroupBox groupBox_imgEye;
+        private System.Windows.Forms.GroupBox gbEyeImage;
         private Emgu.CV.UI.ImageBox imEyeTest;
-        private System.Windows.Forms.GroupBox groupBox_imgScene;
+        private System.Windows.Forms.GroupBox gbSceneImage;
         private System.Windows.Forms.CheckBox cbShowEdges;
-        private System.Windows.Forms.CheckBox cb_eye_VFlip;
-        private System.Windows.Forms.CheckBox cb_scene_VFlip;
+        private System.Windows.Forms.CheckBox cbEyeVerticalFlip;
+        private System.Windows.Forms.CheckBox cbSceneVerticalFlip;
         private System.Windows.Forms.GroupBox gbCalibrationRemote;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -3439,16 +3423,15 @@ namespace Haytham
         private System.Windows.Forms.PictureBox pbUp2;
         private System.Windows.Forms.PictureBox pbUp1;
         private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkEditShowOpticalFlow;
+        private System.Windows.Forms.CheckBox cbHeadRollGestures;
+        private System.Windows.Forms.CheckBox cbEditShowOpticalFlow;
         private System.Windows.Forms.PictureBox pbTRight;
         private System.Windows.Forms.PictureBox pbTLeft;
         private System.Windows.Forms.Timer timerReset;
         private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.TrackBar trackBarTest;
         private System.Windows.Forms.ProgressBar prg_Custom1;
         private System.Windows.Forms.Button btn_Custom1;
-        private System.Windows.Forms.Button btn_Record;
+        private System.Windows.Forms.Button btnRecord;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Button btn_Custom4;
         private System.Windows.Forms.ProgressBar prg_Custom4;
@@ -3465,8 +3448,8 @@ namespace Haytham
         private System.Windows.Forms.CheckBox cbShowGaze;
         private System.Windows.Forms.GroupBox groupBox21;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTest;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbRecordSceneVideo;
+        private System.Windows.Forms.CheckBox cbRecordEyeVideo;
         private System.Windows.Forms.PictureBox imEye;
         private System.Windows.Forms.PictureBox imScene;
 		private System.Windows.Forms.TabPage tabPage_ExtData;
@@ -3502,12 +3485,12 @@ namespace Haytham
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown target_B_max;
-        private System.Windows.Forms.NumericUpDown target_B_min;
-        private System.Windows.Forms.NumericUpDown target_G_max;
-        private System.Windows.Forms.NumericUpDown target_G_min;
-        private System.Windows.Forms.NumericUpDown target_R_max;
-        private System.Windows.Forms.NumericUpDown target_R_min;
+        private System.Windows.Forms.NumericUpDown nudTargetBMax;
+        private System.Windows.Forms.NumericUpDown nudTargetBMin;
+        private System.Windows.Forms.NumericUpDown nudTargetGMax;
+        private System.Windows.Forms.NumericUpDown nudTargetGMin;
+        private System.Windows.Forms.NumericUpDown nudTargetRMax;
+        private System.Windows.Forms.NumericUpDown nudTargetRMin;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox textBox1;
@@ -3523,11 +3506,11 @@ namespace Haytham
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nudSCRLSensitivity;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TrackBar tbSpeedMind;
+        private System.Windows.Forms.Label lbSpeedMindValue;
     }
 }
 

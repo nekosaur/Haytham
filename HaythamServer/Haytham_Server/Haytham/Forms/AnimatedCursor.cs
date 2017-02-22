@@ -67,7 +67,7 @@ namespace Haytham
                 if (pointerImage.Scale <= pointerImage.ScaleMin )
                 {
 
-                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss)
+                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
                     {
 
                         if (METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Yes) { 
@@ -121,7 +121,7 @@ namespace Haytham
         {
             InitializeComponent();
 
-            Icon ico = new Icon(Properties.Resources.Untitled_1, 64, 64);
+            Icon ico = new Icon(Properties.Resources.AppIcon, 64, 64);
             this.Icon = ico;
 
             this.TopMost = true;

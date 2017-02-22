@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Haytham
 {
-    public partial class firstForm : Form
+    public partial class SplashScreen : Form
     {
-        public firstForm()
+        public SplashScreen()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace Haytham
 
         private void button3_Click(object sender, EventArgs e)
         {
-            METState.Current.remoteOrMobile = METState.RemoteOrMobile.GoogleGalss;
+            METState.Current.remoteOrMobile = METState.RemoteOrMobile.GoogleGlass;
          
                
             Go();

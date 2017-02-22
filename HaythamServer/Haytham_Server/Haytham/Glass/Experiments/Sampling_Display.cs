@@ -142,7 +142,7 @@ namespace Haytham
 
         void timerSpeed_Tick(object sender, EventArgs e)
         {
-            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGalss
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass
                 &&( !Haytham.METState.Current.GlassServer.client.tcpClient.Connected
                 || METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Error))
             {
