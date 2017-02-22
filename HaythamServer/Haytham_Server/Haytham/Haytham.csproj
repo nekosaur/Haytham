@@ -75,6 +75,58 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release32|x64'">
+    <OutputPath>bin\x64\Release32\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release32|x86'">
+    <OutputPath>bin\x86\Release32\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -104,26 +156,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLs\Aforge.NET\AForge.Vision.GlyphRecognition.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV, Version=2.3.0.1416, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Emgu.CV">
       <HintPath>..\DLLs\Emgu\Emgu.CV.dll</HintPath>
-      <Private>False</Private>
     </Reference>
-    <Reference Include="Emgu.CV.UI, Version=2.3.0.1416, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Emgu.CV.UI">
       <HintPath>..\DLLs\Emgu\Emgu.CV.UI.dll</HintPath>
-      <Private>False</Private>
     </Reference>
-    <Reference Include="Emgu.Util, Version=2.3.0.1416, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Emgu.Util">
       <HintPath>..\DLLs\Emgu\Emgu.Util.dll</HintPath>
-      <Private>False</Private>
     </Reference>
-    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\32feet.NET\NET\InTheHand.Net.Personal.dll</HintPath>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>..\DLLs\InTheHand.Net.Personal.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
@@ -355,7 +402,10 @@ if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)$(TargetFileName)" "$
 if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)*.dll" "$(SolutionDir)..\Haytham_Server.Bin\"
 if $(ConfigurationName) == Release XCOPY /S /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
 if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
-if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(SolutionDir)..\Haytham_Server.Bin\"</PostBuildEvent>
+if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(SolutionDir)..\Haytham_Server.Bin\"
+if $(ConfigurationName) == Debug (if $(PlatformName) == x64 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x64\*" "$(TargetDir)")
+if $(ConfigurationName) == Debug (if $(PlatformName) == x86 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(TargetDir)")
+if $(ConfigurationName) == Debug XCOPY /Y "$(SolutionDir)DLLs\Emgu\*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
