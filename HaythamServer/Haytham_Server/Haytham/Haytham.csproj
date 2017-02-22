@@ -397,12 +397,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) neq Debug RD "$(SolutionDir)..\Haytham_Server.Bin\" /s /q
-if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\Haytham_Server.Bin\"
-if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)*.dll" "$(SolutionDir)..\Haytham_Server.Bin\"
-if $(ConfigurationName) == Release XCOPY /S /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
-if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
-if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(SolutionDir)..\Haytham_Server.Bin\"
+    <PostBuildEvent>@REM if $(ConfigurationName) neq Debug RD "$(SolutionDir)..\Haytham_Server.Bin\" /s /q
+@REM if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)$(TargetFileName)" "$(SolutionDir)..\Haytham_Server.Bin\"
+@REM if $(ConfigurationName) neq Debug XCOPY /S /Y "$(TargetDir)*.dll" "$(SolutionDir)..\Haytham_Server.Bin\"
+@REM if $(ConfigurationName) == Release XCOPY /S /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
+@REM if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\*" "$(SolutionDir)..\Haytham_Server.Bin\"
+@REM if $(ConfigurationName) == Release32 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(SolutionDir)..\Haytham_Server.Bin\"
 if $(ConfigurationName) == Debug (if $(PlatformName) == x64 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x64\*" "$(TargetDir)")
 if $(ConfigurationName) == Debug (if $(PlatformName) == x86 XCOPY /Y "$(SolutionDir)DLLs\Emgu\x86\*" "$(TargetDir)")
 if $(ConfigurationName) == Debug XCOPY /Y "$(SolutionDir)DLLs\Emgu\*" "$(TargetDir)"</PostBuildEvent>
