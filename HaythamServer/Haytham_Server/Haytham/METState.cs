@@ -232,7 +232,7 @@ namespace Haytham
         public AForge.Point eyeFeature;
         //remote
         public RemoteCalibration remoteCalibration;
-        public cursor mCursor=new cursor();
+        public Cursor mCursor = new Cursor();
         //public Size HMD_Resolution = new Size(640,480);
 
         //Chart

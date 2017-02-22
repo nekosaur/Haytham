@@ -1,9 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
 
 namespace Haytham
 {
@@ -34,19 +31,17 @@ namespace Haytham
                 }
            // }
         }
+
         private void UpdateTimerResults(string flag, object time)
         {
-                    if (TimerResults.ContainsKey(flag) == true)
-                    {
-                        TimerResults[flag] = time;
-                    }
-                    else
-                    {
-                        TimerResults.Add(flag, time);
-                    }
-                    
+            if (TimerResults.ContainsKey(flag) == true)
+            {
+                TimerResults[flag] = time;
+            }
+            else
+            {
+                TimerResults.Add(flag, time);
+            }
         }
-
-
     }
 }

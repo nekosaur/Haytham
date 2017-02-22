@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Haytham
 {
-    public class cursor
+    public class Cursor
     {
         private bool _CursorShown = true;
         public bool CursorShown

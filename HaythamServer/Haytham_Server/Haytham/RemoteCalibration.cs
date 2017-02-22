@@ -22,84 +22,57 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Haytham.Glass.Experiments;
-
 
 namespace Haytham
 {
     public  class RemoteCalibration 
     {
-        public enum Task { Calib_Display, eyeToeye };
+        public enum Task { CalibrateDisplay, EyeToEye };
         public Task task;
 
         public Timer timerSpeed = new Timer();
         public Dictionary<int, Point> calibPoints = new Dictionary<int, Point>();
         int N;
-        public AnimatedCursor mycursor;
-
+        public AnimatedCursor myCursor;
         public Rectangle PresentationScreen;
 
-        private void setPoints(int n, int m)// grid of n*m points
+        private void setPoints(int n, int m) // grid of n*m points
         {
             int offset = 80; //pixel offset from the borders of the screen
-
-
-
 
             int count = 1;
             for (int i = 0; i < n; i++)
             {
-
-
                 for (int j = 0; j < m; j++)
                 {
                     calibPoints[count] = new Point(((PresentationScreen.Width - 2 * offset) / (m - 1)) * j + offset, ((PresentationScreen.Height - 2 * offset) / (n - 1)) * i + offset);
-
                     calibPoints[count] = Point.Add(calibPoints[count], new Size(PresentationScreen.Left, PresentationScreen.Top));
 
                     count++;
                 }
-
             }
-
-
-
         }
+
         public RemoteCalibration(int n, int m, Rectangle rect,Task t)
         {
             task = t;
             PresentationScreen = rect;
             setPoints(n, m);
 
-           
-  
-
             System.Threading.Thread run_thread = new System.Threading.Thread(new System.Threading.ThreadStart(Run));
             run_thread.Start();
-
-
-    
-
         }
 
         void Run()
         {
-
-            mycursor = new AnimatedCursor();
-            mycursor.coordinates = calibPoints[1];
+            myCursor = new AnimatedCursor();
+            myCursor.coordinates = calibPoints[1];
 
             if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
             {
-               
-
-               
-                METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, mycursor.coordinates);
+                METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, myCursor.coordinates);
             }
 
             METState.Current.mCursor.CursorShown = false;//hide cursor
@@ -107,11 +80,8 @@ namespace Haytham
             timerSpeed.Interval = 50;
             timerSpeed.Enabled = true;
             timerSpeed.Tick += new EventHandler(timerSpeed_Tick);
-            mycursor.ShowDialog();
-
+            myCursor.ShowDialog();
         }
-
-
 
         void timerSpeed_Tick(object sender, EventArgs e)
         {
@@ -119,47 +89,39 @@ namespace Haytham
                 &&( !Haytham.METState.Current.GlassServer.client.tcpClient.Connected
                 || METState.Current.GlassServer.client.myGlassReady_State == myGlass.Client.Ready_State.Error))
             {
-
                 finish();
 
                 timerSpeed.Enabled = false;
                 return;
             }
-              bool temp = mycursor.updatePointerImage();
-                if (temp) getSample();
-            
 
+            bool temp = myCursor.updatePointerImage();
+            if (temp) getSample();
         }
 
         public void getSample()
         {
-
-
-            if (task == Task.Calib_Display)
+            if (task == Task.CalibrateDisplay)
             {
-                METState.Current.EyeToDisplay_Mapping.Destination[0, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = mycursor.coordinates.X;
-                METState.Current.EyeToDisplay_Mapping.Destination[1, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = mycursor.coordinates.Y;
+                METState.Current.EyeToDisplay_Mapping.Destination[0, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = myCursor.coordinates.X;
+                METState.Current.EyeToDisplay_Mapping.Destination[1, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = myCursor.coordinates.Y;
 
                 METState.Current.EyeToDisplay_Mapping.Source[0, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
                 METState.Current.EyeToDisplay_Mapping.Source[1, METState.Current.EyeToDisplay_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
 
                 if (calibPoints.Count >= (METState.Current.EyeToDisplay_Mapping.CalibrationTarget + 2))
                 {
-                    mycursor.coordinates = calibPoints[METState.Current.EyeToDisplay_Mapping.CalibrationTarget + 2];
+                    myCursor.coordinates = calibPoints[METState.Current.EyeToDisplay_Mapping.CalibrationTarget + 2];
                     METState.Current.EyeToDisplay_Mapping.CalibrationTarget++;
 
-
-                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass) METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, mycursor.coordinates);
-
-
+                    if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
+                        METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, myCursor.coordinates);
                 }
                 else
                 {
                     if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
                     {
                         METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-2, -2));
-
-
 
                         //.............................CAlibrating DisplayShown in Scene
                         Point[] DisplayInSceneImage = new Point[4];
@@ -173,14 +135,12 @@ namespace Haytham
                     METState.Current.EyeToDisplay_Mapping.Calibrate();
                     METState.Current.EyeToDisplay_Mapping.Calibrated = true;
 
-
                     finish();
 
                     timerSpeed.Enabled = false;
                 }
-
             }
-            else if (task == Task.eyeToeye)
+            else if (task == Task.EyeToEye)
             {
                 METState.Current.EyeToEye_Mapping.Source[0, METState.Current.EyeToEye_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
                 METState.Current.EyeToEye_Mapping.Source[1, METState.Current.EyeToEye_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
@@ -190,53 +150,35 @@ namespace Haytham
                 //CalibExp.EyeToDisplay_Mapping_4points.Source[0, METState.Current.EyeToEye_Mapping.CalibrationTarget] = METState.Current.eyeFeature.X;
                 //CalibExp.EyeToDisplay_Mapping_4points.Source[1, METState.Current.EyeToEye_Mapping.CalibrationTarget] = METState.Current.eyeFeature.Y;
 
-
                 if (calibPoints.Count >= (METState.Current.EyeToEye_Mapping.CalibrationTarget + 2))
                 {
-                    mycursor.coordinates = calibPoints[METState.Current.EyeToEye_Mapping.CalibrationTarget + 2];
+                    myCursor.coordinates = calibPoints[METState.Current.EyeToEye_Mapping.CalibrationTarget + 2];
                     METState.Current.EyeToEye_Mapping.CalibrationTarget++;
 
-
-                    METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, mycursor.coordinates);
-
+                    METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, myCursor.coordinates);
                 }
                 else
                 {
-
                     METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-2, -2));
-
 
                     METState.Current.EyeToEye_Mapping.Calibrate();
                     METState.Current.EyeToEye_Mapping.Calibrated = true;
 
-                   // CalibExp.EyeToDisplay_Mapping_4points.Calibrate();
-                    //0CalibExp.EyeToDisplay_Mapping_4points.Calibrated = true;
-
-
-
-
+                    // CalibExp.EyeToDisplay_Mapping_4points.Calibrate();
+                    // CalibExp.EyeToDisplay_Mapping_4points.Calibrated = true;
 
                     finish();
 
                     timerSpeed.Enabled = false;
                 }
             }
-
-      
-
-
-        
         }
+
         public void finish()
         {
             METState.Current.mCursor.CursorShown = true;
             //mycursor.Dispose();
-            mycursor.Hide();
-
-
+            myCursor.Hide();
         }
-
-      
-
     }
 }

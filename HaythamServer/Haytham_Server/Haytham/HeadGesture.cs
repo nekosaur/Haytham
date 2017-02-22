@@ -513,7 +513,7 @@ namespace Haytham
             }
             #endregion Determine patch Direction
 
-#region update sequence
+            #region update sequence
 
             int AcceptanceThresh = 0;//How many accepted patches
             for (int i = 1; i < 9; i++)
@@ -639,7 +639,7 @@ namespace Haytham
 
             }
 
-           g= g.Remove(g.Count()-1,1);
+            g = g.Remove(g.Count()-1,1);
             return g;
         
         }

@@ -323,11 +323,11 @@ namespace Haytham
         {
             case CalibrationMethod.Point4:
                 METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Homography;
-                METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds, RemoteCalibration.Task.Calib_Display);
+                METState.Current.remoteCalibration = new RemoteCalibration(2, 2, this.presentationScreen.Bounds, RemoteCalibration.Task.CalibrateDisplay);
                 break;
             case CalibrationMethod.Point9:
                 METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
-                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds, RemoteCalibration.Task.Calib_Display);
+                METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds, RemoteCalibration.Task.CalibrateDisplay);
                 break;
         }
 

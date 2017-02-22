@@ -37,10 +37,9 @@ namespace Haytham
         {
             public string tag { get; set; }
             public AForge.Point rectangleGaze { get; set; }
-            // 
         }
-        public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
 
+        public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
 
         public RectangleGazeData[] rectangleGazeData = new RectangleGazeData[500];
 
@@ -57,23 +56,16 @@ namespace Haytham
         public int BThreshold = 70;
         public int GThreshold = 290;
 
-
-
         public Matrix<double> Homography = new Matrix<double>(3, 3);
 
         public Blob_Aforge RectangleBlob = null;
-
-
 
         public bool DetectRectangle(Image<Bgr, Byte> inputimg)
         {
             bool rectangleIsFound = false;
 
             #region Canny
-
-            Image<Bgr, Byte> img = new Image<Bgr, byte>(inputimg.Bitmap);//??????????????????????????????????????????????????????????????mishe ba khatte oain edgham kard?
-
-
+            Image<Bgr, Byte> img = new Image<Bgr, byte>(inputimg.Bitmap); //??????????????????????????????????????????????????????????????mishe ba khatte oain edgham kard?
 
             //Convert the image to grayscale and filter out the noise
             Image<Gray, Byte> gray = img.Convert<Gray, Byte>();
@@ -81,26 +73,20 @@ namespace Haytham
             Gray cannyThresholdLinking = new Gray(GThreshold);//Gray(120);
 
             METState.Current.ProcessTimeSceneBranch.Timer("cannyEdges", "Start");
-
             Image<Gray, Byte> cannyEdges = gray.PyrDown().Canny(cannyThreshold.Intensity, cannyThresholdLinking.Intensity).PyrUp().Dilate(1);//.Erode(1);//
             METState.Current.ProcessTimeSceneBranch.Timer("cannyEdges", "Stop");
 
             #endregion Canny
 
-
-
-
             #region Contour
-            List<MCvBox2D> boxList = new List<MCvBox2D>(); //a box is a rotated rectangle
+            List<MCvBox2D> boxList = new List<MCvBox2D>(); // a box is a rotated rectangle
             double MinArea = ((double)rectangleMinSize / 100.0) * METState.Current.SceneImageOrginal.Width
                 * ((double)rectangleMinSize / 100.0) * METState.Current.SceneImageOrginal.Height;
 
-
-
             METState.Current.ProcessTimeSceneBranch.Timer("Contours", "Start");
 
-            using (MemStorage storage = new MemStorage()) //allocate storage for contour approximation
-
+            using (MemStorage storage = new MemStorage()) // allocate storage for contour approximation
+            {
 
                 for (Contour<Point> contours = cannyEdges.FindContours(
                       Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_SIMPLE,
@@ -109,18 +95,13 @@ namespace Haytham
                    contours != null;
                    contours = contours.HNext)
                 {
-
                     Contour<Point> currentContour = contours.ApproxPoly(contours.Perimeter * 0.08, storage);//0.08 has been tested and works well with ...d, cannyThresholdLinking).PyrUp().Dilate(1)
 
                     if (currentContour.Total == 4 && currentContour.Area > MinArea) //selecting the bigest contour
                     {
-
                         rectangleIsFound = true;
-
                         MinArea = currentContour.Area;
-
                         RectangleArea = currentContour.Area;
-
 
                         #region determine if all the angles in the contour are within [80, 100] degree
                         // bool isRectangle = true;
@@ -143,22 +124,17 @@ namespace Haytham
                         {
                             RectangleCorners[i].X = currentContour[i].X;
                             RectangleCorners[i].Y = currentContour[i].Y;
-
                         }
                     }
-
-
                 }
+            }
+
             SortRectangleCorners();
 
             METState.Current.ProcessTimeSceneBranch.Timer("Contours", "Stop");
-
             #endregion Contour
 
-
-
-
-            #region draw rectangles
+            #region Draw Rectangles
             //Image<Bgr, Byte> RectangleImage = img.CopyBlank();
 
             //foreach (MCvBox2D box in boxList)
@@ -168,10 +144,9 @@ namespace Haytham
 
             //}
             //METState.Current.SceneImageForShow = METState.Current.SceneImageForShow.Add(RectangleImage);
-
             #endregion draw rectangles
 
-            #region draw screen
+            #region Draw Screen
             if (METState.Current.showEdges)
             {
                 //  METState.Current.SceneImageProcessed = new Image<Bgr, byte>(cannyEdges.Bitmap);
@@ -190,22 +165,15 @@ namespace Haytham
                 }
 
                 //Show found screen
-
             }
-
             #endregion draw Screen
+
             return rectangleIsFound;
-
-
         }
-
 
         public void rectangleGazeData_Shift()
         {
-
             for (int i = rectangleGazeData.Length - 1; i > 0; i--) { rectangleGazeData[i] = rectangleGazeData[i - 1]; }
-
-
         }
 
         public AForge.Point CalculateRectangleGazeMedian(int frames, int startFrom)
@@ -214,12 +182,10 @@ namespace Haytham
             float[] Cx = new float[frames];
             float[] Cy = new float[frames];
 
-
             for (int i = 0; i < frames; i++)
             {
                 Cx[i] = rectangleGazeData[startFrom + i].rectangleGaze.X;
                 Cy[i] = rectangleGazeData[startFrom + i].rectangleGaze.Y;
-
             }
 
             M.X = (float)FindMedian(Cx);
@@ -229,7 +195,6 @@ namespace Haytham
 
         public static float FindMedian(float[] numbers)
         {
-
             //middle value has the middle value incase of an even number of elemenets,
 
             //the value returned by ceiling function
@@ -237,12 +202,8 @@ namespace Haytham
             //or Floor value incase of an odd array.
 
             float median = 0;
-
             int middleValue = 0;
-
             decimal half = 0;
-
-
 
             Array.Sort(numbers);
 
@@ -250,21 +211,17 @@ namespace Haytham
 
             if (numbers.Length % 2 == 1)
             {
-
                 median = numbers[Convert.ToInt32(Math.Ceiling(half))];
             }
 
             else
             {
                 middleValue = Convert.ToInt32(Math.Floor(half));
-
                 median = (float)(numbers[middleValue] + numbers[middleValue + 1]) / 2;
             }
 
             return median;
-
         }
-
 
         public void SortRectangleCorners()
         {
@@ -278,8 +235,8 @@ namespace Haytham
             {
                 Mean_X += RectangleCorners[i].X;
                 Mean_Y += RectangleCorners[i].Y;
-
             }
+
             Mean_X /= 4;
             Mean_Y /= 4;
 
@@ -291,18 +248,14 @@ namespace Haytham
                 if (RectangleCorners[i].X > Mean_X & RectangleCorners[i].Y < Mean_Y) SortedRectangleCorners[1] = RectangleCorners[i];
                 if (RectangleCorners[i].X > Mean_X & RectangleCorners[i].Y > Mean_Y) SortedRectangleCorners[2] = RectangleCorners[i];
                 if (RectangleCorners[i].X < Mean_X & RectangleCorners[i].Y > Mean_Y) SortedRectangleCorners[3] = RectangleCorners[i];
-
             }
 
             RectangleCorners = SortedRectangleCorners;
             // METState.Current.ProcessTimeSceneBranch.Timer("SortMonitorCorners", "Stop");
-
-
         }
 
         public AForge.Point CalculateRectangleGazePoint(AForge.Point gaze, Calibration calibration)
         {
-
             // METState.Current.ProcessTimeSceneBranch.Timer("CalculateMonitorGazePoint", "Start");
             calibration.CalibrationType = Calibration.calibration_type.calib_Homography;
 
@@ -312,11 +265,9 @@ namespace Haytham
             //{
             for (int i = 0; i < 4; i++)
             {
-
                 calibration.Source[0, i] = RectangleCorners[i].X;
                 calibration.Source[1, i] = RectangleCorners[i].Y;
                 //METState.Current.SceneToMonitor_Mapping.Source[2, i] = 1;
-
             }
 
             //     1       2
@@ -340,7 +291,6 @@ namespace Haytham
 
             calibration.Calibrate();
 
-
             #region test
             // test corners projection
             //for (int i = 0; i < 4; i++)
@@ -353,13 +303,14 @@ namespace Haytham
             //     ProjectedScreenCorners[i].Y = (int)Convert.ChangeType(dst2[1, 0] / dst2[2, 0], typeof(int));
             //}
             #endregion
+
             AForge.Point MonitorGaze;
             MonitorGaze = (calibration.Map(gaze.X, gaze.Y, 0, 0));//AForge.Point
 
             rectangleGazeData_Shift();
-
             rectangleGazeData[0].rectangleGaze = MonitorGaze;
             rectangleGazeData[0].tag = "";
+
             //SMOOTHing the gaze on screen. it is needed because the screen corners sometimes jump
             MonitorGaze = METState.Current.monitor.CalculateRectangleGazeMedian(5, 0);
 
@@ -391,13 +342,10 @@ namespace Haytham
             }
 
             return g;
-
-
         }
 
         public bool IsGazeInsideRectangle()
         {
-
             SortRectangleCorners();
 
             // TODO: it is not a good way. make it more accurate
@@ -410,7 +358,6 @@ namespace Haytham
                 itis = true;
 
             return itis;
-
         }
     }
 }

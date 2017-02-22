@@ -1987,7 +1987,7 @@ namespace Haytham
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
      
-            METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect, RemoteCalibration.Task.Calib_Display);
+            METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect, RemoteCalibration.Task.CalibrateDisplay);
  
 
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
@@ -2006,7 +2006,7 @@ namespace Haytham
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
           
-            METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.Calib_Display);
+            METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.CalibrateDisplay);
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
@@ -2431,7 +2431,7 @@ namespace Haytham
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect,RemoteCalibration.Task.Calib_Display); ;
+            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect,RemoteCalibration.Task.CalibrateDisplay); ;
 
             //...Here you can send some commands to HMD if you want to show something there
             // METState.Current.remoteCalibration.ShowDialog();

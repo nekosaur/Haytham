@@ -456,7 +456,7 @@ using Haytham.Glass.Experiments;
 
                         Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-                        METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.Calib_Display); ;
+                        METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.CalibrateDisplay); ;
 
 
 
@@ -532,7 +532,7 @@ using Haytham.Glass.Experiments;
 
                             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-                            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.eyeToeye);
+                            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.EyeToEye);
 
                         }
                         else
