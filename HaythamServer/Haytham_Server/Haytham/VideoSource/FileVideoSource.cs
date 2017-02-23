@@ -18,22 +18,26 @@ namespace Haytham.VideoSource
 		{
 			get { return "Video file"; }
 		}
+
 		public IEnumerable<DeviceCapabilityInfo> Capabilities
 		{
 			get { return Enumerable.Empty<DeviceCapabilityInfo>(); }
 		}
+
 		public DeviceCapabilityInfo SelectedCap { get; set; }
 		public System.Drawing.Size VideoSize { get { return System.Drawing.Size.Empty; } }
 		public bool HasSettings
 		{
 			get { return true; }
 		}
-		public bool IsRunning { get; set; }
+
+        public bool IsRunning { get; set; }
 		public void ShowSettings()
 		{
 			this.showSettings();
 		}
-		private bool showSettings()
+
+        private bool showSettings()
 		{
 			var openFileDialog = new OpenFileDialog();
 			// OpenFileDialog.Filter = "AVI File|*.avi|All Files|*.*";

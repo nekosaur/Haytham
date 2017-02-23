@@ -27,14 +27,11 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.IO;
 
 namespace Haytham
 {
     public class Server
     {
-
-
         public void RequestStop()
         {
             _shouldStop = true;
@@ -42,7 +39,6 @@ namespace Haytham
         // Volatile is used as hint to the compiler that this data
         // member will be accessed by multiple threads.
         private volatile bool _shouldStop;
-
 
         public Dictionary<string, Client> clients = new Dictionary<string, Client>();
         public Dictionary<string, Thread> clientThreads = new Dictionary<string, Thread>();
@@ -55,40 +51,31 @@ namespace Haytham
         public string activeScreen = "";
         public string ForcedActiveScreen = "";
 
-        //delete
-
         public bool connected = false;
-
 
         // initialize variables and thread for receiving clients
         public Server()
         {
-
             // clients = new Client[2];
-            //clientThreads = new Thread[2];
+            // clientThreads = new Thread[2];
 
             // accept connections on a different thread
             getClientThread = new Thread(new ThreadStart(getClient));
             getClientThread.Start();
 
-
-
-
             Thread thdUDPServer = new Thread(new ThreadStart(udpReceiverThread));
             thdUDPServer.Start();
+        }
 
-        }//end Server
         public void udpReceiverThread()
         {
-
             try
             {
-                System.Net.Sockets.UdpClient udpClient = new System.Net.Sockets.UdpClient(1234);
+                UdpClient udpClient = new UdpClient(1234);
                 IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
 
                 do
                 {
-
                     byte[] data = new byte[1024];
                     data = udpClient.Receive(ref sender);
                     
@@ -97,16 +84,14 @@ namespace Haytham
 
                     if (stringData == "t")
                     {
-
                         METState.Current.timeDifference = METState.Current.recording_timer.ElapsedMilliseconds/2;
                         Console.WriteLine("..........Delay is ..........." + (METState.Current.recording_timer.ElapsedMilliseconds/2).ToString());
-
 
                         METState.Current.recording_timer.Restart();
 
                         int udp_port = 9876;
-                        System.Net.Sockets.UdpClient udpServer = new System.Net.Sockets.UdpClient(udp_port);
-                        System.Net.IPEndPoint remoteEP = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(METState.Current.tempUDPClient_ip), udp_port);
+                        UdpClient udpServer = new UdpClient(udp_port);
+                        IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse(METState.Current.tempUDPClient_ip), udp_port);
 
                         byte[] packed = System.Text.Encoding.ASCII.GetBytes("s\n");
                         udpServer.Send(packed, packed.Length, remoteEP);
@@ -118,37 +103,37 @@ namespace Haytham
                 while (true);    
 
             }
-            catch (Exception e) { 
-            
-
-
+            catch (Exception e) {
+                // TODO: Empty catch
             }
-
         }
+
         public void DisplayMessage(string message)
         {
             try
             {
                 METState.Current.METCoreObject.SendToForm(message, "TextBoxServer");
             }
-            catch (Exception e) { }
+            catch (Exception e)
+            {
+                // TODO: Empty catch
+            }
 
-        } //end displayMessage
+        }
 
         private void getClient()
         {
             Thread.Sleep(2000);
-            string ip = getip();
+            string ip = GetIP();
 
             METState.Current.ip = ip;
-
             METState.Current.METCoreObject.SendToForm("Server IP : " + ip, "lblIP");
 
             DisplayMessage("Server IP : " + ip + "\r\n");
             DisplayMessage("Waiting for connection\r\n");
 
             // set up Socket
-            IPAddress localip = IPAddress.Parse(getip());//"192.168.50.176"
+            IPAddress localip = IPAddress.Parse(GetIP());//"192.168.50.176"
 
             listener = new TcpListener(localip, 50000);
             listener.Start();
@@ -156,14 +141,12 @@ namespace Haytham
 
             while (!_shouldStop)
             {
-
                 Client tempClient;
 
                 tempClient = new Client(listener.AcceptSocket(), this);
 
                 if (tempClient.ClientName != "")
                 {
-
                     //make a known client
                     if (clients.ContainsKey(tempClient.ClientName)) { clients[tempClient.ClientName] = tempClient; }
                     else { clients.Add(tempClient.ClientName, tempClient); }
@@ -172,24 +155,23 @@ namespace Haytham
                     if (clientThreads.ContainsKey(tempClient.ClientName))
                     {
                         //stop previous thread!!
-                        //
                         clientThreads[tempClient.ClientName] = new Thread(new ThreadStart(clients[tempClient.ClientName].Run));
                     }
-                    else { clientThreads.Add(tempClient.ClientName, new Thread(new ThreadStart(clients[tempClient.ClientName].Run))); }
+                    else
+                    {
+                        clientThreads.Add(tempClient.ClientName, new Thread(new ThreadStart(clients[tempClient.ClientName].Run)));
+                    }
+
                     clientThreads[tempClient.ClientName].Start();
-                    //DisplayMessage("one client connected \r\n");
                     DisplayMessage(tempClient.ClientName + "  is conected");
-                    // DisplayMessage(tempClient.Width + "x" + tempClient.Height + "\r\n");
                     METState.Current.METCoreObject.SendToForm(tempClient.ClientName, "PanelClients_Add");
                 }
-
             }
-        }//end getClient
+        }
 
         public string DetermineClientName(string msg, string type)
         {
             string name = "";
-
 
             if (msg.StartsWith("?"))
             {
@@ -211,7 +193,6 @@ namespace Haytham
                 name = msg;
             }
            
-
             ///This version does not support multiple SerialPortSwitch, TV, and roomba
             if (name.StartsWith("SerialPortSwitch") && !name.StartsWith("SerialPortSwitch1")) name = "";
             if (name.StartsWith("TV") && !name.StartsWith("TV1")) name = "";
@@ -220,7 +201,7 @@ namespace Haytham
             return name;
         }
 
-        public string getip()
+        public string GetIP()
         {
             string localIP = "?";
 
@@ -231,35 +212,28 @@ namespace Haytham
                 if (ip.AddressFamily.ToString() == "InterNetwork")
                 {
                     localIP = ip.ToString();
-
                 }
             }
 
-
-
             return localIP;
-
-        }//end getip
+        }
 
         public void RemoveClient(string name)
         {
             if (clients.ContainsKey(name))
             {
-
                 METState.Current.METCoreObject.SendToForm(name, "PanelClients_Remove");
 
                 clients[name] = null;
                 clients.Remove(name);
                 //clientThreads[name].Suspend();
                 clientThreads.Remove(name);
-                Thread.CurrentThread.Abort();//??????????????????????????????????????????????????????????
+                Thread.CurrentThread.Abort(); //??????????????????????????????????????????????????????????
             }
-        }//end RemoveClient
-
+        }
 
         public void Close()
         {
-
             RequestStop();
 
             //if (getClientThread.IsAlive) { getClientThread.Join(); }//getClientThread.Abort();
@@ -268,32 +242,36 @@ namespace Haytham
             //    pair.Value.Join();//pair.Value.Abort();
             //}
             System.Environment.Exit(System.Environment.ExitCode);
-
         }
-
 
         public int CountMonitorClients()
         {
-            int i = 0;
+            int count = 0;
+
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
-                if (kvp.Value.ClientType == "Monitor") i++;
+                if (kvp.Value.ClientType == "Monitor") count++;
             }
-            return i;
+
+            return count;
         }
 
         public int CountTVClients()
         {
-            int i = 0;
+            int count = 0;
+
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
-                if (kvp.Value.ClientType == "TV") i++;
+                if (kvp.Value.ClientType == "TV") count++;
             }
-            return i;
+
+            return count;
         }
+
         public bool DoWeNeedToDetectVisualMarker()
         {
-            bool yes=false;
+            bool yes = false;
+
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
                 if (kvp.Value.Status["_VisualMarker"])
@@ -302,36 +280,31 @@ namespace Haytham
                     break;
                 }
             }
-            return yes;
 
+            return yes;
         }
 
         public Dictionary<string, string> GetVisualMarkerNames()
         {
-             Dictionary<string, string> MarkerNames = new Dictionary<string, string>();
+            Dictionary<string, string> MarkerNames = new Dictionary<string, string>();
 
             foreach (KeyValuePair<string, Client> kvp in clients)
             {
                 if (kvp.Value.Status["_VisualMarker"])
                 {
-
                     foreach (KeyValuePair<string, string> usrdataitem in kvp.Value.UserData)
                     {
                         if (usrdataitem.Key.StartsWith("Marker_6_"))
                         {
                             if (MarkerNames.ContainsKey(usrdataitem.Key)) MarkerNames[usrdataitem.Key] +=("["+ usrdataitem.Value+ "]");
                             else MarkerNames[usrdataitem.Key] = "[" + usrdataitem.Value + "]";
-
                         }
                     }
-                
                 }
             }
-            return MarkerNames;
-        
-        
-        }
 
+            return MarkerNames;
+        }
 
         public bool GetCondition(string clientName, string condition)
         {
@@ -339,29 +312,28 @@ namespace Haytham
 
             if (clients.Count() > 0)
             {
-
                 condition = "_" + condition;
                 if (clients.ContainsKey(clientName))
                 {
                     temp = clients[clientName].Status.ContainsKey(condition) ? clients[clientName].Status[condition] : false;
                 }
             }
+
             return temp;
         }
 
-
-        //..................................................................................................
         private string MakeMessageString(string[] msg)
         {
             string m = "";
+
             foreach (string i in msg)
             {
                 m += "|" + i;
             }
             m += "|";
+
             return m;
         }
-
 
         /// <summary>
         /// 
@@ -383,7 +355,6 @@ namespace Haytham
                             if (kvp.Value.ClientType == "Monitor")
                             {
                                 clients[kvp.Value.ClientName].Writer.Write(message);
-
                             }
                         }
                         break;
@@ -393,7 +364,6 @@ namespace Haytham
                             if (GetCondition(kvp.Value.ClientName, key))
                             {
                                 clients[kvp.Value.ClientName].Writer.Write(message);
-
                             }
                         }
 
@@ -413,7 +383,6 @@ namespace Haytham
                         }
                         break;
                     case "GazeInScene":
-                       
                             foreach (KeyValuePair<string, Client> kvp in METState.Current.server.clients)
                             {
                                 if (kvp.Value.ClientType == "Monitor" && kvp.Value.Status["_Gaze"]) clients[kvp.Value.ClientName].Writer.Write(message);
@@ -441,7 +410,6 @@ namespace Haytham
                             if (GetCondition(kvp.Value.ClientName, key))
                             {
                                 clients[kvp.Value.ClientName].Writer.Write(message);
-
                             }
                         }
 
@@ -449,9 +417,10 @@ namespace Haytham
                 }
             }
             catch (Exception e)
-            { }
+            {
+                // TODO: Empty catch
+            }
         }
-
 
         /// <summary>
         /// Send a message to a specific client
@@ -462,9 +431,5 @@ namespace Haytham
         {
             clients[clientName].Writer.Write((string)message);
         }
-
-
-
-
     }
 }

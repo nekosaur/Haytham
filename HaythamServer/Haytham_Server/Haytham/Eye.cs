@@ -850,12 +850,11 @@ namespace Haytham
 
             }
 
-
-           if(METState.Current.SCRL_State != METState.SCRL_States.None) SCRL.Classifier.eyeData_Update(pnt_s,pnt);
+            if(METState.Current.SCRL_State != METState.SCRL_States.None) SCRL.Classifier.eyeData_Update(pnt_s,pnt);
 
             if (METState.Current.GazeSmoother) pnt = pnt_s;
-            return pnt;
-        
+
+            return pnt;      
         }
         public EyeData GetEyeDataBeforeGesture(out int index,out bool found)
         {

@@ -25,7 +25,6 @@ namespace Haytham
 {
   using System;
   using System.Collections.Generic;
-  using System.Drawing;
   using System.IO;
   using System.Net.Sockets;
   using System.Windows.Forms;
@@ -330,10 +329,10 @@ namespace Haytham
                 METState.Current.remoteCalibration = new RemoteCalibration(3, 3, this.presentationScreen.Bounds, RemoteCalibration.Task.CalibrateDisplay);
                 break;
         }
-
         
         this.Writer.Write("CalibrationFinished");
     }
+
     /// <summary>
     /// Gets the user data.
     /// </summary>
