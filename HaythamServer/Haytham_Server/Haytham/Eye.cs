@@ -24,65 +24,48 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Drawing;//point
+using System.Drawing;
+
 using Emgu.CV.Structure;
 using Emgu.CV;
-//using AForge;
 using AForge.Imaging;
-using AForge.Math.Geometry;
+
 namespace Haytham
 {
     public class Eye
     {
-
         public struct EyeData
         {
-
-            //
-            // Summary:
-            //     Gets or sets the captured time of this point.
-            //
-            // Returns:
-            //     captured time of this point.
-            public DateTime time { get; set; }
-            public string tag { get; set; }
+            public DateTime Time { get; set; }
+            public string Tag { get; set; }
 
             //PUPIL
-            public bool pupilFound { get; set; }
-            public AForge.Point pupilCenter { get; set; }
-            public Ellipse pupilEllipse { get; set; }
-
-            public int pupilDiameter { get; set; }
+            public bool PupilFound { get; set; }
+            public AForge.Point PupilCenter { get; set; }
+            public Ellipse PupilEllipse { get; set; }
+            public int PupilDiameter { get; set; }
 
             //GLINT
-            public AForge.Point glintCenter { get; set; }
-
+            public AForge.Point GlintCenter { get; set; }
         }
-
 
         public EyeData[] eyeData = new EyeData[500];
 
-        //Pupil
-
+        // Pupil
         private AForge.Point pupilBlobCenter;
         public Blob_Aforge PupilBlob = null;
         public Rectangle pupilROI;
 
-
         // Glint
-
         public int glintPyrLevel;
         public Rectangle glintROI;
         public Blob_Aforge glintBlob = null;
 
-        //
-        private ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
+        // ??
+        private ImageProcessing_Emgu emguImgageProcessing = new ImageProcessing_Emgu();
+        public bool LargeScan = true;
 
-        public bool LargScan = true;
-
-
-        //Gestures and Blink
+        // Gestures and Blink
         public bool Blink = false;
         public bool DoubleBlink = false;
         private bool CloseEye;
@@ -91,8 +74,7 @@ namespace Haytham
         private int doubleblinkWaitingTime_Counter;
 
         public HeadGesture headGesture = new HeadGesture();
-      
-
+     
         /// <summary>
         /// 123
         /// 4 5
@@ -108,92 +90,87 @@ namespace Haytham
             float[] Cx = new float[frames];
             float[] Cy = new float[frames];
 
-
             for (int i = 0; i < frames; i++)
             {
-                Cx[i] = eyeData[i].glintCenter.X;
-                Cy[i] = eyeData[i].glintCenter.Y;
-
+                Cx[i] = eyeData[i].GlintCenter.X;
+                Cy[i] = eyeData[i].GlintCenter.Y;
             }
 
-            M.X = (float)EmgImgProcssing.FindMedian(Cx);
-            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
+            M.X = (float)emguImgageProcessing.FindMedian(Cx);
+            M.Y = (float)emguImgageProcessing.FindMedian(Cy);
+
             return M;
         }
+
         public AForge.Point GetPupilCenterMedian(int frames)
         {
             AForge.Point M = new AForge.Point();
             float[] Cx = new float[frames];
             float[] Cy = new float[frames];
 
-
             for (int i = 0; i < frames; i++)
             {
-                Cx[i] = eyeData[i].pupilCenter.X;
-                Cy[i] = eyeData[i].pupilCenter.Y;
-
+                Cx[i] = eyeData[i].PupilCenter.X;
+                Cy[i] = eyeData[i].PupilCenter.Y;
             }
 
-            M.X = (float)EmgImgProcssing.FindMedian(Cx);
-            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
+            M.X = (float)emguImgageProcessing.FindMedian(Cx);
+            M.Y = (float)emguImgageProcessing.FindMedian(Cy);
+
             return M;
         }
+
         public AForge.Point GetPupilGlintVectorMedian(int frames)
         {
             AForge.Point M = new AForge.Point();
             float[] Cx = new float[frames];
             float[] Cy = new float[frames];
 
-
             for (int i = 0; i < frames; i++)
             {
-                Cx[i] = eyeData[i].glintCenter.X - eyeData[i].pupilCenter.X;
-                Cy[i] = eyeData[i].glintCenter.Y - eyeData[i].pupilCenter.Y;
-
+                Cx[i] = eyeData[i].GlintCenter.X - eyeData[i].PupilCenter.X;
+                Cy[i] = eyeData[i].GlintCenter.Y - eyeData[i].PupilCenter.Y;
             }
 
-            M.X = (float)EmgImgProcssing.FindMedian(Cx);
-            M.Y = (float)EmgImgProcssing.FindMedian(Cy);
+            M.X = (float)emguImgageProcessing.FindMedian(Cx);
+            M.Y = (float)emguImgageProcessing.FindMedian(Cy);
+
             return M;
         }
+
         public SizeF GetPupilEllipseSizeMedian(int frames)
         {
             SizeF M = new SizeF();
             float[] Cx = new float[frames];
             float[] Cy = new float[frames];
 
-
             for (int i = 0; i < frames; i++)
             {
-                Cx[i] = (float)eyeData[i].pupilEllipse.MCvBox2D.size.Width;
-                Cy[i] = (float)eyeData[i].pupilEllipse.MCvBox2D.size.Height;
-
+                Cx[i] = (float)eyeData[i].PupilEllipse.MCvBox2D.size.Width;
+                Cy[i] = (float)eyeData[i].PupilEllipse.MCvBox2D.size.Height;
             }
 
-            M.Width = (float)EmgImgProcssing.FindMedian(Cx);
-            M.Height = (float)EmgImgProcssing.FindMedian(Cy);
+            M.Width = (float)emguImgageProcessing.FindMedian(Cx);
+            M.Height = (float)emguImgageProcessing.FindMedian(Cy);
+
             return M;
         }
 
-
         public void FindGlint(Image<Bgr, Byte> inputimg, int threshold)
         {
-
             glintPyrLevel = 0;
             Image<Gray, Byte> GrayImg = new Image<Gray, byte>(inputimg.Bitmap );
 
-
             //rough determination of ROI (size of ROI may exceeds the size of the image no problem for cvSetImageROI)
             int d = (int)(METState.Current.IrisDiameter);
-            if (METState.Current.detectPupil & eyeData[1].pupilFound)
+            if (METState.Current.detectPupil & eyeData[1].PupilFound)
             {
                 glintROI = new Rectangle(
-                    Math.Max( Convert.ToInt32 (eyeData[1].pupilCenter.X) - d / 2,0),
-                      Math.Max(Convert.ToInt32(eyeData[1].pupilCenter.Y) - d / 2, 0),
-                      Math.Min(d, GrayImg.Width ),
-                      Math.Min(d, GrayImg.Height)
-
-                    );
+                    Math.Max( Convert.ToInt32 (eyeData[1].PupilCenter.X) - d / 2,0),
+                    Math.Max(Convert.ToInt32(eyeData[1].PupilCenter.Y) - d / 2, 0),
+                    Math.Min(d, GrayImg.Width ),
+                    Math.Min(d, GrayImg.Height)
+                );
             }
             else
             {
@@ -201,36 +178,20 @@ namespace Haytham
                 glintROI = new Rectangle(inputimg.Width / 2 - d / 2, inputimg.Height / 2 - d / 2, d, d);
             }
 
-
             //Modify ROI, it's needed when ROI is not inside the image area
-            
-
-
             CvInvoke.cvSetImageROI(GrayImg, glintROI);
-
 
             //ROI will be used later for drawing
             glintROI = new Rectangle(glintROI.X, glintROI.Y, GrayImg.Width, GrayImg.Height);
-
-
-
-            
-
+           
             for (int i = 0; i < glintPyrLevel; i++) GrayImg = GrayImg.PyrDown();
 
-
-
-
-
-            if (METState.Current.GAdaptive) GrayImg = EmgImgProcssing.Filter_GlintAdaptiveThreshold(GrayImg, 255, false).Erode(1).Dilate(1);
-            else GrayImg = EmgImgProcssing.Filter_Threshold(GrayImg, threshold, false);//.Erode(2).Dilate(2);//;
+            if (METState.Current.GAdaptive) GrayImg = emguImgageProcessing.Filter_GlintAdaptiveThreshold(GrayImg, 255, false).Erode(1).Dilate(1);
+            else GrayImg = emguImgageProcessing.Filter_Threshold(GrayImg, threshold, false);//.Erode(2).Dilate(2);//;
 
            // METState.Current.EyeImageTest = GrayImg;
-
            // GrayImg = GrayImg.Erode(1).Dilate(1);
-
            // GrayImg = GrayImg.Dilate(1).Erode(1);
-
 
             AForge.Point tempGlintCenter = new AForge.Point(0, 0);
 
@@ -238,61 +199,47 @@ namespace Haytham
             glintBlob = new Blob_Aforge(GrayImg.Bitmap, 5, 30, 5, 30, 0.4, 10);
             METState.Current.ProcessTimeEyeBranch.Timer("GlintBlob", "Stop");
 
-
             glintPyrLevel++;
+
             #region filter blob
             if (glintBlob.blobs_Filtered.Count > 0)
             {
-
                 glintBlob.SelectedBlob = glintBlob.blobs_Filtered[0];
                 tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
 
                 if (glintBlob.blobs_Filtered.Count >= 2)
                 {
-
                     List<Blob> temp = glintBlob.blobs_Filtered;
-
-                  
                     List<double> dists = new List<double>();
 
                     foreach (AForge.Imaging.Blob blob in temp)
                     {
-
                         tempGlintCenter = CorrectGlintPoint(blob.CenterOfGravity);
 
-                        double dist = Math.Sqrt((Math.Pow(tempGlintCenter.X - eyeData[1].pupilCenter.X, 2)) + (Math.Pow(tempGlintCenter.Y - eyeData[1].pupilCenter.Y, 2)));
+                        double dist = Math.Sqrt((Math.Pow(tempGlintCenter.X - eyeData[1].PupilCenter.X, 2)) + (Math.Pow(tempGlintCenter.Y - eyeData[1].PupilCenter.Y, 2)));
                         dists.Add(dist);
-
                     }
-                   int i= dists.IndexOf(dists.Min());
-                    ////----------------------------------------------------This filter takes the one which is closer to the pupil 
+
+                    int i = dists.IndexOf(dists.Min());
+                    
+                    // This filter takes the one which is closer to the pupil 
                     glintBlob.SelectedBlob = temp[i];
                     tempGlintCenter = CorrectGlintPoint(glintBlob.SelectedBlob.CenterOfGravity);
 
-
-                    ////----------------------------------------------------This filter takes the average of the two closest glint to the pupil
+                    // This filter takes the average of the two closest glint to the pupil
                     //dists.RemoveAt(i);
                     //temp.RemoveAt(i);
                     //i = dists.IndexOf(dists.Min());//this will select the second closest glint
                     //AForge.Point tempGlintCenter2 = CorrectGlintPoint(temp[i].CenterOfGravity);
                     //tempGlintCenter = new AForge.Point((tempGlintCenter.X + tempGlintCenter2.X) / 2, (tempGlintCenter.Y + tempGlintCenter2.Y) / 2);
-
                 }
-      
-
-
-                #endregion filter blob
-
-            
-
             }
+            #endregion
 
-
-            eyeData[0].glintCenter = tempGlintCenter;//(0,0) if there is no glint
+            eyeData[0].GlintCenter = tempGlintCenter;//(0,0) if there is no glint
             //CvInvoke.cvResetImageROI(GrayImg);
-
-
         }
+
         public AForge.Point CorrectGlintPoint(AForge.Point inp)
         {
             AForge.Point oup = new AForge.Point();
@@ -300,22 +247,17 @@ namespace Haytham
             oup.X = (float)inp.X * glintPyrLevel + glintROI.X;
             oup.Y = (float)inp.Y * glintPyrLevel + glintROI.Y;
 
-
             return oup;
-
         }
 
         public Eye()
         {
             for (int i = 0; i < 9; i++)
             {
-
                 irisPatches[i] = new IrisPatch();
-
             }
-
-
         }
+
         public void FindPupil(Image<Bgr, Byte> inputimg, int threshold)
         {
             try
@@ -324,34 +266,31 @@ namespace Haytham
                 Image<Bgr, Byte> CropedInputimg = new Image<Bgr, byte>(inputimg.Bitmap);
                 Image<Gray, Byte> temp = new Image<Gray, byte>(inputimg.Width, inputimg.Height);
 
-              //  CropedInputimg = CropedInputimg.Erode(1).Dilate(1);
+                // CropedInputimg = CropedInputimg.Erode(1).Dilate(1);
 
                 SetPupilROI(CropedInputimg, true);
                 SetPupilROI(METState.Current.EyeImageForShow, true);
+                
                 //if you want to reduce the size of the image e.g. PyrDown you should consider it for translation of the coordinates after blobDetection. 
                 //Now I have assumed that translation is only ROI.corner and there is no *Factor
 
                 #region Remove Glint
-
-
-
-                if (!LargScan & METState.Current.RemoveGlint == true)
+                if (!LargeScan & METState.Current.RemoveGlint == true)
                 {
                     METState.Current.ProcessTimeEyeBranch.Timer("GlintRemove", "Start");
                     Image<Gray, Byte> GlintMask = new Image<Gray, byte>(CropedInputimg.Width, CropedInputimg.Height);
 
                     CropedInputimg = CropedInputimg.PyrDown();
                     GlintMask = CropedInputimg.Convert<Gray, byte>();
-                    GlintMask = EmgImgProcssing.Filter_Threshold(GlintMask, METState.Current.glintThreshold, false).Dilate(1);
+                    GlintMask = emguImgageProcessing.Filter_Threshold(GlintMask, METState.Current.glintThreshold, false).Dilate(1);
 
                     if (METState.Current.RemoveGlint == true) CvInvoke.cvInpaint(CropedInputimg.Ptr, GlintMask.Ptr, CropedInputimg.Ptr, 3, Emgu.CV.CvEnum.INPAINT_TYPE.CV_INPAINT_NS);
                     CropedInputimg = CropedInputimg.PyrUp();
 
                     METState.Current.ProcessTimeEyeBranch.Timer("GlintRemove", "Stop");
-
                 }
 
-                #endregion Remove Glint
+                #endregion
 
                 #region Gray & ErodeDilate
                 Image<Gray, Byte> GrayImg;
@@ -367,85 +306,65 @@ namespace Haytham
                 }
                 else
                 {
-
                     GrayImg = CropedInputimg.Convert<Gray, byte>();
                 }
                 #endregion Gray & ErodeDilate
 
-               
-
-               // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Start");
+                // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Start");
                 #region Threshold
 
                 int constant = -1;
                 // if (!LargScan & METState.Current.PAdaptive_new) constant = PAConstantSet(GrayImg);
                 //Debug.WriteLine(constant + "," + METState.Current.PAdaptive_Constant);
 
-                if (METState.Current.PAdaptive) GrayImg = EmgImgProcssing.Filter_PupilAdaptiveThreshold(GrayImg, 255, true, constant);
-                else GrayImg = EmgImgProcssing.Filter_Threshold(GrayImg, threshold, true);
-
-                #endregion Threshold
-
-
+                if (METState.Current.PAdaptive) GrayImg = emguImgageProcessing.Filter_PupilAdaptiveThreshold(GrayImg, 255, true, constant);
+                else GrayImg = emguImgageProcessing.Filter_Threshold(GrayImg, threshold, true);
+                #endregion
 
                 // GrayImg = GrayImg.Erode(3).Dilate(2);
-
-                 GrayImg = GrayImg.Dilate(2).Erode(2);
-
+                GrayImg = GrayImg.Dilate(2).Erode(2);
 
                 DetectPupilBlob(GrayImg, inputimg.Width, inputimg.Height);
-               // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Stop");
-
+                // METState.Current.ProcessTimeEyeBranch.Timer("Pupil Detection", "Stop");
 
                 #region Show threshold mask
                 if (METState.Current.showPupil)
                 {
-                    if (LargScan) CropedInputimg = EmgImgProcssing.ColoredMask((Bitmap)PupilBlob.image, CropedInputimg, new Bgr(System.Drawing.Color.Green), true);
-
-                   // else CropedInputimg = EmgImgProcssing.ColoredMask((Bitmap)PupilBlob.image, CropedInputimg, new Bgr(System.Drawing.Color.Chartreuse), true);
+                    if (LargeScan) CropedInputimg = emguImgageProcessing.ColoredMask((Bitmap)PupilBlob.image, CropedInputimg, new Bgr(System.Drawing.Color.Green), true);
+                    // else CropedInputimg = EmgImgProcssing.ColoredMask((Bitmap)PupilBlob.image, CropedInputimg, new Bgr(System.Drawing.Color.Chartreuse), true);
                 }
                 #endregion Show threshold mask
 
                 CvInvoke.cvCopy(CropedInputimg.Ptr, METState.Current.EyeImageForShow.Ptr, new IntPtr());
-
                 CvInvoke.cvResetImageROI(METState.Current.EyeImageForShow);
                 CvInvoke.cvResetImageROI(CropedInputimg);//??
 
-
                 #endregion Find Pupil
 
-
                 #region Ellipse Drawing and modifing
-                if (eyeData[0].pupilFound)
+                if (eyeData[0].PupilFound)
                 {
-                 if (METState.Current.showPupil)
-                   EmgImgProcssing.DrawEllipse(METState.Current.EyeImageForShow, eyeData[0].pupilEllipse, new Bgr(255, 255, 255));
-
-
-              
-                    //emgu ellipse bug: I need to modify it again after drawing. now ellipse box, verteces and angle is fine
-                    eyeData[0].pupilEllipse = new Emgu.CV.Structure.Ellipse(eyeData[0].pupilEllipse.MCvBox2D.center, new SizeF(eyeData[0].pupilEllipse.MCvBox2D.size.Width, eyeData[0].pupilEllipse.MCvBox2D.size.Height), eyeData[0].pupilEllipse.MCvBox2D.angle - 90);
+                    if (METState.Current.showPupil)
+                        emguImgageProcessing.DrawEllipse(METState.Current.EyeImageForShow, eyeData[0].PupilEllipse, new Bgr(255, 255, 255));
+            
+                    // emgu ellipse bug: I need to modify it again after drawing. now ellipse box, verteces and angle is fine
+                    eyeData[0].PupilEllipse = new Emgu.CV.Structure.Ellipse(eyeData[0].PupilEllipse.MCvBox2D.center, new SizeF(eyeData[0].PupilEllipse.MCvBox2D.size.Width, eyeData[0].PupilEllipse.MCvBox2D.size.Height), eyeData[0].PupilEllipse.MCvBox2D.angle - 90);
                     // EmgImgProcssing.DrawRectangle(METState.Current.EyeImageForShow, pupildata[0].pupilEllipse.MCvBox2D.GetVertices(), 0, false, "");
                     // EmgImgProcssing.DrawRectangle(METState.Current.EyeImageForShow, pupildata[0].pupilEllipse.MCvBox2D.center, pupildata[0].pupilEllipse.MCvBox2D.size);
 
                 }
                 #endregion Ellipse Drawing and modifing
 
-
                 pupildata_Update(MeasureCenter(), MeasureDiameter());//MeasureDiameter should be after modification of ellipse
 
-
-
                 blink(ref Blink, ref DoubleBlink);
-
            }
-            catch (Exception error)
-            {
+           catch (Exception error)
+           {
                 System.Windows.Forms.MessageBox.Show(error.ToString());
-            }
-
-            
+           }
         }
+
         public void DetectPupilBlob(Image<Gray, Byte> inputimg, int fullSizeImageW, int fullSizeImageH)
         {
             pupilBlobCenter = new AForge.Point(0, 0);
@@ -458,19 +377,17 @@ namespace Haytham
             //    (int)(METState.Current.MaxPupilDiameter),
             //    0.55, 2);//should be defined in each frame
             PupilBlob = new Blob_Aforge(inputimg.Bitmap,
-   (int)(METState.Current.MinPupilScale * METState.Current.IrisDiameter),
-   (int)(METState.Current.MaxPupilScale * METState.Current.IrisDiameter),
-   (int)(METState.Current.MinPupilScale * METState.Current.IrisDiameter),
-   (int)(METState.Current.MaxPupilScale * METState.Current.IrisDiameter),
-    0.55, 4);//????????????????????????????????????????????????    ,2)
+                (int)(METState.Current.MinPupilScale * METState.Current.IrisDiameter),
+                (int)(METState.Current.MaxPupilScale * METState.Current.IrisDiameter),
+                (int)(METState.Current.MinPupilScale * METState.Current.IrisDiameter),
+                (int)(METState.Current.MaxPupilScale * METState.Current.IrisDiameter),
+                0.55, 4); // ????????????????????????????????????????????????    ,2)
 
-
-            if (PupilBlob.blobs_Filtered.Count == 0)//Pupil not found
+            if (PupilBlob.blobs_Filtered.Count == 0) // Pupil not found
             {
-                eyeData[0].pupilFound = false;
-
+                eyeData[0].PupilFound = false;
             }
-            else// Pupil found
+            else // Pupil found
             {
                 METState.Current.eye.PupilBlob. SelectedBlob = PupilBlob.blobs_Filtered[0];
 
@@ -489,8 +406,7 @@ namespace Haytham
                 //    }
 
                 //}
-                #endregion filter by location
-
+                #endregion
 
                 #region distance from center
                 if (PupilBlob.blobs_Filtered.Count > 1)//??????????????? mage nagofti faghat yedoone blob peida kon ... 0.55, 1);
@@ -507,58 +423,45 @@ namespace Haytham
                             // border = PupilBlob.hulls[i];
                             minDis = dist;
                         }
-
                     }
                 }
+                #endregion
 
-                #endregion distance from center
-
-
-
-                //get SelectedBlob   
+                // get SelectedBlob   
                 pupilBlobCenter.X = (float)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.X;
                 pupilBlobCenter.Y = (float)METState.Current.eye.PupilBlob.SelectedBlob.CenterOfGravity.Y;
 
-                //  pupildata[0].pupilFound = true;//.............2
-
+                // pupildata[0].pupilFound = true;//.............2
 
                 bool blobOnROIBorder;
 
                 AForge.Point[] border = PupilBlob.GetBlobBorder(PupilBlob.SelectedBlob, pupilROI, new Size(fullSizeImageW, fullSizeImageH), out blobOnROIBorder);
 
-
                 // pupildata[0].pupilEllipse = EmgImgProcssing.EllipseLeastSquareFitting(border);//.................2
-
-
                 //...................................1
                 //............................remove 2
 
                 if (blobOnROIBorder)//
                 {
-                    eyeData[0].pupilFound = false;
+                    eyeData[0].PupilFound = false;
                 }
                 else
                 {
-                    eyeData[0].pupilEllipse = EmgImgProcssing.EllipseLeastSquareFitting(border);
-                    eyeData[0].pupilFound = true;
-
+                    eyeData[0].PupilEllipse = emguImgageProcessing.EllipseLeastSquareFitting(border);
+                    eyeData[0].PupilFound = true;
                 }
-
             }
-
         }
+
         public int PAConstantSet(Image<Gray, Byte> inputimg)
         {
             int cons = -1;
-            int t = 3;//tickness in pixel
-
+            int t = 3; // thickness in pixel
 
             Rectangle ROI;
             AForge.Imaging.Filters.Crop filter;
+
             #region 4 ROIs
-
-
-
             ROI = new Rectangle(0, 0, inputimg.Width, t);
             filter = new AForge.Imaging.Filters.Crop(ROI);
             Image<Gray, Byte> up = new Image<Gray, Byte>(filter.Apply(inputimg.Bitmap));
@@ -574,22 +477,16 @@ namespace Haytham
             Image<Gray, Byte> Right = new Image<Gray, Byte>(filter.Apply(inputimg.Bitmap));
             Image<Gray, Byte> Right_temp = new Image<Gray, Byte>(filter.Apply(inputimg.Bitmap));
 
-
-
-
             ROI = new Rectangle(0, t, t, inputimg.Height - t);
             filter = new AForge.Imaging.Filters.Crop(ROI);
             Image<Gray, Byte> Left = new Image<Gray, Byte>(filter.Apply(inputimg.Bitmap));
             Image<Gray, Byte> Left_temp = new Image<Gray, Byte>(filter.Apply(inputimg.Bitmap));
-
-
-            #endregion 4 ROIs
+            #endregion
 
             #region threshold
             double av = 0;
             for (int i = 0; i < 60; i += 2)
             {
-
                 CvInvoke.cvAdaptiveThreshold(up, up_temp, 255, METState.Current.PAdaptive_type, Emgu.CV.CvEnum.THRESH.CV_THRESH_BINARY_INV, METState.Current.PAdaptive_blockSize, i);
                 CvInvoke.cvAdaptiveThreshold(Right, Right_temp, 255, METState.Current.PAdaptive_type, Emgu.CV.CvEnum.THRESH.CV_THRESH_BINARY_INV, METState.Current.PAdaptive_blockSize, i);
                 CvInvoke.cvAdaptiveThreshold(Down, Down_temp, 255, METState.Current.PAdaptive_type, Emgu.CV.CvEnum.THRESH.CV_THRESH_BINARY_INV, METState.Current.PAdaptive_blockSize, i);
@@ -610,28 +507,24 @@ namespace Haytham
                 }
             }
             #endregion threshold
+
             Debug.WriteLine(av);
 
-
-
-
             return cons;
-
         }
    
         public int MeasureDiameter()
         {
             int d = 0;
-            if (eyeData[0].pupilFound)
+            if (eyeData[0].PupilFound)
             {
                 //approximately
                 //d = (int)(PupilBlob.SelectedBlob.Rectangle.Height);
 
                 //large axis of ellipse
-                d = (int)eyeData[0].pupilEllipse.MCvBox2D.size.Height;//after modifying the ellipse twice
-
-
+                d = (int)eyeData[0].PupilEllipse.MCvBox2D.size.Height;//after modifying the ellipse twice
             }
+
             return d;
         }
 
@@ -639,14 +532,11 @@ namespace Haytham
         {
             AForge.Point c = new AForge.Point(0, 0);
 
-            if (eyeData[0].pupilFound)
+            if (eyeData[0].PupilFound)
             {
-
                 //Debug.WriteLine(pupilROI.X + "," + pupilROI.Y);
                 c.X = pupilBlobCenter.X + pupilROI.X;
                 c.Y = pupilBlobCenter.Y + pupilROI.Y;
-
-
             }
 
             return c;
@@ -654,25 +544,20 @@ namespace Haytham
 
         public void eyeData_Shift()
         {
-
             for (int i = eyeData.Length - 1; i > 0; i--) { eyeData[i] = eyeData[i - 1]; }
-            eyeData[0] = new EyeData();
-            eyeData[0].time = DateTime.Now;
 
+            eyeData[0] = new EyeData();
+            eyeData[0].Time = DateTime.Now;
         }
 
         public void pupildata_Update(AForge.Point pupilCenter, int pupilDiameter)
         {
-
-
-            eyeData[0].pupilCenter = pupilCenter;
-            eyeData[0].pupilDiameter = pupilDiameter;
+            eyeData[0].PupilCenter = pupilCenter;
+            eyeData[0].PupilDiameter = pupilDiameter;
           
-            //gesture
- 
-                headGesture.AddSegment(eyeData[1].pupilCenter, eyeData[0].pupilCenter);
-   
-        }
+            // gesture
+            headGesture.AddSegment(eyeData[1].PupilCenter, eyeData[0].PupilCenter);
+         }
 
         /// <summary>
         /// Represents the method that will handle HeadGesture events.
@@ -688,28 +573,23 @@ namespace Haytham
 
         public void blink(ref bool Blink, ref bool DoubleBlink)
         {
-           GestureHandler temp =Gesture;
-           HeadGestureEventArgs args;
+            GestureHandler temp =Gesture;
+            HeadGestureEventArgs args;
 
             Blink = false;
             DoubleBlink = false;
 
-
             int blinksensitivity = 70;//max time of closed eye to be considered as blink
             int doubleblinkWaitingTime = 20;
 
-
-
-            if (eyeData[0].pupilFound)
+            if (eyeData[0].PupilFound)
             {
-            # region eye is open................................................................
+                #region Eye is open
 
+                #region Just after opening the eye get blink or DbBlink
 
-                # region just after opening the eye get blink or DbBlink
-
-                if (CloseEye & blinkcounter < blinksensitivity & blinkcounter > 1)//last close was a real blink
+                if (CloseEye & blinkcounter < blinksensitivity & blinkcounter > 1) // last close was a real blink
                 {
-
                    if (WaitForDoubleBlink)
                     {
                         if (doubleblinkWaitingTime_Counter < doubleblinkWaitingTime)
@@ -730,10 +610,8 @@ namespace Haytham
                     {
                         WaitForDoubleBlink = true;
                         doubleblinkWaitingTime_Counter = 0;
-
                     }
                     //Blink = true;
-
                 }
                 # endregion just after opening the eye get blink or DbBlink
 
@@ -744,7 +622,6 @@ namespace Haytham
                     if (doubleblinkWaitingTime_Counter <= doubleblinkWaitingTime)
                     {
                         doubleblinkWaitingTime_Counter++;
-
                     }
                     else
                     {
@@ -752,90 +629,70 @@ namespace Haytham
                         WaitForDoubleBlink = false;
                         Blink = true;
                         if (temp != null) { args = new HeadGestureEventArgs("Blink", false); temp(this, args); }
-
                     }
                 }
                 # endregion  Double Blink waiting time
 
-
                 CloseEye = false;
                 blinkcounter = 0;
-            #  endregion eye is open................................................................
+                #endregion
             }
-
-
             else
             {
-               #region eye is close................................................................
-             CloseEye = true;
+                #region Eye is close
+                CloseEye = true;
                 blinkcounter++;
 
                 #region Use eye close
 
                 #endregion  Use eye close
 
-               #endregion eye is close................................................................
+                #endregion
             }
 
-
-            #region use Blink
+            #region Use Blink
 
             if (DoubleBlink)
             {
                 /// Put your code here
-
             }
             else if (Blink)
             {
                 /// Put your code here
-
             }
-            #endregion use Blink
-
+            #endregion
         }
 
         private void SetPupilROI(Image<Bgr, Byte> inputimg, bool ChangeWidthByDiameter)
         {
-
-
-            double Factor = 2;//2
-            int ROIWidth = 150;//???????????????????????????????????????????depends on resolution
+            double Factor = 2; //2
+            int ROIWidth = 150; //???????????????????????????????????????????depends on resolution
             int W;
             int H;
 
-
-
-            if (eyeData[1].pupilFound)//pupil was founded in previous frame
+            if (eyeData[1].PupilFound) // Pupil was found in previous frame
             {
-
-
                 if (ChangeWidthByDiameter)
                 {
-
-                    W = (eyeData[1].pupilDiameter == 0) ? ROIWidth : (int)Math.Truncate(eyeData[1].pupilDiameter * Factor);
+                    W = (eyeData[1].PupilDiameter == 0) ? ROIWidth : (int)Math.Truncate(eyeData[1].PupilDiameter * Factor);
                     H = W;
                 }
                 else
                 {
                     W = ROIWidth;
                     H = W;
-
                 }
-                pupilROI = new Rectangle((int)eyeData[1].pupilCenter.X - (W / 2), (int)eyeData[1].pupilCenter.Y - (H / 2), W, H);
-                LargScan = false;
 
+                pupilROI = new Rectangle((int)eyeData[1].PupilCenter.X - (W / 2), (int)eyeData[1].PupilCenter.Y - (H / 2), W, H);
+                LargeScan = false;
             }
             else
             {
-
-
                 pupilROI = new Rectangle(0, 0, inputimg.Width, inputimg.Height);
-                LargScan = true;
-
+                LargeScan = true;
             }
 
-
-            //size of ROI may exceeds the size of the image no problem for cvSetImageROI
+            // Size of ROI may exceeds the size of the image no problem for cvSetImageROI
             CvInvoke.cvSetImageROI(inputimg, pupilROI);
  
             //Modify ROI, it's needed when ROI was not inside the image area
@@ -843,20 +700,13 @@ namespace Haytham
             pupilROI = new Rectangle(inputimg.ROI.Location.X, inputimg.ROI.Location.Y, inputimg.ROI.Width, inputimg.ROI.Height);
         }
 
-
-
-        //.....................................................................IRIS
-       
         public void IrisOpticFlow(Image<Bgr, Byte> inputimg)
         {
-            
-
             METState.Current.ProcessTimeEyeBranch.Timer("Iris opticflow", "Start");
           
             Point ROIc = new Point(0, 0);
             Size ROIsize = new Size(0, 0);
             Size winsize = new Size(5,5);
-
 
             /// <summary>
             /// 1 2 3
@@ -865,45 +715,38 @@ namespace Haytham
             /// </summary>
             for (int i = 1; i < 9; i++)
             {
+                irisPatches[i].patchAccepted = false;
 
-             
-                    irisPatches[i].patchAccepted = false;
+                SetIrisPatchROI(i, ref ROIc, ref ROIsize);
 
-                    SetIrisPatchROI(i, ref ROIc, ref ROIsize);
+                irisPatches[i].patchAccepted = CheckIrisPatchROI(ROIc, ROIsize, new Size(inputimg.Width, inputimg.Height));
 
-                    irisPatches[i].patchAccepted = CheckIrisPatchROI(ROIc, ROIsize, new Size(inputimg.Width, inputimg.Height));
+                if ((METState.Current.IrisDiagonalPatches != true) & (i == 1 | i == 3 | i == 6 | i == 8)) irisPatches[i].patchAccepted = false;
+                if ((METState.Current.IrisStraightPatches != true) & (i == 2 | i == 4 | i == 5 | i == 7)) irisPatches[i].patchAccepted = false;
 
-                    if ((METState.Current.IrisDiagonalPatches != true) & (i == 1 | i == 3 | i == 6 | i == 8)) irisPatches[i].patchAccepted = false;
-                    if ((METState.Current.IrisStraightPatches != true) & (i == 2 | i == 4 | i == 5 | i == 7)) irisPatches[i].patchAccepted = false;
+                if ((irisPatches[i].patchAccepted & (i == 1 | i == 3 | i == 6 | i == 8)))
+                {
+                    //double w = 0.5 * (ROIsize.Width);
+                    //double h= 0.5 * (ROIsize.Height);
+                    //ROIsize = new Size(Convert.ToInt32(w), Convert.ToInt32(h));
 
-                    if ((irisPatches[i].patchAccepted & (i == 1 | i == 3 | i == 6 | i == 8)))
-                    {
-                        //double w = 0.5 * (ROIsize.Width);
-                        //double h= 0.5 * (ROIsize.Height);
-                        //ROIsize = new Size(Convert.ToInt32(w), Convert.ToInt32(h));
-
-                        irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "");
-                    }
-                    else if ((irisPatches[i].patchAccepted) & (i == 4 | i == 5))
-                    {
-                        irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "V");
-                    }
-                    else  if ((irisPatches[i].patchAccepted) & (i == 2 | i == 7))
-                    {
-                        irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "H");
-                    }
-                    
-                    
-
-                
-
-
+                    irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "");
+                }
+                else if ((irisPatches[i].patchAccepted) & (i == 4 | i == 5))
+                {
+                    irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "V");
+                }
+                else  if ((irisPatches[i].patchAccepted) & (i == 2 | i == 7))
+                {
+                    irisPatches[i].process5(inputimg, ROIc, ROIsize, winsize, METState.Current.EyeImageForShow, METState.Current.ShowOpticalFlow, "H");
+                }
             }
 
-
             METState.Current.ProcessTimeEyeBranch.Timer("Iris opticflow", "Stop");
-            if (METState.Current.gestureRecording=="")    headGesture.AddSegment(irisPatches);
 
+            // TODO: Is this relevant for us? // Albert
+            if (METState.Current.gestureRecording=="")
+                headGesture.AddSegment(irisPatches);
         }
 
         private void SetIrisPatchROI(int index, ref Point ROIc, ref Size ROIsize)
@@ -926,12 +769,7 @@ namespace Haytham
                 ROIsize.Height = 2 * ((METState.Current.IrisDiameter / 2) - offsetY) / 3;
             }
 
-
-
-
-
-
-            Point c = new Point((int)eyeData[0].pupilCenter.X, (int)eyeData[0].pupilCenter.Y);
+            Point c = new Point((int)eyeData[0].PupilCenter.X, (int)eyeData[0].PupilCenter.Y);
 
             switch (index)
             {
@@ -939,42 +777,41 @@ namespace Haytham
                     ROIc.X = c.X - offsetX - ROIsize.Width / 2;
                     ROIc.Y = c.Y - offsetY - ROIsize.Height / 2;
                     break;
+
                 case 2:
                     ROIc.X = c.X;
                     ROIc.Y = c.Y - offsetY - ROIsize.Height / 2;
-
                     break;
+
                 case 3:
                     ROIc.X = c.X + offsetX + ROIsize.Width / 2;
                     ROIc.Y = c.Y - offsetY - ROIsize.Height / 2;
-
                     break;
+
                 case 4:
                     ROIc.X = c.X - offsetX - ROIsize.Width / 2;
                     ROIc.Y = c.Y;
-
                     break;
+
                 case 5:
                     ROIc.X = c.X + offsetX + ROIsize.Width / 2;
                     ROIc.Y = c.Y;
-
                     break;
+
                 case 6:
                     ROIc.X = c.X - offsetX - ROIsize.Width / 2;
                     ROIc.Y = c.Y + offsetY + ROIsize.Height / 2;
-
                     break;
+
                 case 7:
                     ROIc.X = c.X;
                     ROIc.Y = c.Y + offsetY + ROIsize.Height / 2;
-
                     break;
+
                 case 8:
                     ROIc.X = c.X + offsetX + ROIsize.Width / 2;
                     ROIc.Y = c.Y + offsetY + ROIsize.Height / 2;
-
                     break;
-
             }
         }
         private bool CheckIrisPatchROI(Point ROIc, Size ROIsize, Size imgSize)
@@ -986,9 +823,9 @@ namespace Haytham
             if (ROIc.X + ROIsize.Width / 2 > imgSize.Width) OK = false;
             if (ROIc.Y + ROIsize.Height / 2 > imgSize.Height) OK = false;
 
-
             return OK;
         }
+
         public AForge.Point GetEyeFeature(EyeData eyedata)
         {
             AForge.Point pnt = new AForge.Point(0, 0);
@@ -996,20 +833,19 @@ namespace Haytham
 
             if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Pupil)
             {
-
-                pnt = eyedata.pupilCenter;
+                pnt = eyedata.PupilCenter;
                 if (METState.Current.GazeSmoother) pnt_s = GetPupilCenterMedian(METState.Current.gazeMedian);
             }
             else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.PupilGlintVector)
             {
-                pnt.X = eyedata.glintCenter.X - eyedata.pupilCenter.X;
-                pnt.Y = eyedata.glintCenter.Y - eyedata.pupilCenter.Y;
+                pnt.X = eyedata.GlintCenter.X - eyedata.PupilCenter.X;
+                pnt.Y = eyedata.GlintCenter.Y - eyedata.PupilCenter.Y;
                 if (METState.Current.GazeSmoother) pnt_s = GetPupilGlintVectorMedian(METState.Current.gazeMedian);
             }
             else if (METState.Current.calibration_eyeFeature == METState.Calibration_EyeFeature.Glint)
             {
-                pnt.X = eyedata.glintCenter.X ;
-                pnt.Y = eyedata.glintCenter.Y ;
+                pnt.X = eyedata.GlintCenter.X ;
+                pnt.Y = eyedata.GlintCenter.Y ;
                 if (METState.Current.GazeSmoother) pnt_s = GetGlintCenterMedian(METState.Current.gazeMedian);
 
             }
@@ -1031,11 +867,11 @@ namespace Haytham
             {
                 if (firstStop)
                 {
-                    if (eyeData[i].tag != HeadGesture.GestureBasicCharacters.NoMovement.ToString()) firstStop = false;
+                    if (eyeData[i].Tag != HeadGesture.GestureBasicCharacters.NoMovement.ToString()) firstStop = false;
                 }
                 else
                 {
-                    if (eyeData[i].tag == HeadGesture.GestureBasicCharacters.NoMovement.ToString() && eyeData[i].pupilFound)
+                    if (eyeData[i].Tag == HeadGesture.GestureBasicCharacters.NoMovement.ToString() && eyeData[i].PupilFound)
                     {
                         data = eyeData[i];
                         index = i;

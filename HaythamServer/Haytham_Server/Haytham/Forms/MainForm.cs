@@ -175,7 +175,7 @@ namespace Haytham
             headGesturePictures = new PictureBox[50];
             headGestureButtons = new Button[4];
 
-            METState.Current.eye.headGesture.setGestureDic();
+            METState.Current.eye.headGesture.InitializeGesturesDictionary();
 
             pbUp1.Tag = "U_D";
             pbRight1.Tag = "R_L";
@@ -2218,28 +2218,28 @@ namespace Haytham
         private void btn_Custom1_Click(object sender, EventArgs e)
         {
             prg_Custom1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
+            METState.Current.eye.headGesture.GestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom1.Tag.ToString();
         }
 
         private void btn_Custom2_Click(object sender, EventArgs e)
         {
             prg_Custom2.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
+            METState.Current.eye.headGesture.GestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom2.Tag.ToString();
         }
 
         private void btn_Custom3_Click(object sender, EventArgs e)
         {
             prg_Custom3.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
+            METState.Current.eye.headGesture.GestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom3.Tag.ToString();
         }
 
         private void btn_Custom4_Click(object sender, EventArgs e)
         {
             prg_Custom4.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            METState.Current.eye.headGesture.gestureSequenceLinear.Clear();
+            METState.Current.eye.headGesture.GestureSequenceLinear.Clear();
             METState.Current.gestureRecording = btn_Custom4.Tag.ToString();
         }
 

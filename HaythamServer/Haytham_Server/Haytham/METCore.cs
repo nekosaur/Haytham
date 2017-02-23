@@ -157,12 +157,12 @@ namespace Haytham
             if (METState.Current.detectGlint)
             {
                 METState.Current.ProcessTimeEyeBranch.Timer("Find Glint", "Start");
-                if ((!METState.Current.detectPupil) | (METState.Current.detectPupil & METState.Current.eye.eyeData[1].pupilFound))
+                if ((!METState.Current.detectPupil) | (METState.Current.detectPupil & METState.Current.eye.eyeData[1].PupilFound))
                 {
                     METState.Current.eye.FindGlint(e.image, METState.Current.glintThreshold);// Glintcenter=(0,0) if there is no glint
                     // if (!METState.Current.detectPupil) EmgImgProcssing.DrawCircle(METState.Current.EyeImageForShow, METState.Current.EyeImageForShow.Width / 2, METState.Current.EyeImageForShow.Height / 2, (int)(METState.Current.IrisDiameter));
                 }
-                if (METState.Current.eye.eyeData[0].glintCenter != new AForge.Point(0, 0)) SendToForm(METState.Current.eye.eyeData[0].glintCenter, "lblGC");
+                if (METState.Current.eye.eyeData[0].GlintCenter != new AForge.Point(0, 0)) SendToForm(METState.Current.eye.eyeData[0].GlintCenter, "lblGC");
                 else SendToForm("NoGlint", "lblGC");
 
                 METState.Current.ProcessTimeEyeBranch.Timer("Find Glint", "Stop");
@@ -194,10 +194,10 @@ namespace Haytham
                     if (size.Width == 0 | float.IsNaN(size.Width)) size = new SizeF((float)METState.Current.IrisDiameter, (float)METState.Current.IrisDiameter);//for the first frames where median is 0 or NoN
 
 
-                    if (METState.Current.eye.LargScan == false && METState.Current.eye.eyeData[0].pupilFound)
+                    if (METState.Current.eye.LargeScan == false && METState.Current.eye.eyeData[0].PupilFound)
                     {
                         METState.Current.CounterBeforeDrawingIrisCircle = 0;
-                        Ellipse IrisEllipse = new Emgu.CV.Structure.Ellipse(new PointF(METState.Current.eye.eyeData[0].pupilCenter.X, METState.Current.eye.eyeData[0].pupilCenter.Y), size, METState.Current.eye.eyeData[0].pupilEllipse.MCvBox2D.angle - 90);
+                        Ellipse IrisEllipse = new Emgu.CV.Structure.Ellipse(new PointF(METState.Current.eye.eyeData[0].PupilCenter.X, METState.Current.eye.eyeData[0].PupilCenter.Y), size, METState.Current.eye.eyeData[0].PupilEllipse.MCvBox2D.angle - 90);
                         EmgImgProcssing.DrawEllipse(METState.Current.EyeImageForShow, IrisEllipse, new Bgr(100, 100, 100));
                     }
                     else
@@ -220,7 +220,7 @@ namespace Haytham
                 }
                 #endregion Draw Iris
 
-                if (METState.Current.eye.eyeData[0].pupilFound) SendToForm(METState.Current.eye.eyeData[0].pupilCenter, "lblPC");
+                if (METState.Current.eye.eyeData[0].PupilFound) SendToForm(METState.Current.eye.eyeData[0].PupilCenter, "lblPC");
                 else SendToForm("NoPupil", "lblPC");
 
 
@@ -234,11 +234,11 @@ namespace Haytham
                 {
 
                     METState.Current.ProcessTimeEyeBranch.Timer("Plot", "Start");
-                    if (METState.Current.eye.eyeData[0].pupilFound)
+                    if (METState.Current.eye.eyeData[0].PupilFound)
                     {
-                        SendToForm(METState.Current.eye.eyeData[0].pupilCenter.X, "Chart1");
-                        SendToForm(METState.Current.eye.eyeData[0].pupilCenter.Y, "Chart2");
-                        SendToForm(METState.Current.eye.eyeData[0].pupilDiameter, "Chart3");
+                        SendToForm(METState.Current.eye.eyeData[0].PupilCenter.X, "Chart1");
+                        SendToForm(METState.Current.eye.eyeData[0].PupilCenter.Y, "Chart2");
+                        SendToForm(METState.Current.eye.eyeData[0].PupilDiameter, "Chart3");
 
                     }
                     else
@@ -266,7 +266,7 @@ namespace Haytham
 
             #region glint Drawing (injast chon mikham rooye drawing pupil biofte)
 
-            if (METState.Current.detectGlint && METState.Current.eye.eyeData[0].glintCenter != new AForge.Point(0, 0))
+            if (METState.Current.detectGlint && METState.Current.eye.eyeData[0].GlintCenter != new AForge.Point(0, 0))
             {
                 if (METState.Current.showGlint)
                 {
@@ -296,27 +296,27 @@ namespace Haytham
                     #endregion draw circle around glint blobs
 
 
-                    if (METState.Current.eye.eyeData[0].glintCenter.X != 0)//glint found
+                    if (METState.Current.eye.eyeData[0].GlintCenter.X != 0)//glint found
                     {
 
-                        if (METState.Current.detectPupil & METState.Current.eye.eyeData[1].pupilFound)
-                            EmgImgProcssing.DrawLine(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].glintCenter, METState.Current.eye.eyeData[0].pupilCenter, System.Drawing.Color.Black);
+                        if (METState.Current.detectPupil & METState.Current.eye.eyeData[1].PupilFound)
+                            EmgImgProcssing.DrawLine(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].GlintCenter, METState.Current.eye.eyeData[0].PupilCenter, System.Drawing.Color.Black);
                         else if (!METState.Current.detectPupil)
-                            EmgImgProcssing.DrawCross(METState.Current.EyeImageForShow, (int)METState.Current.eye.eyeData[0].glintCenter.X, (int)METState.Current.eye.eyeData[0].glintCenter.Y, System.Drawing.Color.Green);
+                            EmgImgProcssing.DrawCross(METState.Current.EyeImageForShow, (int)METState.Current.eye.eyeData[0].GlintCenter.X, (int)METState.Current.eye.eyeData[0].GlintCenter.Y, System.Drawing.Color.Green);
                     }
                 }
             }
 
             #endregion glint  Drawing (injast chon mikham rooye drawing pupil biofte)
 
-            if (METState.Current.headRollGestures & METState.Current.eye.eyeData[0].pupilFound)
+            if (METState.Current.headRollGestures & METState.Current.eye.eyeData[0].PupilFound)
             {
                 METState.Current.eye.IrisOpticFlow(e.image);
             }
 
             #region Remote
 
-            if (METState.Current.eye.eyeData[0].pupilFound)
+            if (METState.Current.eye.eyeData[0].PupilFound)
             {
 
 
@@ -466,13 +466,13 @@ namespace Haytham
             }
             METState.Current.server.Send("Eye", new string[]
                                                 {
-                                                  METState.Current.eye.eyeData[0].time.Ticks.ToString(),
+                                                  METState.Current.eye.eyeData[0].Time.Ticks.ToString(),
                                                   METState.Current.Gaze_RGT.X.ToString(), 
                                                   METState.Current.Gaze_RGT.Y.ToString(),
-                                                  METState.Current.eye.eyeData[0].pupilDiameter.ToString(),
-                                                  METState.Current.eye.eyeData[0].pupilFound.ToString(),
-                                                  ((float)METState.Current.eye.eyeData[0].pupilCenter.X/METState.Current.EyeCamera.VideoSize.Width).ToString(),
-                                                  ((float)METState.Current.eye.eyeData[0].pupilCenter.Y/METState.Current.EyeCamera.VideoSize.Height).ToString(),
+                                                  METState.Current.eye.eyeData[0].PupilDiameter.ToString(),
+                                                  METState.Current.eye.eyeData[0].PupilFound.ToString(),
+                                                  ((float)METState.Current.eye.eyeData[0].PupilCenter.X/METState.Current.EyeCamera.VideoSize.Width).ToString(),
+                                                  ((float)METState.Current.eye.eyeData[0].PupilCenter.Y/METState.Current.EyeCamera.VideoSize.Height).ToString(),
 
 
                                                 });
@@ -505,11 +505,11 @@ namespace Haytham
                     {
                         string GazeDataLine =
                               time_st
-                          + "," + Math.Round( METState.Current.eye.eyeData[0].pupilCenter.X)
-                           + "," + Math.Round( METState.Current.eye.eyeData[0].pupilCenter.Y)
-                           + "," + METState.Current.eye.eyeData[0].glintCenter.X
-                           + "," + METState.Current.eye.eyeData[0].glintCenter.Y
-                           + "," + METState.Current.eye.eyeData[0].pupilDiameter
+                          + "," + Math.Round( METState.Current.eye.eyeData[0].PupilCenter.X)
+                           + "," + Math.Round( METState.Current.eye.eyeData[0].PupilCenter.Y)
+                           + "," + METState.Current.eye.eyeData[0].GlintCenter.X
+                           + "," + METState.Current.eye.eyeData[0].GlintCenter.Y
+                           + "," + METState.Current.eye.eyeData[0].PupilDiameter
                            + "," + METState.Current.TextFileDataExport.temp1
                            + "," + METState.Current.TextFileDataExport.temp2
                            + "," + METState.Current.TextFileDataExport.temp3
@@ -560,11 +560,11 @@ namespace Haytham
                     string GazeDataLine =
                           time_st
                            
-                      + "," + Math.Round(METState.Current.eye.eyeData[0].pupilCenter.X)
-                       + "," + Math.Round(METState.Current.eye.eyeData[0].pupilCenter.Y)
-                       + "," + METState.Current.eye.eyeData[0].glintCenter.X
-                       + "," + METState.Current.eye.eyeData[0].glintCenter.Y
-                       + "," + METState.Current.eye.eyeData[0].pupilDiameter
+                      + "," + Math.Round(METState.Current.eye.eyeData[0].PupilCenter.X)
+                       + "," + Math.Round(METState.Current.eye.eyeData[0].PupilCenter.Y)
+                       + "," + METState.Current.eye.eyeData[0].GlintCenter.X
+                       + "," + METState.Current.eye.eyeData[0].GlintCenter.Y
+                       + "," + METState.Current.eye.eyeData[0].PupilDiameter
                        + "," + METState.Current.SCRL_Flag
 
                            ;
@@ -684,7 +684,7 @@ namespace Haytham
 
                     #region  Gaze
 
-                    if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].pupilFound && METState.Current.monitor.IsGazeInsideRectangle()) ;
+                    if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].PupilFound && METState.Current.monitor.IsGazeInsideRectangle()) ;
                     {
                         ///Gaze point in the computer screen. coordinates change from [0, screen.size(in pixles)] in each dimension
                         AForge.Point Screengaze = METState.Current.monitor.CalculateRectangleGazePoint(METState.Current.Gaze_HMGT, METState.Current.SceneToMonitor_Mapping);
