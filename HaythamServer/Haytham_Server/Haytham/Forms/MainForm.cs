@@ -163,6 +163,28 @@ namespace Haytham
                     rbAutoActivation.Visible = false;
                     cbRecordSceneVideo.Visible = false;
                     break;
+
+                case METState.RemoteOrMobile.HoloLens:
+                    // Hide scene camera selection, and start both button
+                    gbSceneCameraDevice.Visible = false;
+                    gbStartBoth.Visible = false;
+
+                    // Hide scene and extdata tabs
+                    leftTabs.TabPages.Remove(this.tabPage_Scene);
+                    leftTabs.TabPages.Remove(this.tabPage_ExtData);
+
+                    // Hide calibration stuff
+                    gbCalibrationScene.Visible = false;
+                    gbCalibrationRemote.Visible = false;
+
+                    gbSceneImage.Visible = false;
+                    //imSceneProcessed.Visible = false;
+
+                    // Hide timer and other stuff
+                    cmbSceneTimer.Visible = false;
+                    rbAutoActivation.Visible = false;
+                    cbRecordSceneVideo.Visible = false;
+                    break;
             }
             
             // Add handlers
@@ -334,6 +356,11 @@ namespace Haytham
             METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.EyeToScene_Mapping);
             METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.EyeToDisplay_Mapping);
             METState.Current.METCoreObject.LoadGazeCalibrationData(ref METState.Current.DisplayShownInScene_Mapping);
+
+            if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.HoloLens)
+            {
+                METState.Current.HoloLensServer = new HoloLens.Server(this);
+            }
         }
 
         private void gestureIcons(object sender, HeadGestureEventArgs e)

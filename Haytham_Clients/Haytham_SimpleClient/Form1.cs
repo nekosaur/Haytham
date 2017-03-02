@@ -168,6 +168,9 @@ namespace Haytham_SimpleClient
                 writer.Write("True");
                 writer.Write("Status_Commands");
                 writer.Write("True");
+                writer.Write("Status_Eye");
+                writer.Write("True");
+                
 
                 writer.Write("Size"); writer.Write(ScreenWidth); writer.Write(ScreenHeight);
             }
@@ -213,6 +216,8 @@ namespace Haytham_SimpleClient
         private void ProcessMessage(string msg)
         {
             string[] msgArray = ConvertMsgToArray(msg);
+
+            Console.WriteLine(msg);
 
             if (msg.StartsWith("Gaze"))
             {

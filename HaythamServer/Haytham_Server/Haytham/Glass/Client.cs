@@ -2,31 +2,18 @@
 namespace myGlass
 {
     using System;
-    using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
     using System.Net.Sockets;
-    using System.Windows.Forms;
     using System.Text;
     using System.Net;
-    using System.Net.Sockets;
-    using System.ComponentModel;
-    using System.Data;
     using Haytham;
     using System.Linq;
     using Haytham.FXPAL;
     using System.Threading;
-    using Newtonsoft.Json;
-    using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Json;
     using System.Web.Script.Serialization;
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
-using Haytham.Glass.Experiments;
-  
+    
+    using Haytham.Glass.Experiments;
     using System.Security.Cryptography;
 
     /// <summary>
@@ -41,7 +28,6 @@ using Haytham.Glass.Experiments;
         public double progressData_Remaining = 0;
         public ImageProcessing_Emgu EmgImgProcssing = new ImageProcessing_Emgu();
 
-
         int headerIndex = 0;
 
         //byte[] buf = new byte[8192];
@@ -49,27 +35,17 @@ using Haytham.Glass.Experiments;
         int count = 0;
 
         System.IO.MemoryStream dataOutputStream = new MemoryStream();
-
-      
+     
         public Calibration tempCalibration;
-
         public Image bitmap;
-        enum Mode : int { none = 0, mainLoop = 1, waitingForHeader = 2, waitingForpicture = 3,FXPAL = 4, waitingForJSON_size = 5, waitingForJSON = 6 };
-        Mode mode = Mode.mainLoop;
+
+        enum Mode : int { None = 0, MainLoop = 1, WaitingForHeader = 2, WaitingForPicture = 3, FXPAL = 4, WaitingForJSONSize = 5, waitingForJSON = 6 };
+        Mode mode = Mode.MainLoop;
 
         public enum Ready_State : int { No = 0, Yes = 1 ,Error=-1};
         public Ready_State myGlassReady_State = Ready_State.No;
-
-    
         private Boolean snapshot = false;
-       
-      
         public Calibration_Scene myCalibration_Scene=new Calibration_Scene();
-
-        
-       
-
-
         public Image currentImage = null;
 
         /// <summary>
@@ -102,7 +78,6 @@ using Haytham.Glass.Experiments;
         /// </param>
         public Client(TcpClient socket, Server serverValue)
         {
-
             this.server = serverValue;
 
             finish("New Connection established!");
@@ -110,20 +85,11 @@ using Haytham.Glass.Experiments;
 
             // create NetworkStream object for Socket
             this.socketStream = this.tcpClient.GetStream();
-
-
-
-
-
         }
-
         #endregion
 
-
-        public void serverThread()
+        public void ServerThread()
         {
-
-
             try
             {
                 System.Net.Sockets.UdpClient udpClient = new System.Net.Sockets.UdpClient(constants.SERVER_PORT_UDP);
@@ -134,19 +100,14 @@ using Haytham.Glass.Experiments;
                 udpClient.Close();
                 string stringData = Encoding.ASCII.GetString(data, 0, data.Length);
 
-
                 server.GlassIP = sender.Address.ToString();
-
                 server.udpServer = new UdpClient(constants.SERVER_PORT_UDP_GAZE);
                 server.remoteEP = new IPEndPoint(IPAddress.Parse(server.GlassIP), constants.SERVER_PORT_UDP_GAZE);
                 server.sendSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
                 METState.Current.METCoreObject.SendToForm("Glass IP: " + server.GlassIP + "\r\n", "tbOutput");
-
-
             }
             catch (Exception e) { }
-
         }
 
         /// <summary>
@@ -154,7 +115,6 @@ using Haytham.Glass.Experiments;
         /// </summary>
         public void Run()
         {
-
             METState.Current.METCoreObject.SendToForm(0, "progressbar");
 
             ////UDP
@@ -165,9 +125,8 @@ using Haytham.Glass.Experiments;
 
             METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_WHAT_IS_YOUR_IP);
 
-            Thread thdUDPServer = new Thread(new ThreadStart(serverThread));
+            Thread thdUDPServer = new Thread(new ThreadStart(ServerThread));
             thdUDPServer.Start();
-
 
             Thread.Sleep(500);
 
@@ -175,17 +134,13 @@ using Haytham.Glass.Experiments;
             {
                 try
                 {
-
                     switch (mode)
                     {
-                        case Mode.mainLoop:
+                        case Mode.MainLoop:
                             {
-
-
                                 received = new byte[constants.MSG_SIZE];
                                 //socketStream.ReadTimeout = 10000;
                                 int tmp = socketStream.Read(received, 0, received.Length);
-
 
                                 if (tmp <= 0)
                                 {
@@ -195,22 +150,16 @@ using Haytham.Glass.Experiments;
                                 }
                                 else if (tmp == 12)
                                 {
-
-
                                     //msg = System.Text.Encoding.UTF8.GetString(received, 0, tmp);//.TrimEnd('\0');
-
-
-
                                     //String received_MSG = myGlass.MessageType.commands.SingleOrDefault(x => x.Value == GetIndicator(received)).Key;
                                     //METState.Current.METCoreObject.SendToForm("Received msg: " + received_MSG, "tbOutput");
-
 
                                     interpretMSG(received);
                                 }
                             }
                             break;
 
-                        case Mode.waitingForJSON_size:
+                        case Mode.WaitingForJSONSize:
                             {
                                 byte[] buffer = new byte[4];
                                 //updateUI("Waiting for data.  Expecting " + progressData_Remaining + " more bytes.");
@@ -222,61 +171,53 @@ using Haytham.Glass.Experiments;
                                     dataOutputStream = new MemoryStream();
 
                                     mode = Mode.waitingForJSON;
-
-
                                 }
-                                else mode = Mode.mainLoop;
+                                else mode = Mode.MainLoop;
 
                             }
                             break;
+
                         case Mode.waitingForJSON:
                             {
                                 int prg = getJson();
 
                                 if (prg == 1)
                                 {
-                                  
-                                    mode = Mode.mainLoop;
+                                    mode = Mode.MainLoop;
                                     METState.Current.GlassServer.Send(MessageType.toGLASS_DataReceived);
-
                                 }
                                 else if (prg == -1)
                                 {
-
-                                    mode = Mode.mainLoop;
+                                    mode = Mode.MainLoop;
                                 }
-
-
-
                             }
                             break;
-                        case Mode.waitingForHeader:
+
+                        case Mode.WaitingForHeader:
                             {
                                 int prg = getHeader();
 
                                 if (prg == -1)
                                 {
-                                    mode = Mode.mainLoop;
+                                    mode = Mode.MainLoop;
                                     //Calibration terminated!
                                     server.Send(myGlass.MessageType.toGLASS_Calibrate_Scene, new Point(-3, -3));//point x (th) of y (total)
-
                                 }
 
                                 else if (prg == 1)
-                                    mode = Mode.waitingForpicture;
+                                    mode = Mode.WaitingForPicture;
                             }
                             break;
-                        case Mode.waitingForpicture:
+
+                        case Mode.WaitingForPicture:
                             {
                                 int prg = getPicture();
 
                                 if (prg == 1)
                                 {
-
-
                                     if (snapshot)
                                     {
-                                        mode = Mode.mainLoop;
+                                        mode = Mode.MainLoop;
 
                                         #region Draw gaze  on image
                                         if (METState.Current.ShowGaze)
@@ -294,7 +235,6 @@ using Haytham.Glass.Experiments;
                                         }
                                         #endregion Draw gaze cross on image
 
-
                                         //METState.Current.METCoreObject.SendToForm(bitmap, "imScene");
                                         //METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");    
 
@@ -309,7 +249,7 @@ using Haytham.Glass.Experiments;
                                     else if  (CalibExp.scene_is_sampling)
                                     {
 
-                                        mode = Mode.mainLoop;
+                                        mode = Mode.MainLoop;
    currentImage =new Bitmap( bitmap);//This will be automatically shown in the form
 
                                         CalibExp.mySampling_Scene.ProcessImg(bitmap);
@@ -323,7 +263,7 @@ using Haytham.Glass.Experiments;
                                     }
                                     else if (myCalibration_Scene.is_sampling)//calibration
                                     {
-                                        mode = Mode.mainLoop;
+                                        mode = Mode.MainLoop;
   currentImage =new Bitmap( bitmap);//This will be automatically shown in the form
 
                                         myCalibration_Scene.ProcessImg(bitmap);
@@ -342,7 +282,7 @@ using Haytham.Glass.Experiments;
                                 else if (prg == -1)
                                 {
 
-                                    mode = Mode.mainLoop;
+                                    mode = Mode.MainLoop;
                                 }
 
 
@@ -397,7 +337,9 @@ using Haytham.Glass.Experiments;
             catch (Exception e)
             { }
         }
+
         int wait = 4000;
+
         private void interpretMSG(byte[] msg)
         {
             // we can insure that this is a correct msg by if(GetIndicator(msg)==GetX(msg))
@@ -647,7 +589,7 @@ using Haytham.Glass.Experiments;
 
                         dataOutputStream = new MemoryStream();
 
-                        mode = Mode.waitingForJSON_size;
+                        mode = Mode.WaitingForJSONSize;
 
                         #endregion
 
@@ -668,7 +610,7 @@ using Haytham.Glass.Experiments;
                         //message = Encoding.ASCII.GetBytes("PauseGeneralReceive");
                         //socketStream.Write(message,0,message.Length);
 
-                        mode = Mode.waitingForHeader;
+                        mode = Mode.WaitingForHeader;
 
                         #endregion
 

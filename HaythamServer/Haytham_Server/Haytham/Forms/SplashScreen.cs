@@ -16,40 +16,37 @@ namespace Haytham
             InitializeComponent();
         }
 
-
         private void Go()
         {
-
-
-        this.Hide();
-                
-             
-           
+            this.Hide();
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             METState.Current.remoteOrMobile =  METState.RemoteOrMobile.MobileEyeTracking;
-           Go();
+
+            Go();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             METState.Current.remoteOrMobile = METState.RemoteOrMobile.RemoteEyeTracking;
-           Go();
+
+            Go();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             METState.Current.remoteOrMobile = METState.RemoteOrMobile.GoogleGlass;
          
-               
             Go();
         }
 
+        private void btnHoloLens_Click(object sender, EventArgs e)
+        {
+            METState.Current.remoteOrMobile = METState.RemoteOrMobile.HoloLens;
 
-
+            Go();
+        }
     }
 }

@@ -112,7 +112,7 @@ namespace Haytham
         public Dictionary<string, int> SCRL_images_result_names = new Dictionary<string, int>();
 
 
-        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGlass};
+        public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGlass, HoloLens };
         public RemoteOrMobile remoteOrMobile;
 
         //Cameras
@@ -285,7 +285,8 @@ namespace Haytham
         //
 
         public Dictionary<string, int> commands = new Dictionary<string, int>();
-           
 
+        // HoloLens stuff
+        public HoloLens.Server HoloLensServer;
     }
 }
