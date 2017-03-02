@@ -172,6 +172,9 @@ namespace Haytham
                     // Hide scene and extdata tabs
                     leftTabs.TabPages.Remove(this.tabPage_Scene);
                     leftTabs.TabPages.Remove(this.tabPage_ExtData);
+                    leftTabs.TabPages.Remove(this.tabPage_Glass);
+                    leftTabs.TabPages.Remove(this.tabPage_EyeGrip);
+                    leftTabs.TabPages.Remove(this.tabPage_Clients);
 
                     // Hide calibration stuff
                     gbCalibrationScene.Visible = false;
@@ -1412,7 +1415,7 @@ namespace Haytham
 
                     }
                     break;
-
+                
 
                 case "label_SCRL":
                     if (label_SCRL.InvokeRequired)
@@ -1778,6 +1781,18 @@ namespace Haytham
                     {
                         HighLight_Client((string)message);
 
+                    }
+
+                    break;
+
+                case "tbHoloLensServer":
+                    if (tbHoloLensServer.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "tbOutput" });
+                    }
+                    else
+                    {
+                        tbHoloLensServer.AppendText((string)message + System.Environment.NewLine);
                     }
 
                     break;

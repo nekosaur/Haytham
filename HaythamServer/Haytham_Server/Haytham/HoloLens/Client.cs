@@ -44,6 +44,11 @@ namespace Haytham.HoloLens
                 throw;
             }
 
+            while (true)
+            {
+                
+            }
+
         }
 
         private async Task<string> ReadString()

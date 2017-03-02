@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Haytham.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -28,14 +29,14 @@ namespace Haytham.HoloLens
         {
             Thread.Sleep(1000);
             string ip = GetIP();
-            METState.Current.METCoreObject.SendToForm("Server IP : " + ip + "\r\n", "tbOutput");
+            METState.Current.METCoreObject.SendToForm("Server IP : " + ip + "\r\n", "tbHoloLensServer");
 
             IPAddress localIP = IPAddress.Parse(ip);
             TcpListener tcpListener = new TcpListener(localIP, serverPort);
             tcpListener.Start();
 
-            METState.Current.METCoreObject.SendToForm("Running server...", "tbOutput");
-            METState.Current.METCoreObject.SendToForm("Waiting....\r\n", "tbOutput");
+            METState.Current.METCoreObject.SendToForm("Running server...", "tbHoloLensServer");
+            METState.Current.METCoreObject.SendToForm("Waiting....\r\n", "tbHoloLensServer");
 
             Socket socket = await tcpListener.AcceptSocketAsync();
 
@@ -49,25 +50,16 @@ namespace Haytham.HoloLens
             clientThread = new Thread(new ThreadStart(holoLensClient.Run));
             clientThread.Start();
 
-            METState.Current.METCoreObject.SendToForm("HoloLens connected", "tbOutput");
-            METState.Current.METCoreObject.SendToForm("Hide", "IPform");
+            METState.Current.METCoreObject.SendToForm("HoloLens connected", "tbHoloLensServer");
         }
 
         public string GetIP()
         {
-            string localIP = "?";
-            IPHostEntry host;
-            host = Dns.GetHostEntry(Dns.GetHostName());
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            string[] ips = host.AddressList.Select(address => address.ToString()).ToArray();
+            string ip = DropdownPrompt.ShowDialog<string>("Select IP to bind server to", ips);
 
-            foreach (IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily.ToString() == "InterNetwork")
-                {
-                    localIP = ip.ToString();
-                }
-            }
-
-            return localIP;
+            return ip;
         }
     }
 }

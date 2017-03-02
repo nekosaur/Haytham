@@ -244,6 +244,9 @@ namespace Haytham
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.cmbEyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
+            this.tabPage_HoloLens = new System.Windows.Forms.TabPage();
+            this.gpHoloLensServer = new System.Windows.Forms.GroupBox();
+            this.tbHoloLensServer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
             this.rootContainer.Panel1.SuspendLayout();
             this.rootContainer.Panel2.SuspendLayout();
@@ -344,6 +347,8 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.pnlTop.SuspendLayout();
+            this.tabPage_HoloLens.SuspendLayout();
+            this.gpHoloLensServer.SuspendLayout();
             this.SuspendLayout();
             // 
             // rootContainer
@@ -379,6 +384,7 @@ namespace Haytham
             this.leftTabs.Controls.Add(this.tabPage_Gesture);
             this.leftTabs.Controls.Add(this.tabPage_ExtData);
             this.leftTabs.Controls.Add(this.tabPage_EyeGrip);
+            this.leftTabs.Controls.Add(this.tabPage_HoloLens);
             this.leftTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.leftTabs.Location = new System.Drawing.Point(0, 0);
@@ -3158,6 +3164,36 @@ namespace Haytham
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
+            // tabPage_HoloLens
+            // 
+            this.tabPage_HoloLens.Controls.Add(this.gpHoloLensServer);
+            this.tabPage_HoloLens.Location = new System.Drawing.Point(4, 40);
+            this.tabPage_HoloLens.Name = "tabPage_HoloLens";
+            this.tabPage_HoloLens.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_HoloLens.Size = new System.Drawing.Size(337, 647);
+            this.tabPage_HoloLens.TabIndex = 10;
+            this.tabPage_HoloLens.Text = "HoloLens";
+            this.tabPage_HoloLens.UseVisualStyleBackColor = true;
+            // 
+            // gpHoloLensServer
+            // 
+            this.gpHoloLensServer.Controls.Add(this.tbHoloLensServer);
+            this.gpHoloLensServer.Location = new System.Drawing.Point(6, 6);
+            this.gpHoloLensServer.Name = "gpHoloLensServer";
+            this.gpHoloLensServer.Size = new System.Drawing.Size(323, 203);
+            this.gpHoloLensServer.TabIndex = 0;
+            this.gpHoloLensServer.TabStop = false;
+            this.gpHoloLensServer.Text = "Server";
+            // 
+            // tbHoloLensServer
+            // 
+            this.tbHoloLensServer.Location = new System.Drawing.Point(6, 14);
+            this.tbHoloLensServer.Multiline = true;
+            this.tbHoloLensServer.Name = "tbHoloLensServer";
+            this.tbHoloLensServer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbHoloLensServer.Size = new System.Drawing.Size(311, 183);
+            this.tbHoloLensServer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3292,6 +3328,9 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
+            this.tabPage_HoloLens.ResumeLayout(false);
+            this.gpHoloLensServer.ResumeLayout(false);
+            this.gpHoloLensServer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3511,6 +3550,9 @@ namespace Haytham
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TrackBar tbSpeedMind;
         private System.Windows.Forms.Label lbSpeedMindValue;
+        private System.Windows.Forms.TabPage tabPage_HoloLens;
+        private System.Windows.Forms.GroupBox gpHoloLensServer;
+        private System.Windows.Forms.TextBox tbHoloLensServer;
     }
 }
 

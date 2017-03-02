@@ -234,6 +234,7 @@
     <Compile Include="ExtData\DataObject.cs" />
     <Compile Include="ExtData\ExtDataHandler.cs" />
     <Compile Include="ExtData\ImageInfo.cs" />
+    <Compile Include="Forms\DropdownPrompt.cs" />
     <Compile Include="Forms\TransparentTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
