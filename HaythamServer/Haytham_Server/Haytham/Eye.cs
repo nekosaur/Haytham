@@ -814,6 +814,7 @@ namespace Haytham
                     break;
             }
         }
+
         private bool CheckIrisPatchROI(Point ROIc, Size ROIsize, Size imgSize)
         {
             bool OK = true;
@@ -856,6 +857,7 @@ namespace Haytham
 
             return pnt;      
         }
+
         public EyeData GetEyeDataBeforeGesture(out int index,out bool found)
         {
             bool firstStop = true;
@@ -881,7 +883,6 @@ namespace Haytham
             }
             
             return data;
-
         }
     }
 }

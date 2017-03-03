@@ -35,7 +35,7 @@ namespace Haytham
 
         public Timer timerSpeed = new Timer();
         public Dictionary<int, Point> calibPoints = new Dictionary<int, Point>();
-        int N;
+
         public AnimatedCursor myCursor;
         public Rectangle PresentationScreen { get; set; }
 
@@ -124,7 +124,7 @@ namespace Haytham
                     {
                         METState.Current.GlassServer.Send(myGlass.MessageType.toGLASS_Calibrate_Display, new Point(-2, -2));
 
-                        //.............................CAlibrating DisplayShown in Scene
+                        // Calibrating DisplayShown in Scene
                         Point[] DisplayInSceneImage = new Point[4];
                         DisplayInSceneImage[0] = new Point(510, 30);
                         DisplayInSceneImage[1] = new Point(870, 30);

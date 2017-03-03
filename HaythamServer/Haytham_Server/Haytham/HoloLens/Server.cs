@@ -65,8 +65,6 @@ namespace Haytham.HoloLens
 
             holoLensClient = new Client(socket, this);
 
-            //clientThread = new Thread(new ThreadStart(holoLensClient.Run));
-            //clientThread.Start();
             Task.Run(async () =>
             {
                 await holoLensClient.Run();

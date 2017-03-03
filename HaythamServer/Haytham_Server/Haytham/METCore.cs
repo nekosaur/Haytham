@@ -39,7 +39,6 @@ using Haytham.Glass.Experiments;
 
 namespace Haytham
 {
-
     public class METCore
     {
         public _SendToForm SendToForm;
@@ -51,17 +50,14 @@ namespace Haytham
         //for debug
         System.Drawing.Point pgaze = new System.Drawing.Point(0, 0);
 
-
         public void EyeFrameCaptured(object sender, NewFrameEventArgs eventArgs)
         {
-
             var TempImage = (Bitmap)eventArgs.Frame.Clone();
 
             METState.Current.EyeImageOrginal = new Image<Bgr, Byte>(TempImage);
             METState.Current.EyeImageForShow = new Image<Bgr, Byte>(TempImage);
 
             // METState.Current.EyeImageForShow._EqualizeHist();
-
 
             METEventArg metEventArg = new METEventArg();
             metEventArg.AdditionalArg = "Eye";
@@ -72,16 +68,13 @@ namespace Haytham
                 METState.Current.EyeImageOrginal = METState.Current.EyeImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
                 METState.Current.EyeImageForShow = METState.Current.EyeImageForShow.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
                 metEventArg.image = metEventArg.image.Flip(Emgu.CV.CvEnum.FLIP.VERTICAL);
-
             }
 
             OnTrackerEventEye(metEventArg);
-
-
         }
+
         public void SceneFrameCaptured(object sender, NewFrameEventArgs eventArgs)
         {
-
             System.Drawing.Bitmap TempImage;
             TempImage = (Bitmap)eventArgs.Frame.Clone();
 
@@ -94,12 +87,11 @@ namespace Haytham
                 METState.Current.SceneImageForShow = METState.Current.SceneImageForShow.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
                 METState.Current.SceneImageOrginal = METState.Current.SceneImageOrginal.Flip(Emgu.CV.CvEnum.FLIP.HORIZONTAL);
             }
+
             # region Distortion
             if (METState.Current.sceneCameraUnDistortion)// && METState.Current.SceneVideoFile == null)
             {
-
                 #region UnDistortion
-
                 METState.Current.ProcessTimeSceneBranch.Timer("UnDistortion", "Start");
 
                 Matrix<float> mapx = new Matrix<float>(new Size(TempImage.Width, TempImage.Height));
@@ -107,29 +99,24 @@ namespace Haytham
 
                 METState.Current.intrinsic_param.InitUndistortMap(TempImage.Width, TempImage.Height, out mapx, out mapy);  //DA FINIRE
 
-
-
                 // Image<Bgr, byte> img = chessboard.Clone();
                 CvInvoke.cvRemap(METState.Current.SceneImageForShow.Ptr, METState.Current.SceneImageOrginal.Ptr, mapx.Ptr, mapy.Ptr, /*8*/(int)Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR, new MCvScalar(0));
 
                 METState.Current.ProcessTimeSceneBranch.Timer("UnDistortion", "Stop");
 
-                #endregion UnDistortion
+                #endregion
                 METState.Current.SceneImageForShow = new Image<Bgr, Byte>(METState.Current.SceneImageOrginal.Bitmap);
             }
-            # endregion Distortion
+            #endregion
 
             METEventArg metEventArg = new METEventArg();
             metEventArg.AdditionalArg = "Scene";
             metEventArg.image = METState.Current.SceneImageOrginal;
             METState.Current.METCoreObject.OnTrackerEventScene(metEventArg);
-
         }
-
 
         public void MainMethodEye(object sender, METEventArg e)
         {
-
             METState.Current.ProcessTimeEyeBranch.Timer("Total", "Start");
 
             METState.Current.eye.eyeData_Shift();//Prepare eyeDataArray for new frame
@@ -149,9 +136,8 @@ namespace Haytham
                 //
                 METState.Current.PupilThreshold = (int)b.Mean / 2;
                 SendToForm(METState.Current.PupilThreshold, "PupilThreshold");
-
             }
-            #endregion set pupil threshold first time
+            #endregion
 
             #region find glint
             if (METState.Current.detectGlint)
@@ -167,32 +153,25 @@ namespace Haytham
 
                 METState.Current.ProcessTimeEyeBranch.Timer("Find Glint", "Stop");
             }
-            #endregion find glint
+            #endregion
 
             #region find pupil
-
             if (METState.Current.detectPupil)
             {
-
-
                 METState.Current.ProcessTimeEyeBranch.Timer("Find Pupil", "Start");
 
                 METState.Current.eye.FindPupil(e.image, METState.Current.PupilThreshold);
 
                 //^^^^^^^^^^^^^^^^^^^^^^^^test
-
                 //Image<Gray, Byte> testimg = new Image<Gray, Byte>(e.image.Bitmap);
-
                 // METState.Current.METCoreObject.SendToForm(testimg.Bitmap, "imScene");
                 //^^^^^^^^^^^^^^^^^^^^^^^^66
-
 
                 #region Draw Iris
                 if (METState.Current.showIris)
                 {
                     SizeF size = new SizeF((METState.Current.eye.GetPupilEllipseSizeMedian(10).Width / METState.Current.eye.GetPupilEllipseSizeMedian(10).Height) * (float)METState.Current.IrisDiameter, (float)METState.Current.IrisDiameter);
                     if (size.Width == 0 | float.IsNaN(size.Width)) size = new SizeF((float)METState.Current.IrisDiameter, (float)METState.Current.IrisDiameter);//for the first frames where median is 0 or NoN
-
 
                     if (METState.Current.eye.LargeScan == false && METState.Current.eye.eyeData[0].PupilFound)
                     {
@@ -210,15 +189,12 @@ namespace Haytham
                             wait = true;
                         }
 
-                        #endregion wait
+                        #endregion
 
                         if (!wait) EmgImgProcssing.DrawIrisCircle(METState.Current.EyeImageForShow, METState.Current.EyeImageForShow.Width / 2, METState.Current.EyeImageForShow.Height / 2, (int)(METState.Current.IrisDiameter));
-
-
                     }
-
                 }
-                #endregion Draw Iris
+                #endregion
 
                 if (METState.Current.eye.eyeData[0].PupilFound) SendToForm(METState.Current.eye.eyeData[0].PupilCenter, "lblPC");
                 else SendToForm("NoPupil", "lblPC");
@@ -259,13 +235,9 @@ namespace Haytham
 
             METState.Current.eyeFeature = METState.Current.eye.GetEyeFeature(METState.Current.eye.eyeData[0]);
 
-
-
-
-            #endregion set data for mapping
+            #endregion
 
             #region glint Drawing (injast chon mikham rooye drawing pupil biofte)
-
             if (METState.Current.detectGlint && METState.Current.eye.eyeData[0].GlintCenter != new AForge.Point(0, 0))
             {
                 if (METState.Current.showGlint)
@@ -280,9 +252,7 @@ namespace Haytham
                     catch (Exception err)
                     {
                         // System.Windows.Forms.MessageBox.Show(err.ToString());
-
                     }
-
 
                     #region draw circle around glint blobs
 
@@ -293,12 +263,10 @@ namespace Haytham
                     //    EmgImgProcssing.DrawCircle(METState.Current.EyeImageForShow, bc.X, bc.Y, Color.Red);
                     //}
 
-                    #endregion draw circle around glint blobs
-
+                    #endregion
 
                     if (METState.Current.eye.eyeData[0].GlintCenter.X != 0)//glint found
                     {
-
                         if (METState.Current.detectPupil & METState.Current.eye.eyeData[1].PupilFound)
                             EmgImgProcssing.DrawLine(METState.Current.EyeImageForShow, METState.Current.eye.eyeData[0].GlintCenter, METState.Current.eye.eyeData[0].PupilCenter, System.Drawing.Color.Black);
                         else if (!METState.Current.detectPupil)
@@ -307,7 +275,7 @@ namespace Haytham
                 }
             }
 
-            #endregion glint  Drawing (injast chon mikham rooye drawing pupil biofte)
+            #endregion
 
             if (METState.Current.headRollGestures & METState.Current.eye.eyeData[0].PupilFound)
             {
@@ -318,50 +286,34 @@ namespace Haytham
 
             if (METState.Current.eye.eyeData[0].PupilFound)
             {
-
-
-
                 if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
                 {
                     if (METState.Current.EyeToDisplay_Mapping.Calibrated == true)
                     {
                         METState.Current.Gaze_RGT = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.EyeToDisplay_Mapping.GazeErrorX, METState.Current.EyeToDisplay_Mapping.GazeErrorY);
 
-
-
                         METState.Current.Gaze_RGT = new AForge.Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y);
                         if (METState.Current.RemoteCalibration!=null)
                         METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
 
                         METState.Current.server.Send("Gaze", new string[] { ((int)METState.Current.Gaze_RGT.X).ToString(), ((int)METState.Current.Gaze_RGT.Y).ToString() });
-
-
-
                     }
-
-
-
                 }
 
                 #region Glass
 
                 else if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.GoogleGlass)
                 {
-
-
                     //Preparing the scene image to show
                     if (METState.Current.GlassServer.client != null && METState.Current.GlassServer.client.currentImage != null)
                         METState.Current.SceneImageForShow = new Image<Bgr, byte>((Bitmap)METState.Current.GlassServer.client.currentImage);
                     else
                         METState.Current.SceneImageForShow = new Image<Bgr, byte>(new Size(1296, 972));
 
-
-
                     AForge.Point Gaze_From_EyeToEyeToDisplay = new AForge.Point(0, 0);
                     Boolean Gaze_From_EyeToEyeToDisplay_IsInDisplay = false;
 
                     AForge.Point Gaze_From_EyeToEyeToScene = new AForge.Point(0, 0);
-                
 
                     AForge.Point normalizedEye = METState.Current.EyeToEye_Mapping.Calibrated ? 
                         METState.Current.EyeToEye_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, 0, 0) : 
@@ -371,17 +323,14 @@ namespace Haytham
 
                     if (METState.Current.EyeToDisplay_Mapping.Calibrated)
                     {
-
                         Gaze_From_EyeToEyeToDisplay = METState.Current.EyeToDisplay_Mapping.Map(normalizedEye.X, normalizedEye.Y, METState.Current.EyeToDisplay_Mapping.GazeErrorX, METState.Current.EyeToDisplay_Mapping.GazeErrorY);
 
                         Gaze_From_EyeToEyeToDisplay_IsInDisplay = Gaze_From_EyeToEyeToDisplay.X > 0 && Gaze_From_EyeToEyeToDisplay.X < myGlass.constants.display_W && Gaze_From_EyeToEyeToDisplay.Y > 0 && Gaze_From_EyeToEyeToDisplay.Y < myGlass.constants.display_H;
-
 
                         //By default we consider this as the main gaze_RGT for now
                         METState.Current.Gaze_RGT = new AForge.Point((int)Gaze_From_EyeToEyeToDisplay.X, (int)Gaze_From_EyeToEyeToDisplay.Y);
 
                         CalibExp.RecordGazeData(METState.Current.eyeFeature);
-
 
                         //Streaming Gaze_RGT toGlass
                         if (METState.Current.GlassServer.gazeStream_RGT == myGlass.Server.GazeStream.RGT)
@@ -398,24 +347,16 @@ namespace Haytham
 
                     if (METState.Current.EyeToScene_Mapping.Calibrated)
                     {
-
                         Gaze_From_EyeToEyeToScene = METState.Current.EyeToScene_Mapping.Map(normalizedEye.X, normalizedEye.Y, METState.Current.EyeToScene_Mapping.GazeErrorX, METState.Current.EyeToScene_Mapping.GazeErrorY);
-
 
                         //By default we consider this as the main gaze_HMGT for now
                         METState.Current.Gaze_HMGT = new AForge.Point((int)Gaze_From_EyeToEyeToScene.X, (int)Gaze_From_EyeToEyeToScene.Y);
 
-
                         if (!FXPAL_ON) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, Gaze_From_EyeToEyeToScene, System.Drawing.Color.Green);
-
-
-
                     }
-                
 
                     if (METState.Current.DisplayShownInScene_Mapping.Calibrated)
                     {
-
                         AForge.Point[] displayCorners = new AForge.Point[4];
 
                         displayCorners[0].X = (float)METState.Current.DisplayShownInScene_Mapping.Destination[0, 0];
@@ -430,38 +371,20 @@ namespace Haytham
                         displayCorners[3].X = (float)METState.Current.DisplayShownInScene_Mapping.Destination[0, 2];
                         displayCorners[3].Y = (float)METState.Current.DisplayShownInScene_Mapping.Destination[1, 2];
 
-
                         if (!FXPAL_ON) EmgImgProcssing.DrawRectangle(METState.Current.SceneImageForShow, displayCorners, 0, true, " display ");
 
                         if (Gaze_From_EyeToEyeToDisplay_IsInDisplay)
                         {
-
                             AForge.Point temp = METState.Current.DisplayShownInScene_Mapping.Map(Gaze_From_EyeToEyeToDisplay.X, Gaze_From_EyeToEyeToDisplay.Y, 0, 0);
 
                             if (!FXPAL_ON) EmgImgProcssing.DrawCross(METState.Current.SceneImageForShow, temp, displayCorners, System.Drawing.Color.Green);
-
                         }
-                 
                     }
-
-
-
-
-
-
-
-
 
                     if (!FXPAL_ON) METState.Current.METCoreObject.SendToForm(METState.Current.SceneImageForShow.Bitmap, "imScene");
                     if (!FXPAL_ON) METState.Current.METCoreObject.SendToForm("", "Update Glass Picturebox");
-
-
-
-
                 }
-                #endregion Glass
-
-
+                #endregion
 
             }
             METState.Current.server.Send("Eye", new string[]
@@ -473,24 +396,20 @@ namespace Haytham
                                                   METState.Current.eye.eyeData[0].PupilFound.ToString(),
                                                   ((float)METState.Current.eye.eyeData[0].PupilCenter.X/METState.Current.EyeCamera.VideoSize.Width).ToString(),
                                                   ((float)METState.Current.eye.eyeData[0].PupilCenter.Y/METState.Current.EyeCamera.VideoSize.Height).ToString(),
-
-
                                                 });
 
 
-
-            #endregion Remote
+            #endregion
 
             #region Record Eye Data
             METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Start");
 
             if (METState.Current.EyeIsRecording == true)
             {
-               
-
                 METState.Current.EyeVideoWriterFrameNumber += 1;
                 METState.Current.EyeVideoWriter.WriteFrame<Bgr, Byte>(METState.Current.EyeImageForShow);
             }
+
             if (METState.Current.TextFileDataExport != null)
             {
                 try
@@ -498,7 +417,6 @@ namespace Haytham
                     //TimeSpan time = (DateTime.Now - METState.Current.recording_time_0);
                     //string time_st = time.TotalMilliseconds.ToString();
                     string time_st  = (METState.Current.recording_timer.ElapsedMilliseconds- METState.Current.timeDifference ).ToString();
-
 
                     //text file
                     if (METState.Current.TextFileDataExport != null)
@@ -515,47 +433,37 @@ namespace Haytham
                            + "," + METState.Current.TextFileDataExport.temp3
                            + "," + METState.Current.Gaze_RGT.X
                            + "," + METState.Current.Gaze_RGT.Y
-                          
                            ;
-
 
                         METState.Current.TextFileDataExport.WriteLine(GazeDataLine);
                     }
-                }catch(Exception er)
+                }
+                catch (Exception er)
                 {
                     METState.Current.TextFileDataExport.WriteLine("error");
-                
                 }
-              
             }
+
             METState.Current.ProcessTimeEyeBranch.Timer("Record Eye Data", "Stop");
 
             #endregion Record Eye Data
             //if (METState.Current.SCRL_State == METState.SCRL_States.Rolling)
                 SCRL_Log();
 
-
             METState.Current.ProcessTimeEyeBranch.Timer("Total", "Stop");
             SendToForm("", "textBoxTimerEye");//update the timer text box and show the ProcessTimeEyeBranch
             METState.Current.ProcessTimeEyeBranch.TimerResults.Clear();
         }
-
-
-
-
 
         private void SCRL_Log() {
 
             if (METState.Current.SCRL_DataExport_Eye != null)
             {
                 try
-
                 {
                     //TimeSpan time = (DateTime.Now - METState.Current.recording_time_0);
                     //string time_st = time.TotalMilliseconds.ToString();
                     string time_st =  METState.Current.SCRL_stopwatch.ElapsedMilliseconds .ToString();
-                   
-                    //
 
                     string GazeDataLine =
                           time_st
@@ -566,31 +474,17 @@ namespace Haytham
                        + "," + METState.Current.eye.eyeData[0].GlintCenter.Y
                        + "," + METState.Current.eye.eyeData[0].PupilDiameter
                        + "," + METState.Current.SCRL_Flag
-
                            ;
-
-
                     
                         METState.Current.SCRL_DataExport_Eye.WriteLine(GazeDataLine);
                      if( METState.Current.SCRL_Flag == " -> Space Pressed")   METState.Current.SCRL_Flag = "";
-
-
-
                 }
                 catch (Exception er)
                 {
                     METState.Current.TextFileDataExport.WriteLine("error");
-
                 }
-
             }
-
         }
-
-
-
-
-
 
         public void MainMethodScene(object sender, METEventArg e)
         {
@@ -610,10 +504,8 @@ namespace Haytham
                         });
             #endregion Gaze estimation on scene
 
-
             if (METState.Current.server.DoWeNeedToDetectVisualMarker())
             {
-
                 METState.Current.ProcessTimeSceneBranch.Timer("Marker Detection", "Start");
 
                 METState.Current.visualMarker.DetectGlyph(e.image.Bitmap);
@@ -621,22 +513,16 @@ namespace Haytham
 
                 METState.Current.server.Send("VisualMarker", new string[] { "IsDetected", METState.Current.visualMarker.GetDetectedGlyphsString() });
 
-
                 // if (METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].pupilFound)
                 {
                     string GazedMarkerName = METState.Current.visualMarker.GetGazedGlyph(METState.Current.Gaze_HMGT, 2.2);
                     if (GazedMarkerName != "") METState.Current.server.Send("VisualMarker", new string[] { "IsLooking", GazedMarkerName });
                     else METState.Current.server.Send("VisualMarker", new string[] { "IsNotLooking" });
 
-
                     METState.Current.server.Send("VisualMarker", new string[] { "DistanceAngle", METState.Current.visualMarker.GetDetectedGlyphsDistanceAngleString(METState.Current.Gaze_HMGT) });
 
                     //METState.Current.server.Send("VisualMarker", new string[] { "DistanceAngle", METState.Current.visualMarker.GetDetectedGlyphsDistanceAngleString(METState.Current.debugPoint) });
-
-
                 }
-
-
 
                 METState.Current.ProcessTimeSceneBranch.Timer("Marker Detection", "Stop");
             }
@@ -649,14 +535,12 @@ namespace Haytham
                 METState.Current.ProcessTimeSceneBranch.Timer("Screen Detection", "Start");
                 bool detected = METState.Current.monitor.DetectRectangle(e.image);
                 METState.Current.DAS.NoRectangle_FrameCounter = detected ? 0 : METState.Current.DAS.NoRectangle_FrameCounter + 1;
-
                 METState.Current.ProcessTimeSceneBranch.Timer("Screen Detection", "Stop");
 
                 #region only when screen found and screen is connected
 
                 if (METState.Current.server.CountMonitorClients() != 0 || METState.Current.server.CountTVClients() != 0)
                 {
-
                     #region identification
 
                     METState.Current.ProcessTimeSceneBranch.Timer("Screen identification", "Start");
@@ -680,8 +564,6 @@ namespace Haytham
 
                     #endregion identification
 
-
-
                     #region  Gaze
 
                     if (detected && METState.Current.EyeToScene_Mapping.Calibrated && METState.Current.eye.eyeData[0].PupilFound && METState.Current.monitor.IsGazeInsideRectangle()) ;
@@ -702,20 +584,10 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
   METState.Current.monitor.RectangleCorners[3].Y.ToString()
 
                         });
-
-
                     }
-
-
                     #endregion  Gaze
-
-
-
-
                 }
                 #endregion only when screen found and screen is connected
-
-
             }
             #endregion screen
 
@@ -824,16 +696,14 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
             {
                 MainMethodScene(this, e);
 
-
-
                 try
                 {
                     METState.Current.camera1Acquired.Set();
                 }
                 catch (Exception err)
                 { }
-                TrackerEventScene(this, e);//Raise the event
 
+                TrackerEventScene(this, e);//Raise the event
 
             }
         }
@@ -847,13 +717,10 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 
             //METState.Current.Gaze.X = gaze.X;
             //METState.Current.Gaze.Y = gaze.Y;
-
         }
-
 
         public AForge.Point GetClientGazeBeforeGesture()
         {
-
             AForge.Point gaze = new AForge.Point(0, 0);
 
             if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.RemoteEyeTracking)
@@ -1075,25 +942,14 @@ METState.Current.monitor.RectangleCorners[0].X.ToString(),
 
         public void LoadGazeCalibrationData(ref Calibration calib)
         {
-
-
-
             Calibration temp = ReadFromBinaryFile<Calibration>(calib.name + ".txt");
 
             if (temp != null) calib = temp;
-
         }
 
         public void SaveGazeCalibrationData(Calibration calib)
         {
-
-           
            WriteToBinaryFile<Calibration>(calib.name + ".txt", calib, false);
-
-
         }
-
-
-
     }
 }

@@ -42,15 +42,11 @@ using Haytham.Interfaces;
 
 namespace Haytham
 {
-    //delegates
     public delegate void TrackerEventHandler(object sender, METEventArg e);
     public delegate void _SendToForm(object message, string controlName);
 
-
-
     public sealed class METState
     {
-
         private static METState _Current = new METState();
         public static METState Current
         {
@@ -95,7 +91,6 @@ namespace Haytham
     
         public double circle_center_offset=20;
 
-
         public double SCRL_image_width;
         public double SCRL_image_height;
 
@@ -108,11 +103,9 @@ namespace Haytham
         public  BitmapImage[] SCRL_images_final;
      
         ////SCRL_Mind
-     
         public enum SCRL_demos { MindReading , Facebook, MenuScrollViewer };
         public SCRL_demos demos_mode;
         public Dictionary<string, int> SCRL_images_result_names = new Dictionary<string, int>();
-
 
         public enum RemoteOrMobile { RemoteEyeTracking, MobileEyeTracking, GoogleGlass, HoloLens };
         public RemoteOrMobile remoteOrMobile;
@@ -140,13 +133,11 @@ namespace Haytham
         public IntrinsicCameraParameters intrinsic_param;
         public ExtrinsicCameraParameters[] extrinsic_param;
 
-
         //Images
         public Image<Bgr, Byte> EyeImageOrginal;
         public Image<Bgr, Byte> EyeImageForShow;
         public Image<Gray, Byte> EyeImageTest;
         public Image<Bgr, Byte> EyeImageFlowForShow;
-
 
         public Image<Bgr, Byte> SceneImageOrginal;
         public Image<Bgr, Byte> SceneImageForShow;
@@ -160,7 +151,6 @@ namespace Haytham
 
         public Boolean SceneIsRecording = false;
         public Boolean EyeIsRecording = false;
-
 
         public Boolean SceneForExport = false;
         public Boolean EyeForExport = false;
@@ -177,13 +167,12 @@ namespace Haytham
         public bool firstPupilDetection = true;
         public int CounterBeforeDrawingIrisCircle ;
         public bool showPupil;
-        //      Adaptive Threshold
+        // Adaptive Threshold
         public bool PAdaptive = true;
         public int PAdaptive_Constant;
         public int PAdaptive_blockSize;
         public Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE PAdaptive_type;
-       // public bool PAdaptive_new;
-
+        // public bool PAdaptive_new;
 
         //Glint
         public Boolean detectGlint;
@@ -191,27 +180,23 @@ namespace Haytham
         public int glintThreshold;
         public bool showGlint;
 
-        //      Adaptive Threshold
+        // Adaptive Threshold
         public bool GAdaptive = true;
         public int GAdaptive_Constant;
         public int GAdaptive_blockSize;
         public Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE GAdaptive_type;
 
-
         //Iris
         public int IrisDiameter;
-
         public bool showIris;
 
         //Gesture
         public bool headRollGestures;
-         public bool ShowOpticalFlow ;
-         public string gestureRecording="";
-         public bool IrisDiagonalPatches = true;
-         public bool IrisStraightPatches = true;
-         public int HowManyDirections4OR8 = 4;//8
-
-
+        public bool ShowOpticalFlow ;
+        public string gestureRecording="";
+        public bool IrisDiagonalPatches = true;
+        public bool IrisStraightPatches = true;
+        public int HowManyDirections4OR8 = 4;//8
 
         //Gaze
         public Boolean ShowGaze;
@@ -219,37 +204,29 @@ namespace Haytham
 
         public AForge.Point Gaze_RGT;
         public AForge.Point Gaze_HMGT;
-     
         public AForge.Point Gaze_SnapShot_Glass;
       
         public int gazeMedian = 10;
 
-        
-
-
-        //calibration
+        // calibration
         public enum Calibration_EyeFeature { Pupil, PupilGlintVector,Glint };
         public Calibration_EyeFeature calibration_eyeFeature;
-
         public AForge.Point eyeFeature;
-        //remote
+        
+        // remote
         public ICalibration RemoteCalibration;
         public Cursor mCursor = new Cursor();
         //public Size HMD_Resolution = new Size(640,480);
 
-        //Chart
-        //          Define some variables
+        // Chart
+        // Define some variables
         public bool enablePlot;
         public int numberOfPointsInChart = 200;
         public int numberOfPointsAfterRemoval = 200;
 
-
-
         //Scene
-
         public bool showScreenSize;
         public Size GlassFrontView_Resolution = new Size(0, 0);
-
 
         public Boolean showScreen ;
         public Boolean showEdges;
@@ -261,9 +238,6 @@ namespace Haytham
         public int target_B_min;
         public int target_B_max;
 
-
-
-
         //Server & Client
         public myGlass.Server GlassServer ;//= new myGlass.Server();
         public string ip="";
@@ -271,9 +245,7 @@ namespace Haytham
         //Others
         public int testslider = 1;
         public Boolean TimerEnable = true;
-
         public int  test = 0;
-
 
         //for debug
         public Point debugPoint=new Point(0,0);
@@ -281,10 +253,9 @@ namespace Haytham
 		//extData
 		public ExtDataHandler DataHandler = new ExtDataHandler();
         //public DateTime recording_time_0;
-       public string tempUDPClient_ip ="192.168.0.101";// "10.27.248.206";
+        public string tempUDPClient_ip ="192.168.0.101";// "10.27.248.206";
         public System.Diagnostics.Stopwatch recording_timer;
         public long timeDifference = 0;
-        //
 
         public Dictionary<string, int> commands = new Dictionary<string, int>();
 
