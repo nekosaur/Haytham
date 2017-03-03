@@ -9,5 +9,6 @@ namespace Haytham.HoloLens
     static class MessageType
     {
         public const int StartCalibration = 1000;
+        public const int ShowCalibrationPoint = 1001;
     }
 }

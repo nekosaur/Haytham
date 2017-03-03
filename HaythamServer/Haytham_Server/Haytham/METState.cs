@@ -38,6 +38,8 @@ using AForge.Vision.GlyphRecognition;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
+using Haytham.Interfaces;
+
 namespace Haytham
 {
     //delegates
@@ -231,7 +233,7 @@ namespace Haytham
 
         public AForge.Point eyeFeature;
         //remote
-        public RemoteCalibration remoteCalibration;
+        public ICalibration RemoteCalibration;
         public Cursor mCursor = new Cursor();
         //public Size HMD_Resolution = new Size(640,480);
 

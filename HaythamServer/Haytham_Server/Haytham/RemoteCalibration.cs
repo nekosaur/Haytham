@@ -20,6 +20,7 @@
 // <author>Diako Mardanbegi</author>
 // <email>dima@itu.dk</email>
 
+using Haytham.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,7 +28,7 @@ using System.Windows.Forms;
 
 namespace Haytham
 {
-    public  class RemoteCalibration 
+    public  class RemoteCalibration : ICalibration
     {
         public enum Task { CalibrateDisplay, EyeToEye };
         public Task task;
@@ -36,7 +37,7 @@ namespace Haytham
         public Dictionary<int, Point> calibPoints = new Dictionary<int, Point>();
         int N;
         public AnimatedCursor myCursor;
-        public Rectangle PresentationScreen;
+        public Rectangle PresentationScreen { get; set; }
 
         private void setPoints(int n, int m) // grid of n*m points
         {

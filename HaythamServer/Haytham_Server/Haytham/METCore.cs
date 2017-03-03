@@ -330,8 +330,8 @@ namespace Haytham
 
 
                         METState.Current.Gaze_RGT = new AForge.Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y);
-                        if (METState.Current.remoteCalibration!=null)
-                        METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.remoteCalibration.PresentationScreen.Left, METState.Current.remoteCalibration.PresentationScreen.Top));
+                        if (METState.Current.RemoteCalibration!=null)
+                        METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
 
                         METState.Current.server.Send("Gaze", new string[] { ((int)METState.Current.Gaze_RGT.X).ToString(), ((int)METState.Current.Gaze_RGT.Y).ToString() });
 

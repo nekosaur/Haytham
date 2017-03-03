@@ -398,7 +398,7 @@ namespace myGlass
 
                         Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-                        METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.CalibrateDisplay); ;
+                        METState.Current.RemoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.CalibrateDisplay); ;
 
 
 
@@ -474,7 +474,7 @@ namespace myGlass
 
                             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-                            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.EyeToEye);
+                            METState.Current.RemoteCalibration = new RemoteCalibration(n, n, rect, RemoteCalibration.Task.EyeToEye);
 
                         }
                         else

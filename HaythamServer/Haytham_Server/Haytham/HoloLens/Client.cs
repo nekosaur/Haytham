@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -17,7 +18,6 @@ namespace Haytham.HoloLens
         BinaryWriter writer;
         BinaryReader reader;
 
-        string clientName;
         int screenWidth;
         int screenHeight;
 
@@ -31,24 +31,67 @@ namespace Haytham.HoloLens
             this.writer = new BinaryWriter(this.stream);
         }
 
-        public async void Run()
+        public async Task Run()
         {
             try
             {
-                await this.ReadString();
                 this.screenWidth = await this.ReadInt();
                 this.screenHeight = await this.ReadInt();
+
+                int message = await this.ReadInt();
+
+                while (true)
+                {
+                     switch (message)
+                    {
+                        case MessageType.StartCalibration:
+                            this.StartCalibration();
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    message = await this.ReadInt();
+                }
             }
             catch (Exception ex)
             {
-                throw;
-            }
+                if (ex.InnerException != null && ex.InnerException is SocketException)
+                {
+                    SocketException se = (SocketException)ex.InnerException;
 
-            while (true)
-            {
-                
+                    switch (se.SocketErrorCode)
+                    {
+                        case SocketError.ConnectionReset:
+                            Console.WriteLine("Connection was reset");
+                            break;
+                        default:
+                            break;
+                    }
+                } else
+                {
+                    Console.WriteLine(ex);
+                }
             }
+        }
 
+        private void StartCalibration()
+        {
+            METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
+            METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
+            METState.Current.EyeToDisplay_Mapping.CalibrationTarget = 0;
+            METState.Current.EyeToDisplay_Mapping.Calibrated = false;
+            METState.Current.EyeToDisplay_Mapping.CalibrationType = Haytham.Calibration.calibration_type.calib_Polynomial;
+
+            Rectangle rect = new Rectangle(0, 0, this.screenWidth, this.screenHeight);
+
+            Calibration calibration = new Calibration(this, 3, 3, rect, Calibration.TaskType.CalibrateDisplay);
+            METState.Current.RemoteCalibration = calibration;
+
+            calibration.Start();
+            
+            // METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
         private async Task<string> ReadString()
@@ -71,7 +114,15 @@ namespace Haytham.HoloLens
             return i;
         }
 
-        private async void Send(int message)
+        internal async Task Send(int message)
+        {
+            await Task.Run(() =>
+            {
+                this.writer.Write(message);
+            });
+        }
+
+        internal async Task Send(string message)
         {
             await Task.Run(() =>
             {

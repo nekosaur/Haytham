@@ -13,32 +13,50 @@ namespace Haytham.HoloLens
     public class Server
     {
         Client holoLensClient;
-        Thread clientThread;
         MainForm mainForm;
+        TcpListener tcpListener;
 
         int serverPort = 60000;
 
         public Server(MainForm m)
         {
             this.mainForm = m;
-
-            this.LookForClient();
         }
 
-        public async void LookForClient()
+        public async Task Start()
         {
             Thread.Sleep(1000);
             string ip = GetIP();
             METState.Current.METCoreObject.SendToForm("Server IP : " + ip + "\r\n", "tbHoloLensServer");
 
             IPAddress localIP = IPAddress.Parse(ip);
-            TcpListener tcpListener = new TcpListener(localIP, serverPort);
+            tcpListener = new TcpListener(localIP, serverPort);
             tcpListener.Start();
 
-            METState.Current.METCoreObject.SendToForm("Running server...", "tbHoloLensServer");
             METState.Current.METCoreObject.SendToForm("Waiting....\r\n", "tbHoloLensServer");
 
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    await this.LookForClient();
+                }
+            });
+        }
+
+        /// <summary>
+        /// Listens on TCP socket for incoming client. Creates and runs a new Client class when a connection is made.
+        /// </summary>
+        /// <returns></returns>
+        public async Task LookForClient()
+        {
             Socket socket = await tcpListener.AcceptSocketAsync();
+
+            if (holoLensClient != null)
+            {
+                METState.Current.METCoreObject.SendToForm("HoloLens already connected, discarding connection attempt", "tbHoloLensServer");
+                return;
+            }
 
             if (socket == null)
             {
@@ -47,8 +65,15 @@ namespace Haytham.HoloLens
 
             holoLensClient = new Client(socket, this);
 
-            clientThread = new Thread(new ThreadStart(holoLensClient.Run));
-            clientThread.Start();
+            //clientThread = new Thread(new ThreadStart(holoLensClient.Run));
+            //clientThread.Start();
+            Task.Run(async () =>
+            {
+                await holoLensClient.Run();
+
+                this.holoLensClient = null;
+                METState.Current.METCoreObject.SendToForm("HoloLens disconnected", "tbHoloLensServer");
+            });
 
             METState.Current.METCoreObject.SendToForm("HoloLens connected", "tbHoloLensServer");
         }

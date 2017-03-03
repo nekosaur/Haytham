@@ -253,9 +253,11 @@
     <Compile Include="Glass\Experiments\Sampling_Scene.cs" />
     <Compile Include="FXPAL\HyperImage.cs" />
     <Compile Include="FXPAL\MessageType_FXPAL.cs" />
+    <Compile Include="HoloLens\Calibration.cs" />
     <Compile Include="HoloLens\Client.cs" />
     <Compile Include="HoloLens\MessageType.cs" />
     <Compile Include="HoloLens\Server.cs" />
+    <Compile Include="Interfaces\ICalibration.cs" />
     <Compile Include="SCRL\Classifier.cs" />
     <Compile Include="SCRL\Conditions.cs" />
     <Compile Include="Glass\myJsonClass.cs" />

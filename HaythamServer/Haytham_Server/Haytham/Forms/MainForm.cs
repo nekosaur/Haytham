@@ -172,7 +172,7 @@ namespace Haytham
                     // Hide scene and extdata tabs
                     leftTabs.TabPages.Remove(this.tabPage_Scene);
                     leftTabs.TabPages.Remove(this.tabPage_ExtData);
-                    leftTabs.TabPages.Remove(this.tabPage_Glass);
+                    //leftTabs.TabPages.Remove(this.tabPage_Glass);
                     leftTabs.TabPages.Remove(this.tabPage_EyeGrip);
                     leftTabs.TabPages.Remove(this.tabPage_Clients);
 
@@ -362,7 +362,9 @@ namespace Haytham
 
             if (METState.Current.remoteOrMobile == METState.RemoteOrMobile.HoloLens)
             {
-                METState.Current.HoloLensServer = new HoloLens.Server(this);
+                HoloLens.Server holoLensServer = new HoloLens.Server(this);
+                METState.Current.HoloLensServer = holoLensServer;
+                holoLensServer.Start();
             }
         }
 
@@ -1788,7 +1790,7 @@ namespace Haytham
                 case "tbHoloLensServer":
                     if (tbHoloLensServer.InvokeRequired)
                     {
-                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "tbOutput" });
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "tbHoloLensServer" });
                     }
                     else
                     {
@@ -2029,7 +2031,7 @@ namespace Haytham
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
 
      
-            METState.Current.remoteCalibration = new RemoteCalibration(2, 2, rect, RemoteCalibration.Task.CalibrateDisplay);
+            METState.Current.RemoteCalibration = new RemoteCalibration(2, 2, rect, RemoteCalibration.Task.CalibrateDisplay);
  
 
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
@@ -2046,9 +2048,11 @@ namespace Haytham
             METState.Current.EyeToDisplay_Mapping.CalibrationType = Calibration.calibration_type.calib_Polynomial;
 
             ///Set the METState.Current.RemoteOrHeadMount 
+            //
+            
             Rectangle rect = new Rectangle(Screen.FromHandle(this.Handle).Bounds.Left, Screen.FromHandle(this.Handle).Bounds.Top, Screen.FromHandle(this.Handle).Bounds.Width, Screen.FromHandle(this.Handle).Bounds.Height);
           
-            METState.Current.remoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.CalibrateDisplay);
+            METState.Current.RemoteCalibration = new RemoteCalibration(3, 3, rect, RemoteCalibration.Task.CalibrateDisplay);
             METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
@@ -2473,7 +2477,7 @@ namespace Haytham
             ///Set the METState.Current.RemoteOrHeadMount 
             Rectangle rect = new Rectangle(0, 0, myGlass.constants.display_W, myGlass.constants.display_H);
 
-            METState.Current.remoteCalibration = new RemoteCalibration(n, n, rect,RemoteCalibration.Task.CalibrateDisplay); ;
+            METState.Current.RemoteCalibration = new RemoteCalibration(n, n, rect,RemoteCalibration.Task.CalibrateDisplay); ;
 
             //...Here you can send some commands to HMD if you want to show something there
             // METState.Current.remoteCalibration.ShowDialog();
