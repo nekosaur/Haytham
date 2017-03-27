@@ -2663,16 +2663,19 @@ namespace Haytham
         private void btnCalibrateHoloLensNear_Click(object sender, EventArgs e)
         {
             METState.Current.HoloLensServer.Client.TriggerStartCalibration(2);
+            METState.Current.METCoreObject.SendToForm("Calibrating for distance near\r\n", "tbHoloLensServer");
         }
 
         private void btnCalibrateHoloLensMiddle_Click(object sender, EventArgs e)
         {
             METState.Current.HoloLensServer.Client.TriggerStartCalibration(3);
+            METState.Current.METCoreObject.SendToForm("Calibrating for distance middle\r\n", "tbHoloLensServer");
         }
 
         private void btnCalibrateHoloLensFar_Click(object sender, EventArgs e)
         {
             METState.Current.HoloLensServer.Client.TriggerStartCalibration(4);
+            METState.Current.METCoreObject.SendToForm("Calibrating for distance far\r\n", "tbHoloLensServer");
         }
 
         private void btnHoloLensSimpleCommandObjectAlign_Click(object sender, EventArgs e)

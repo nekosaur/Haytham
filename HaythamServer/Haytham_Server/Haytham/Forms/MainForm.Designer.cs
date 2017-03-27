@@ -21,18 +21,18 @@ namespace Haytham
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.rootContainer = new System.Windows.Forms.SplitContainer();
             this.leftTabs = new System.Windows.Forms.TabControl();
             this.tabPage_Camera = new System.Windows.Forms.TabPage();
@@ -77,25 +77,32 @@ namespace Haytham
             this.gbGlintDetection = new System.Windows.Forms.GroupBox();
             this.cbGlintManual = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.rbGGaussian = new System.Windows.Forms.RadioButton();
             this.rbGMean = new System.Windows.Forms.RadioButton();
             this.cbGlintAuto = new System.Windows.Forms.RadioButton();
+            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
             this.cbShowGlint = new System.Windows.Forms.CheckBox();
             this.cbGlintDetection = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbPM = new System.Windows.Forms.RadioButton();
             this.pnlGlintDetection = new System.Windows.Forms.Panel();
+            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.label10 = new System.Windows.Forms.Label();
             this.rbPGaussian = new System.Windows.Forms.RadioButton();
             this.rbPMean = new System.Windows.Forms.RadioButton();
             this.cbPA = new System.Windows.Forms.RadioButton();
             this.cbRemoveGlint = new System.Windows.Forms.CheckBox();
             this.cbDilateErode = new System.Windows.Forms.CheckBox();
+            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
             this.cbShowPupil = new System.Windows.Forms.CheckBox();
             this.cbPupilDetection = new System.Windows.Forms.CheckBox();
             this.gbIrisDiameter = new System.Windows.Forms.GroupBox();
             this.cbShowIris = new System.Windows.Forms.CheckBox();
+            this.tbIrisDiameter = new Haytham.Forms.TransparentTrackBar();
             this.lbIrisDiameter = new System.Windows.Forms.Label();
             this.tabPage_Scene = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
@@ -106,6 +113,9 @@ namespace Haytham
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.cbShowEdges = new System.Windows.Forms.CheckBox();
+            this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cbShowScreen = new System.Windows.Forms.CheckBox();
@@ -211,6 +221,8 @@ namespace Haytham
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage_HoloLens = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnHoloLensStopExperiment = new System.Windows.Forms.Button();
+            this.lblHoloLensCalibration = new System.Windows.Forms.Label();
             this.btnHoloLensHideGaze = new System.Windows.Forms.Button();
             this.btnHoloLensShowGaze = new System.Windows.Forms.Button();
             this.btnHoloLensStartExperiment = new System.Windows.Forms.Button();
@@ -253,18 +265,6 @@ namespace Haytham
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.cmbEyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
-            this.lblHoloLensCalibration = new System.Windows.Forms.Label();
-            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
-            this.tbIrisDiameter = new Haytham.Forms.TransparentTrackBar();
-            this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
-            this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
-            this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
-            this.btnHoloLensStopExperiment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
             this.rootContainer.Panel1.SuspendLayout();
             this.rootContainer.Panel2.SuspendLayout();
@@ -286,13 +286,23 @@ namespace Haytham
             this.tabPage_Eye.SuspendLayout();
             this.gbGlintDetection.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.pnlGlintDetection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
             this.gbIrisDiameter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).BeginInit();
             this.tabPage_Scene.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).BeginInit();
             this.tabPage_Calibration.SuspendLayout();
             this.gbCalibrationGlass.SuspendLayout();
             this.gbCalibrationRemote.SuspendLayout();
@@ -358,16 +368,6 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).BeginInit();
             this.SuspendLayout();
             // 
             // rootContainer
@@ -956,6 +956,20 @@ namespace Haytham
             this.panel4.TabIndex = 69;
             this.panel4.Visible = false;
             // 
+            // trackBarGABlockSize
+            // 
+            this.trackBarGABlockSize.AutoSize = false;
+            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGABlockSize.Maximum = 151;
+            this.trackBarGABlockSize.Minimum = 33;
+            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
+            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGABlockSize.TabIndex = 65;
+            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGABlockSize.Value = 113;
+            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -1005,6 +1019,34 @@ namespace Haytham
             this.cbGlintAuto.Text = "Auto";
             this.cbGlintAuto.UseVisualStyleBackColor = true;
             this.cbGlintAuto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_2);
+            // 
+            // trackBarThresholdGlint
+            // 
+            this.trackBarThresholdGlint.AutoSize = false;
+            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
+            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdGlint.Maximum = 255;
+            this.trackBarThresholdGlint.Minimum = 120;
+            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
+            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdGlint.TabIndex = 67;
+            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdGlint.Value = 200;
+            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
+            // 
+            // trackBarGAConstant
+            // 
+            this.trackBarGAConstant.AutoSize = false;
+            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
+            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGAConstant.Maximum = 0;
+            this.trackBarGAConstant.Minimum = -100;
+            this.trackBarGAConstant.Name = "trackBarGAConstant";
+            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGAConstant.TabIndex = 68;
+            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGAConstant.Value = -80;
+            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
             // 
             // cbShowGlint
             // 
@@ -1080,6 +1122,20 @@ namespace Haytham
             this.pnlGlintDetection.TabIndex = 67;
             this.pnlGlintDetection.Visible = false;
             // 
+            // trackBarPABlockSize
+            // 
+            this.trackBarPABlockSize.AutoSize = false;
+            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPABlockSize.Maximum = 151;
+            this.trackBarPABlockSize.Minimum = 33;
+            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
+            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPABlockSize.TabIndex = 65;
+            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPABlockSize.Value = 113;
+            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1152,6 +1208,33 @@ namespace Haytham
             this.cbDilateErode.UseVisualStyleBackColor = true;
             this.cbDilateErode.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_6);
             // 
+            // trackBarPAConstant
+            // 
+            this.trackBarPAConstant.AutoSize = false;
+            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
+            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPAConstant.Maximum = 50;
+            this.trackBarPAConstant.Minimum = 5;
+            this.trackBarPAConstant.Name = "trackBarPAConstant";
+            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPAConstant.TabIndex = 64;
+            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPAConstant.Value = 20;
+            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
+            // 
+            // trackBarThresholdEye
+            // 
+            this.trackBarThresholdEye.AutoSize = false;
+            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
+            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdEye.Maximum = 255;
+            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
+            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdEye.TabIndex = 63;
+            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdEye.Value = 70;
+            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
+            // 
             // cbShowPupil
             // 
             this.cbShowPupil.Appearance = System.Windows.Forms.Appearance.Button;
@@ -1213,6 +1296,20 @@ namespace Haytham
             this.cbShowIris.TabIndex = 3;
             this.cbShowIris.UseVisualStyleBackColor = false;
             this.cbShowIris.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_2);
+            // 
+            // tbIrisDiameter
+            // 
+            this.tbIrisDiameter.AutoSize = false;
+            this.tbIrisDiameter.Location = new System.Drawing.Point(76, 17);
+            this.tbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
+            this.tbIrisDiameter.Maximum = 500;
+            this.tbIrisDiameter.Minimum = 80;
+            this.tbIrisDiameter.Name = "tbIrisDiameter";
+            this.tbIrisDiameter.Size = new System.Drawing.Size(146, 27);
+            this.tbIrisDiameter.TabIndex = 2;
+            this.tbIrisDiameter.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIrisDiameter.Value = 200;
+            this.tbIrisDiameter.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
             // 
             // lbIrisDiameter
             // 
@@ -1345,6 +1442,49 @@ namespace Haytham
             this.cbShowEdges.TabIndex = 68;
             this.cbShowEdges.UseVisualStyleBackColor = false;
             this.cbShowEdges.CheckedChanged += new System.EventHandler(this.cbShowEdges_CheckedChanged);
+            // 
+            // tbMonitorBThreshold
+            // 
+            this.tbMonitorBThreshold.AutoSize = false;
+            this.tbMonitorBThreshold.Location = new System.Drawing.Point(18, 32);
+            this.tbMonitorBThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorBThreshold.Maximum = 360;
+            this.tbMonitorBThreshold.Name = "tbMonitorBThreshold";
+            this.tbMonitorBThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorBThreshold.TabIndex = 65;
+            this.tbMonitorBThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorBThreshold.Value = 70;
+            this.tbMonitorBThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
+            // 
+            // tbMonitorGThreshold
+            // 
+            this.tbMonitorGThreshold.AutoSize = false;
+            this.tbMonitorGThreshold.Location = new System.Drawing.Point(18, 60);
+            this.tbMonitorGThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorGThreshold.Maximum = 360;
+            this.tbMonitorGThreshold.Minimum = 5;
+            this.tbMonitorGThreshold.Name = "tbMonitorGThreshold";
+            this.tbMonitorGThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorGThreshold.TabIndex = 66;
+            this.tbMonitorGThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorGThreshold.Value = 290;
+            this.tbMonitorGThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
+            // 
+            // tbMonitorMinSize
+            // 
+            this.tbMonitorMinSize.AutoSize = false;
+            this.tbMonitorMinSize.Location = new System.Drawing.Point(25, 47);
+            this.tbMonitorMinSize.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorMinSize.Maximum = 100;
+            this.tbMonitorMinSize.Minimum = 5;
+            this.tbMonitorMinSize.Name = "tbMonitorMinSize";
+            this.tbMonitorMinSize.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorMinSize.TabIndex = 67;
+            this.tbMonitorMinSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorMinSize.Value = 30;
+            this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
+            this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
+            this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
             // 
             // label16
             // 
@@ -1690,54 +1830,54 @@ namespace Haytham
             // chart3
             // 
             this.chart3.BackColor = System.Drawing.Color.Transparent;
-            chartArea5.AxisX.IsMarginVisible = false;
-            chartArea5.AxisX.LabelStyle.Enabled = false;
-            chartArea5.AxisX.MajorGrid.Enabled = false;
-            chartArea5.AxisX.MajorTickMark.Enabled = false;
-            chartArea5.AxisY.IsLabelAutoFit = false;
-            chartArea5.AxisY.LabelStyle.Interval = 0D;
-            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea5.BackColor = System.Drawing.Color.White;
-            chartArea5.InnerPlotPosition.Auto = false;
-            chartArea5.InnerPlotPosition.Height = 86.87582F;
-            chartArea5.InnerPlotPosition.Width = 86.45924F;
-            chartArea5.InnerPlotPosition.X = 13.54076F;
-            chartArea5.InnerPlotPosition.Y = 6.56209F;
-            chartArea5.Name = "ChartArea1";
-            chartArea5.Position.Auto = false;
-            chartArea5.Position.Height = 80.00502F;
-            chartArea5.Position.Width = 94F;
-            chartArea5.Position.X = 3F;
-            chartArea5.Position.Y = 16.99498F;
-            this.chart3.ChartAreas.Add(chartArea5);
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.LabelStyle.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Interval = 0D;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.InnerPlotPosition.Auto = false;
+            chartArea1.InnerPlotPosition.Height = 86.87582F;
+            chartArea1.InnerPlotPosition.Width = 86.45924F;
+            chartArea1.InnerPlotPosition.X = 13.54076F;
+            chartArea1.InnerPlotPosition.Y = 6.56209F;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 80.00502F;
+            chartArea1.Position.Width = 94F;
+            chartArea1.Position.X = 3F;
+            chartArea1.Position.Y = 16.99498F;
+            this.chart3.ChartAreas.Add(chartArea1);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart3.Location = new System.Drawing.Point(2, 294);
             this.chart3.Margin = new System.Windows.Forms.Padding(2);
             this.chart3.Name = "chart3";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.EmptyPointStyle.BorderWidth = 0;
-            series5.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series5.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series5.EmptyPointStyle.IsVisibleInLegend = false;
-            series5.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series5.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series5.EmptyPointStyle.MarkerSize = 1;
-            series5.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series5.Name = "PupilDiam";
-            this.chart3.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.EmptyPointStyle.BorderWidth = 0;
+            series1.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series1.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series1.EmptyPointStyle.IsVisibleInLegend = false;
+            series1.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series1.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series1.EmptyPointStyle.MarkerSize = 1;
+            series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series1.Name = "PupilDiam";
+            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(333, 141);
             this.chart3.TabIndex = 47;
             this.chart3.Text = "chart3";
-            title5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title5.Name = "PupilDiam";
-            title5.Position.Auto = false;
-            title5.Position.Height = 10.99498F;
-            title5.Position.Width = 94F;
-            title5.Position.X = 3F;
-            title5.Position.Y = 3F;
-            title5.Text = "Pupil Diameter";
-            this.chart3.Titles.Add(title5);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "PupilDiam";
+            title1.Position.Auto = false;
+            title1.Position.Height = 10.99498F;
+            title1.Position.Width = 94F;
+            title1.Position.X = 3F;
+            title1.Position.Y = 3F;
+            title1.Text = "Pupil Diameter";
+            this.chart3.Titles.Add(title1);
             // 
             // cbPlot
             // 
@@ -1752,106 +1892,106 @@ namespace Haytham
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea6.AxisX.IsMarginVisible = false;
-            chartArea6.AxisX.LabelStyle.Enabled = false;
-            chartArea6.AxisX.MajorGrid.Enabled = false;
-            chartArea6.AxisX.MajorTickMark.Enabled = false;
-            chartArea6.AxisY.IsLabelAutoFit = false;
-            chartArea6.AxisY.LabelStyle.Interval = 0D;
-            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea6.BackColor = System.Drawing.Color.White;
-            chartArea6.InnerPlotPosition.Auto = false;
-            chartArea6.InnerPlotPosition.Height = 86.87582F;
-            chartArea6.InnerPlotPosition.Width = 86.45924F;
-            chartArea6.InnerPlotPosition.X = 13.54076F;
-            chartArea6.InnerPlotPosition.Y = 6.56209F;
-            chartArea6.Name = "ChartArea1";
-            chartArea6.Position.Auto = false;
-            chartArea6.Position.Height = 80.00502F;
-            chartArea6.Position.Width = 94F;
-            chartArea6.Position.X = 3F;
-            chartArea6.Position.Y = 16.99498F;
-            this.chart2.ChartAreas.Add(chartArea6);
+            chartArea2.AxisX.IsMarginVisible = false;
+            chartArea2.AxisX.LabelStyle.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Interval = 0D;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea2.BackColor = System.Drawing.Color.White;
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 86.87582F;
+            chartArea2.InnerPlotPosition.Width = 86.45924F;
+            chartArea2.InnerPlotPosition.X = 13.54076F;
+            chartArea2.InnerPlotPosition.Y = 6.56209F;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 80.00502F;
+            chartArea2.Position.Width = 94F;
+            chartArea2.Position.X = 3F;
+            chartArea2.Position.Y = 16.99498F;
+            this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart2.Location = new System.Drawing.Point(2, 153);
             this.chart2.Margin = new System.Windows.Forms.Padding(2);
             this.chart2.Name = "chart2";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.EmptyPointStyle.BorderWidth = 0;
-            series6.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series6.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series6.EmptyPointStyle.IsVisibleInLegend = false;
-            series6.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series6.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series6.EmptyPointStyle.MarkerSize = 1;
-            series6.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series6.Name = "PupilY";
-            this.chart2.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.EmptyPointStyle.BorderWidth = 0;
+            series2.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series2.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series2.EmptyPointStyle.IsVisibleInLegend = false;
+            series2.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series2.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series2.EmptyPointStyle.MarkerSize = 1;
+            series2.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series2.Name = "PupilY";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(333, 141);
             this.chart2.TabIndex = 46;
             this.chart2.Text = "chart2";
-            title6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title6.Name = "PupilY";
-            title6.Position.Auto = false;
-            title6.Position.Height = 10.99498F;
-            title6.Position.Width = 94F;
-            title6.Position.X = 3F;
-            title6.Position.Y = 3F;
-            title6.Text = "Pupil Y";
-            this.chart2.Titles.Add(title6);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "PupilY";
+            title2.Position.Auto = false;
+            title2.Position.Height = 10.99498F;
+            title2.Position.Width = 94F;
+            title2.Position.X = 3F;
+            title2.Position.Y = 3F;
+            title2.Text = "Pupil Y";
+            this.chart2.Titles.Add(title2);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea7.AxisX.IsMarginVisible = false;
-            chartArea7.AxisX.LabelStyle.Enabled = false;
-            chartArea7.AxisX.MajorGrid.Enabled = false;
-            chartArea7.AxisX.MajorTickMark.Enabled = false;
-            chartArea7.AxisY.IsLabelAutoFit = false;
-            chartArea7.AxisY.LabelStyle.Interval = 0D;
-            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea7.BackColor = System.Drawing.Color.White;
-            chartArea7.InnerPlotPosition.Auto = false;
-            chartArea7.InnerPlotPosition.Height = 86.83621F;
-            chartArea7.InnerPlotPosition.Width = 86.45924F;
-            chartArea7.InnerPlotPosition.X = 13.54076F;
-            chartArea7.InnerPlotPosition.Y = 6.5819F;
-            chartArea7.Name = "ChartArea1";
-            chartArea7.Position.Auto = false;
-            chartArea7.Position.Height = 79.76426F;
-            chartArea7.Position.Width = 94F;
-            chartArea7.Position.X = 3F;
-            chartArea7.Position.Y = 17.23574F;
-            this.chart1.ChartAreas.Add(chartArea7);
+            chartArea3.AxisX.IsMarginVisible = false;
+            chartArea3.AxisX.LabelStyle.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.MajorTickMark.Enabled = false;
+            chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.LabelStyle.Interval = 0D;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea3.BackColor = System.Drawing.Color.White;
+            chartArea3.InnerPlotPosition.Auto = false;
+            chartArea3.InnerPlotPosition.Height = 86.83621F;
+            chartArea3.InnerPlotPosition.Width = 86.45924F;
+            chartArea3.InnerPlotPosition.X = 13.54076F;
+            chartArea3.InnerPlotPosition.Y = 6.5819F;
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 79.76426F;
+            chartArea3.Position.Width = 94F;
+            chartArea3.Position.X = 3F;
+            chartArea3.Position.Y = 17.23574F;
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart1.Location = new System.Drawing.Point(2, 15);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.EmptyPointStyle.BorderWidth = 0;
-            series7.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series7.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series7.EmptyPointStyle.IsVisibleInLegend = false;
-            series7.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series7.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series7.EmptyPointStyle.MarkerSize = 1;
-            series7.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series7.Name = "PupilX";
-            this.chart1.Series.Add(series7);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.EmptyPointStyle.BorderWidth = 0;
+            series3.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series3.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series3.EmptyPointStyle.IsVisibleInLegend = false;
+            series3.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series3.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series3.EmptyPointStyle.MarkerSize = 1;
+            series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series3.Name = "PupilX";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(333, 138);
             this.chart1.TabIndex = 45;
             this.chart1.Text = "chart1";
-            title7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title7.Name = "PupilX";
-            title7.Position.Auto = false;
-            title7.Position.Height = 11.23574F;
-            title7.Position.Width = 94F;
-            title7.Position.X = 3F;
-            title7.Position.Y = 3F;
-            title7.Text = "Pupil X";
-            this.chart1.Titles.Add(title7);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "PupilX";
+            title3.Position.Auto = false;
+            title3.Position.Height = 11.23574F;
+            title3.Position.Width = 94F;
+            title3.Position.X = 3F;
+            title3.Position.Y = 3F;
+            title3.Text = "Pupil X";
+            this.chart1.Titles.Add(title3);
             // 
             // gbDataExport
             // 
@@ -2742,6 +2882,25 @@ namespace Haytham
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Experiment";
             // 
+            // btnHoloLensStopExperiment
+            // 
+            this.btnHoloLensStopExperiment.Location = new System.Drawing.Point(109, 355);
+            this.btnHoloLensStopExperiment.Name = "btnHoloLensStopExperiment";
+            this.btnHoloLensStopExperiment.Size = new System.Drawing.Size(97, 23);
+            this.btnHoloLensStopExperiment.TabIndex = 16;
+            this.btnHoloLensStopExperiment.Text = "Stop Experiment";
+            this.btnHoloLensStopExperiment.UseVisualStyleBackColor = true;
+            this.btnHoloLensStopExperiment.Click += new System.EventHandler(this.btnHoloLensStopExperiment_Click);
+            // 
+            // lblHoloLensCalibration
+            // 
+            this.lblHoloLensCalibration.AutoSize = true;
+            this.lblHoloLensCalibration.Location = new System.Drawing.Point(6, 20);
+            this.lblHoloLensCalibration.Name = "lblHoloLensCalibration";
+            this.lblHoloLensCalibration.Size = new System.Drawing.Size(56, 13);
+            this.lblHoloLensCalibration.TabIndex = 15;
+            this.lblHoloLensCalibration.Text = "Calibration";
+            // 
             // btnHoloLensHideGaze
             // 
             this.btnHoloLensHideGaze.Location = new System.Drawing.Point(86, 300);
@@ -3058,54 +3217,54 @@ namespace Haytham
             // chartTest
             // 
             this.chartTest.BackColor = System.Drawing.Color.Transparent;
-            chartArea8.AxisX.IsMarginVisible = false;
-            chartArea8.AxisX.LabelStyle.Enabled = false;
-            chartArea8.AxisX.MajorGrid.Enabled = false;
-            chartArea8.AxisX.MajorTickMark.Enabled = false;
-            chartArea8.AxisY.IsLabelAutoFit = false;
-            chartArea8.AxisY.LabelStyle.Interval = 0D;
-            chartArea8.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea8.BackColor = System.Drawing.Color.White;
-            chartArea8.InnerPlotPosition.Auto = false;
-            chartArea8.InnerPlotPosition.Height = 86.87582F;
-            chartArea8.InnerPlotPosition.Width = 86.45924F;
-            chartArea8.InnerPlotPosition.X = 13.54076F;
-            chartArea8.InnerPlotPosition.Y = 6.56209F;
-            chartArea8.Name = "ChartArea1";
-            chartArea8.Position.Auto = false;
-            chartArea8.Position.Height = 80.00502F;
-            chartArea8.Position.Width = 94F;
-            chartArea8.Position.X = 3F;
-            chartArea8.Position.Y = 16.99498F;
-            this.chartTest.ChartAreas.Add(chartArea8);
+            chartArea4.AxisX.IsMarginVisible = false;
+            chartArea4.AxisX.LabelStyle.Enabled = false;
+            chartArea4.AxisX.MajorGrid.Enabled = false;
+            chartArea4.AxisX.MajorTickMark.Enabled = false;
+            chartArea4.AxisY.IsLabelAutoFit = false;
+            chartArea4.AxisY.LabelStyle.Interval = 0D;
+            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea4.BackColor = System.Drawing.Color.White;
+            chartArea4.InnerPlotPosition.Auto = false;
+            chartArea4.InnerPlotPosition.Height = 86.87582F;
+            chartArea4.InnerPlotPosition.Width = 86.45924F;
+            chartArea4.InnerPlotPosition.X = 13.54076F;
+            chartArea4.InnerPlotPosition.Y = 6.56209F;
+            chartArea4.Name = "ChartArea1";
+            chartArea4.Position.Auto = false;
+            chartArea4.Position.Height = 80.00502F;
+            chartArea4.Position.Width = 94F;
+            chartArea4.Position.X = 3F;
+            chartArea4.Position.Y = 16.99498F;
+            this.chartTest.ChartAreas.Add(chartArea4);
             this.chartTest.Dock = System.Windows.Forms.DockStyle.Left;
             this.chartTest.Location = new System.Drawing.Point(3, 16);
             this.chartTest.Margin = new System.Windows.Forms.Padding(2);
             this.chartTest.Name = "chartTest";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.EmptyPointStyle.BorderWidth = 0;
-            series8.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series8.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series8.EmptyPointStyle.IsVisibleInLegend = false;
-            series8.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series8.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series8.EmptyPointStyle.MarkerSize = 1;
-            series8.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series8.Name = "test";
-            this.chartTest.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.EmptyPointStyle.BorderWidth = 0;
+            series4.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series4.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series4.EmptyPointStyle.IsVisibleInLegend = false;
+            series4.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series4.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series4.EmptyPointStyle.MarkerSize = 1;
+            series4.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series4.Name = "test";
+            this.chartTest.Series.Add(series4);
             this.chartTest.Size = new System.Drawing.Size(549, 0);
             this.chartTest.TabIndex = 47;
             this.chartTest.Text = "chart3";
-            title8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title8.Name = "test";
-            title8.Position.Auto = false;
-            title8.Position.Height = 10.99498F;
-            title8.Position.Width = 94F;
-            title8.Position.X = 3F;
-            title8.Position.Y = 3F;
-            title8.Text = "test";
-            this.chartTest.Titles.Add(title8);
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title4.Name = "test";
+            title4.Position.Auto = false;
+            title4.Position.Height = 10.99498F;
+            title4.Position.Width = 94F;
+            title4.Position.X = 3F;
+            title4.Position.Y = 3F;
+            title4.Text = "test";
+            this.chartTest.Titles.Add(title4);
             // 
             // imEyeTest
             // 
@@ -3247,165 +3406,6 @@ namespace Haytham
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
-            // lblHoloLensCalibration
-            // 
-            this.lblHoloLensCalibration.AutoSize = true;
-            this.lblHoloLensCalibration.Location = new System.Drawing.Point(6, 20);
-            this.lblHoloLensCalibration.Name = "lblHoloLensCalibration";
-            this.lblHoloLensCalibration.Size = new System.Drawing.Size(56, 13);
-            this.lblHoloLensCalibration.TabIndex = 15;
-            this.lblHoloLensCalibration.Text = "Calibration";
-            // 
-            // trackBarGABlockSize
-            // 
-            this.trackBarGABlockSize.AutoSize = false;
-            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGABlockSize.Maximum = 151;
-            this.trackBarGABlockSize.Minimum = 33;
-            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
-            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGABlockSize.TabIndex = 65;
-            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGABlockSize.Value = 113;
-            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
-            // 
-            // trackBarThresholdGlint
-            // 
-            this.trackBarThresholdGlint.AutoSize = false;
-            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
-            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdGlint.Maximum = 255;
-            this.trackBarThresholdGlint.Minimum = 120;
-            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
-            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdGlint.TabIndex = 67;
-            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdGlint.Value = 200;
-            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
-            // 
-            // trackBarGAConstant
-            // 
-            this.trackBarGAConstant.AutoSize = false;
-            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
-            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGAConstant.Maximum = 0;
-            this.trackBarGAConstant.Minimum = -100;
-            this.trackBarGAConstant.Name = "trackBarGAConstant";
-            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGAConstant.TabIndex = 68;
-            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGAConstant.Value = -80;
-            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
-            // 
-            // trackBarPABlockSize
-            // 
-            this.trackBarPABlockSize.AutoSize = false;
-            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPABlockSize.Maximum = 151;
-            this.trackBarPABlockSize.Minimum = 33;
-            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
-            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPABlockSize.TabIndex = 65;
-            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPABlockSize.Value = 113;
-            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
-            // 
-            // trackBarPAConstant
-            // 
-            this.trackBarPAConstant.AutoSize = false;
-            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
-            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPAConstant.Maximum = 50;
-            this.trackBarPAConstant.Minimum = 5;
-            this.trackBarPAConstant.Name = "trackBarPAConstant";
-            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPAConstant.TabIndex = 64;
-            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPAConstant.Value = 20;
-            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
-            // 
-            // trackBarThresholdEye
-            // 
-            this.trackBarThresholdEye.AutoSize = false;
-            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
-            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdEye.Maximum = 255;
-            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
-            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdEye.TabIndex = 63;
-            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdEye.Value = 70;
-            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
-            // 
-            // tbIrisDiameter
-            // 
-            this.tbIrisDiameter.AutoSize = false;
-            this.tbIrisDiameter.Location = new System.Drawing.Point(76, 17);
-            this.tbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
-            this.tbIrisDiameter.Maximum = 500;
-            this.tbIrisDiameter.Minimum = 80;
-            this.tbIrisDiameter.Name = "tbIrisDiameter";
-            this.tbIrisDiameter.Size = new System.Drawing.Size(146, 27);
-            this.tbIrisDiameter.TabIndex = 2;
-            this.tbIrisDiameter.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbIrisDiameter.Value = 200;
-            this.tbIrisDiameter.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
-            // 
-            // tbMonitorBThreshold
-            // 
-            this.tbMonitorBThreshold.AutoSize = false;
-            this.tbMonitorBThreshold.Location = new System.Drawing.Point(18, 32);
-            this.tbMonitorBThreshold.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorBThreshold.Maximum = 360;
-            this.tbMonitorBThreshold.Name = "tbMonitorBThreshold";
-            this.tbMonitorBThreshold.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorBThreshold.TabIndex = 65;
-            this.tbMonitorBThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorBThreshold.Value = 70;
-            this.tbMonitorBThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
-            // 
-            // tbMonitorGThreshold
-            // 
-            this.tbMonitorGThreshold.AutoSize = false;
-            this.tbMonitorGThreshold.Location = new System.Drawing.Point(18, 60);
-            this.tbMonitorGThreshold.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorGThreshold.Maximum = 360;
-            this.tbMonitorGThreshold.Minimum = 5;
-            this.tbMonitorGThreshold.Name = "tbMonitorGThreshold";
-            this.tbMonitorGThreshold.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorGThreshold.TabIndex = 66;
-            this.tbMonitorGThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorGThreshold.Value = 290;
-            this.tbMonitorGThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
-            // 
-            // tbMonitorMinSize
-            // 
-            this.tbMonitorMinSize.AutoSize = false;
-            this.tbMonitorMinSize.Location = new System.Drawing.Point(25, 47);
-            this.tbMonitorMinSize.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorMinSize.Maximum = 100;
-            this.tbMonitorMinSize.Minimum = 5;
-            this.tbMonitorMinSize.Name = "tbMonitorMinSize";
-            this.tbMonitorMinSize.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorMinSize.TabIndex = 67;
-            this.tbMonitorMinSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorMinSize.Value = 30;
-            this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
-            this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
-            this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
-            // 
-            // btnHoloLensStopExperiment
-            // 
-            this.btnHoloLensStopExperiment.Location = new System.Drawing.Point(109, 355);
-            this.btnHoloLensStopExperiment.Name = "btnHoloLensStopExperiment";
-            this.btnHoloLensStopExperiment.Size = new System.Drawing.Size(97, 23);
-            this.btnHoloLensStopExperiment.TabIndex = 16;
-            this.btnHoloLensStopExperiment.Text = "Stop Experiment";
-            this.btnHoloLensStopExperiment.UseVisualStyleBackColor = true;
-            this.btnHoloLensStopExperiment.Click += new System.EventHandler(this.btnHoloLensStopExperiment_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3446,18 +3446,28 @@ namespace Haytham
             this.gbGlintDetection.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.pnlGlintDetection.ResumeLayout(false);
             this.pnlGlintDetection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
             this.gbIrisDiameter.ResumeLayout(false);
             this.gbIrisDiameter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).EndInit();
             this.tabPage_Scene.ResumeLayout(false);
             this.tabPage_Scene.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox21.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).EndInit();
             this.tabPage_Calibration.ResumeLayout(false);
             this.gbCalibrationGlass.ResumeLayout(false);
             this.gbCalibrationGlass.PerformLayout();
@@ -3535,16 +3545,6 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Haytham.HoloLens
 {
@@ -165,6 +166,8 @@ namespace Haytham.HoloLens
         private void SaveLogFile(string fileName, string log)
         {
             File.WriteAllText(fileName, log);
+
+            MessageBox.Show("Log file saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void StopEyeDataTransfer()
