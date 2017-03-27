@@ -22,7 +22,6 @@
 // <modifiedby>Camilo Rodegheri</modifiedby>
 // <email>camilo.rodegheri@gmail.com</email>
 
-
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -34,6 +33,7 @@ using Emgu.CV.Structure;
 using Emgu.CV;
 using Haytham.Glass.Experiments;
 using Haytham.SCRL;
+using Haytham.HoloLens;
 
 namespace Haytham
 {
@@ -172,7 +172,7 @@ namespace Haytham
                     // Hide scene and extdata tabs
                     leftTabs.TabPages.Remove(this.tabPage_Scene);
                     leftTabs.TabPages.Remove(this.tabPage_ExtData);
-                    //leftTabs.TabPages.Remove(this.tabPage_Glass);
+                    leftTabs.TabPages.Remove(this.tabPage_Glass);
                     leftTabs.TabPages.Remove(this.tabPage_EyeGrip);
                     leftTabs.TabPages.Remove(this.tabPage_Clients);
 
@@ -2658,6 +2658,68 @@ namespace Haytham
         private void radioButton2_CheckedChanged_6(object sender, EventArgs e)
         {
             METState.Current.SCRL_stopMode = METState.SCRL_StopMode.Manual;
+        }
+
+        private void btnCalibrateHoloLensNear_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.TriggerStartCalibration(2);
+        }
+
+        private void btnCalibrateHoloLensMiddle_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.TriggerStartCalibration(3);
+        }
+
+        private void btnCalibrateHoloLensFar_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.TriggerStartCalibration(4);
+        }
+
+        private void btnHoloLensSimpleCommandObjectAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandObjectAlign);
+        }
+
+        private void btnHoloLensComplexCommandObjectAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandObjectAlign);
+        }
+
+        private void btnHoloLensSimpleCommandCommandAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandCommandAlign);
+        }
+
+        private void btnHoloLensSimpleCommandHeadAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandHeadAlign);
+        }
+
+        private void btnHoloLensComplexCommandCommandAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandCommandAlign);
+        }
+
+        private void btnHoloLensComplexCommandHeadAlign_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandHeadAlign);
+        }
+
+        private void btnHoloLensStartExperiment_Click(object sender, EventArgs e)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Enter participant name", "Whatever", "");
+
+            METState.Current.HoloLensServer.Client.StartExperiment(input);
+        }
+
+        private void btnHoloLensShowGaze_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.ToggleGaze(true);
+        }
+
+        private void btnHoloLensHideGaze_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.ToggleGaze(false);
         }
 
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)

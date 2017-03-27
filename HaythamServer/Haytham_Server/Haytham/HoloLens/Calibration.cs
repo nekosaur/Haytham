@@ -27,14 +27,15 @@ namespace Haytham.HoloLens
         {
             this.calibrationPoints = new Point[n * m];
 
-            int offset = 80; //pixel offset from the borders of the screen
+            int offsetX = 100; //pixel offset from the borders of the screen
+            int offsetY = 80; //pixel offset from the borders of the screen
             int count = 0;
 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    calibrationPoints[count] = new Point(((PresentationScreen.Width - 2 * offset) / (m - 1)) * j + offset, ((PresentationScreen.Height - 2 * offset) / (n - 1)) * i + offset);
+                    calibrationPoints[count] = new Point(((PresentationScreen.Width - 2 * offsetX) / (m - 1)) * j + offsetX, ((PresentationScreen.Height - 2 * offsetY) / (n - 1)) * i + offsetY);
                     calibrationPoints[count] = Point.Add(calibrationPoints[count], new Size(PresentationScreen.Left, PresentationScreen.Top));
 
                     count++;
@@ -59,12 +60,12 @@ namespace Haytham.HoloLens
             {
                 for (int i = 0; i < calibrationPoints.Length; i++)
                 {
-                    Console.WriteLine("Sending calibration point " + (i + 1));
+                    METState.Current.METCoreObject.SendToForm("Sending calibration point " + (i + 1), "tbHoloLensServer");
                     await client.Send(MessageType.ShowCalibrationPoint);
                     await client.Send(calibrationPoints[i].X);
                     await client.Send(calibrationPoints[i].Y);
 
-                    await Task.Delay(4000);
+                    await Task.Delay(2000);
 
                     this.SaveSample(calibrationPoints[i]);
 
@@ -73,6 +74,8 @@ namespace Haytham.HoloLens
 
                 METState.Current.EyeToDisplay_Mapping.Calibrate();
                 // METState.Current.EyeToDisplay_Mapping.Calibrated = true;
+
+                await client.Send(MessageType.FinishCalibration);
             });
         }
 

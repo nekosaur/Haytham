@@ -10,5 +10,12 @@ namespace Haytham.HoloLens
     {
         public const int StartCalibration = 1000;
         public const int ShowCalibrationPoint = 1001;
+        public const int EyePositionData = 1002;
+        public const int StartEyeDataTransfer = 1003;
+        public const int StopEyeDataTransfer = 1004;
+        public const int FinishCalibration = 1005;
+        public const int LoadExperiment = 1006;
+        public const int StartExperiment = 1007;
+        public const int ToggleGaze = 1008;
     }
 }

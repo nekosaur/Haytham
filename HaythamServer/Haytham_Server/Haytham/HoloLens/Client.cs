@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Haytham.HoloLens
 {
-    class Client
+    public class Client
     {
         Socket socket;
         Server server;
@@ -20,6 +20,8 @@ namespace Haytham.HoloLens
 
         int screenWidth;
         int screenHeight;
+
+        bool isTransferringEyeData;
 
         public Client(Socket socket, Server server)
         {
@@ -45,7 +47,15 @@ namespace Haytham.HoloLens
                      switch (message)
                     {
                         case MessageType.StartCalibration:
-                            this.StartCalibration();
+                            this.StartCalibration(false);
+                            break;
+
+                        case MessageType.StartEyeDataTransfer:
+                            this.StartEyeDataTransfer();
+                            break;
+
+                        case MessageType.StopEyeDataTransfer:
+                            this.StopEyeDataTransfer();
                             break;
 
                         default:
@@ -76,7 +86,31 @@ namespace Haytham.HoloLens
             }
         }
 
-        private void StartCalibration()
+        public async void TriggerStartCalibration(int distance)
+        {
+            await this.Send(MessageType.StartCalibration);
+            await this.Send(distance);
+        }
+
+        public async void StartExperiment(string logName)
+        {
+            await this.Send(MessageType.StartExperiment);
+            await this.Send(logName); 
+        }
+
+        public async void ToggleGaze(bool enabled)
+        {
+            await this.Send(MessageType.ToggleGaze);
+            await this.Send(enabled ? 1 : 0);
+        }
+
+        public async void LoadExperiment(int experiment)
+        {
+            await this.Send(MessageType.LoadExperiment);
+            await this.Send(experiment);
+        }
+
+        public void StartCalibration(bool initFromServer)
         {
             METState.Current.EyeToDisplay_Mapping.GazeErrorX = 0;
             METState.Current.EyeToDisplay_Mapping.GazeErrorY = 0;
@@ -92,6 +126,33 @@ namespace Haytham.HoloLens
             calibration.Start();
             
             // METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
+        }
+
+        private void StartEyeDataTransfer()
+        {
+            isTransferringEyeData = true;
+
+            Task.Run(async () =>
+            {
+                while (isTransferringEyeData)
+                {
+                    METState.Current.Gaze_RGT = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.EyeToDisplay_Mapping.GazeErrorX, METState.Current.EyeToDisplay_Mapping.GazeErrorY);
+                    METState.Current.Gaze_RGT = new AForge.Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y);
+
+                    if (METState.Current.RemoteCalibration != null)
+                        METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
+
+                    await this.Send(MessageType.EyePositionData);
+                    await this.Send((int)METState.Current.Gaze_RGT.X);
+                    await this.Send((int)METState.Current.Gaze_RGT.Y);
+                    await Task.Delay(25);
+                }
+            });
+        }
+
+        private void StopEyeDataTransfer()
+        {
+            isTransferringEyeData = false;
         }
 
         private async Task<string> ReadString()

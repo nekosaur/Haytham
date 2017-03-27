@@ -12,7 +12,7 @@ namespace Haytham.HoloLens
 {
     public class Server
     {
-        Client holoLensClient;
+        public Client Client;
         MainForm mainForm;
         TcpListener tcpListener;
 
@@ -52,7 +52,7 @@ namespace Haytham.HoloLens
         {
             Socket socket = await tcpListener.AcceptSocketAsync();
 
-            if (holoLensClient != null)
+            if (Client != null)
             {
                 METState.Current.METCoreObject.SendToForm("HoloLens already connected, discarding connection attempt", "tbHoloLensServer");
                 return;
@@ -63,13 +63,13 @@ namespace Haytham.HoloLens
                 throw new Exception("Problem connecting to device!");
             }
 
-            holoLensClient = new Client(socket, this);
+            Client = new Client(socket, this);
 
             Task.Run(async () =>
             {
-                await holoLensClient.Run();
+                await Client.Run();
 
-                this.holoLensClient = null;
+                this.Client = null;
                 METState.Current.METCoreObject.SendToForm("HoloLens disconnected", "tbHoloLensServer");
             });
 

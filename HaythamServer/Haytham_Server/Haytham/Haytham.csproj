@@ -177,6 +177,7 @@
     <Reference Include="InTheHand.Net.Personal">
       <HintPath>..\DLLs\InTheHand.Net.Personal.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -255,6 +256,13 @@
     <Compile Include="FXPAL\MessageType_FXPAL.cs" />
     <Compile Include="HoloLens\Calibration.cs" />
     <Compile Include="HoloLens\Client.cs" />
+    <Compile Include="HoloLens\ExperimentType.cs" />
+    <Compile Include="HoloLens\Forms\InputLogName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoloLens\Forms\InputLogName.Designer.cs">
+      <DependentUpon>InputLogName.cs</DependentUpon>
+    </Compile>
     <Compile Include="HoloLens\MessageType.cs" />
     <Compile Include="HoloLens\Server.cs" />
     <Compile Include="Interfaces\ICalibration.cs" />
@@ -323,6 +331,9 @@
     <EmbeddedResource Include="Forms\qrCode.resx">
       <DependentUpon>qrCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HoloLens\Forms\InputLogName.resx">
+      <DependentUpon>InputLogName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -389,7 +400,6 @@
     <EmbeddedResource Include="Resources\UR_UR.png" />
     <None Include="Resources\appbar.connect.png" />
     <None Include="Resources\GoogleGlass.png" />
-    <None Include="Resources\holoLens.bmp" />
     <None Include="Resources\hololens.jpg" />
     <Content Include="Resources\Untitled-1.ico" />
     <EmbeddedResource Include="Resources\TL.png" />
@@ -414,6 +424,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HoloLens\Experiments\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
