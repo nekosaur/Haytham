@@ -58,6 +58,13 @@ namespace Haytham.HoloLens
                             this.StopEyeDataTransfer();
                             break;
 
+                        case MessageType.FinishedExperiment:
+                            string fileName = await this.ReadString();
+                            string log = await this.ReadString();
+
+                            this.SaveLogFile(fileName, log);
+                            break;
+
                         default:
                             break;
                     }
@@ -96,6 +103,11 @@ namespace Haytham.HoloLens
         {
             await this.Send(MessageType.StartExperiment);
             await this.Send(logName); 
+        }
+
+        public async void StopExperiment()
+        {
+            await this.Send(MessageType.StopExperiment);
         }
 
         public async void ToggleGaze(bool enabled)
@@ -148,6 +160,11 @@ namespace Haytham.HoloLens
                     await Task.Delay(25);
                 }
             });
+        }
+
+        private void SaveLogFile(string fileName, string log)
+        {
+            File.WriteAllText(fileName, log);
         }
 
         private void StopEyeDataTransfer()

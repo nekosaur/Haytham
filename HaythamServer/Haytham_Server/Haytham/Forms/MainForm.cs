@@ -2722,6 +2722,11 @@ namespace Haytham
             METState.Current.HoloLensServer.Client.ToggleGaze(false);
         }
 
+        private void btnHoloLensStopExperiment_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.StopExperiment();
+        }
+
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
         {
             METState.Current.SCRL_Threshold =(int) nudSCRLSensitivity.Value;

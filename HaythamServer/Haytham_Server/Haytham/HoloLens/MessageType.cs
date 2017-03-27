@@ -17,5 +17,7 @@ namespace Haytham.HoloLens
         public const int LoadExperiment = 1006;
         public const int StartExperiment = 1007;
         public const int ToggleGaze = 1008;
+        public const int StopExperiment = 1009;
+        public const int FinishedExperiment = 1010;
     }
 }
