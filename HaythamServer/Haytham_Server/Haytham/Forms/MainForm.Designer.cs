@@ -1770,7 +1770,7 @@ namespace Haytham
             this.rbPupilGlint.TabStop = true;
             this.rbPupilGlint.Text = "Pupil-Glint Vector";
             this.rbPupilGlint.UseVisualStyleBackColor = true;
-            this.rbPupilGlint.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_5);
+            this.rbPupilGlint.CheckedChanged += new System.EventHandler(this.rbPupilGlint_CheckedChanged);
             // 
             // rdOnlyPupil
             // 

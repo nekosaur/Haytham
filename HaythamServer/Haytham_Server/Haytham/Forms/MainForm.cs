@@ -1227,7 +1227,7 @@ namespace Haytham
             if (rdOnlyPupil.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.Pupil;
         }
 
-        private void radioButton1_CheckedChanged_5(object sender, EventArgs e)
+        private void rbPupilGlint_CheckedChanged(object sender, EventArgs e)
         {
             if (rbPupilGlint.Checked) METState.Current.calibration_eyeFeature = METState.Calibration_EyeFeature.PupilGlintVector;
         }
