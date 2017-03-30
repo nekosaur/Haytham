@@ -8,11 +8,8 @@ namespace Haytham.HoloLens
 {
     public static class ExperimentType
     {
-        public const int SimpleCommandObjectAlign = 1;
-        public const int ComplexCommandObjectAlign = 2;
-        public const int SimpleCommandCommandAlign = 3;
-        public const int ComplexCommandCommandAlign = 4;
-        public const int SimpleCommandHeadAlign = 5;
-        public const int ComplexCommandHeadAlign = 6;
+        public const int ObjectAlign = 1;
+        public const int CommandAlign = 2;
+        public const int HeadAlign = 3;
     }
 }

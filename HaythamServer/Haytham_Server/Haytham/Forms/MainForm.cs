@@ -2680,32 +2680,17 @@ namespace Haytham
 
         private void btnHoloLensSimpleCommandObjectAlign_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandObjectAlign);
-        }
-
-        private void btnHoloLensComplexCommandObjectAlign_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandObjectAlign);
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ObjectAlign);
         }
 
         private void btnHoloLensSimpleCommandCommandAlign_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandCommandAlign);
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.CommandAlign);
         }
 
         private void btnHoloLensSimpleCommandHeadAlign_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.SimpleCommandHeadAlign);
-        }
-
-        private void btnHoloLensComplexCommandCommandAlign_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandCommandAlign);
-        }
-
-        private void btnHoloLensComplexCommandHeadAlign_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ComplexCommandHeadAlign);
+            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.HeadAlign);
         }
 
         private void btnHoloLensStartExperiment_Click(object sender, EventArgs e)
