@@ -256,7 +256,7 @@
     <Compile Include="FXPAL\MessageType_FXPAL.cs" />
     <Compile Include="HoloLens\Calibration.cs" />
     <Compile Include="HoloLens\Client.cs" />
-    <Compile Include="HoloLens\ExperimentType.cs" />
+    <Compile Include="HoloLens\ExperimentOptions.cs" />
     <Compile Include="HoloLens\Forms\InputLogName.cs">
       <SubType>Form</SubType>
     </Compile>

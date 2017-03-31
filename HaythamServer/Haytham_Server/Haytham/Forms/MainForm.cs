@@ -187,6 +187,20 @@ namespace Haytham
                     cmbSceneTimer.Visible = false;
                     rbAutoActivation.Visible = false;
                     cbRecordSceneVideo.Visible = false;
+
+                    // experiment stuff
+                    cmbHoloLensAlignment.DataSource = new BindingSource(HoloLens.ExperimentOptions.AlignmentDictionary(), null);
+                    cmbHoloLensAlignment.DisplayMember = "Value";
+                    cmbHoloLensAlignment.ValueMember = "Key";
+
+                    cmbHoloLensDistance.DataSource = new BindingSource(HoloLens.ExperimentOptions.DistanceDictionary(), null);
+                    cmbHoloLensDistance.DisplayMember = "Value";
+                    cmbHoloLensDistance.ValueMember = "Key";
+
+                    cmbHoloLensChoices.DataSource = new BindingSource(HoloLens.ExperimentOptions.ChoicesDictionary(), null);
+                    cmbHoloLensChoices.DisplayMember = "Value";
+                    cmbHoloLensChoices.ValueMember = "Key";
+
                     break;
             }
             
@@ -2678,19 +2692,17 @@ namespace Haytham
             METState.Current.METCoreObject.SendToForm("Calibrating for distance far\r\n", "tbHoloLensServer");
         }
 
-        private void btnHoloLensSimpleCommandObjectAlign_Click(object sender, EventArgs e)
+        private void btnHoloLensLoadExperiment_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.ObjectAlign);
-        }
+            int distance = ((KeyValuePair<int, string>)cmbHoloLensDistance.SelectedItem).Key;
+            int alignment = ((KeyValuePair<int, string>)cmbHoloLensAlignment.SelectedItem).Key;
+            int choices = ((KeyValuePair<int, string>)cmbHoloLensChoices.SelectedItem).Key;
 
-        private void btnHoloLensSimpleCommandCommandAlign_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.CommandAlign);
-        }
+            string experiment = String.Format("{0} - {1} - {2}", ((KeyValuePair<int, string>)cmbHoloLensDistance.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensAlignment.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensChoices.SelectedItem).Value);
 
-        private void btnHoloLensSimpleCommandHeadAlign_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.LoadExperiment(ExperimentType.HeadAlign);
+            METState.Current.METCoreObject.SendToForm("Loading Experiment: " + experiment + "\r\n", "tbHoloLensServer");
+
+            METState.Current.HoloLensServer.Client.LoadExperiment(distance, alignment, choices);
         }
 
         private void btnHoloLensStartExperiment_Click(object sender, EventArgs e)

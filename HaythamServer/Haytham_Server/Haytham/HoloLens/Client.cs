@@ -117,10 +117,12 @@ namespace Haytham.HoloLens
             await this.Send(enabled ? 1 : 0);
         }
 
-        public async void LoadExperiment(int experiment)
+        public async void LoadExperiment(int distance, int alignment, int choices)
         {
             await this.Send(MessageType.LoadExperiment);
-            await this.Send(experiment);
+            await this.Send(distance);
+            await this.Send(alignment);
+            await this.Send(choices);
         }
 
         public void StartCalibration(bool initFromServer)
