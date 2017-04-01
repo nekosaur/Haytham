@@ -24,6 +24,10 @@ namespace Haytham.HoloLens
 
         bool isTransferringEyeData;
 
+        string logName;
+        string fileName;
+        string logPath;
+
         public Client(Socket socket, Server server)
         {
             this.socket = socket;
@@ -66,6 +70,12 @@ namespace Haytham.HoloLens
                             this.SaveLogFile(fileName, log);
                             break;
 
+                        case MessageType.SendTrialData:
+                            string data = await this.ReadString();
+
+                            this.SaveTrialData(data);
+                            break;
+
                         default:
                             break;
                     }
@@ -100,10 +110,30 @@ namespace Haytham.HoloLens
             await this.Send(distance);
         }
 
-        public async void StartExperiment(string logName)
+        public async void StartExperiment()
         {
             await this.Send(MessageType.StartExperiment);
             await this.Send(logName); 
+        }
+
+        public void CreateLogFile(string logName)
+        {
+            this.logName = logName;
+            this.fileName = logName + "_" + DateTime.Now.ToString("dd_MM_yyyy") + ".log";
+            this.logPath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+
+            using (StreamWriter file = new StreamWriter(logPath))
+            {
+
+            }
+        }
+
+        public void SaveTrialData(string data)
+        {
+            using (StreamWriter file = new StreamWriter(logPath, true))
+            {
+                file.WriteLine(data);
+            }
         }
 
         public async void StopExperiment()
@@ -119,10 +149,17 @@ namespace Haytham.HoloLens
 
         public async void LoadExperiment(int distance, int alignment, int choices)
         {
+            if (logName == null || logName.Equals(""))
+            {
+                MessageBox.Show("NO CURRENT PARTICIPANT", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             await this.Send(MessageType.LoadExperiment);
             await this.Send(distance);
             await this.Send(alignment);
             await this.Send(choices);
+            await this.Send(logName);
         }
 
         public void StartCalibration(bool initFromServer)

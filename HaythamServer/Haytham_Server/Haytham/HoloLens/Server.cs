@@ -73,6 +73,8 @@ namespace Haytham.HoloLens
                 METState.Current.METCoreObject.SendToForm("HoloLens disconnected", "tbHoloLensServer");
             });
 
+            METState.Current.METCoreObject.SendToForm(true, "gbHoloLensExperiment");
+
             METState.Current.METCoreObject.SendToForm("HoloLens connected", "tbHoloLensServer");
         }
 

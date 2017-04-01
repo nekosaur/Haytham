@@ -77,32 +77,25 @@ namespace Haytham
             this.gbGlintDetection = new System.Windows.Forms.GroupBox();
             this.cbGlintManual = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.rbGGaussian = new System.Windows.Forms.RadioButton();
             this.rbGMean = new System.Windows.Forms.RadioButton();
             this.cbGlintAuto = new System.Windows.Forms.RadioButton();
-            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
             this.cbShowGlint = new System.Windows.Forms.CheckBox();
             this.cbGlintDetection = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbPM = new System.Windows.Forms.RadioButton();
             this.pnlGlintDetection = new System.Windows.Forms.Panel();
-            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.label10 = new System.Windows.Forms.Label();
             this.rbPGaussian = new System.Windows.Forms.RadioButton();
             this.rbPMean = new System.Windows.Forms.RadioButton();
             this.cbPA = new System.Windows.Forms.RadioButton();
             this.cbRemoveGlint = new System.Windows.Forms.CheckBox();
             this.cbDilateErode = new System.Windows.Forms.CheckBox();
-            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
-            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
             this.cbShowPupil = new System.Windows.Forms.CheckBox();
             this.cbPupilDetection = new System.Windows.Forms.CheckBox();
             this.gbIrisDiameter = new System.Windows.Forms.GroupBox();
             this.cbShowIris = new System.Windows.Forms.CheckBox();
-            this.tbIrisDiameter = new Haytham.Forms.TransparentTrackBar();
             this.lbIrisDiameter = new System.Windows.Forms.Label();
             this.tabPage_Scene = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
@@ -113,9 +106,6 @@ namespace Haytham
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.cbShowEdges = new System.Windows.Forms.CheckBox();
-            this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
-            this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
-            this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.cbShowScreen = new System.Windows.Forms.CheckBox();
@@ -220,7 +210,7 @@ namespace Haytham
             this.button11 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage_HoloLens = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gbHoloLensExperiment = new System.Windows.Forms.GroupBox();
             this.cmbHoloLensChoices = new System.Windows.Forms.ComboBox();
             this.cmbHoloLensDistance = new System.Windows.Forms.ComboBox();
             this.cmbHoloLensAlignment = new System.Windows.Forms.ComboBox();
@@ -263,6 +253,18 @@ namespace Haytham
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.cmbEyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
+            this.btnHoloLensNewParticipant = new System.Windows.Forms.Button();
+            this.lblHoloLensCurrentParticipant = new System.Windows.Forms.Label();
+            this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarPABlockSize = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarPAConstant = new Haytham.Forms.TransparentTrackBar();
+            this.trackBarThresholdEye = new Haytham.Forms.TransparentTrackBar();
+            this.tbIrisDiameter = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
+            this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
             this.rootContainer.Panel1.SuspendLayout();
             this.rootContainer.Panel2.SuspendLayout();
@@ -284,23 +286,13 @@ namespace Haytham
             this.tabPage_Eye.SuspendLayout();
             this.gbGlintDetection.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.pnlGlintDetection.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
             this.gbIrisDiameter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).BeginInit();
             this.tabPage_Scene.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).BeginInit();
             this.tabPage_Calibration.SuspendLayout();
             this.gbCalibrationGlass.SuspendLayout();
             this.gbCalibrationRemote.SuspendLayout();
@@ -347,7 +339,7 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.nudSCRLSensitivity)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage_HoloLens.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.gbHoloLensExperiment.SuspendLayout();
             this.gpHoloLensServer.SuspendLayout();
             this.gbMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -366,6 +358,16 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.chartTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).BeginInit();
             this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).BeginInit();
             this.SuspendLayout();
             // 
             // rootContainer
@@ -954,20 +956,6 @@ namespace Haytham
             this.panel4.TabIndex = 69;
             this.panel4.Visible = false;
             // 
-            // trackBarGABlockSize
-            // 
-            this.trackBarGABlockSize.AutoSize = false;
-            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGABlockSize.Maximum = 151;
-            this.trackBarGABlockSize.Minimum = 33;
-            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
-            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGABlockSize.TabIndex = 65;
-            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGABlockSize.Value = 113;
-            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -1017,34 +1005,6 @@ namespace Haytham
             this.cbGlintAuto.Text = "Auto";
             this.cbGlintAuto.UseVisualStyleBackColor = true;
             this.cbGlintAuto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_2);
-            // 
-            // trackBarThresholdGlint
-            // 
-            this.trackBarThresholdGlint.AutoSize = false;
-            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
-            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdGlint.Maximum = 255;
-            this.trackBarThresholdGlint.Minimum = 120;
-            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
-            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdGlint.TabIndex = 67;
-            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdGlint.Value = 200;
-            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
-            // 
-            // trackBarGAConstant
-            // 
-            this.trackBarGAConstant.AutoSize = false;
-            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
-            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarGAConstant.Maximum = 0;
-            this.trackBarGAConstant.Minimum = -100;
-            this.trackBarGAConstant.Name = "trackBarGAConstant";
-            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarGAConstant.TabIndex = 68;
-            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarGAConstant.Value = -80;
-            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
             // 
             // cbShowGlint
             // 
@@ -1120,20 +1080,6 @@ namespace Haytham
             this.pnlGlintDetection.TabIndex = 67;
             this.pnlGlintDetection.Visible = false;
             // 
-            // trackBarPABlockSize
-            // 
-            this.trackBarPABlockSize.AutoSize = false;
-            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
-            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPABlockSize.Maximum = 151;
-            this.trackBarPABlockSize.Minimum = 33;
-            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
-            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPABlockSize.TabIndex = 65;
-            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPABlockSize.Value = 113;
-            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1206,33 +1152,6 @@ namespace Haytham
             this.cbDilateErode.UseVisualStyleBackColor = true;
             this.cbDilateErode.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_6);
             // 
-            // trackBarPAConstant
-            // 
-            this.trackBarPAConstant.AutoSize = false;
-            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
-            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarPAConstant.Maximum = 50;
-            this.trackBarPAConstant.Minimum = 5;
-            this.trackBarPAConstant.Name = "trackBarPAConstant";
-            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
-            this.trackBarPAConstant.TabIndex = 64;
-            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarPAConstant.Value = 20;
-            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
-            // 
-            // trackBarThresholdEye
-            // 
-            this.trackBarThresholdEye.AutoSize = false;
-            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
-            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarThresholdEye.Maximum = 255;
-            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
-            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
-            this.trackBarThresholdEye.TabIndex = 63;
-            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBarThresholdEye.Value = 70;
-            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
-            // 
             // cbShowPupil
             // 
             this.cbShowPupil.Appearance = System.Windows.Forms.Appearance.Button;
@@ -1294,20 +1213,6 @@ namespace Haytham
             this.cbShowIris.TabIndex = 3;
             this.cbShowIris.UseVisualStyleBackColor = false;
             this.cbShowIris.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_2);
-            // 
-            // tbIrisDiameter
-            // 
-            this.tbIrisDiameter.AutoSize = false;
-            this.tbIrisDiameter.Location = new System.Drawing.Point(76, 17);
-            this.tbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
-            this.tbIrisDiameter.Maximum = 500;
-            this.tbIrisDiameter.Minimum = 80;
-            this.tbIrisDiameter.Name = "tbIrisDiameter";
-            this.tbIrisDiameter.Size = new System.Drawing.Size(146, 27);
-            this.tbIrisDiameter.TabIndex = 2;
-            this.tbIrisDiameter.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbIrisDiameter.Value = 200;
-            this.tbIrisDiameter.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
             // 
             // lbIrisDiameter
             // 
@@ -1440,49 +1345,6 @@ namespace Haytham
             this.cbShowEdges.TabIndex = 68;
             this.cbShowEdges.UseVisualStyleBackColor = false;
             this.cbShowEdges.CheckedChanged += new System.EventHandler(this.cbShowEdges_CheckedChanged);
-            // 
-            // tbMonitorBThreshold
-            // 
-            this.tbMonitorBThreshold.AutoSize = false;
-            this.tbMonitorBThreshold.Location = new System.Drawing.Point(18, 32);
-            this.tbMonitorBThreshold.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorBThreshold.Maximum = 360;
-            this.tbMonitorBThreshold.Name = "tbMonitorBThreshold";
-            this.tbMonitorBThreshold.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorBThreshold.TabIndex = 65;
-            this.tbMonitorBThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorBThreshold.Value = 70;
-            this.tbMonitorBThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
-            // 
-            // tbMonitorGThreshold
-            // 
-            this.tbMonitorGThreshold.AutoSize = false;
-            this.tbMonitorGThreshold.Location = new System.Drawing.Point(18, 60);
-            this.tbMonitorGThreshold.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorGThreshold.Maximum = 360;
-            this.tbMonitorGThreshold.Minimum = 5;
-            this.tbMonitorGThreshold.Name = "tbMonitorGThreshold";
-            this.tbMonitorGThreshold.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorGThreshold.TabIndex = 66;
-            this.tbMonitorGThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorGThreshold.Value = 290;
-            this.tbMonitorGThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
-            // 
-            // tbMonitorMinSize
-            // 
-            this.tbMonitorMinSize.AutoSize = false;
-            this.tbMonitorMinSize.Location = new System.Drawing.Point(25, 47);
-            this.tbMonitorMinSize.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMonitorMinSize.Maximum = 100;
-            this.tbMonitorMinSize.Minimum = 5;
-            this.tbMonitorMinSize.Name = "tbMonitorMinSize";
-            this.tbMonitorMinSize.Size = new System.Drawing.Size(185, 24);
-            this.tbMonitorMinSize.TabIndex = 67;
-            this.tbMonitorMinSize.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbMonitorMinSize.Value = 30;
-            this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
-            this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
-            this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
             // 
             // label16
             // 
@@ -2844,7 +2706,7 @@ namespace Haytham
             // 
             // tabPage_HoloLens
             // 
-            this.tabPage_HoloLens.Controls.Add(this.groupBox4);
+            this.tabPage_HoloLens.Controls.Add(this.gbHoloLensExperiment);
             this.tabPage_HoloLens.Controls.Add(this.gpHoloLensServer);
             this.tabPage_HoloLens.Location = new System.Drawing.Point(4, 40);
             this.tabPage_HoloLens.Name = "tabPage_HoloLens";
@@ -2854,35 +2716,37 @@ namespace Haytham
             this.tabPage_HoloLens.Text = "HoloLens";
             this.tabPage_HoloLens.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // gbHoloLensExperiment
             // 
-            this.groupBox4.Controls.Add(this.cmbHoloLensChoices);
-            this.groupBox4.Controls.Add(this.cmbHoloLensDistance);
-            this.groupBox4.Controls.Add(this.cmbHoloLensAlignment);
-            this.groupBox4.Controls.Add(this.btnHoloLensStopExperiment);
-            this.groupBox4.Controls.Add(this.lblHoloLensCalibration);
-            this.groupBox4.Controls.Add(this.btnHoloLensHideGaze);
-            this.groupBox4.Controls.Add(this.btnHoloLensShowGaze);
-            this.groupBox4.Controls.Add(this.btnHoloLensStartExperiment);
-            this.groupBox4.Controls.Add(this.lblHoloLensChoices);
-            this.groupBox4.Controls.Add(this.lblHoloLensAlignment);
-            this.groupBox4.Controls.Add(this.lblHoloLensDistance);
-            this.groupBox4.Controls.Add(this.btnHoloLensLoadExperiment);
-            this.groupBox4.Controls.Add(this.btnCalibrateHoloLensFar);
-            this.groupBox4.Controls.Add(this.btnCalibrateHoloLensMiddle);
-            this.groupBox4.Controls.Add(this.btnCalibrateHoloLensNear);
-            this.groupBox4.Location = new System.Drawing.Point(6, 215);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(323, 384);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Experiment";
+            this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensCurrentParticipant);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensNewParticipant);
+            this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensChoices);
+            this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensDistance);
+            this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensAlignment);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensStopExperiment);
+            this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensCalibration);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensHideGaze);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensShowGaze);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensStartExperiment);
+            this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensChoices);
+            this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensAlignment);
+            this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensDistance);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensLoadExperiment);
+            this.gbHoloLensExperiment.Controls.Add(this.btnCalibrateHoloLensFar);
+            this.gbHoloLensExperiment.Controls.Add(this.btnCalibrateHoloLensMiddle);
+            this.gbHoloLensExperiment.Controls.Add(this.btnCalibrateHoloLensNear);
+            this.gbHoloLensExperiment.Location = new System.Drawing.Point(6, 215);
+            this.gbHoloLensExperiment.Name = "gbHoloLensExperiment";
+            this.gbHoloLensExperiment.Size = new System.Drawing.Size(323, 384);
+            this.gbHoloLensExperiment.TabIndex = 1;
+            this.gbHoloLensExperiment.TabStop = false;
+            this.gbHoloLensExperiment.Text = "Experiment";
             // 
             // cmbHoloLensChoices
             // 
             this.cmbHoloLensChoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHoloLensChoices.FormattingEnabled = true;
-            this.cmbHoloLensChoices.Location = new System.Drawing.Point(218, 93);
+            this.cmbHoloLensChoices.Location = new System.Drawing.Point(218, 171);
             this.cmbHoloLensChoices.Name = "cmbHoloLensChoices";
             this.cmbHoloLensChoices.Size = new System.Drawing.Size(98, 21);
             this.cmbHoloLensChoices.TabIndex = 19;
@@ -2891,7 +2755,7 @@ namespace Haytham
             // 
             this.cmbHoloLensDistance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHoloLensDistance.FormattingEnabled = true;
-            this.cmbHoloLensDistance.Location = new System.Drawing.Point(6, 93);
+            this.cmbHoloLensDistance.Location = new System.Drawing.Point(6, 171);
             this.cmbHoloLensDistance.Name = "cmbHoloLensDistance";
             this.cmbHoloLensDistance.Size = new System.Drawing.Size(96, 21);
             this.cmbHoloLensDistance.TabIndex = 18;
@@ -2900,7 +2764,7 @@ namespace Haytham
             // 
             this.cmbHoloLensAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHoloLensAlignment.FormattingEnabled = true;
-            this.cmbHoloLensAlignment.Location = new System.Drawing.Point(108, 93);
+            this.cmbHoloLensAlignment.Location = new System.Drawing.Point(108, 171);
             this.cmbHoloLensAlignment.Name = "cmbHoloLensAlignment";
             this.cmbHoloLensAlignment.Size = new System.Drawing.Size(104, 21);
             this.cmbHoloLensAlignment.TabIndex = 17;
@@ -2957,7 +2821,7 @@ namespace Haytham
             // lblHoloLensChoices
             // 
             this.lblHoloLensChoices.AutoSize = true;
-            this.lblHoloLensChoices.Location = new System.Drawing.Point(215, 77);
+            this.lblHoloLensChoices.Location = new System.Drawing.Point(215, 155);
             this.lblHoloLensChoices.Name = "lblHoloLensChoices";
             this.lblHoloLensChoices.Size = new System.Drawing.Size(45, 13);
             this.lblHoloLensChoices.TabIndex = 11;
@@ -2966,7 +2830,7 @@ namespace Haytham
             // lblHoloLensAlignment
             // 
             this.lblHoloLensAlignment.AutoSize = true;
-            this.lblHoloLensAlignment.Location = new System.Drawing.Point(106, 77);
+            this.lblHoloLensAlignment.Location = new System.Drawing.Point(106, 155);
             this.lblHoloLensAlignment.Name = "lblHoloLensAlignment";
             this.lblHoloLensAlignment.Size = new System.Drawing.Size(53, 13);
             this.lblHoloLensAlignment.TabIndex = 10;
@@ -2975,7 +2839,7 @@ namespace Haytham
             // lblHoloLensDistance
             // 
             this.lblHoloLensDistance.AutoSize = true;
-            this.lblHoloLensDistance.Location = new System.Drawing.Point(5, 77);
+            this.lblHoloLensDistance.Location = new System.Drawing.Point(5, 155);
             this.lblHoloLensDistance.Name = "lblHoloLensDistance";
             this.lblHoloLensDistance.Size = new System.Drawing.Size(49, 13);
             this.lblHoloLensDistance.TabIndex = 9;
@@ -2983,7 +2847,7 @@ namespace Haytham
             // 
             // btnHoloLensLoadExperiment
             // 
-            this.btnHoloLensLoadExperiment.Location = new System.Drawing.Point(6, 120);
+            this.btnHoloLensLoadExperiment.Location = new System.Drawing.Point(6, 198);
             this.btnHoloLensLoadExperiment.Name = "btnHoloLensLoadExperiment";
             this.btnHoloLensLoadExperiment.Size = new System.Drawing.Size(311, 23);
             this.btnHoloLensLoadExperiment.TabIndex = 7;
@@ -3379,6 +3243,166 @@ namespace Haytham
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
+            // btnHoloLensNewParticipant
+            // 
+            this.btnHoloLensNewParticipant.Location = new System.Drawing.Point(6, 65);
+            this.btnHoloLensNewParticipant.Name = "btnHoloLensNewParticipant";
+            this.btnHoloLensNewParticipant.Size = new System.Drawing.Size(310, 23);
+            this.btnHoloLensNewParticipant.TabIndex = 20;
+            this.btnHoloLensNewParticipant.Text = "New Participant";
+            this.btnHoloLensNewParticipant.UseVisualStyleBackColor = true;
+            this.btnHoloLensNewParticipant.Click += new System.EventHandler(this.btnHoloLensNewParticipant_Click);
+            // 
+            // lblHoloLensCurrentParticipant
+            // 
+            this.lblHoloLensCurrentParticipant.AutoSize = true;
+            this.lblHoloLensCurrentParticipant.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblHoloLensCurrentParticipant.Location = new System.Drawing.Point(6, 95);
+            this.lblHoloLensCurrentParticipant.Name = "lblHoloLensCurrentParticipant";
+            this.lblHoloLensCurrentParticipant.Size = new System.Drawing.Size(308, 26);
+            this.lblHoloLensCurrentParticipant.TabIndex = 21;
+            this.lblHoloLensCurrentParticipant.Text = "NO CURRENT PARTICIPANT";
+            // 
+            // trackBarGABlockSize
+            // 
+            this.trackBarGABlockSize.AutoSize = false;
+            this.trackBarGABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarGABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGABlockSize.Maximum = 151;
+            this.trackBarGABlockSize.Minimum = 33;
+            this.trackBarGABlockSize.Name = "trackBarGABlockSize";
+            this.trackBarGABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGABlockSize.TabIndex = 65;
+            this.trackBarGABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGABlockSize.Value = 113;
+            this.trackBarGABlockSize.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_4);
+            // 
+            // trackBarThresholdGlint
+            // 
+            this.trackBarThresholdGlint.AutoSize = false;
+            this.trackBarThresholdGlint.Location = new System.Drawing.Point(76, 67);
+            this.trackBarThresholdGlint.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdGlint.Maximum = 255;
+            this.trackBarThresholdGlint.Minimum = 120;
+            this.trackBarThresholdGlint.Name = "trackBarThresholdGlint";
+            this.trackBarThresholdGlint.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdGlint.TabIndex = 67;
+            this.trackBarThresholdGlint.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdGlint.Value = 200;
+            this.trackBarThresholdGlint.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged);
+            // 
+            // trackBarGAConstant
+            // 
+            this.trackBarGAConstant.AutoSize = false;
+            this.trackBarGAConstant.Location = new System.Drawing.Point(76, 42);
+            this.trackBarGAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarGAConstant.Maximum = 0;
+            this.trackBarGAConstant.Minimum = -100;
+            this.trackBarGAConstant.Name = "trackBarGAConstant";
+            this.trackBarGAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarGAConstant.TabIndex = 68;
+            this.trackBarGAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGAConstant.Value = -80;
+            this.trackBarGAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_3);
+            // 
+            // trackBarPABlockSize
+            // 
+            this.trackBarPABlockSize.AutoSize = false;
+            this.trackBarPABlockSize.Location = new System.Drawing.Point(57, 32);
+            this.trackBarPABlockSize.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPABlockSize.Maximum = 151;
+            this.trackBarPABlockSize.Minimum = 33;
+            this.trackBarPABlockSize.Name = "trackBarPABlockSize";
+            this.trackBarPABlockSize.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPABlockSize.TabIndex = 65;
+            this.trackBarPABlockSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPABlockSize.Value = 113;
+            this.trackBarPABlockSize.ValueChanged += new System.EventHandler(this.trackBarPABlockSize_ValueChanged);
+            // 
+            // trackBarPAConstant
+            // 
+            this.trackBarPAConstant.AutoSize = false;
+            this.trackBarPAConstant.Location = new System.Drawing.Point(76, 43);
+            this.trackBarPAConstant.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarPAConstant.Maximum = 50;
+            this.trackBarPAConstant.Minimum = 5;
+            this.trackBarPAConstant.Name = "trackBarPAConstant";
+            this.trackBarPAConstant.Size = new System.Drawing.Size(146, 24);
+            this.trackBarPAConstant.TabIndex = 64;
+            this.trackBarPAConstant.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarPAConstant.Value = 20;
+            this.trackBarPAConstant.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_2);
+            // 
+            // trackBarThresholdEye
+            // 
+            this.trackBarThresholdEye.AutoSize = false;
+            this.trackBarThresholdEye.Location = new System.Drawing.Point(76, 70);
+            this.trackBarThresholdEye.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBarThresholdEye.Maximum = 255;
+            this.trackBarThresholdEye.Name = "trackBarThresholdEye";
+            this.trackBarThresholdEye.Size = new System.Drawing.Size(146, 24);
+            this.trackBarThresholdEye.TabIndex = 63;
+            this.trackBarThresholdEye.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarThresholdEye.Value = 70;
+            this.trackBarThresholdEye.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_1);
+            // 
+            // tbIrisDiameter
+            // 
+            this.tbIrisDiameter.AutoSize = false;
+            this.tbIrisDiameter.Location = new System.Drawing.Point(76, 17);
+            this.tbIrisDiameter.Margin = new System.Windows.Forms.Padding(2);
+            this.tbIrisDiameter.Maximum = 500;
+            this.tbIrisDiameter.Minimum = 80;
+            this.tbIrisDiameter.Name = "tbIrisDiameter";
+            this.tbIrisDiameter.Size = new System.Drawing.Size(146, 27);
+            this.tbIrisDiameter.TabIndex = 2;
+            this.tbIrisDiameter.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbIrisDiameter.Value = 200;
+            this.tbIrisDiameter.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged);
+            // 
+            // tbMonitorBThreshold
+            // 
+            this.tbMonitorBThreshold.AutoSize = false;
+            this.tbMonitorBThreshold.Location = new System.Drawing.Point(18, 32);
+            this.tbMonitorBThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorBThreshold.Maximum = 360;
+            this.tbMonitorBThreshold.Name = "tbMonitorBThreshold";
+            this.tbMonitorBThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorBThreshold.TabIndex = 65;
+            this.tbMonitorBThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorBThreshold.Value = 70;
+            this.tbMonitorBThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar1_ValueChanged_5);
+            // 
+            // tbMonitorGThreshold
+            // 
+            this.tbMonitorGThreshold.AutoSize = false;
+            this.tbMonitorGThreshold.Location = new System.Drawing.Point(18, 60);
+            this.tbMonitorGThreshold.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorGThreshold.Maximum = 360;
+            this.tbMonitorGThreshold.Minimum = 5;
+            this.tbMonitorGThreshold.Name = "tbMonitorGThreshold";
+            this.tbMonitorGThreshold.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorGThreshold.TabIndex = 66;
+            this.tbMonitorGThreshold.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorGThreshold.Value = 290;
+            this.tbMonitorGThreshold.ValueChanged += new System.EventHandler(this.transparentTrackBar2_ValueChanged_1);
+            // 
+            // tbMonitorMinSize
+            // 
+            this.tbMonitorMinSize.AutoSize = false;
+            this.tbMonitorMinSize.Location = new System.Drawing.Point(25, 47);
+            this.tbMonitorMinSize.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMonitorMinSize.Maximum = 100;
+            this.tbMonitorMinSize.Minimum = 5;
+            this.tbMonitorMinSize.Name = "tbMonitorMinSize";
+            this.tbMonitorMinSize.Size = new System.Drawing.Size(185, 24);
+            this.tbMonitorMinSize.TabIndex = 67;
+            this.tbMonitorMinSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbMonitorMinSize.Value = 30;
+            this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
+            this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
+            this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3419,28 +3443,18 @@ namespace Haytham
             this.gbGlintDetection.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.pnlGlintDetection.ResumeLayout(false);
             this.pnlGlintDetection.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
             this.gbIrisDiameter.ResumeLayout(false);
             this.gbIrisDiameter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).EndInit();
             this.tabPage_Scene.ResumeLayout(false);
             this.tabPage_Scene.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox21.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).EndInit();
             this.tabPage_Calibration.ResumeLayout(false);
             this.gbCalibrationGlass.ResumeLayout(false);
             this.gbCalibrationGlass.PerformLayout();
@@ -3496,8 +3510,8 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.nudSCRLSensitivity)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tabPage_HoloLens.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.gbHoloLensExperiment.ResumeLayout(false);
+            this.gbHoloLensExperiment.PerformLayout();
             this.gpHoloLensServer.ResumeLayout(false);
             this.gpHoloLensServer.PerformLayout();
             this.gbMain.ResumeLayout(false);
@@ -3518,6 +3532,16 @@ namespace Haytham
             ((System.ComponentModel.ISupportInitialize)(this.imEyeTest)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdGlint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarGAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPABlockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarPAConstant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarThresholdEye)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbIrisDiameter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorBThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorGThreshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbMonitorMinSize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3740,7 +3764,7 @@ namespace Haytham
         private System.Windows.Forms.TabPage tabPage_HoloLens;
         private System.Windows.Forms.GroupBox gpHoloLensServer;
         private System.Windows.Forms.TextBox tbHoloLensServer;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox gbHoloLensExperiment;
         private System.Windows.Forms.Button btnCalibrateHoloLensNear;
         private System.Windows.Forms.Button btnCalibrateHoloLensFar;
         private System.Windows.Forms.Button btnCalibrateHoloLensMiddle;
@@ -3756,6 +3780,8 @@ namespace Haytham
         private System.Windows.Forms.ComboBox cmbHoloLensAlignment;
         private System.Windows.Forms.ComboBox cmbHoloLensChoices;
         private System.Windows.Forms.ComboBox cmbHoloLensDistance;
+        private System.Windows.Forms.Button btnHoloLensNewParticipant;
+        private System.Windows.Forms.Label lblHoloLensCurrentParticipant;
     }
 }
 

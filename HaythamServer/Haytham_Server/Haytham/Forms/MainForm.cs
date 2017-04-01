@@ -189,6 +189,7 @@ namespace Haytham
                     cbRecordSceneVideo.Visible = false;
 
                     // experiment stuff
+                    gbHoloLensExperiment.Enabled = false;
                     cmbHoloLensAlignment.DataSource = new BindingSource(HoloLens.ExperimentOptions.AlignmentDictionary(), null);
                     cmbHoloLensAlignment.DisplayMember = "Value";
                     cmbHoloLensAlignment.ValueMember = "Key";
@@ -1813,6 +1814,30 @@ namespace Haytham
 
                     break;
 
+                case "lblHoloLensCurrentParticipant":
+                    if (lblHoloLensCurrentParticipant.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "lblHoloLensCurrentParticipant" });
+                    }
+                    else
+                    {
+                        lblHoloLensCurrentParticipant.Text = (string)message;
+                    }
+
+                    break;
+
+                case "gbHoloLensExperiment":
+                    if (gbHoloLensExperiment.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "gbHoloLensExperiment" });
+                    }
+                    else
+                    {
+                        gbHoloLensExperiment.Enabled = (bool)message;
+                    }
+
+                    break;
+
             }
 
         }
@@ -2707,9 +2732,8 @@ namespace Haytham
 
         private void btnHoloLensStartExperiment_Click(object sender, EventArgs e)
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Enter participant name", "Whatever", "");
 
-            METState.Current.HoloLensServer.Client.StartExperiment(input);
+            METState.Current.HoloLensServer.Client.StartExperiment();
         }
 
         private void btnHoloLensShowGaze_Click(object sender, EventArgs e)
@@ -2725,6 +2749,15 @@ namespace Haytham
         private void btnHoloLensStopExperiment_Click(object sender, EventArgs e)
         {
             METState.Current.HoloLensServer.Client.StopExperiment();
+        }
+
+        private void btnHoloLensNewParticipant_Click(object sender, EventArgs e)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Enter participant name", "Whatever", "");
+
+            METState.Current.METCoreObject.SendToForm(input, "lblHoloLensCurrentParticipant");
+
+            METState.Current.HoloLensServer.Client.CreateLogFile(input);
         }
 
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
