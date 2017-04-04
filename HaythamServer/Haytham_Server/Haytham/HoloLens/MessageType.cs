@@ -20,5 +20,7 @@ namespace Haytham.HoloLens
         public const int StopExperiment = 1009;
         public const int FinishedExperiment = 1010;
         public const int SendTrialData = 1011;
+        public const int LoadSandbox = 1012;
+        public const int ToggleScreen = 1013;
     }
 }

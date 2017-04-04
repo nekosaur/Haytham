@@ -21,18 +21,18 @@ namespace Haytham
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.rootContainer = new System.Windows.Forms.SplitContainer();
             this.leftTabs = new System.Windows.Forms.TabControl();
             this.tabPage_Camera = new System.Windows.Forms.TabPage();
@@ -211,14 +211,14 @@ namespace Haytham
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage_HoloLens = new System.Windows.Forms.TabPage();
             this.gbHoloLensExperiment = new System.Windows.Forms.GroupBox();
+            this.lblHoloLensCurrentParticipant = new System.Windows.Forms.Label();
+            this.btnHoloLensNewParticipant = new System.Windows.Forms.Button();
             this.cmbHoloLensChoices = new System.Windows.Forms.ComboBox();
             this.cmbHoloLensDistance = new System.Windows.Forms.ComboBox();
             this.cmbHoloLensAlignment = new System.Windows.Forms.ComboBox();
-            this.btnHoloLensStopExperiment = new System.Windows.Forms.Button();
             this.lblHoloLensCalibration = new System.Windows.Forms.Label();
             this.btnHoloLensHideGaze = new System.Windows.Forms.Button();
             this.btnHoloLensShowGaze = new System.Windows.Forms.Button();
-            this.btnHoloLensStartExperiment = new System.Windows.Forms.Button();
             this.lblHoloLensChoices = new System.Windows.Forms.Label();
             this.lblHoloLensAlignment = new System.Windows.Forms.Label();
             this.lblHoloLensDistance = new System.Windows.Forms.Label();
@@ -253,8 +253,7 @@ namespace Haytham
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.cmbEyeTimer = new System.Windows.Forms.ComboBox();
             this.timerReset = new System.Windows.Forms.Timer(this.components);
-            this.btnHoloLensNewParticipant = new System.Windows.Forms.Button();
-            this.lblHoloLensCurrentParticipant = new System.Windows.Forms.Label();
+            this.btnHoloLensExperimentLoadSandbox = new System.Windows.Forms.Button();
             this.trackBarGABlockSize = new Haytham.Forms.TransparentTrackBar();
             this.trackBarThresholdGlint = new Haytham.Forms.TransparentTrackBar();
             this.trackBarGAConstant = new Haytham.Forms.TransparentTrackBar();
@@ -265,6 +264,8 @@ namespace Haytham
             this.tbMonitorBThreshold = new Haytham.Forms.TransparentTrackBar();
             this.tbMonitorGThreshold = new Haytham.Forms.TransparentTrackBar();
             this.tbMonitorMinSize = new Haytham.Forms.TransparentTrackBar();
+            this.btnHoloLensExperimentShowScreen = new System.Windows.Forms.Button();
+            this.btnHoloLensExperimentHideScreen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
             this.rootContainer.Panel1.SuspendLayout();
             this.rootContainer.Panel2.SuspendLayout();
@@ -1690,54 +1691,54 @@ namespace Haytham
             // chart3
             // 
             this.chart3.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.IsMarginVisible = false;
-            chartArea1.AxisX.LabelStyle.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Interval = 0D;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea1.BackColor = System.Drawing.Color.White;
-            chartArea1.InnerPlotPosition.Auto = false;
-            chartArea1.InnerPlotPosition.Height = 86.87582F;
-            chartArea1.InnerPlotPosition.Width = 86.45924F;
-            chartArea1.InnerPlotPosition.X = 13.54076F;
-            chartArea1.InnerPlotPosition.Y = 6.56209F;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 80.00502F;
-            chartArea1.Position.Width = 94F;
-            chartArea1.Position.X = 3F;
-            chartArea1.Position.Y = 16.99498F;
-            this.chart3.ChartAreas.Add(chartArea1);
+            chartArea9.AxisX.IsMarginVisible = false;
+            chartArea9.AxisX.LabelStyle.Enabled = false;
+            chartArea9.AxisX.MajorGrid.Enabled = false;
+            chartArea9.AxisX.MajorTickMark.Enabled = false;
+            chartArea9.AxisY.IsLabelAutoFit = false;
+            chartArea9.AxisY.LabelStyle.Interval = 0D;
+            chartArea9.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea9.BackColor = System.Drawing.Color.White;
+            chartArea9.InnerPlotPosition.Auto = false;
+            chartArea9.InnerPlotPosition.Height = 86.87582F;
+            chartArea9.InnerPlotPosition.Width = 86.45924F;
+            chartArea9.InnerPlotPosition.X = 13.54076F;
+            chartArea9.InnerPlotPosition.Y = 6.56209F;
+            chartArea9.Name = "ChartArea1";
+            chartArea9.Position.Auto = false;
+            chartArea9.Position.Height = 80.00502F;
+            chartArea9.Position.Width = 94F;
+            chartArea9.Position.X = 3F;
+            chartArea9.Position.Y = 16.99498F;
+            this.chart3.ChartAreas.Add(chartArea9);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart3.Location = new System.Drawing.Point(2, 294);
             this.chart3.Margin = new System.Windows.Forms.Padding(2);
             this.chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.EmptyPointStyle.BorderWidth = 0;
-            series1.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series1.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series1.EmptyPointStyle.IsVisibleInLegend = false;
-            series1.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series1.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series1.EmptyPointStyle.MarkerSize = 1;
-            series1.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series1.Name = "PupilDiam";
-            this.chart3.Series.Add(series1);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.EmptyPointStyle.BorderWidth = 0;
+            series9.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series9.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series9.EmptyPointStyle.IsVisibleInLegend = false;
+            series9.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series9.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series9.EmptyPointStyle.MarkerSize = 1;
+            series9.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series9.Name = "PupilDiam";
+            this.chart3.Series.Add(series9);
             this.chart3.Size = new System.Drawing.Size(333, 141);
             this.chart3.TabIndex = 47;
             this.chart3.Text = "chart3";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "PupilDiam";
-            title1.Position.Auto = false;
-            title1.Position.Height = 10.99498F;
-            title1.Position.Width = 94F;
-            title1.Position.X = 3F;
-            title1.Position.Y = 3F;
-            title1.Text = "Pupil Diameter";
-            this.chart3.Titles.Add(title1);
+            title9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title9.Name = "PupilDiam";
+            title9.Position.Auto = false;
+            title9.Position.Height = 10.99498F;
+            title9.Position.Width = 94F;
+            title9.Position.X = 3F;
+            title9.Position.Y = 3F;
+            title9.Text = "Pupil Diameter";
+            this.chart3.Titles.Add(title9);
             // 
             // cbPlot
             // 
@@ -1752,106 +1753,106 @@ namespace Haytham
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AxisX.IsMarginVisible = false;
-            chartArea2.AxisX.LabelStyle.Enabled = false;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorTickMark.Enabled = false;
-            chartArea2.AxisY.IsLabelAutoFit = false;
-            chartArea2.AxisY.LabelStyle.Interval = 0D;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea2.BackColor = System.Drawing.Color.White;
-            chartArea2.InnerPlotPosition.Auto = false;
-            chartArea2.InnerPlotPosition.Height = 86.87582F;
-            chartArea2.InnerPlotPosition.Width = 86.45924F;
-            chartArea2.InnerPlotPosition.X = 13.54076F;
-            chartArea2.InnerPlotPosition.Y = 6.56209F;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 80.00502F;
-            chartArea2.Position.Width = 94F;
-            chartArea2.Position.X = 3F;
-            chartArea2.Position.Y = 16.99498F;
-            this.chart2.ChartAreas.Add(chartArea2);
+            chartArea10.AxisX.IsMarginVisible = false;
+            chartArea10.AxisX.LabelStyle.Enabled = false;
+            chartArea10.AxisX.MajorGrid.Enabled = false;
+            chartArea10.AxisX.MajorTickMark.Enabled = false;
+            chartArea10.AxisY.IsLabelAutoFit = false;
+            chartArea10.AxisY.LabelStyle.Interval = 0D;
+            chartArea10.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea10.BackColor = System.Drawing.Color.White;
+            chartArea10.InnerPlotPosition.Auto = false;
+            chartArea10.InnerPlotPosition.Height = 86.87582F;
+            chartArea10.InnerPlotPosition.Width = 86.45924F;
+            chartArea10.InnerPlotPosition.X = 13.54076F;
+            chartArea10.InnerPlotPosition.Y = 6.56209F;
+            chartArea10.Name = "ChartArea1";
+            chartArea10.Position.Auto = false;
+            chartArea10.Position.Height = 80.00502F;
+            chartArea10.Position.Width = 94F;
+            chartArea10.Position.X = 3F;
+            chartArea10.Position.Y = 16.99498F;
+            this.chart2.ChartAreas.Add(chartArea10);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart2.Location = new System.Drawing.Point(2, 153);
             this.chart2.Margin = new System.Windows.Forms.Padding(2);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.EmptyPointStyle.BorderWidth = 0;
-            series2.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series2.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series2.EmptyPointStyle.IsVisibleInLegend = false;
-            series2.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series2.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series2.EmptyPointStyle.MarkerSize = 1;
-            series2.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series2.Name = "PupilY";
-            this.chart2.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.EmptyPointStyle.BorderWidth = 0;
+            series10.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series10.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series10.EmptyPointStyle.IsVisibleInLegend = false;
+            series10.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series10.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series10.EmptyPointStyle.MarkerSize = 1;
+            series10.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series10.Name = "PupilY";
+            this.chart2.Series.Add(series10);
             this.chart2.Size = new System.Drawing.Size(333, 141);
             this.chart2.TabIndex = 46;
             this.chart2.Text = "chart2";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "PupilY";
-            title2.Position.Auto = false;
-            title2.Position.Height = 10.99498F;
-            title2.Position.Width = 94F;
-            title2.Position.X = 3F;
-            title2.Position.Y = 3F;
-            title2.Text = "Pupil Y";
-            this.chart2.Titles.Add(title2);
+            title10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title10.Name = "PupilY";
+            title10.Position.Auto = false;
+            title10.Position.Height = 10.99498F;
+            title10.Position.Width = 94F;
+            title10.Position.X = 3F;
+            title10.Position.Y = 3F;
+            title10.Text = "Pupil Y";
+            this.chart2.Titles.Add(title10);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.AxisX.IsMarginVisible = false;
-            chartArea3.AxisX.LabelStyle.Enabled = false;
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorTickMark.Enabled = false;
-            chartArea3.AxisY.IsLabelAutoFit = false;
-            chartArea3.AxisY.LabelStyle.Interval = 0D;
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea3.BackColor = System.Drawing.Color.White;
-            chartArea3.InnerPlotPosition.Auto = false;
-            chartArea3.InnerPlotPosition.Height = 86.83621F;
-            chartArea3.InnerPlotPosition.Width = 86.45924F;
-            chartArea3.InnerPlotPosition.X = 13.54076F;
-            chartArea3.InnerPlotPosition.Y = 6.5819F;
-            chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 79.76426F;
-            chartArea3.Position.Width = 94F;
-            chartArea3.Position.X = 3F;
-            chartArea3.Position.Y = 17.23574F;
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea11.AxisX.IsMarginVisible = false;
+            chartArea11.AxisX.LabelStyle.Enabled = false;
+            chartArea11.AxisX.MajorGrid.Enabled = false;
+            chartArea11.AxisX.MajorTickMark.Enabled = false;
+            chartArea11.AxisY.IsLabelAutoFit = false;
+            chartArea11.AxisY.LabelStyle.Interval = 0D;
+            chartArea11.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea11.BackColor = System.Drawing.Color.White;
+            chartArea11.InnerPlotPosition.Auto = false;
+            chartArea11.InnerPlotPosition.Height = 86.83621F;
+            chartArea11.InnerPlotPosition.Width = 86.45924F;
+            chartArea11.InnerPlotPosition.X = 13.54076F;
+            chartArea11.InnerPlotPosition.Y = 6.5819F;
+            chartArea11.Name = "ChartArea1";
+            chartArea11.Position.Auto = false;
+            chartArea11.Position.Height = 79.76426F;
+            chartArea11.Position.Width = 94F;
+            chartArea11.Position.X = 3F;
+            chartArea11.Position.Y = 17.23574F;
+            this.chart1.ChartAreas.Add(chartArea11);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Top;
             this.chart1.Location = new System.Drawing.Point(2, 15);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.EmptyPointStyle.BorderWidth = 0;
-            series3.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series3.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series3.EmptyPointStyle.IsVisibleInLegend = false;
-            series3.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series3.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series3.EmptyPointStyle.MarkerSize = 1;
-            series3.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series3.Name = "PupilX";
-            this.chart1.Series.Add(series3);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.EmptyPointStyle.BorderWidth = 0;
+            series11.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series11.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series11.EmptyPointStyle.IsVisibleInLegend = false;
+            series11.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series11.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series11.EmptyPointStyle.MarkerSize = 1;
+            series11.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series11.Name = "PupilX";
+            this.chart1.Series.Add(series11);
             this.chart1.Size = new System.Drawing.Size(333, 138);
             this.chart1.TabIndex = 45;
             this.chart1.Text = "chart1";
-            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title3.Name = "PupilX";
-            title3.Position.Auto = false;
-            title3.Position.Height = 11.23574F;
-            title3.Position.Width = 94F;
-            title3.Position.X = 3F;
-            title3.Position.Y = 3F;
-            title3.Text = "Pupil X";
-            this.chart1.Titles.Add(title3);
+            title11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title11.Name = "PupilX";
+            title11.Position.Auto = false;
+            title11.Position.Height = 11.23574F;
+            title11.Position.Width = 94F;
+            title11.Position.X = 3F;
+            title11.Position.Y = 3F;
+            title11.Text = "Pupil X";
+            this.chart1.Titles.Add(title11);
             // 
             // gbDataExport
             // 
@@ -2718,16 +2719,17 @@ namespace Haytham
             // 
             // gbHoloLensExperiment
             // 
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensExperimentHideScreen);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensExperimentShowScreen);
+            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensExperimentLoadSandbox);
             this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensCurrentParticipant);
             this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensNewParticipant);
             this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensChoices);
             this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensDistance);
             this.gbHoloLensExperiment.Controls.Add(this.cmbHoloLensAlignment);
-            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensStopExperiment);
             this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensCalibration);
             this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensHideGaze);
             this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensShowGaze);
-            this.gbHoloLensExperiment.Controls.Add(this.btnHoloLensStartExperiment);
             this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensChoices);
             this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensAlignment);
             this.gbHoloLensExperiment.Controls.Add(this.lblHoloLensDistance);
@@ -2742,6 +2744,26 @@ namespace Haytham
             this.gbHoloLensExperiment.TabStop = false;
             this.gbHoloLensExperiment.Text = "Experiment";
             // 
+            // lblHoloLensCurrentParticipant
+            // 
+            this.lblHoloLensCurrentParticipant.AutoSize = true;
+            this.lblHoloLensCurrentParticipant.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblHoloLensCurrentParticipant.Location = new System.Drawing.Point(6, 95);
+            this.lblHoloLensCurrentParticipant.Name = "lblHoloLensCurrentParticipant";
+            this.lblHoloLensCurrentParticipant.Size = new System.Drawing.Size(308, 26);
+            this.lblHoloLensCurrentParticipant.TabIndex = 21;
+            this.lblHoloLensCurrentParticipant.Text = "NO CURRENT PARTICIPANT";
+            // 
+            // btnHoloLensNewParticipant
+            // 
+            this.btnHoloLensNewParticipant.Location = new System.Drawing.Point(6, 65);
+            this.btnHoloLensNewParticipant.Name = "btnHoloLensNewParticipant";
+            this.btnHoloLensNewParticipant.Size = new System.Drawing.Size(310, 23);
+            this.btnHoloLensNewParticipant.TabIndex = 20;
+            this.btnHoloLensNewParticipant.Text = "New Participant";
+            this.btnHoloLensNewParticipant.UseVisualStyleBackColor = true;
+            this.btnHoloLensNewParticipant.Click += new System.EventHandler(this.btnHoloLensNewParticipant_Click);
+            // 
             // cmbHoloLensChoices
             // 
             this.cmbHoloLensChoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2755,7 +2777,7 @@ namespace Haytham
             // 
             this.cmbHoloLensDistance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHoloLensDistance.FormattingEnabled = true;
-            this.cmbHoloLensDistance.Location = new System.Drawing.Point(6, 171);
+            this.cmbHoloLensDistance.Location = new System.Drawing.Point(116, 171);
             this.cmbHoloLensDistance.Name = "cmbHoloLensDistance";
             this.cmbHoloLensDistance.Size = new System.Drawing.Size(96, 21);
             this.cmbHoloLensDistance.TabIndex = 18;
@@ -2764,20 +2786,10 @@ namespace Haytham
             // 
             this.cmbHoloLensAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHoloLensAlignment.FormattingEnabled = true;
-            this.cmbHoloLensAlignment.Location = new System.Drawing.Point(108, 171);
+            this.cmbHoloLensAlignment.Location = new System.Drawing.Point(6, 171);
             this.cmbHoloLensAlignment.Name = "cmbHoloLensAlignment";
             this.cmbHoloLensAlignment.Size = new System.Drawing.Size(104, 21);
             this.cmbHoloLensAlignment.TabIndex = 17;
-            // 
-            // btnHoloLensStopExperiment
-            // 
-            this.btnHoloLensStopExperiment.Location = new System.Drawing.Point(109, 355);
-            this.btnHoloLensStopExperiment.Name = "btnHoloLensStopExperiment";
-            this.btnHoloLensStopExperiment.Size = new System.Drawing.Size(97, 23);
-            this.btnHoloLensStopExperiment.TabIndex = 16;
-            this.btnHoloLensStopExperiment.Text = "Stop Experiment";
-            this.btnHoloLensStopExperiment.UseVisualStyleBackColor = true;
-            this.btnHoloLensStopExperiment.Click += new System.EventHandler(this.btnHoloLensStopExperiment_Click);
             // 
             // lblHoloLensCalibration
             // 
@@ -2790,9 +2802,9 @@ namespace Haytham
             // 
             // btnHoloLensHideGaze
             // 
-            this.btnHoloLensHideGaze.Location = new System.Drawing.Point(88, 326);
+            this.btnHoloLensHideGaze.Location = new System.Drawing.Point(163, 355);
             this.btnHoloLensHideGaze.Name = "btnHoloLensHideGaze";
-            this.btnHoloLensHideGaze.Size = new System.Drawing.Size(75, 23);
+            this.btnHoloLensHideGaze.Size = new System.Drawing.Size(154, 23);
             this.btnHoloLensHideGaze.TabIndex = 14;
             this.btnHoloLensHideGaze.Text = "Hide Gaze";
             this.btnHoloLensHideGaze.UseVisualStyleBackColor = true;
@@ -2800,23 +2812,13 @@ namespace Haytham
             // 
             // btnHoloLensShowGaze
             // 
-            this.btnHoloLensShowGaze.Location = new System.Drawing.Point(7, 326);
+            this.btnHoloLensShowGaze.Location = new System.Drawing.Point(6, 355);
             this.btnHoloLensShowGaze.Name = "btnHoloLensShowGaze";
-            this.btnHoloLensShowGaze.Size = new System.Drawing.Size(75, 23);
+            this.btnHoloLensShowGaze.Size = new System.Drawing.Size(151, 23);
             this.btnHoloLensShowGaze.TabIndex = 13;
             this.btnHoloLensShowGaze.Text = "Show Gaze";
             this.btnHoloLensShowGaze.UseVisualStyleBackColor = true;
             this.btnHoloLensShowGaze.Click += new System.EventHandler(this.btnHoloLensShowGaze_Click);
-            // 
-            // btnHoloLensStartExperiment
-            // 
-            this.btnHoloLensStartExperiment.Location = new System.Drawing.Point(6, 355);
-            this.btnHoloLensStartExperiment.Name = "btnHoloLensStartExperiment";
-            this.btnHoloLensStartExperiment.Size = new System.Drawing.Size(97, 23);
-            this.btnHoloLensStartExperiment.TabIndex = 12;
-            this.btnHoloLensStartExperiment.Text = "Start Experiment";
-            this.btnHoloLensStartExperiment.UseVisualStyleBackColor = true;
-            this.btnHoloLensStartExperiment.Click += new System.EventHandler(this.btnHoloLensStartExperiment_Click);
             // 
             // lblHoloLensChoices
             // 
@@ -2830,7 +2832,7 @@ namespace Haytham
             // lblHoloLensAlignment
             // 
             this.lblHoloLensAlignment.AutoSize = true;
-            this.lblHoloLensAlignment.Location = new System.Drawing.Point(106, 155);
+            this.lblHoloLensAlignment.Location = new System.Drawing.Point(4, 155);
             this.lblHoloLensAlignment.Name = "lblHoloLensAlignment";
             this.lblHoloLensAlignment.Size = new System.Drawing.Size(53, 13);
             this.lblHoloLensAlignment.TabIndex = 10;
@@ -2839,7 +2841,7 @@ namespace Haytham
             // lblHoloLensDistance
             // 
             this.lblHoloLensDistance.AutoSize = true;
-            this.lblHoloLensDistance.Location = new System.Drawing.Point(5, 155);
+            this.lblHoloLensDistance.Location = new System.Drawing.Point(115, 155);
             this.lblHoloLensDistance.Name = "lblHoloLensDistance";
             this.lblHoloLensDistance.Size = new System.Drawing.Size(49, 13);
             this.lblHoloLensDistance.TabIndex = 9;
@@ -3054,54 +3056,54 @@ namespace Haytham
             // chartTest
             // 
             this.chartTest.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.AxisX.IsMarginVisible = false;
-            chartArea4.AxisX.LabelStyle.Enabled = false;
-            chartArea4.AxisX.MajorGrid.Enabled = false;
-            chartArea4.AxisX.MajorTickMark.Enabled = false;
-            chartArea4.AxisY.IsLabelAutoFit = false;
-            chartArea4.AxisY.LabelStyle.Interval = 0D;
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
-            chartArea4.BackColor = System.Drawing.Color.White;
-            chartArea4.InnerPlotPosition.Auto = false;
-            chartArea4.InnerPlotPosition.Height = 86.87582F;
-            chartArea4.InnerPlotPosition.Width = 86.45924F;
-            chartArea4.InnerPlotPosition.X = 13.54076F;
-            chartArea4.InnerPlotPosition.Y = 6.56209F;
-            chartArea4.Name = "ChartArea1";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 80.00502F;
-            chartArea4.Position.Width = 94F;
-            chartArea4.Position.X = 3F;
-            chartArea4.Position.Y = 16.99498F;
-            this.chartTest.ChartAreas.Add(chartArea4);
+            chartArea12.AxisX.IsMarginVisible = false;
+            chartArea12.AxisX.LabelStyle.Enabled = false;
+            chartArea12.AxisX.MajorGrid.Enabled = false;
+            chartArea12.AxisX.MajorTickMark.Enabled = false;
+            chartArea12.AxisY.IsLabelAutoFit = false;
+            chartArea12.AxisY.LabelStyle.Interval = 0D;
+            chartArea12.AxisY.MajorGrid.LineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea12.BackColor = System.Drawing.Color.White;
+            chartArea12.InnerPlotPosition.Auto = false;
+            chartArea12.InnerPlotPosition.Height = 86.87582F;
+            chartArea12.InnerPlotPosition.Width = 86.45924F;
+            chartArea12.InnerPlotPosition.X = 13.54076F;
+            chartArea12.InnerPlotPosition.Y = 6.56209F;
+            chartArea12.Name = "ChartArea1";
+            chartArea12.Position.Auto = false;
+            chartArea12.Position.Height = 80.00502F;
+            chartArea12.Position.Width = 94F;
+            chartArea12.Position.X = 3F;
+            chartArea12.Position.Y = 16.99498F;
+            this.chartTest.ChartAreas.Add(chartArea12);
             this.chartTest.Dock = System.Windows.Forms.DockStyle.Left;
             this.chartTest.Location = new System.Drawing.Point(3, 16);
             this.chartTest.Margin = new System.Windows.Forms.Padding(2);
             this.chartTest.Name = "chartTest";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.EmptyPointStyle.BorderWidth = 0;
-            series4.EmptyPointStyle.Color = System.Drawing.Color.Red;
-            series4.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
-            series4.EmptyPointStyle.IsVisibleInLegend = false;
-            series4.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
-            series4.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series4.EmptyPointStyle.MarkerSize = 1;
-            series4.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
-            series4.Name = "test";
-            this.chartTest.Series.Add(series4);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.EmptyPointStyle.BorderWidth = 0;
+            series12.EmptyPointStyle.Color = System.Drawing.Color.Red;
+            series12.EmptyPointStyle.CustomProperties = "LabelStyle=Top";
+            series12.EmptyPointStyle.IsVisibleInLegend = false;
+            series12.EmptyPointStyle.MarkerColor = System.Drawing.Color.Red;
+            series12.EmptyPointStyle.MarkerImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series12.EmptyPointStyle.MarkerSize = 1;
+            series12.EmptyPointStyle.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Cross;
+            series12.Name = "test";
+            this.chartTest.Series.Add(series12);
             this.chartTest.Size = new System.Drawing.Size(549, 0);
             this.chartTest.TabIndex = 47;
             this.chartTest.Text = "chart3";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.Name = "test";
-            title4.Position.Auto = false;
-            title4.Position.Height = 10.99498F;
-            title4.Position.Width = 94F;
-            title4.Position.X = 3F;
-            title4.Position.Y = 3F;
-            title4.Text = "test";
-            this.chartTest.Titles.Add(title4);
+            title12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title12.Name = "test";
+            title12.Position.Auto = false;
+            title12.Position.Height = 10.99498F;
+            title12.Position.Width = 94F;
+            title12.Position.X = 3F;
+            title12.Position.Y = 3F;
+            title12.Text = "test";
+            this.chartTest.Titles.Add(title12);
             // 
             // imEyeTest
             // 
@@ -3243,25 +3245,15 @@ namespace Haytham
             this.timerReset.Interval = 500;
             this.timerReset.Tick += new System.EventHandler(this.timerReset_Tick);
             // 
-            // btnHoloLensNewParticipant
+            // btnHoloLensExperimentLoadSandbox
             // 
-            this.btnHoloLensNewParticipant.Location = new System.Drawing.Point(6, 65);
-            this.btnHoloLensNewParticipant.Name = "btnHoloLensNewParticipant";
-            this.btnHoloLensNewParticipant.Size = new System.Drawing.Size(310, 23);
-            this.btnHoloLensNewParticipant.TabIndex = 20;
-            this.btnHoloLensNewParticipant.Text = "New Participant";
-            this.btnHoloLensNewParticipant.UseVisualStyleBackColor = true;
-            this.btnHoloLensNewParticipant.Click += new System.EventHandler(this.btnHoloLensNewParticipant_Click);
-            // 
-            // lblHoloLensCurrentParticipant
-            // 
-            this.lblHoloLensCurrentParticipant.AutoSize = true;
-            this.lblHoloLensCurrentParticipant.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblHoloLensCurrentParticipant.Location = new System.Drawing.Point(6, 95);
-            this.lblHoloLensCurrentParticipant.Name = "lblHoloLensCurrentParticipant";
-            this.lblHoloLensCurrentParticipant.Size = new System.Drawing.Size(308, 26);
-            this.lblHoloLensCurrentParticipant.TabIndex = 21;
-            this.lblHoloLensCurrentParticipant.Text = "NO CURRENT PARTICIPANT";
+            this.btnHoloLensExperimentLoadSandbox.Location = new System.Drawing.Point(6, 286);
+            this.btnHoloLensExperimentLoadSandbox.Name = "btnHoloLensExperimentLoadSandbox";
+            this.btnHoloLensExperimentLoadSandbox.Size = new System.Drawing.Size(311, 23);
+            this.btnHoloLensExperimentLoadSandbox.TabIndex = 22;
+            this.btnHoloLensExperimentLoadSandbox.Text = "Load Sandbox";
+            this.btnHoloLensExperimentLoadSandbox.UseVisualStyleBackColor = true;
+            this.btnHoloLensExperimentLoadSandbox.Click += new System.EventHandler(this.btnHoloLensExperimentLoadSandbox_Click);
             // 
             // trackBarGABlockSize
             // 
@@ -3402,6 +3394,26 @@ namespace Haytham
             this.tbMonitorMinSize.ValueChanged += new System.EventHandler(this.transparentTrackBar3_ValueChanged);
             this.tbMonitorMinSize.MouseEnter += new System.EventHandler(this.trackBarControl3_MouseEnter);
             this.tbMonitorMinSize.MouseLeave += new System.EventHandler(this.trackBarControl3_MouseLeave);
+            // 
+            // btnHoloLensExperimentShowScreen
+            // 
+            this.btnHoloLensExperimentShowScreen.Location = new System.Drawing.Point(6, 326);
+            this.btnHoloLensExperimentShowScreen.Name = "btnHoloLensExperimentShowScreen";
+            this.btnHoloLensExperimentShowScreen.Size = new System.Drawing.Size(151, 23);
+            this.btnHoloLensExperimentShowScreen.TabIndex = 23;
+            this.btnHoloLensExperimentShowScreen.Text = "Show Screen";
+            this.btnHoloLensExperimentShowScreen.UseVisualStyleBackColor = true;
+            this.btnHoloLensExperimentShowScreen.Click += new System.EventHandler(this.btnHoloLensExperimentShowScreen_Click);
+            // 
+            // btnHoloLensExperimentHideScreen
+            // 
+            this.btnHoloLensExperimentHideScreen.Location = new System.Drawing.Point(163, 326);
+            this.btnHoloLensExperimentHideScreen.Name = "btnHoloLensExperimentHideScreen";
+            this.btnHoloLensExperimentHideScreen.Size = new System.Drawing.Size(154, 23);
+            this.btnHoloLensExperimentHideScreen.TabIndex = 24;
+            this.btnHoloLensExperimentHideScreen.Text = "Hide Screen";
+            this.btnHoloLensExperimentHideScreen.UseVisualStyleBackColor = true;
+            this.btnHoloLensExperimentHideScreen.Click += new System.EventHandler(this.btnHoloLensExperimentHideScreen_Click);
             // 
             // MainForm
             // 
@@ -3772,16 +3784,17 @@ namespace Haytham
         private System.Windows.Forms.Label lblHoloLensDistance;
         private System.Windows.Forms.Label lblHoloLensChoices;
         private System.Windows.Forms.Label lblHoloLensAlignment;
-        private System.Windows.Forms.Button btnHoloLensStartExperiment;
         private System.Windows.Forms.Button btnHoloLensHideGaze;
         private System.Windows.Forms.Button btnHoloLensShowGaze;
         private System.Windows.Forms.Label lblHoloLensCalibration;
-        private System.Windows.Forms.Button btnHoloLensStopExperiment;
         private System.Windows.Forms.ComboBox cmbHoloLensAlignment;
         private System.Windows.Forms.ComboBox cmbHoloLensChoices;
         private System.Windows.Forms.ComboBox cmbHoloLensDistance;
         private System.Windows.Forms.Button btnHoloLensNewParticipant;
         private System.Windows.Forms.Label lblHoloLensCurrentParticipant;
+        private System.Windows.Forms.Button btnHoloLensExperimentLoadSandbox;
+        private System.Windows.Forms.Button btnHoloLensExperimentHideScreen;
+        private System.Windows.Forms.Button btnHoloLensExperimentShowScreen;
     }
 }
 

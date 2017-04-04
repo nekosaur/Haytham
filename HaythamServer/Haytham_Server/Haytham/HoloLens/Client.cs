@@ -147,6 +147,12 @@ namespace Haytham.HoloLens
             await this.Send(enabled ? 1 : 0);
         }
 
+        public async void ToggleScreen(bool enabled)
+        {
+            await this.Send(MessageType.ToggleScreen);
+            await this.Send(enabled ? 1 : 0);
+        }
+
         public async void LoadExperiment(int distance, int alignment, int choices)
         {
             if (logName == null || logName.Equals(""))
@@ -160,6 +166,14 @@ namespace Haytham.HoloLens
             await this.Send(alignment);
             await this.Send(choices);
             await this.Send(logName);
+        }
+
+        public async void LoadSandbox(int distance, int alignment, int choices)
+        {
+            await this.Send(MessageType.LoadSandbox);
+            await this.Send(distance);
+            await this.Send(alignment);
+            await this.Send(choices);
         }
 
         public void StartCalibration(bool initFromServer)
@@ -194,9 +208,14 @@ namespace Haytham.HoloLens
                     if (METState.Current.RemoteCalibration != null)
                         METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
 
-                    await this.Send(MessageType.EyePositionData);
-                    await this.Send((int)METState.Current.Gaze_RGT.X);
-                    await this.Send((int)METState.Current.Gaze_RGT.Y);
+                    if (METState.Current.Gaze_RGT.X >= 0 && METState.Current.Gaze_RGT.X <= screenWidth
+                        && METState.Current.Gaze_RGT.Y >= 0 && METState.Current.Gaze_RGT.Y <= screenHeight)
+                    {
+                        await this.Send(MessageType.EyePositionData);
+                        await this.Send((int)METState.Current.Gaze_RGT.X);
+                        await this.Send((int)METState.Current.Gaze_RGT.Y);
+                    }
+
                     await Task.Delay(25);
                 }
             });

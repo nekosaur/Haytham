@@ -2725,15 +2725,9 @@ namespace Haytham
 
             string experiment = String.Format("{0} - {1} - {2}", ((KeyValuePair<int, string>)cmbHoloLensDistance.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensAlignment.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensChoices.SelectedItem).Value);
 
-            METState.Current.METCoreObject.SendToForm("Loading Experiment: " + experiment + "\r\n", "tbHoloLensServer");
+            METState.Current.METCoreObject.SendToForm("Loading Experiment: " + experiment, "tbHoloLensServer");
 
             METState.Current.HoloLensServer.Client.LoadExperiment(distance, alignment, choices);
-        }
-
-        private void btnHoloLensStartExperiment_Click(object sender, EventArgs e)
-        {
-
-            METState.Current.HoloLensServer.Client.StartExperiment();
         }
 
         private void btnHoloLensShowGaze_Click(object sender, EventArgs e)
@@ -2746,11 +2740,6 @@ namespace Haytham
             METState.Current.HoloLensServer.Client.ToggleGaze(false);
         }
 
-        private void btnHoloLensStopExperiment_Click(object sender, EventArgs e)
-        {
-            METState.Current.HoloLensServer.Client.StopExperiment();
-        }
-
         private void btnHoloLensNewParticipant_Click(object sender, EventArgs e)
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Enter participant name", "Whatever", "");
@@ -2758,6 +2747,29 @@ namespace Haytham
             METState.Current.METCoreObject.SendToForm(input, "lblHoloLensCurrentParticipant");
 
             METState.Current.HoloLensServer.Client.CreateLogFile(input);
+        }
+
+        private void btnHoloLensExperimentLoadSandbox_Click(object sender, EventArgs e)
+        {
+            int distance = ((KeyValuePair<int, string>)cmbHoloLensDistance.SelectedItem).Key;
+            int alignment = ((KeyValuePair<int, string>)cmbHoloLensAlignment.SelectedItem).Key;
+            int choices = ((KeyValuePair<int, string>)cmbHoloLensChoices.SelectedItem).Key;
+
+            string experiment = String.Format("{0} - {1} - {2}", ((KeyValuePair<int, string>)cmbHoloLensDistance.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensAlignment.SelectedItem).Value, ((KeyValuePair<int, string>)cmbHoloLensChoices.SelectedItem).Value);
+
+            METState.Current.METCoreObject.SendToForm("Loading Sandbox: " + experiment, "tbHoloLensServer");
+
+            METState.Current.HoloLensServer.Client.LoadSandbox(distance, alignment, choices);
+        }
+
+        private void btnHoloLensExperimentShowScreen_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.ToggleScreen(true);
+        }
+
+        private void btnHoloLensExperimentHideScreen_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.ToggleScreen(false);
         }
 
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
