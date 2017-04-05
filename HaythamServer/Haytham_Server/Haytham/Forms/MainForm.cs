@@ -1838,6 +1838,30 @@ namespace Haytham
 
                     break;
 
+                case "btnHoloLensExperimentShowScreen":
+                    if (btnHoloLensExperimentShowScreen.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "btnHoloLensExperimentShowScreen" });
+                    }
+                    else
+                    {
+                        btnHoloLensExperimentShowScreen.BackColor= (Color)message;
+                    }
+
+                    break;
+
+                case "btnHoloLensShowGaze":
+                    if (btnHoloLensShowGaze.InvokeRequired)
+                    {
+                        Invoke(new _SendToForm(UpdateControl), new object[] { message, "btnHoloLensShowGaze" });
+                    }
+                    else
+                    {
+                        btnHoloLensShowGaze.BackColor = (Color)message;
+                    }
+
+                    break;
+
             }
 
         }
@@ -2701,7 +2725,7 @@ namespace Haytham
 
         private void btnCalibrateHoloLensNear_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.TriggerStartCalibration(2);
+            METState.Current.HoloLensServer.Client.TriggerStartCalibration(2.5);
             METState.Current.METCoreObject.SendToForm("Calibrating for distance near\r\n", "tbHoloLensServer");
         }
 
@@ -2732,11 +2756,13 @@ namespace Haytham
 
         private void btnHoloLensShowGaze_Click(object sender, EventArgs e)
         {
+            btnHoloLensShowGaze.BackColor = Color.Green;
             METState.Current.HoloLensServer.Client.ToggleGaze(true);
         }
 
         private void btnHoloLensHideGaze_Click(object sender, EventArgs e)
         {
+            btnHoloLensShowGaze.BackColor = Color.Transparent;
             METState.Current.HoloLensServer.Client.ToggleGaze(false);
         }
 
@@ -2764,12 +2790,19 @@ namespace Haytham
 
         private void btnHoloLensExperimentShowScreen_Click(object sender, EventArgs e)
         {
+            btnHoloLensExperimentShowScreen.BackColor = Color.White;
             METState.Current.HoloLensServer.Client.ToggleScreen(true);
         }
 
         private void btnHoloLensExperimentHideScreen_Click(object sender, EventArgs e)
         {
+            btnHoloLensExperimentShowScreen.BackColor = Color.Transparent;
             METState.Current.HoloLensServer.Client.ToggleScreen(false);
+        }
+
+        private void btnHoloLensExperimentAbort_Click(object sender, EventArgs e)
+        {
+            METState.Current.HoloLensServer.Client.AbortExperiment();
         }
 
         private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)

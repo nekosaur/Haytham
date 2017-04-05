@@ -104,7 +104,7 @@ namespace Haytham.HoloLens
             }
         }
 
-        public async void TriggerStartCalibration(int distance)
+        public async void TriggerStartCalibration(double distance)
         {
             await this.Send(MessageType.StartCalibration);
             await this.Send(distance);
@@ -116,16 +116,23 @@ namespace Haytham.HoloLens
             await this.Send(logName); 
         }
 
+        public async void AbortExperiment()
+        {
+            await this.Send(MessageType.AbortExperiment);
+        }
+
         public void CreateLogFile(string logName)
         {
             this.logName = logName;
             this.fileName = logName + "_" + DateTime.Now.ToString("dd_MM_yyyy") + ".log";
             this.logPath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
 
+            /*
             using (StreamWriter file = new StreamWriter(logPath))
             {
 
             }
+            */
         }
 
         public void SaveTrialData(string data)
@@ -207,16 +214,18 @@ namespace Haytham.HoloLens
 
                     if (METState.Current.RemoteCalibration != null)
                         METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
-
+                    /*
                     if (METState.Current.Gaze_RGT.X >= 0 && METState.Current.Gaze_RGT.X <= screenWidth
                         && METState.Current.Gaze_RGT.Y >= 0 && METState.Current.Gaze_RGT.Y <= screenHeight)
                     {
-                        await this.Send(MessageType.EyePositionData);
-                        await this.Send((int)METState.Current.Gaze_RGT.X);
-                        await this.Send((int)METState.Current.Gaze_RGT.Y);
                     }
+                    */
 
-                    await Task.Delay(25);
+                    await this.Send(MessageType.EyePositionData);
+                    await this.Send((int)METState.Current.Gaze_RGT.X);
+                    await this.Send((int)METState.Current.Gaze_RGT.Y);
+
+                    await Task.Delay(10);
                 }
             });
         }
@@ -258,6 +267,14 @@ namespace Haytham.HoloLens
             await Task.Run(() =>
             {
                 this.writer.Write(message);
+            });
+        }
+
+        internal async Task Send(double value)
+        {
+            await Task.Run(() =>
+            {
+                this.writer.Write(value);
             });
         }
 

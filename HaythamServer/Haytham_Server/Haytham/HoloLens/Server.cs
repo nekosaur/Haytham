@@ -1,6 +1,7 @@
 ﻿using Haytham.Forms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -73,6 +74,8 @@ namespace Haytham.HoloLens
                 METState.Current.METCoreObject.SendToForm("HoloLens disconnected", "tbHoloLensServer");
                 METState.Current.METCoreObject.SendToForm(false, "gbHoloLensExperiment");
                 METState.Current.METCoreObject.SendToForm("NO CURRENT PARTICIPANT", "lblHoloLensCurrentParticipant");
+                METState.Current.METCoreObject.SendToForm(Color.Transparent, "btnHoloLensShowGaze");
+                METState.Current.METCoreObject.SendToForm(Color.Transparent, "btnHoloLensExperimentShowScreen");
             });
 
             METState.Current.METCoreObject.SendToForm(true, "gbHoloLensExperiment");
