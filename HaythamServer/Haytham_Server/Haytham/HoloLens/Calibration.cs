@@ -73,6 +73,20 @@ namespace Haytham.HoloLens
                 }
 
                 METState.Current.EyeToDisplay_Mapping.Calibrate();
+
+                for (int i = 0; i < calibrationPoints.Length; i += 2)
+                {
+                    METState.Current.METCoreObject.SendToForm("Sending verification point " + (i + 1), "tbHoloLensServer");
+                    await client.Send(MessageType.ShowCalibrationPoint);
+                    await client.Send(calibrationPoints[i].X);
+                    await client.Send(calibrationPoints[i].Y);
+
+                    await Task.Delay(2000);
+
+                    client.SaveCalibrationData(calibrationPoints[i]);
+
+                }
+
                 // METState.Current.EyeToDisplay_Mapping.Calibrated = true;
 
                 await client.Send(MessageType.FinishCalibration);

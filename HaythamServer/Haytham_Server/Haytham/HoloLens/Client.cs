@@ -104,6 +104,24 @@ namespace Haytham.HoloLens
             }
         }
 
+        internal void SaveCalibrationData(Point point)
+        {
+            StringBuilder sb = new StringBuilder();
+            AForge.Point eyePos = CalculateEyePosition();
+
+            sb.Append(DateTime.Now.ToString("HH:mm:ss.FFF"))
+                .Append(",CalibrationData")
+                .Append(",screenX=").Append(point.X)
+                .Append(",screenY=").Append(point.Y)
+                .Append(",eyeX=").Append(eyePos.X)
+                .Append(",eyeY=").Append(eyePos.Y).AppendLine();
+
+            using (StreamWriter file = new StreamWriter(logPath, true))
+            {
+                file.WriteLine(sb.ToString());
+            }
+        }
+
         public async void TriggerStartCalibration(double distance)
         {
             await this.Send(MessageType.StartCalibration);
@@ -201,6 +219,17 @@ namespace Haytham.HoloLens
             // METState.Current.server.Send("Commands", new string[] { "CalibrationFinished" });
         }
 
+        public AForge.Point CalculateEyePosition()
+        {
+            METState.Current.Gaze_RGT = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.EyeToDisplay_Mapping.GazeErrorX, METState.Current.EyeToDisplay_Mapping.GazeErrorY);
+            METState.Current.Gaze_RGT = new AForge.Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y);
+
+            if (METState.Current.RemoteCalibration != null)
+                METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
+
+            return METState.Current.Gaze_RGT;
+        }
+
         private void StartEyeDataTransfer()
         {
             isTransferringEyeData = true;
@@ -209,11 +238,7 @@ namespace Haytham.HoloLens
             {
                 while (isTransferringEyeData)
                 {
-                    METState.Current.Gaze_RGT = METState.Current.EyeToDisplay_Mapping.Map(METState.Current.eyeFeature.X, METState.Current.eyeFeature.Y, METState.Current.EyeToDisplay_Mapping.GazeErrorX, METState.Current.EyeToDisplay_Mapping.GazeErrorY);
-                    METState.Current.Gaze_RGT = new AForge.Point((int)METState.Current.Gaze_RGT.X, (int)METState.Current.Gaze_RGT.Y);
-
-                    if (METState.Current.RemoteCalibration != null)
-                        METState.Current.Gaze_RGT = AForge.Point.Subtract(METState.Current.Gaze_RGT, new AForge.Point(METState.Current.RemoteCalibration.PresentationScreen.Left, METState.Current.RemoteCalibration.PresentationScreen.Top));
+                    AForge.Point eyePos = CalculateEyePosition();
                     /*
                     if (METState.Current.Gaze_RGT.X >= 0 && METState.Current.Gaze_RGT.X <= screenWidth
                         && METState.Current.Gaze_RGT.Y >= 0 && METState.Current.Gaze_RGT.Y <= screenHeight)
@@ -222,8 +247,8 @@ namespace Haytham.HoloLens
                     */
 
                     await this.Send(MessageType.EyePositionData);
-                    await this.Send((int)METState.Current.Gaze_RGT.X);
-                    await this.Send((int)METState.Current.Gaze_RGT.Y);
+                    await this.Send((int)eyePos.X);
+                    await this.Send((int)eyePos.Y);
 
                     await Task.Delay(10);
                 }
