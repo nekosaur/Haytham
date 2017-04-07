@@ -2737,7 +2737,7 @@ namespace Haytham
 
         private void btnCalibrateHoloLensFar_Click(object sender, EventArgs e)
         {
-            METState.Current.HoloLensServer.Client.TriggerStartCalibration(4);
+            METState.Current.HoloLensServer.Client.TriggerStartCalibration(5);
             METState.Current.METCoreObject.SendToForm("Calibrating for distance far\r\n", "tbHoloLensServer");
         }
 
