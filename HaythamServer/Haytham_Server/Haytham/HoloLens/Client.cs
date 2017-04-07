@@ -114,7 +114,7 @@ namespace Haytham.HoloLens
                 .Append(",screenX=").Append(point.X)
                 .Append(",screenY=").Append(point.Y)
                 .Append(",eyeX=").Append(eyePos.X)
-                .Append(",eyeY=").Append(eyePos.Y).AppendLine();
+                .Append(",eyeY=").Append(eyePos.Y);
 
             using (StreamWriter file = new StreamWriter(logPath, true))
             {

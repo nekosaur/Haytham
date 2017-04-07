@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Haytham.HoloLens.Tests;
+using System;
 using System.Windows.Forms;
 
 namespace Haytham

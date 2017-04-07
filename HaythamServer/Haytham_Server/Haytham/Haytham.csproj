@@ -265,6 +265,7 @@
     </Compile>
     <Compile Include="HoloLens\MessageType.cs" />
     <Compile Include="HoloLens\Server.cs" />
+    <Compile Include="HoloLens\Tests\TestCalibration.cs" />
     <Compile Include="Interfaces\ICalibration.cs" />
     <Compile Include="SCRL\Classifier.cs" />
     <Compile Include="SCRL\Conditions.cs" />
